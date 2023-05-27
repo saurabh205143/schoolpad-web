@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { v } from "../../../../styles/variables";
-import { Link } from "react-router-dom";
 
 export const NavBar = styled.ul`
  margin:0;
@@ -21,7 +19,7 @@ export const NavBarItem = styled.li`
 >a.active{
     border-bottom:2px solid #0065FF;
     >span{
-        color:${({theme}) => theme.bgPrimary};
+        color:${({theme}) => theme.blueColor};
     }
 }
 >.more-drop{
@@ -48,7 +46,5 @@ export const InactiveIcon = styled.img``;
 
 export const ActiveIcon = styled.img``;
 
-export const IconContainer = styled.div``;
 
-export const OnlyIcon = styled.img``;
 

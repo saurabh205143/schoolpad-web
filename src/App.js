@@ -5,10 +5,12 @@ import { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme } from './styles/theme';
 import { GlobalStyle } from './styles/globalStyles';
 import { Helmet } from 'react-helmet';
-import Home from './views/main/Home/Home';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './components/Layouts/Layout';
 import Transport from './views/main/TransportModule/Transport';
+import Setup from './views/main/TransportModule/Setup/Setup';
+import TransportRoute from './views/main/TransportModule/TransportRoute/TransportRoute';
+import TransportVehicle from './views/main/TransportModule/TransportVehicle/TransportVehicle';
+import StudentMapping from './views/main/TransportModule/StudentMapping/StudentMapping';
 
 export const ThemeContext = React.createContext(null);
 
@@ -31,7 +33,10 @@ function App()  {
          
             <Routes>
               <Route path='/transport' element={<Transport />} />
-              <Route path='/setup' element={<h1>Setup</h1>} />
+              <Route path='/transport/transportRoute' element={<TransportRoute />} />
+              <Route path='/transport/transportvehicle' element={<TransportVehicle />} />
+              <Route path='/studentmapping' element={<StudentMapping />} />
+              <Route path='/setup' element={<Setup />} />
               <Route path='/hrpayrol' element={<h1>Hr & Payroll</h1>} />
               <Route path='/studentdata' element={<h1>Student Data</h1>} />
             </Routes>

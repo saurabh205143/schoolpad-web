@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import { SLayout, SMain, Screen } from './Styles';
 import Sidebar from '../Sidebar/Sidebar';
 import MainHeader from '../MainHeader/MainHeader';

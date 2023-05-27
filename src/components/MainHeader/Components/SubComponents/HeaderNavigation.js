@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { LinkTitle, NavBar, NavBarItem } from './navigationStyles';
-import NavigationItems from './NavigationItems';
 import { NavLink } from 'react-router-dom';
-import classNames from 'classnames';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
@@ -56,9 +54,7 @@ const HeaderNavigation = (props) => {
                             activeClassName="active"
                         >
                             <LinkTitle>{route.tabname}</LinkTitle>
-
                         </NavLink>
-
                     </NavBarItem>
                 );
             })}
