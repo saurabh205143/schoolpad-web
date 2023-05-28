@@ -6,6 +6,7 @@ export const lightTheme = {
     text: "rgb(45,45,45)",
     blueColor:"#0065FF",
     bgPrimary: "#0C66E4",
+    bgSecondary:"rgba(9, 30, 66, 0.0588235)",
     darkColor:"#000000",
     whiteColor:"#ffffff",
     largeFont:"24px",
@@ -17,6 +18,9 @@ export const lightTheme = {
     bgFocus:"#388BFF",
     bgDisabled:"rgba(9, 30, 66, 0.0588235)",
     fontWeightBold:"600",
+    fontWeightSemiBold:"600",
+    fontWeightRegular:"600",
+    secondarHover:"rgba(9, 30, 66, 0.141176)",
     
 };
 export const darkTheme = {

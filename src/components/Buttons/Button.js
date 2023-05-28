@@ -16,13 +16,27 @@ export const ButtonClassic = styled.button`
     &.primary {
         background: ${({ theme }) => theme.bgPrimary};
         color: ${({ theme }) => theme.whiteColor};
-    }  
+    } 
+    
+    &.secondary {
+        background: ${({ theme }) => theme.bgSecondary};
+        color: ${({ theme }) => theme.darkColor};
+
+        &:hover{
+            background: ${({ theme }) => theme.secondarHover};
+        }
+
+        &:focus{
+            border:2px solid #388BFF;
+            background:rgba(9, 30, 66, 0.0588235);
+        }
+    } 
     
     &:hover{
         background: ${({ theme }) => theme.bgHover};
     }
 
-    &::focus{
+    &:focus{
         background: ${({ theme }) => theme.bgFocus};
     }
 
@@ -31,17 +45,24 @@ export const ButtonClassic = styled.button`
         opacity: 0.7;
         cursor: default;
         background: ${({ theme }) => theme.bgDisabled};
-      }
+    }
+
+    >.button-left-icon{
+        margin-right:8px;
+    }
   
  `;
 
-const Button = ({ className, disabled,onClick,buttonText }) => {
+const Button = ({ className, disabled, onClick, buttonText, leftIcon }) => {
     return (
         <ButtonClassic
             disabled={disabled}
             className={className}
             onClick={onClick}
         >
+            {leftIcon &&
+                <img src={leftIcon} alt="Icon" className="button-left-icon" />
+            }
             {buttonText}
         </ButtonClassic>
     )

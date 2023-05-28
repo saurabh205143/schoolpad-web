@@ -20,3 +20,7 @@ export const Description = styled.div`
 export const ButtonContainer = styled.div`
     margin-top:16px;
 `;
+
+export const LinkContainer = styled.div`
+    margin-top:16px;
+`;

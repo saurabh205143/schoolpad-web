@@ -1,8 +1,9 @@
 import React from 'react'
-import { ButtonContainer, Description, Heading, NotFoundContainer } from './styles';
+import { ButtonContainer, Description, Heading, LinkContainer, NotFoundContainer } from './styles';
 import Headings from '../Headings/Headings';
 import NotFoundIcon from '../../images/routes-loader.svg';
 import Button from '../Buttons/Button';
+import LinkButton from '../Buttons/LinkButton';
 
 const ItemsNotFound = () => {
     return (
@@ -20,6 +21,11 @@ const ItemsNotFound = () => {
                  className={'primary'}
                 />
             </ButtonContainer>
+            <LinkContainer>
+                <LinkButton
+                    linkText="Learn how"
+                />
+            </LinkContainer>
         </NotFoundContainer>
     )
 }
