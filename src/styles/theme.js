@@ -12,15 +12,17 @@ export const lightTheme = {
     largeFont:"24px",
     mediunFont:"16px",
     smallFont:"14px",
+    xsmallFont:"12px",
     buttonHeight:"32px",
     buttonRadius:"3px",
     bgHover:"#0055CC",
     bgFocus:"#388BFF",
     bgDisabled:"rgba(9, 30, 66, 0.0588235)",
     fontWeightBold:"600",
-    fontWeightSemiBold:"600",
-    fontWeightRegular:"600",
+    fontWeightSemiBold:"500",
+    fontWeightRegular:"400",
     secondarHover:"rgba(9, 30, 66, 0.141176)",
+    tableheadingBack:"#F8F8F8",
     
 };
 export const darkTheme = {
