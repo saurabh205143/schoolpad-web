@@ -30,7 +30,22 @@ export const ButtonClassic = styled.button`
             border:2px solid #388BFF;
             background:rgba(9, 30, 66, 0.0588235);
         }
-    } 
+    }
+    
+    &.link-button{
+        background:transparent;
+        color:${({ theme }) => theme.blueColor};
+        height:auto;
+        padding:0;
+
+        &:hover{
+            background:transparent;
+        }
+
+        &:focus{
+            background: transparent;
+        }
+    }
     
     &:hover{
         background: ${({ theme }) => theme.bgHover};
@@ -53,7 +68,7 @@ export const ButtonClassic = styled.button`
   
  `;
 
-const Button = ({ className, disabled, onClick, buttonText, leftIcon }) => {
+const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon }) => {
     return (
         <ButtonClassic
             disabled={disabled}
@@ -64,6 +79,9 @@ const Button = ({ className, disabled, onClick, buttonText, leftIcon }) => {
                 <img src={leftIcon} alt="Icon" className="button-left-icon" />
             }
             {buttonText}
+            {rightIcon &&
+                <img src={rightIcon} alt="Icon" className="button-left-icon" />
+            }
         </ButtonClassic>
     )
 }

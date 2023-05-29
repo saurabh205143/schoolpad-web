@@ -11,7 +11,27 @@ export const TableHead = styled.thead`
 `;
 
 export const TableRow = styled.tr`
-
+    // & >th:nth-child(1) {
+    //     width:81px;       
+    // }
+    // & >th:nth-child(2) {
+    //     width:200px;       
+    // }
+    // & >th:nth-child(3) {
+    //     width:140px;       
+    // }
+    // & >th:nth-child(4) {
+    //     width:215px;       
+    // }
+    // & >th:nth-child(5) {
+    //     width:170px;       
+    // }
+    // & >th:nth-child(6) {
+    //     width:208px;       
+    // }
+    // & >th:nth-child(7) {
+    //     width:260px;       
+    // }
 `;
 
 export const TableBody = styled.tbody``;
@@ -22,18 +42,18 @@ export const TableHeading = styled.th`
     font-weight: ${({ theme }) => theme.fontWeightBold};
     font-size: ${({ theme }) => theme.xsmallFont};
     border:none;
+    padding:10px 12px !important;
 `;
 
 export const Tabledata = styled.td`
     color:${({ theme }) => theme.darkColor};
     font-weight: ${({ theme }) => theme.fontWeightRegular};
     font-size: ${({ theme }) => theme.smallFont};
+    padding:7px 12px !important;
 `;
 
 export const ActionsConatiner = styled.ul`
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
+    display:inline;
     margin:0;
     padding:0;
     list-style:none;
@@ -41,5 +61,10 @@ export const ActionsConatiner = styled.ul`
 
 export const ActionsList = styled.li`
     padding:0 10px 0 0;
+    display:inline-block;
+`;
+
+export const MoreAction = styled.div`
+    padding-left:10px;
 `;
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import TableData from './TableData';
-import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
+import { ActionsConatiner, ActionsList, MoreAction, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
 
 // Assets
 import EditIcon from '../../images/edit-icon.svg';
 import DeleteIcon from '../../images/delete-icon.svg';
 import LinkButton from '../Buttons/LinkButton';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
+import DropIcon from '../../images/drop-arrow-icon.svg';
+import Button from '../Buttons/Button';
 
 const Table = () => {
 
@@ -56,7 +57,13 @@ const Table = () => {
                                 />
                             </ActionsList>
                             <ActionsList>
-                                
+                                <MoreAction>
+                                    <Button
+                                        buttonText='More'
+                                        rightIcon={DropIcon}
+                                        className='link-button'
+                                    />
+                                </MoreAction>
                             </ActionsList>
                         </ActionsConatiner>
                     </Tabledata>
