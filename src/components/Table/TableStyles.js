@@ -11,27 +11,19 @@ export const TableHead = styled.thead`
 `;
 
 export const TableRow = styled.tr`
-    // & >th:nth-child(1) {
-    //     width:81px;       
-    // }
-    // & >th:nth-child(2) {
-    //     width:200px;       
-    // }
-    // & >th:nth-child(3) {
-    //     width:140px;       
-    // }
-    // & >th:nth-child(4) {
-    //     width:215px;       
-    // }
-    // & >th:nth-child(5) {
-    //     width:170px;       
-    // }
-    // & >th:nth-child(6) {
-    //     width:208px;       
-    // }
-    // & >th:nth-child(7) {
-    //     width:260px;       
-    // }
+    & >th:nth-child(2) {
+        width:213px;       
+    }
+    & >th:nth-child(3) {
+        width:140px;       
+    }
+    & >th:nth-child(4) {
+        width:215px;       
+    }
+    & >th:nth-child(5) {
+        width:170px;       
+    }
+    
 `;
 
 export const TableBody = styled.tbody``;

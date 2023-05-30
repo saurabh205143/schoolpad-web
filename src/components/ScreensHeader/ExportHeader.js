@@ -6,6 +6,7 @@ import LinkButton from '../Buttons/LinkButton';
 // Assets
 import PrintIcon from '../../images/print-icon.svg';
 import Excelicon from '../../images/excel-icon.svg';
+import Button from '../Buttons/Button';
 
 const ExportHeader = () => {
     return (
@@ -20,13 +21,15 @@ const ExportHeader = () => {
             </ContainerLeft>
             <ContainerRight>
                 <ButtonContainer>
-                    <LinkButton
+                    <Button
                         onlyIcon={Excelicon}
+                        className={'only-icon-button'}
                     />
                 </ButtonContainer>
                 <ButtonContainer>
-                    <LinkButton
+                    <Button
                         onlyIcon={PrintIcon}
+                        className={'only-icon-button'}
                     />
                 </ButtonContainer>
             </ContainerRight>

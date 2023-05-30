@@ -46,6 +46,21 @@ export const ButtonClassic = styled.button`
             background: transparent;
         }
     }
+
+    &.only-icon-button{
+        background:transparent;
+        color:transparent;
+        height:auto;
+        padding:0;
+
+        &:hover{
+            background:transparent;
+        }
+
+        &:focus{
+            background: transparent;
+        }
+    }
     
     &:hover{
         background: ${({ theme }) => theme.bgHover};
@@ -68,7 +83,7 @@ export const ButtonClassic = styled.button`
   
  `;
 
-const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon }) => {
+const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon,onlyIcon }) => {
     return (
         <ButtonClassic
             disabled={disabled}
@@ -79,6 +94,9 @@ const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon }
                 <img src={leftIcon} alt="Icon" className="button-left-icon" />
             }
             {buttonText}
+            {onlyIcon &&
+                <img src={onlyIcon} alt="Icon" className="only-icon" />
+            }
             {rightIcon &&
                 <img src={rightIcon} alt="Icon" className="button-left-icon" />
             }
