@@ -21,6 +21,13 @@ export const ContainerRight = styled.div`
 
 export const ButtonContainer = styled.div`
     margin-left:8px;
+    >div{
+        margin-bottom:0px;
+        >.simple-input{
+            height:32px;
+            width:256px;
+        }
+    }
 `;
 
 export const ExportContainer = styled.div`
@@ -35,4 +42,38 @@ export const ExportContainer = styled.div`
 
 export const ExportHeadings = styled.div`
     margin-right:15px;
+`;
+
+export const VerticalContainer = styled.div`
+    width:100%;
+    padding:16px 16px;
+    display:flex; 
+    flex-direction:column; 
+`;
+
+export const DescriptionText = styled.div`
+    margin:15px 0;
+`;
+
+export const GetRecordsContainer = styled.div`
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+`;
+
+export const RecordBox = styled.div`
+ margin-right:10px;
+ > div{
+    margin-bottom:0px;
+    > div{
+        > div{
+            > .select-drop{
+                width:226px;
+                height:36px;
+                min-height:36px;
+            }
+        }
+    }
+ }
 `;

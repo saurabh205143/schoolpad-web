@@ -8,6 +8,8 @@ import MenuIcon from '../../../images/menu-icon.svg';
 import NotificationIcon from '../../../images/header-noti-icon.svg';
 import SettingIcon from '../../../images/header-seting-icon.svg';
 import UserIcon from '../../../images/header-user-icon.svg';
+import Input from '../../Inputs/Input';
+import SearchIcon from '../../../images/search-icon.svg';
 
 
 export const HeaderContainer = styled.div`
@@ -40,6 +42,16 @@ export const HeaderRightContainer = styled.div`
     }
 `;
 
+export const SearchContainer = styled.div`
+    > div{
+        margin-bottom:0px;
+        >.simple-input{
+            width:240px;
+            height:32px;
+        }
+    }
+`;
+
 const HeaderIItems = () => {
     return (
         <HeaderContainer>
@@ -50,6 +62,13 @@ const HeaderIItems = () => {
                 <HeaderNavigation />
             </HeaderLeftContainer>
             <HeaderRightContainer>
+                <SearchContainer>
+                    <Input
+                        leftIcon={SearchIcon}
+                        placeholder={'Search '}
+                        name='search'
+                    />
+                </SearchContainer>
                 <Link>
                     <IconContainer src={NotificationIcon} alt="Notification Icon" />
                 </Link>

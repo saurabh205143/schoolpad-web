@@ -4,35 +4,35 @@ import Headings from '../Headings/Headings';
 import LinkButton from '../Buttons/LinkButton';
 
 // Assets
-import PrintIcon from '../../images/print-icon.svg';
-import Excelicon from '../../images/excel-icon.svg';
 import Button from '../Buttons/Button';
 
-const ExportHeader = () => {
+const ExportHeader = ({smallHeading,smallHeding2,Excelicon,PrintIcon}) => {
     return (
         <ExportContainer>
             <ContainerLeft>
                 <ExportHeadings>
-                    <Headings smallHeading='All Routes ' />
+                    <Headings smallHeading={smallHeading} />
                 </ExportHeadings>
                 <ExportHeadings>
-                    <Headings smallHeading='(202 Records) ' />
+                    <Headings smallHeading={smallHeding2} />
                 </ExportHeadings>
             </ContainerLeft>
-            <ContainerRight>
-                <ButtonContainer>
-                    <Button
-                        onlyIcon={Excelicon}
-                        className={'only-icon-button'}
-                    />
-                </ButtonContainer>
-                <ButtonContainer>
-                    <Button
-                        onlyIcon={PrintIcon}
-                        className={'only-icon-button'}
-                    />
-                </ButtonContainer>
-            </ContainerRight>
+            {Excelicon && PrintIcon &&
+                <ContainerRight>
+                    <ButtonContainer>
+                        <Button
+                            onlyIcon={Excelicon}
+                            className={'only-icon-button'}
+                        />
+                    </ButtonContainer>
+                    <ButtonContainer>
+                        <Button
+                            onlyIcon={PrintIcon}
+                            className={'only-icon-button'}
+                        />
+                    </ButtonContainer>
+                </ContainerRight>
+            }
         </ExportContainer>
     )
 }

@@ -10,6 +10,7 @@ export const lightTheme = {
     darkColor:"#000000",
     whiteColor:"#ffffff",
     largeFont:"24px",
+    xmediumfont:"20px",
     mediunFont:"16px",
     smallFont:"14px",
     xsmallFont:"12px",
@@ -23,6 +24,13 @@ export const lightTheme = {
     fontWeightRegular:"400",
     secondarHover:"rgba(9, 30, 66, 0.141176)",
     tableheadingBack:"#F8F8F8",
+    inputBorderColor:"rgba(9, 30, 66, 0.141176)",
+    errorColor:"#E34935",
+    inputTextColor:"#172B4D",
+    inputPlaceholderColor:"#626F86",
+    inputHoverColor:"#F7F8F9",
+    disableInput:"rgba(9, 30, 66, 0.0588235)",
+    disabledBorder:"rgba(9, 30, 66, 0.0588235)",
     
 };
 export const darkTheme = {

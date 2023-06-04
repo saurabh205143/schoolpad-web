@@ -47,6 +47,22 @@ export const ButtonClassic = styled.button`
         }
     }
 
+    &.link-button-black{
+        background:transparent;
+        color:${({ theme }) => theme.darkColor};
+        height:32px;
+        padding:0 12px;
+
+        &:hover{
+            background: ${({ theme }) => theme.secondarHover};
+        }
+
+        &:focus{
+            border:2px solid #388BFF;
+            background:rgba(9, 30, 66, 0.0588235);
+        }
+    }
+
     &.only-icon-button{
         background:transparent;
         color:transparent;

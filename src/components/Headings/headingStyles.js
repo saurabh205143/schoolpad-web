@@ -9,6 +9,14 @@ export const MainHeadingText = styled.h1`
     margin:0;
 `;
 
+export const SubHeading = styled.h2`
+    font-style: normal;
+    font-weight: ${({ theme }) => theme.fontWeightBold};
+    font-size: ${({ theme }) => theme.xmediumfont};
+    color: ${({ theme }) => theme.darkColor};
+    margin:0;
+`;
+
 export const SubHeadingText = styled.h2`
     font-style: normal;
     font-weight: ${({ theme }) => theme.fontWeightSemiBold};
