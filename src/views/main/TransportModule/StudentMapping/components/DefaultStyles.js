@@ -13,8 +13,9 @@ export const DefaultContainer = styled.div`
 export const DefaultIconContainer = styled.div`
     display:flex;
     align-items:flex-end;
-    justify-content:center;
-    padding-top:40px
+    justify-content:flex-start;
+    padding-top:40px;
+    width:47%;
 `;
 
 export const TitleContainer = styled.div`
