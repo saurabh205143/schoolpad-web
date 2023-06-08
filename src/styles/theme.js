@@ -4,7 +4,7 @@ export const lightTheme = {
     bg2: "#ffffff",
     bgButton: "rgb(230,230,230)",
     text: "rgb(45,45,45)",
-    blueColor:"#0065FF",
+    blueColor: "#0065FF",
     bgPrimary: "#0C66E4",
     bgSecondary:"rgba(9, 30, 66, 0.0588235)",
     darkColor:"#000000",

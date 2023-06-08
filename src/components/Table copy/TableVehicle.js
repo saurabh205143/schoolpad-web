@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import TableData from './TableData';
 import { ActionsConatiner, ActionsList, MoreAction, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
 
@@ -9,8 +9,7 @@ import LinkButton from '../Buttons/LinkButton';
 import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
 
-
-const Table = () => {
+const Table = (props) => {
 
     // get table column
     const column = Object.keys(TableData[0]);
@@ -35,10 +34,7 @@ const Table = () => {
                         <ActionsConatiner>
                             <ActionsList>
                                 <LinkButton
-                                    linkText='Pickup'
-                                />
-                                <LinkButton
-                                    linkText='/Drop Time'
+                                    linkText='IN SERVICE'
                                 />
                             </ActionsList>
 
@@ -77,7 +73,7 @@ const Table = () => {
                 <TableRow>
                     {ThData()}
                     <TableHeading
-                    >Set Time</TableHeading>
+                    >{props.heading}</TableHeading>
                     <TableHeading>Actions</TableHeading>
                 </TableRow>
             </TableHead>

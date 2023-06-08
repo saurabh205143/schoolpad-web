@@ -12,6 +12,7 @@ const getActiveModule = (url) => {
     let parts = url.split('/');
     return parts[3];
 };
+const activeModule = getActiveModule(window.location.href);
 
 const Navigation = (props) => {
 
@@ -28,8 +29,8 @@ const Navigation = (props) => {
         }
     };
 
-    const getActiveClassNames = (defaultClass, tabname) => {
-        let active = false;
+    const getActiveClassNames = (defaultClass, tabname, active) => {
+        // let active = false;
         let url = window.location.pathname;
 
         if (tabname === 'TransportRoute') {
@@ -57,8 +58,6 @@ const Navigation = (props) => {
         let parts = url.split('/');
         return parts[3];
     };
-
-    const activeModule = getActiveModule(window.location.href);
 
     return (
         <NavBar>
@@ -89,6 +88,7 @@ const Navigation = (props) => {
                                 url="/transport/transportvehicle"
                                 tabname="Transport Vehicle"
                                 drop="true"
+                                isActive={activeModule === '/transport/transportvehicle'}
                             />
                         </SidebarDropList>
                     </SidebarDropDown>

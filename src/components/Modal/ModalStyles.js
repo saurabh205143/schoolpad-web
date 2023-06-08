@@ -13,7 +13,7 @@ export const ModalContainer = styled.div`
 export const ModalContent = styled.div`
     position:fixed;
     background: #ffffff;
-    width:50%;
+    width:600px;
     top:50%;
     left:50%;
     height:auto;

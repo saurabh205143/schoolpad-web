@@ -8,65 +8,79 @@ import Icon from '../../images/icon-before.svg';
 import SearchIcon from '../../images/search-icon.svg';
 import Input from '../Inputs/Input';
 
+
+import { useLocation } from 'react-router-dom';
+
 const options = [
-    { 
-      value: 1,
-      label: "Leanne Graham"
+    {
+        value: 1,
+        label: "Leanne Graham"
     },
     {
-      value:  2,
-      label: "Ervin Howell"
+        value: 2,
+        label: "Ervin Howell"
     }
 ];
 
-const SubHeader = ({onClick,type,heading}) => {
 
-    if(type === 'horizontal'){
+const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOption }) => {
+
+    const on = useLocation(); 
+    const pathName = on.pathname;
+    let params = pathName.split('/');
+    console.log(params);
+
+
+    if (type === 'horizontal') {
         return (
             <Container type='horizontal'>
                 <ContainerLeft>
                     <Headings heading={heading} />
                 </ContainerLeft>
-                <ContainerRight>
+                <ContainerRight >
                     <ButtonContainer>
                         <Input
-                          leftIcon={SearchIcon}
-                          placeholder={'Search route by stop, Vehicle etc'}
-                          name='search'
-                         />
+                            leftIcon={SearchIcon}
+                            placeholder={'Search route by stop, Vehicle etc'}
+                            name='search'
+                        />
                     </ButtonContainer>
                     <ButtonContainer>
                         <Button
                             className='primary'
-                            buttonText="Add New Route"
+                            buttonText={buttonAdd}
                             onClick={onClick}
                         />
                     </ButtonContainer>
+                    {
+                        (params[2] != undefined && params[2] != "transportvehicle") &&
+                        <ButtonContainer>
+                            <Button
+                                className='secondary'
+                                buttonText={buttonOrders}
+                            />
+                        </ButtonContainer>
+                    }
                     <ButtonContainer>
                         <Button
                             className='secondary'
-                            buttonText="Order Routes"
-                        />
-                    </ButtonContainer>
-                    <ButtonContainer>
-                        <Button
-                            className='secondary'
-                            buttonText="Associated Options"
+                            buttonText={buttonOption}
                             leftIcon={Icon}
                         />
                     </ButtonContainer>
+
                 </ContainerRight>
             </Container>
         )
-    } else{
-        return(
+    } else {
+        return (
             <VerticalContainer>
                 <ContainerLeft>
                     <Headings heading={heading} />
                 </ContainerLeft>
                 <DescriptionText>
                     <Headings
-                        description={'Please select the type of data on which you want to add mapping below. You can choose class wise, route wise, admission number wise etc'} 
+                        description={'Please select the type of data on which you want to add mapping below. You can choose class wise, route wise, admission number wise etc'}
                     />
                 </DescriptionText>
                 <GetRecordsContainer>
@@ -86,7 +100,7 @@ const SubHeader = ({onClick,type,heading}) => {
         )
     }
 
-    
+
 }
 
 export default SubHeader;
