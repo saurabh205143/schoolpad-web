@@ -8,8 +8,9 @@ import DeleteIcon from '../../images/delete-icon.svg';
 import LinkButton from '../Buttons/LinkButton';
 import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
+import AvatarIcon from '../../images/avatar-icon.svg';
 
-const Table = (props) => {
+const TableStopMaster = (props) => {
 
     // get table column
     const column = Object.keys(TableData[0]);
@@ -35,7 +36,8 @@ const Table = (props) => {
                         <ActionsConatiner>
                             <ActionsList>
                                 <LinkButton
-                                    linkText='IN SERVICE'
+                                    linkText='1 Students(s)'
+                                    onlyIcon={AvatarIcon}
                                 />
                             </ActionsList>
 
@@ -86,4 +88,4 @@ const Table = (props) => {
     )
 }
 
-export default Table;
+export default TableStopMaster;

@@ -12,16 +12,16 @@ export const LinkClassic = styled(Link)`
     letter-spacing:0px;
 `;
 
-const LinkButton = ({ to, linkText , onlyIcon , className}) => {
+const LinkButton = ({ to, linkText, onlyIcon, className }) => {
     return (
         <>
-        <LinkClassic to={to}>
-            {linkText}
-            {className}
-            {onlyIcon &&
-                <img src={onlyIcon} alt="Icon" />
-            }
-        </LinkClassic>
+            <LinkClassic to={to}>
+                {onlyIcon &&
+                    <img src={onlyIcon} alt="Icon" className='avatar-icon' />
+                }
+                {linkText}
+                {className}
+            </LinkClassic>
         </>
     )
 }

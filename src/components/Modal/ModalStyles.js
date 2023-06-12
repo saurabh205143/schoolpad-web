@@ -16,7 +16,7 @@ export const ModalContent = styled.div`
     width:600px;
     top:50%;
     left:50%;
-    height:auto;
+    height: auto;
     transform:translate(-50%, -50%);
     border-radius:3px;
 `;

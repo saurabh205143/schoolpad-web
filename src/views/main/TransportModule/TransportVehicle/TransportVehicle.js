@@ -8,7 +8,7 @@ import ExportHeader from '../../../../components/ScreensHeader/ExportHeader';
 import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
 import AddVehicle from './components/AddVehicle';
-import TableVehicle from '../../../../components/VehicleTable/TableVehicle';
+import TableVehicle from '../../../../components/Table copy/TableVehicle';
 
 
 const TransportVehicle = () => {
@@ -31,9 +31,7 @@ const TransportVehicle = () => {
 
       <TableVehicle
       heading='Status'
-      
       />
-
 
          {/* Add Vehicle Modal */}
           <AddVehicle

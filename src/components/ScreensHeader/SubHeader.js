@@ -7,8 +7,6 @@ import Button from '../Buttons/Button';
 import Icon from '../../images/icon-before.svg';
 import SearchIcon from '../../images/search-icon.svg';
 import Input from '../Inputs/Input';
-
-
 import { useLocation } from 'react-router-dom';
 
 const options = [
@@ -25,7 +23,7 @@ const options = [
 
 const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOption }) => {
 
-    const on = useLocation(); 
+    const on = useLocation();
     const pathName = on.pathname;
     let params = pathName.split('/');
     console.log(params);
@@ -61,14 +59,16 @@ const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOpti
                             />
                         </ButtonContainer>
                     }
-                    <ButtonContainer>
-                        <Button
-                            className='secondary'
-                            buttonText={buttonOption}
-                            leftIcon={Icon}
-                        />
-                    </ButtonContainer>
-
+                    {
+                        (params[2] != undefined && params[2] != "transportstop") &&
+                        <ButtonContainer>
+                            <Button
+                                className='secondary'
+                                buttonText={buttonOption}
+                                leftIcon={Icon}
+                            />
+                        </ButtonContainer>
+                    }
                 </ContainerRight>
             </Container>
         )

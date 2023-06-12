@@ -11,6 +11,7 @@ import Setup from './views/main/TransportModule/Setup/Setup';
 import TransportRoute from './views/main/TransportModule/TransportRoute/TransportRoute';
 import TransportVehicle from './views/main/TransportModule/TransportVehicle/TransportVehicle';
 import StudentMapping from './views/main/TransportModule/StudentMapping/StudentMapping';
+import TransportStopMaster from './views/main/TransportModule/TransportStopMaster/TransportStopMaster';
 
 export const ThemeContext = React.createContext(null);
 
@@ -34,6 +35,7 @@ function App()  {
               <Route path='/transport' element={<Transport />} />
               <Route path='/transport/transportRoute' element={<TransportRoute />} />
               <Route path='/transport/transportvehicle' element={<TransportVehicle />} />
+              <Route path='/transport/transportstop' element={<TransportStopMaster/>}/>
               <Route path='/studentmapping' element={<StudentMapping />} />
               <Route path='/setup' element={<Setup />} />
               <Route path='/hrpayrol' element={<h1>Hr & Payroll</h1>} />

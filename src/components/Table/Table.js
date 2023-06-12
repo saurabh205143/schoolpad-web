@@ -83,7 +83,6 @@ const Table = () => {
             </TableHead>
             <TableBody>
                 {tdData()}
-
             </TableBody>
         </TableContainer>
     )

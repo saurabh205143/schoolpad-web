@@ -6,7 +6,7 @@ export const ButtonClassic = styled.button`
     font-size: ${({ theme }) => theme.smallFont};
     font-weight:${({ theme }) => theme.fontWeightBold};
     font-family: 'Source Sans Pro',sans-serif;
-    margin:0;
+    margin: 0;
     padding: 0px 12px;
     height:${({ theme }) => theme.buttonHeight};
     border: none;
@@ -16,6 +16,7 @@ export const ButtonClassic = styled.button`
     &.primary {
         background: ${({ theme }) => theme.bgPrimary};
         color: ${({ theme }) => theme.whiteColor};
+        margin-right: 8px;
     } 
     
     &.secondary {
@@ -96,7 +97,7 @@ export const ButtonClassic = styled.button`
     >.button-left-icon{
         margin-right:8px;
     }
-  
+
  `;
 
 const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon,onlyIcon }) => {

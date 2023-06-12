@@ -55,6 +55,7 @@ export const Tabledata = styled.td`
     font-weight: ${({ theme }) => theme.fontWeightRegular};
     font-size: ${({ theme }) => theme.smallFont};
     padding:7px 12px !important;
+    width: 100px;
 `;
 
 export const ActionsConatiner = styled.ul`
@@ -71,6 +72,7 @@ export const ActionsList = styled.li`
 
 export const MoreAction = styled.div`
     padding-left:10px;
+    display: none;
 `;
 
 

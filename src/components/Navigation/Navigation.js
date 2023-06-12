@@ -91,6 +91,15 @@ const Navigation = (props) => {
                                 isActive={activeModule === '/transport/transportvehicle'}
                             />
                         </SidebarDropList>
+                        <SidebarDropList
+                            className={getActiveClassNames('nav-item', 'TransportVehicle"',)}>
+                            <NavigationItems
+                                url="/transport/transportstop"
+                                tabname="Transport Stops"
+                                drop="true"
+                                isActive={activeModule === '/transport/transportvehicle'}
+                            />
+                        </SidebarDropList>
                     </SidebarDropDown>
                 )}
 
@@ -98,7 +107,6 @@ const Navigation = (props) => {
             <NavBarItem
                 onClick={() => setShowDrop(showDrop === 2 ? null : 2)}
                 className={getClassNames('nav-item', showDrop === 2)}
-
             >
                 <NavigationItems
                     url='/studentmapping'

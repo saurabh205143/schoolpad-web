@@ -5,10 +5,17 @@ import Button from '../Buttons/Button';
 
 // Assets
 import CloseIcon from '../../images/close-icon.svg';
+import { useLocation } from 'react-router-dom';
 
 
 const Modal = props => {
-    const {show, handleClose, modalHeading, submitText,saveAction, children} = props;
+    const {show, handleClose, modalHeading, submitText,saveAction, children, actionText} = props;
+
+    const on = useLocation();
+    const pathName = on.pathname;
+    let params = pathName.split('/');
+    console.log(params);
+
     return (
         <ModalContainer block={show ? 'block' : 'none'}>
             <ModalContent>
@@ -32,6 +39,14 @@ const Modal = props => {
                         />
                     </FooterButtonContainer>
                     <FooterButtonContainer>
+                    {
+                        (params[2] != undefined && params[2] != "transportvehicle") &&
+                        <Button
+                            buttonText={actionText}
+                            className={'primary'}
+                            onClick={saveAction}
+                        />
+                        }
                         <Button
                             buttonText={submitText}
                             className={'primary'}
