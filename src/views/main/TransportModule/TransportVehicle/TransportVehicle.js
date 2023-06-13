@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Layout from '../../../../components/Layouts/Layout';
 
 const TransportVehicle = () => {
   return (
-    <div>TransportVehicle</div>
+    <Layout>
+      Transport vehicle
+    </Layout>
   )
 }
 
