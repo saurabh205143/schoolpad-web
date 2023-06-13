@@ -12,16 +12,16 @@ export const TableHead = styled.thead`
 
 export const TableRow = styled.tr`
     & >th:nth-child(2) {
-        width:213px;       
+        width:360px;       
     }
     & >th:nth-child(3) {
-        width:140px;       
+        width:406px;       
     }
     & >th:nth-child(4) {
-        width:215px;       
+        width:210px;       
     }
     & >th:nth-child(5) {
-        width:170px;       
+        width:100px;   
     }
     @media only screen and (max-width: 1340px) {
         & >th:nth-child(2) {
@@ -57,6 +57,7 @@ export const Tabledata = styled.td`
     padding:7px 12px !important;
     width: 100px;
 `;
+
 
 export const ActionsConatiner = styled.ul`
     display:inline;

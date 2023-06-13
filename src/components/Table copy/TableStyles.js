@@ -12,7 +12,7 @@ export const TableHead = styled.thead`
 
 export const TableRow = styled.tr`
     & >th:nth-child(2) {
-        width:213px;       
+        width:360px;       
     }
     & >th:nth-child(3) {
         width:140px;       
@@ -21,7 +21,7 @@ export const TableRow = styled.tr`
         width:215px;       
     }
     & >th:nth-child(5) {
-        width:170px;       
+        width:240px;     
     }
     @media only screen and (max-width: 1340px) {
         & >th:nth-child(2) {

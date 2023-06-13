@@ -15,13 +15,13 @@ export const TableRow = styled.tr`
         width:213px;       
     }
     & >th:nth-child(3) {
-        width:140px;       
+        width:192px;       
     }
     & >th:nth-child(4) {
-        width:215px;       
+        width:234px;       
     }
     & >th:nth-child(5) {
-        width:170px;       
+        width:178px; 
     }
     @media only screen and (max-width: 1340px) {
         & >th:nth-child(2) {
@@ -62,6 +62,7 @@ export const ActionsConatiner = styled.ul`
     margin:0;
     padding:0;
     list-style:none;
+
 `;
 
 export const ActionsList = styled.li`
