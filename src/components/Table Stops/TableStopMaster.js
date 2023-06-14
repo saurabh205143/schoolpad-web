@@ -38,6 +38,7 @@ const TableStopMaster = (props) => {
                                 <LinkButton
                                     linkText='1 Students(s)'
                                     onlyIcon={AvatarIcon}
+                                    paddingRight="8px"
                                 />
                             </ActionsList>
 

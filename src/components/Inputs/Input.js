@@ -138,7 +138,7 @@ const Input = (
                         {label}
                     </Title>
                 }
-              <InputContainer className={disabled ? 'disabled-input':'simple-input'}>
+            <InputContainer className={disabled ? 'disabled-input':'simple-input'}>
                 {leftIcon &&
                     <img src={leftIcon} alt="icon" className='leftIcon' />
                 }
@@ -151,7 +151,7 @@ const Input = (
                     placeholder={placeholder}
                     disabled={disabled}
                 />
-              </InputContainer>
+            </InputContainer>
             </Container>
         );
     }

@@ -10,14 +10,15 @@ export const LinkClassic = styled(Link)`
     text-align:center;
     text-decoration:none;
     letter-spacing:0px;
+    padding:${({theme}) => theme.padding};
 `;
 
-const LinkButton = ({ to, linkText, onlyIcon }) => {
+const LinkButton = ({ to, linkText, onlyIcon, paddingRight}) => {
     return (
         <>
             <LinkClassic to={to}>
                 {onlyIcon &&
-                    <img src={onlyIcon} alt="Icon"/>
+                    <img src={onlyIcon} alt="Icon" style={{paddingRight}}/>
                 }
                 {linkText}
             </LinkClassic>
