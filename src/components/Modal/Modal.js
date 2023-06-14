@@ -7,7 +7,6 @@ import Button from '../Buttons/Button';
 import CloseIcon from '../../images/close-icon.svg';
 import { useLocation } from 'react-router-dom';
 
-
 const Modal = props => {
     const {show, handleClose, modalHeading, submitText,saveAction, children, actionText} = props;
 
