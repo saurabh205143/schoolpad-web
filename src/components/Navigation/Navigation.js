@@ -29,8 +29,8 @@ const Navigation = (props) => {
         }
     };
 
-    const getActiveClassNames = (defaultClass, tabname, active) => {
-        // let active = false;
+    const getActiveClassNames = (defaultClass, tabname) => {
+        let active = false;
         let url = window.location.pathname;
 
         if (tabname === 'TransportRoute') {
@@ -39,6 +39,10 @@ const Navigation = (props) => {
 
         if (tabname === 'TransportVehicle') {
             active = url.includes('/transport/transportvehicle');
+        }
+
+        if (tabname === 'Transportstop') {
+            active = url.includes('/transport/transportstop');
         }
 
         if (tabname === 'StudentMapping') {
@@ -83,7 +87,7 @@ const Navigation = (props) => {
                             />
                         </SidebarDropList>
                         <SidebarDropList
-                            className={getActiveClassNames('nav-item', 'TransportVehicle"',)}>
+                            className={getActiveClassNames('nav-item', 'TransportVehicle',)}>
                             <NavigationItems
                                 url="/transport/transportvehicle"
                                 tabname="Transport Vehicle"
@@ -92,12 +96,12 @@ const Navigation = (props) => {
                             />
                         </SidebarDropList>
                         <SidebarDropList
-                            className={getActiveClassNames('nav-item', 'TransportVehicle"',)}>
+                            className={getActiveClassNames('nav-item', 'Transportstop',)}>
                             <NavigationItems
                                 url="/transport/transportstop"
                                 tabname="Transport Stops"
                                 drop="true"
-                                isActive={activeModule === '/transport/transportvehicle'}
+                                isActive={activeModule === '/transport/transportstop'}
                             />
                         </SidebarDropList>
                     </SidebarDropDown>
