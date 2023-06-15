@@ -17,8 +17,8 @@ const ItemsNotFound = () => {
             </Description>
             <ButtonContainer>
                 <Button
-                 buttonText={'Create New Routes'}
-                 className={'primary'}
+                    buttonText={'Create New Routes'}
+                    className={'primary'}
                 />
             </ButtonContainer>
             <LinkContainer>

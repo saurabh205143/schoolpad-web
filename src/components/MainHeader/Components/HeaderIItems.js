@@ -10,7 +10,7 @@ import SettingIcon from '../../../images/header-seting-icon.svg';
 import UserIcon from '../../../images/header-user-icon.svg';
 import Input from '../../Inputs/Input';
 import SearchIcon from '../../../images/search-icon.svg';
-import AddRoutes from '../../../views/main/TransportModule/TransportRoute/components/AddRoutes';
+import MegaMenuHeader from '../../Mega Menu/MegaMenuHeader';
 
 
 export const HeaderContainer = styled.div`
@@ -53,6 +53,38 @@ export const SearchContainer = styled.div`
     }
 `;
 
+export const MegaMenuContainer = styled.div`
+position:relative;
+> a{
+    position:relative;
+    > .max-mega-menu{
+        display:block;
+    }
+`;
+
+export const MegaMenuArea = styled.div`
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(9, 30, 66, 0.7);
+    z-index:999;
+`;
+
+export const MegaMenuAreaInner = styled.div`
+    position: absolute;
+    top: -11px;
+    width: 100%;
+`;
+
+export const MegaMenuAreaContainer = styled.div`
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+    height:490px;
+    width: 100%;
+`;
 
 const HeaderIItems = () => {
 
@@ -62,6 +94,15 @@ const HeaderIItems = () => {
                 <Link >
                     <IconContainer 
                     src={MenuIcon} alt="Menu Icon" />
+                <MegaMenuContainer>
+                    <MegaMenuArea>
+                        <MegaMenuAreaInner>
+                            <MegaMenuAreaContainer>
+                        <MegaMenuHeader/>
+                        </MegaMenuAreaContainer>
+                        </MegaMenuAreaInner>
+                        </MegaMenuArea>
+                </MegaMenuContainer>
                 </Link>
                 <HeaderNavigation />
             </HeaderLeftContainer>
