@@ -59,7 +59,7 @@ export const MegaMenuIconContainer = styled.div`
     > a{
         position:relative;
         > .max-mega-menu{
-            display:block;
+            display:none;
         }
         &:hover{
             > .max-mega-menu{

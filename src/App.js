@@ -34,7 +34,7 @@ function App()  {
             <Routes>
               <Route path='/transport' element={<Transport />} />
               <Route path='/transport/transportRoute' element={<TransportRoute />} />
-              <Route path='/transport/transportvehicle' element={<TransportVehicle />} />
+              <Route path='/transport/transportVehicle' element={<TransportVehicle />} />
               <Route path='/studentmapping' element={<StudentMapping />} />
               <Route path='/setup' element={<Setup />} />
               <Route path='/hrpayrol' element={<h1>Hr & Payroll</h1>} />

@@ -37,7 +37,7 @@ const Navigation = (props) => {
         }
 
         if (tabname === 'TransportVehicle') {
-            active = url.includes('/transport/transportvehicle');
+            active = url.includes('/transport/transportVehicle');
         }
 
         if (tabname === 'StudentMapping') {
@@ -86,7 +86,7 @@ const Navigation = (props) => {
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'TransportVehicle"',)}>
                             <NavigationItems
-                                url="/transport/transportvehicle"
+                                url="/transport/transportVehicle"
                                 tabname="Transport Vehicle"
                                 drop="true"
                             />
