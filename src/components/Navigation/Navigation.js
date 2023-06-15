@@ -12,6 +12,7 @@ const getActiveModule = (url) => {
     let parts = url.split('/');
     return parts[3];
 };
+const activeModule = getActiveModule(window.location.href);
 
 const Navigation = (props) => {
 
@@ -37,7 +38,11 @@ const Navigation = (props) => {
         }
 
         if (tabname === 'TransportVehicle') {
-            active = url.includes('/transport/transportVehicle');
+            active = url.includes('/transport/transportvehicle');
+        }
+
+        if (tabname === 'Transportstop') {
+            active = url.includes('/transport/transportstop');
         }
 
         if (tabname === 'StudentMapping') {
@@ -89,6 +94,7 @@ const Navigation = (props) => {
                                 url="/transport/transportVehicle"
                                 tabname="Transport Vehicle"
                                 drop="true"
+                                isActive={activeModule === '/transport/transportvehicle'}
                             />
                         </SidebarDropList>
                     </SidebarDropDown>
