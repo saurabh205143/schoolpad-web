@@ -89,26 +89,36 @@ export const MegaMenuAreaContainer = styled.div`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0px;
     height: 530px;
-    width: 100%;
+    position: absolute;
+    width: 1418px;
+    height: 509px;
+    left: 10px;
+    top: 20px;
 `;
 
 const HeaderIItems = () => {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-    const handleClick = () => {
-        setIsOpen(!isOpen);
+    const handleMouseEnter = () => {
+        setIsDialogOpen(true);
     };
+
+    const handleMouseLeave = () => {
+        setIsDialogOpen(false);
+    };
+
 
     return (
         <HeaderContainer>
             <HeaderLeftContainer>
                 <Link >
                     <IconContainer
-                        onClick={handleClick}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
                         src={MenuIcon} alt="Menu Icon"
                     />
-                    {isOpen ? (<MegaMenuContainer className='mega-menu'>
+                    {isDialogOpen && (<MegaMenuContainer className='mega-menu'>
                         <MegaMenuArea>
                             <MegaMenuAreaInner>
                                 <MegaMenuAreaContainer>
@@ -116,8 +126,7 @@ const HeaderIItems = () => {
                                 </MegaMenuAreaContainer>
                             </MegaMenuAreaInner>
                         </MegaMenuArea>
-                    </MegaMenuContainer>) : ('')
-                    }
+                    </MegaMenuContainer>)}
                 </Link>
                 <HeaderNavigation />
             </HeaderLeftContainer>

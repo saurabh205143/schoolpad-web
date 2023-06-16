@@ -21,7 +21,7 @@ export const MegaMenuCol = styled.div`
 export const MegaMenuNavigation = styled.div`
     position: absolute;
     width: 290px;
-    height: 530px;
+    height: 508px;
     background: #F4F5F7;
     float: left;
 `;
