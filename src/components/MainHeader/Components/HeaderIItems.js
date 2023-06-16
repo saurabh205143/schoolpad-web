@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import HeaderNavigation from './SubComponents/HeaderNavigation';
@@ -57,9 +57,15 @@ export const MegaMenuContainer = styled.div`
 position:relative;
 > a{
     position:relative;
-    > .max-mega-menu{
+    > .mega-menu{
         display:block;
     }
+    &:hover{
+        > .mega-menu{
+            display:block;
+        }
+    }
+}
 `;
 
 export const MegaMenuArea = styled.div`
@@ -79,30 +85,39 @@ export const MegaMenuAreaInner = styled.div`
 `;
 
 export const MegaMenuAreaContainer = styled.div`
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0px;
-    height:490px;
+    height: 530px;
     width: 100%;
 `;
 
 const HeaderIItems = () => {
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleClick = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <HeaderContainer>
             <HeaderLeftContainer>
                 <Link >
-                    <IconContainer 
-                    src={MenuIcon} alt="Menu Icon" />
-                <MegaMenuContainer>
-                    <MegaMenuArea>
-                        <MegaMenuAreaInner>
-                            <MegaMenuAreaContainer>
-                        <MegaMenuHeader/>
-                        </MegaMenuAreaContainer>
-                        </MegaMenuAreaInner>
+                    <IconContainer
+                        onClick={handleClick}
+                        src={MenuIcon} alt="Menu Icon"
+                    />
+                    {isOpen ? (<MegaMenuContainer className='mega-menu'>
+                        <MegaMenuArea>
+                            <MegaMenuAreaInner>
+                                <MegaMenuAreaContainer>
+                                    <MegaMenuHeader />
+                                </MegaMenuAreaContainer>
+                            </MegaMenuAreaInner>
                         </MegaMenuArea>
-                </MegaMenuContainer>
+                    </MegaMenuContainer>) : ('')
+                    }
                 </Link>
                 <HeaderNavigation />
             </HeaderLeftContainer>
