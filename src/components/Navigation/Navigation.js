@@ -20,7 +20,8 @@ const Navigation = (props) => {
         let parts = url.split('/');
         switch (parts[3]) {
             case 'transport/transportRoute':
-            case 'transport/transportvehicle':
+            case 'transport/transportVehicle':
+            case 'transport/transportstop':
                 return 1;
             case 'studentmapping':
                 return 2;
@@ -38,7 +39,7 @@ const Navigation = (props) => {
         }
 
         if (tabname === 'TransportVehicle') {
-            active = url.includes('/transport/transportvehicle');
+            active = url.includes('/transport/transportVehicle');
         }
 
         if (tabname === 'Transportstop') {
@@ -58,12 +59,7 @@ const Navigation = (props) => {
         return classNames(defaultClass, { active: active });
     };
 
-    const getActiveModule = (url) => {
-        let parts = url.split('/');
-        return parts[3];
-    };
-
-    const activeModule = getActiveModule(window.location.href);
+    
 
     return (
         <NavBar>
@@ -94,7 +90,16 @@ const Navigation = (props) => {
                                 url="/transport/transportVehicle"
                                 tabname="Transport Vehicle"
                                 drop="true"
-                                isActive={activeModule === '/transport/transportvehicle'}
+                                isActive={activeModule === '/transport/transportVehicle'}
+                            />
+                        </SidebarDropList>
+                        <SidebarDropList
+                            className={getActiveClassNames('nav-item', 'Transportstop"',)}>
+                            <NavigationItems
+                                url="/transport/transportstop"
+                                tabname="Transport Stop"
+                                drop="true"
+                                isActive={activeModule === '/transport/transportstop'}
                             />
                         </SidebarDropList>
                     </SidebarDropDown>

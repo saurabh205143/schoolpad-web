@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const TableContainer = styled.table`
-   
+   width:100%;
 `;
 
 export const TableHead = styled.thead`
@@ -55,6 +55,7 @@ export const Tabledata = styled.td`
     font-weight: ${({ theme }) => theme.fontWeightRegular};
     font-size: ${({ theme }) => theme.smallFont};
     padding:7px 12px !important;
+    border-bottom: 1px solid rgba(9, 30, 66, 0.1412);
 `;
 
 export const ActionsConatiner = styled.ul`

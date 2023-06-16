@@ -35,6 +35,7 @@ function App()  {
               <Route path='/transport' element={<Transport />} />
               <Route path='/transport/transportRoute' element={<TransportRoute />} />
               <Route path='/transport/transportVehicle' element={<TransportVehicle />} />
+              <Route path='/transport/transportstop' element={<h1>Transport Stop</h1>} />
               <Route path='/studentmapping' element={<StudentMapping />} />
               <Route path='/setup' element={<Setup />} />
               <Route path='/hrpayrol' element={<h1>Hr & Payroll</h1>} />

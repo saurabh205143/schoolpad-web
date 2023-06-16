@@ -9,6 +9,8 @@ import AddRoutes from './components/AddRoutes';
 // Assets
 import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
+import Pagination from '../../../../components/Pagination/Pagination';
+import TableNew from '../../../../components/Pagination/TableNew';
 
 const TransportRoute = () => {
 
@@ -28,8 +30,7 @@ const TransportRoute = () => {
           PrintIcon={PrintImage}
           Excelicon={ExcelImage}
         />
-        <Table/>
-
+        <TableNew />
         {/* Add Route Modal */}
         <AddRoutes
           show={showModal}
