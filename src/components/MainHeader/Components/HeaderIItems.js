@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import HeaderNavigation from './SubComponents/HeaderNavigation';
@@ -10,7 +10,8 @@ import SettingIcon from '../../../images/header-seting-icon.svg';
 import UserIcon from '../../../images/header-user-icon.svg';
 import Input from '../../Inputs/Input';
 import SearchIcon from '../../../images/search-icon.svg';
-import MegaMenuHeader from '../../Mega Menu/MegaMenuHeader';
+import TriangleIcon from '../../../images/triangle.svg';
+import HeaderMegaMenu from './SubComponents/HeaderMegaMenu';
 
 
 export const HeaderContainer = styled.div`
@@ -53,22 +54,22 @@ export const SearchContainer = styled.div`
     }
 `;
 
-export const MegaMenuContainer = styled.div`
-position:relative;
-> a{
+export const MegaMenuIconContainer = styled.div`
     position:relative;
-    > .mega-menu{
-        display:block;
-    }
-    &:hover{
-        > .mega-menu{
-            display:block;
+    > a{
+        position:relative;
+        > .max-mega-menu{
+            display:none;
+        }
+        &:hover{
+            > .max-mega-menu{
+                display:block;
+            }
         }
     }
-}
 `;
 
-export const MegaMenuArea = styled.div`
+export const MaxMegaMenu = styled.div`
     position: fixed;
     top: 56px;
     left: 0;
@@ -78,77 +79,63 @@ export const MegaMenuArea = styled.div`
     z-index:999;
 `;
 
-export const MegaMenuAreaInner = styled.div`
+export const TriangleContainer = styled.div`
     position: absolute;
-    top: -11px;
-    width: 100%;
+    left: 7px;
+    top: -19px;
 `;
 
-export const MegaMenuAreaContainer = styled.div`
-    background: #ffffff;
+export const MegaMenuBox = styled.div`
+    background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0px;
-    height: 530px;
-    position: absolute;
-    width: 1418px;
-    height: 509px;
-    left: 10px;
-    top: 20px;
+    height:490px;
+    margin:10px;
 `;
 
 const HeaderIItems = () => {
 
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-    const handleMouseEnter = () => {
-        setIsDialogOpen(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsDialogOpen(false);
-    };
-
-
     return (
-        <HeaderContainer>
-            <HeaderLeftContainer>
-                <Link >
-                    <IconContainer
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        src={MenuIcon} alt="Menu Icon"
-                    />
-                    {isDialogOpen && (<MegaMenuContainer className='mega-menu'>
-                        <MegaMenuArea>
-                            <MegaMenuAreaInner>
-                                <MegaMenuAreaContainer>
-                                    <MegaMenuHeader />
-                                </MegaMenuAreaContainer>
-                            </MegaMenuAreaInner>
-                        </MegaMenuArea>
-                    </MegaMenuContainer>)}
-                </Link>
-                <HeaderNavigation />
-            </HeaderLeftContainer>
-            <HeaderRightContainer>
-                <SearchContainer>
-                    <Input
-                        leftIcon={SearchIcon}
-                        placeholder={'Search '}
-                        name='search'
-                    />
-                </SearchContainer>
-                <Link>
-                    <IconContainer src={NotificationIcon} alt="Notification Icon" />
-                </Link>
-                <Link>
-                    <IconContainer src={SettingIcon} alt="Notification Icon" />
-                </Link>
-                <Link>
-                    <IconContainer src={UserIcon} alt="Notification Icon" />
-                </Link>
-            </HeaderRightContainer>
-        </HeaderContainer>
+        <>
+            <HeaderContainer>
+                <HeaderLeftContainer>
+                    <MegaMenuIconContainer>
+                        <Link>
+                            <IconContainer src={MenuIcon} alt="Menu Icon" />
+                            <MaxMegaMenu className='max-mega-menu'>
+                                <TriangleContainer>
+                                    <img src={TriangleIcon} alt="Icon" />
+                                </TriangleContainer>
+                                <MegaMenuBox>
+                                    <HeaderMegaMenu />
+                                </MegaMenuBox>
+                            </MaxMegaMenu>
+                        </Link>
+                        
+                    </MegaMenuIconContainer>
+                    <HeaderNavigation />
+                </HeaderLeftContainer>
+                <HeaderRightContainer>
+                    <SearchContainer>
+                        <Input
+                            leftIcon={SearchIcon}
+                            placeholder={'Search '}
+                            name='search'
+                        />
+                    </SearchContainer>
+                    <Link>
+                        <IconContainer src={NotificationIcon} alt="Notification Icon" />
+                    </Link>
+                    <Link>
+                        <IconContainer src={SettingIcon} alt="Notification Icon" />
+                    </Link>
+                    <Link>
+                        <IconContainer src={UserIcon} alt="Notification Icon" />
+                    </Link>
+                </HeaderRightContainer>
+            </HeaderContainer>
+
+        </>
     )
 }
 
