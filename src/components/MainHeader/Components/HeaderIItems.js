@@ -10,8 +10,6 @@ import SettingIcon from '../../../images/header-seting-icon.svg';
 import UserIcon from '../../../images/header-user-icon.svg';
 import Input from '../../Inputs/Input';
 import SearchIcon from '../../../images/search-icon.svg';
-import TriangleIcon from '../../../images/triangle.svg';
-import HeaderMegaMenu from './SubComponents/HeaderMegaMenu';
 
 
 export const HeaderContainer = styled.div`
@@ -103,11 +101,9 @@ const HeaderIItems = () => {
                         <Link>
                             <IconContainer src={MenuIcon} alt="Menu Icon" />
                             <MaxMegaMenu className='max-mega-menu'>
-                                <TriangleContainer>
-                                    <img src={TriangleIcon} alt="Icon" />
-                                </TriangleContainer>
+                               
                                 <MegaMenuBox>
-                                    <HeaderMegaMenu />
+                                    
                                 </MegaMenuBox>
                             </MaxMegaMenu>
                         </Link>

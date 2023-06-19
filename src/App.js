@@ -12,7 +12,7 @@ import TransportRoute from './views/main/TransportModule/TransportRoute/Transpor
 import TransportVehicle from './views/main/TransportModule/TransportVehicle/TransportVehicle';
 import StudentMapping from './views/main/TransportModule/StudentMapping/StudentMapping';
 import TransportStopMaster from './views/main/TransportModule/TransportStopMaster/TransportStopMaster';
-import MegaMenuHeader from './components/Mega Menu/MegaMenuHeader';
+
 
 export const ThemeContext = React.createContext(null);
 
@@ -41,7 +41,7 @@ function App()  {
               <Route path='/setup' element={<Setup />} />
               <Route path='/hrpayrol' element={<h1>Hr & Payroll</h1>} />
               <Route path='/studentdata' element={<h1>Student Data</h1>} />
-              <Route path='/mega-menu' element={<MegaMenuHeader/>}/>
+              
             </Routes>
           
         </>
