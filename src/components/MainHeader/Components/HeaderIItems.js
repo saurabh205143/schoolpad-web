@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import HeaderNavigation from './SubComponents/HeaderNavigation';
@@ -58,14 +58,6 @@ export const MegaMenuIconContainer = styled.div`
     position:relative;
     > a{
         position:relative;
-        > .max-mega-menu{
-            display:none;
-        }
-        &:hover{
-            > .max-mega-menu{
-                display:block;
-            }
-        }
     }
 `;
 
@@ -95,21 +87,27 @@ export const MegaMenuBox = styled.div`
 
 const HeaderIItems = () => {
 
+    const [showmegaMenu, setShowmegaMenu] = useState(false);
+
     return (
         <>
             <HeaderContainer>
                 <HeaderLeftContainer>
                     <MegaMenuIconContainer>
-                        <Link>
+                        <Link
+                        onClick={() => setShowmegaMenu(!showmegaMenu)}
+                        >
                             <IconContainer src={MenuIcon} alt="Menu Icon" />
-                            <MaxMegaMenu className='max-mega-menu'>
-                                <TriangleContainer>
-                                    <img src={TriangleIcon} alt="Icon" />
-                                </TriangleContainer>
-                                <MegaMenuBox>
-                                    <HeaderMegaMenu />
-                                </MegaMenuBox>
-                            </MaxMegaMenu>
+                            {showmegaMenu && 
+                                <MaxMegaMenu className='max-mega-menu'>
+                                    <TriangleContainer>
+                                        <img src={TriangleIcon} alt="Icon" />
+                                    </TriangleContainer>
+                                    <MegaMenuBox>
+                                        <HeaderMegaMenu />
+                                    </MegaMenuBox>
+                                </MaxMegaMenu>
+                            }
                         </Link>
                         
                     </MegaMenuIconContainer>
