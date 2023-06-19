@@ -85,7 +85,7 @@ const Navigation = (props) => {
                             />
                         </SidebarDropList>
                         <SidebarDropList
-                            className={getActiveClassNames('nav-item', 'TransportVehicle"',)}>
+                            className={getActiveClassNames('nav-item', 'TransportVehicle',)}>
                             <NavigationItems
                                 url="/transport/transportVehicle"
                                 tabname="Transport Vehicle"
@@ -94,7 +94,7 @@ const Navigation = (props) => {
                             />
                         </SidebarDropList>
                         <SidebarDropList
-                            className={getActiveClassNames('nav-item', 'Transportstop"',)}>
+                            className={getActiveClassNames('nav-item', 'Transportstop',)}>
                             <NavigationItems
                                 url="/transport/transportstop"
                                 tabname="Transport Stop"
