@@ -120,6 +120,7 @@ const AddVehicle = props => {
                     placeholder={'---- Select fuel type ----'}
                     label={'Fuel Type'}
                     name={'bus_help'}
+                    options={options}
                 />
             </FieldContainer>
             <FieldContainer>
@@ -128,6 +129,7 @@ const AddVehicle = props => {
                     placeholder={'---- Select status ----'}
                     label={'Status'}
                     name={'bus_help'}
+                    options={options}
                 />
             </FieldContainer>
         </Modal>

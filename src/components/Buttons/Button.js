@@ -16,7 +16,6 @@ export const ButtonClassic = styled.button`
     &.primary {
         background: ${({ theme }) => theme.bgPrimary};
         color: ${({ theme }) => theme.whiteColor};
-        margin-right: 8px;
     } 
     
     &.secondary {

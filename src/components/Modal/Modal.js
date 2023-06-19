@@ -8,7 +8,7 @@ import CloseIcon from '../../images/close-icon.svg';
 import { useLocation } from 'react-router-dom';
 
 const Modal = props => {
-    const {show, handleClose, modalHeading, submitText,saveAction, children, actionText} = props;
+    const { show, handleClose, modalHeading, submitText, saveAction, children, actionText } = props;
 
     const on = useLocation();
     const pathName = on.pathname;
@@ -38,19 +38,22 @@ const Modal = props => {
                         />
                     </FooterButtonContainer>
                     <FooterButtonContainer>
-                    {
-                        (params[2] != undefined && params[2] != "transportvehicle") &&
-                        <Button
-                            buttonText={actionText}
-                            className={'primary'}
-                            onClick={saveAction}
-                        />
+                        {
+                            actionText &&
+                            <Button
+                                buttonText={actionText}
+                                className={'primary'}
+                                onClick={saveAction}
+                            />
                         }
-                        <Button
-                            buttonText={submitText}
-                            className={'primary'}
-                            onClick={saveAction}
-                        />
+                        {submitText &&
+                            <Button
+                                buttonText={submitText}
+                                className={'primary'}
+                                onClick={saveAction}
+                            />
+
+                        }
                     </FooterButtonContainer>
                 </ModalFooter>
             </ModalContent>

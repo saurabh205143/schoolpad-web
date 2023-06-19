@@ -16,9 +16,7 @@ export const SelectContainer = styled.div`
             border-width:1px;
             border-style: solid;
             border-color: ${({ theme }) => theme.inputBorderColor} ;
-            height:40px;
             border-radius:3px;
-            min-height:40px;
 
             &:hover {
                 background: ${({ theme }) => theme.inputHoverColor};

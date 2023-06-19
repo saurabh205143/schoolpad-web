@@ -51,7 +51,7 @@ const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOpti
                         />
                     </ButtonContainer>
                     {
-                        (params[2] != undefined && params[2] != "transportvehicle") &&
+                        buttonOrders &&
                         <ButtonContainer>
                             <Button
                                 className='secondary'
@@ -59,8 +59,8 @@ const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOpti
                             />
                         </ButtonContainer>
                     }
-                    {
-                        (params[2] != undefined && params[2] != "transportstop") &&
+                    {buttonOption &&
+
                         <ButtonContainer>
                             <Button
                                 className='secondary'
