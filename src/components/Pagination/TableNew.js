@@ -12,7 +12,7 @@ import Button from '../Buttons/Button';
 
 let PageSize = 10;
 
-const  TableNew = () => {
+const TableNew = ({onClick}) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const currentTableData = useMemo(() => {
@@ -45,37 +45,39 @@ const  TableNew = () => {
                 <Tabledata>{item.VehicleNumber}</Tabledata>
                 <Tabledata>{item.VehicleCapacity}</Tabledata>
                 <Tabledata>
-                    <ActionsConatiner>
-                      <ActionsList>
-                        <LinkButton
-                          linkText='Pickup/Drop Time'
-                        />
-                      </ActionsList>
-                    </ActionsConatiner>
+                  <ActionsConatiner>
+                    <ActionsList>
+                      <Button
+                        buttonText='Pickup/Drop Time'
+                        className='link-button'
+                        onClick={onClick}
+                      />
+                    </ActionsList>
+                  </ActionsConatiner>
                 </Tabledata>
                 <Tabledata>
-                        <ActionsConatiner>
-                            <ActionsList>
-                                <LinkButton
-                                    onlyIcon={EditIcon}
-                                />
-                            </ActionsList>
-                            <ActionsList>
-                                <LinkButton
-                                    onlyIcon={DeleteIcon}
-                                />
-                            </ActionsList>
-                            <ActionsList>
-                                <MoreAction>
-                                    <Button
-                                        buttonText='More'
-                                        rightIcon={DropIcon}
-                                        className='link-button'
-                                    />
-                                </MoreAction>
-                            </ActionsList>
-                        </ActionsConatiner>
-                    </Tabledata>
+                  <ActionsConatiner>
+                    <ActionsList>
+                      <LinkButton
+                        onlyIcon={EditIcon}
+                      />
+                    </ActionsList>
+                    <ActionsList>
+                      <LinkButton
+                        onlyIcon={DeleteIcon}
+                      />
+                    </ActionsList>
+                    <ActionsList>
+                      <MoreAction>
+                        <Button
+                          buttonText='More'
+                          rightIcon={DropIcon}
+                          className='link-button'
+                        />
+                      </MoreAction>
+                    </ActionsList>
+                  </ActionsConatiner>
+                </Tabledata>
               </TableRow>
             );
           })}

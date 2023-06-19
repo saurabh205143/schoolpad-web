@@ -14,7 +14,7 @@ export const LinkClassic = styled(Link)`
 
 const LinkButton = ({ to, linkText , onlyIcon}) => {
     return (
-        <LinkClassic to={to}>
+        <LinkClassic to={to} >
             {linkText}
             {onlyIcon &&
                 <img src={onlyIcon} alt="Icon" />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import HeaderNavigation from './SubComponents/HeaderNavigation';
@@ -85,9 +85,41 @@ export const MegaMenuBox = styled.div`
     margin:10px;
 `;
 
+// Hook
+function useOnClickOutside(ref, buttonRef, handler) {
+    useEffect(
+        () => {
+            const listener = (event) => {
+                // Do nothing if clicking ref's element or descendent elements
+                if (!ref.current || ref.current.contains(event.target) || (buttonRef && buttonRef.current.contains(event.target))) {
+                    return;
+                }
+                handler(event);
+            };
+            document.addEventListener("mousedown", listener);
+            document.addEventListener("touchstart", listener);
+            return () => {
+                document.removeEventListener("mousedown", listener);
+                document.removeEventListener("touchstart", listener);
+            };
+        },
+        // Add ref and handler to effect dependencies
+        // It's worth noting that because passed in handler is a new ...
+        // ... function on every render that will cause this effect ...
+        // ... callback/cleanup to run every render. It's not a big deal ...
+        // ... but to optimize you can wrap handler in useCallback before ...
+        // ... passing it into this hook.
+        [ref, handler]
+    );
+}
+
 const HeaderIItems = () => {
 
     const [showmegaMenu, setShowmegaMenu] = useState(false);
+    const ref = useRef();
+    const buttonRef = useRef();
+
+    useOnClickOutside(ref, buttonRef, () => setShowmegaMenu(false));
 
     return (
         <>
@@ -95,11 +127,12 @@ const HeaderIItems = () => {
                 <HeaderLeftContainer>
                     <MegaMenuIconContainer>
                         <Link
+                        ref={buttonRef}
                         onClick={() => setShowmegaMenu(!showmegaMenu)}
                         >
                             <IconContainer src={MenuIcon} alt="Menu Icon" />
                             {showmegaMenu && 
-                                <MaxMegaMenu className='max-mega-menu'>
+                                <MaxMegaMenu ref={ref} className='max-mega-menu'>
                                     <TriangleContainer>
                                         <img src={TriangleIcon} alt="Icon" />
                                     </TriangleContainer>

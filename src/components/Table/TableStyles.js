@@ -2,6 +2,9 @@ import { styled } from "styled-components";
 
 export const TableContainer = styled.table`
    width:100%;
+   &.picked-table{
+        border:1px solid #EBECF0;
+   }
 `;
 
 export const TableHead = styled.thead`
@@ -73,4 +76,6 @@ export const ActionsList = styled.li`
 export const MoreAction = styled.div`
     padding-left:10px;
 `;
+
+export const SelectBoxContainer = styled.div``;
 

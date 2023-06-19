@@ -23,3 +23,7 @@ export const FieldRightContainer = styled.div`
     float:left;
     padding-left:8px;
 `;
+
+export const PickedDropContainer = styled.div`
+    padding:8px 10px;
+`;

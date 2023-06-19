@@ -43,52 +43,52 @@ const Pagination = props => {
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
     <PaginationContainer>
-        <PaginationUnderList
+      <PaginationUnderList
         className={classnames('pagination-container', { [className]: className })}
+      >
+        {/* Left navigation arrow */}
+        <PagesList
+          className={classnames('pagination-item', {
+            disabled: currentPage === 1
+          })}
+          onClick={onPrevious}
         >
-            {/* Left navigation arrow */}
+          <div className="arrow left">
+            <img src={PrevDisabled} alt='Icon' />
+          </div>
+        </PagesList>
+        {paginationRange.map(pageNumber => {
+
+          // If the pageItem is a DOT, render the DOTS unicode character
+          if (pageNumber === DOTS) {
+            return <PagesList className="pagination-item dots">&#8230;</PagesList>;
+          }
+
+          // Render our Page Pills
+          return (
             <PagesList
-                className={classnames('pagination-item', {
-                disabled: currentPage === 1
-                })}
-                onClick={onPrevious}
+              className={classnames('pagination-item', {
+                selected: pageNumber === currentPage
+              })}
+              onClick={() => onPageChange(pageNumber)}
             >
-                <div className="arrow left">
-                    <img src={PrevDisabled} alt='Icon' />
-                </div>
+              {pageNumber}
             </PagesList>
-            {paginationRange.map(pageNumber => {
-                
-                // If the pageItem is a DOT, render the DOTS unicode character
-                if (pageNumber === DOTS) {
-                return <PagesList className="pagination-item dots">&#8230;</PagesList>;
-                }
-                
-                // Render our Page Pills
-                return (
-                <PagesList
-                    className={classnames('pagination-item', {
-                    selected: pageNumber === currentPage
-                    })}
-                    onClick={() => onPageChange(pageNumber)}
-                >
-                    {pageNumber}
-                </PagesList>
-                );
-            })}
-            {/*  Right Navigation arrow */}
-            <PagesList
-                className={classnames('pagination-item', {
-                disabled: currentPage === lastPage
-                })}
-                onClick={onNext}
-            >
-                <div className="arrow right">
-                    <img className='active-icon' src={NextActive} alt='icon' />
-                    <img className='disabled-icon' src={NextDisabled} alt='icon' />
-                </div>
-            </PagesList>
-        </PaginationUnderList>
+          );
+        })}
+        {/*  Right Navigation arrow */}
+        <PagesList
+          className={classnames('pagination-item', {
+            disabled: currentPage === lastPage
+          })}
+          onClick={onNext}
+        >
+          <div className="arrow right">
+            <img className='active-icon' src={NextActive} alt='icon' />
+            <img className='disabled-icon' src={NextDisabled} alt='icon' />
+          </div>
+        </PagesList>
+      </PaginationUnderList>
     </PaginationContainer>
   );
 };
