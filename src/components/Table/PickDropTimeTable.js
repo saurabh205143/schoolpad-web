@@ -30,6 +30,34 @@ const PickDropTimeTable = (props) => {
                             </SelectBoxContainer>
                         </Tabledata>
                     </TableRow>
+                    <TableRow>
+                        <Tabledata>1</Tabledata>
+                        <Tabledata>Sector 17, Chandigarh</Tabledata>
+                        <Tabledata>
+                            <SelectBoxContainer>
+                                <CustomSelect />
+                            </SelectBoxContainer>
+                        </Tabledata>
+                        <Tabledata>
+                            <SelectBoxContainer>
+                                <CustomSelect />
+                            </SelectBoxContainer>
+                        </Tabledata>
+                    </TableRow>
+                    <TableRow>
+                        <Tabledata>1</Tabledata>
+                        <Tabledata>Sector 17, Chandigarh</Tabledata>
+                        <Tabledata>
+                            <SelectBoxContainer>
+                                <CustomSelect />
+                            </SelectBoxContainer>
+                        </Tabledata>
+                        <Tabledata>
+                            <SelectBoxContainer>
+                                <CustomSelect />
+                            </SelectBoxContainer>
+                        </Tabledata>
+                    </TableRow>
                 </TableBody>
             </TableContainer>
         </>

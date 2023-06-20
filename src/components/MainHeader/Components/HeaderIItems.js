@@ -12,6 +12,7 @@ import Input from '../../Inputs/Input';
 import SearchIcon from '../../../images/search-icon.svg';
 import TriangleIcon from '../../../images/triangle.svg';
 import HeaderMegaMenu from './SubComponents/HeaderMegaMenu';
+import CustomDrop from './SubComponents/CustomDrop';
 
 
 export const HeaderContainer = styled.div`
@@ -41,6 +42,7 @@ export const HeaderRightContainer = styled.div`
     justify-content:flex-end;
     >a{
         padding:0 6px;
+        position:relative;
     }
 `;
 
@@ -118,8 +120,11 @@ const HeaderIItems = () => {
     const [showmegaMenu, setShowmegaMenu] = useState(false);
     const ref = useRef();
     const buttonRef = useRef();
-
+    const ref2 = useRef();
+    const buttonRef2 = useRef();
+    const [showDrop, setShowDrop] = useState(false);
     useOnClickOutside(ref, buttonRef, () => setShowmegaMenu(false));
+    useOnClickOutside(ref2, buttonRef2, () => setShowDrop(false));
 
     return (
         <>
@@ -160,9 +165,18 @@ const HeaderIItems = () => {
                     <Link>
                         <IconContainer src={SettingIcon} alt="Notification Icon" />
                     </Link>
-                    <Link>
+                    <Link ref={buttonRef2} onClick={() => setShowDrop(!showDrop)}>
                         <IconContainer src={UserIcon} alt="Notification Icon" />
+                        {/* Show Drop Down */}
+                            {showDrop && (
+                                <div ref={ref2}>
+                                    <CustomDrop />
+                                </div>
+                                
+                            )}
                     </Link>
+
+                    
                 </HeaderRightContainer>
             </HeaderContainer>
 
