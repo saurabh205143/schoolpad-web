@@ -35,10 +35,7 @@ const Table = () => {
                         <ActionsConatiner>
                             <ActionsList>
                                 <LinkButton
-                                    linkText='Pickup'
-                                />
-                                <LinkButton
-                                    linkText='/Drop Time'
+                                    linkText='Pickup/Drop Time'
                                 />
                             </ActionsList>
 

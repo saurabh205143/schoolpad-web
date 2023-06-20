@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import HeaderNavigation from './SubComponents/HeaderNavigation';
@@ -10,6 +10,8 @@ import SettingIcon from '../../../images/header-seting-icon.svg';
 import UserIcon from '../../../images/header-user-icon.svg';
 import Input from '../../Inputs/Input';
 import SearchIcon from '../../../images/search-icon.svg';
+import TriangleIcon from '../../../images/triangle.svg';
+import HeaderMegaMenu from './SubComponents/HeaderMegaMenu';
 
 
 export const HeaderContainer = styled.div`
@@ -56,14 +58,6 @@ export const MegaMenuIconContainer = styled.div`
     position:relative;
     > a{
         position:relative;
-        > .max-mega-menu{
-            display:none;
-        }
-        &:hover{
-            > .max-mega-menu{
-                display:block;
-            }
-        }
     }
 `;
 
@@ -91,21 +85,62 @@ export const MegaMenuBox = styled.div`
     margin:10px;
 `;
 
+// Hook
+function useOnClickOutside(ref, buttonRef, handler) {
+    useEffect(
+        () => {
+            const listener = (event) => {
+                // Do nothing if clicking ref's element or descendent elements
+                if (!ref.current || ref.current.contains(event.target) || (buttonRef && buttonRef.current.contains(event.target))) {
+                    return;
+                }
+                handler(event);
+            };
+            document.addEventListener("mousedown", listener);
+            document.addEventListener("touchstart", listener);
+            return () => {
+                document.removeEventListener("mousedown", listener);
+                document.removeEventListener("touchstart", listener);
+            };
+        },
+        // Add ref and handler to effect dependencies
+        // It's worth noting that because passed in handler is a new ...
+        // ... function on every render that will cause this effect ...
+        // ... callback/cleanup to run every render. It's not a big deal ...
+        // ... but to optimize you can wrap handler in useCallback before ...
+        // ... passing it into this hook.
+        [ref, handler]
+    );
+}
+
 const HeaderIItems = () => {
+
+    const [showmegaMenu, setShowmegaMenu] = useState(false);
+    const ref = useRef();
+    const buttonRef = useRef();
+
+    useOnClickOutside(ref, buttonRef, () => setShowmegaMenu(false));
 
     return (
         <>
             <HeaderContainer>
                 <HeaderLeftContainer>
                     <MegaMenuIconContainer>
-                        <Link>
+                        <Link
+                        ref={buttonRef}
+                        onClick={() => setShowmegaMenu(!showmegaMenu)}
+                        >
                             <IconContainer src={MenuIcon} alt="Menu Icon" />
-                            <MaxMegaMenu className='max-mega-menu'>
-                               
-                                <MegaMenuBox>
-                                    
-                                </MegaMenuBox>
-                            </MaxMegaMenu>
+                            {showmegaMenu && 
+                                <MaxMegaMenu ref={ref} className='max-mega-menu'>
+                                    <TriangleContainer>
+                                        <img src={TriangleIcon} alt="Icon" />
+                                    </TriangleContainer>
+                                    <MegaMenuBox>
+                                        <HeaderMegaMenu />
+                                    </MegaMenuBox>
+                                </MaxMegaMenu>
+                            }
                         </Link>
                         
                     </MegaMenuIconContainer>

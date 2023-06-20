@@ -15,14 +15,12 @@ export const LinkClassic = styled(Link)`
 
 const LinkButton = ({ to, linkText, onlyIcon, paddingRight}) => {
     return (
-        <>
-            <LinkClassic to={to}>
-                {onlyIcon &&
-                    <img src={onlyIcon} alt="Icon" style={{paddingRight}}/>
-                }
-                {linkText}
-            </LinkClassic>
-        </>
+        <LinkClassic to={to} >
+            {linkText}
+            {onlyIcon &&
+                <img src={onlyIcon} alt="Icon" />
+            }
+        </LinkClassic>
     )
 }
 

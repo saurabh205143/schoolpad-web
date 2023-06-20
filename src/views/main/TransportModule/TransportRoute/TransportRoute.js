@@ -10,13 +10,21 @@ import AddRoutes from './components/AddRoutes';
 import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
 import { ContainerRight } from '../../../../components/ScreensHeader/subHeaderStyles';
+import Pagination from '../../../../components/Pagination/Pagination';
+import TableNew from '../../../../components/Pagination/TableNew';
+import PickupDropTime from './components/PickupDropTime';
 
 const TransportRoute = () => {
 
   const [showModal, setShowModal] = useState(false);
+  const [showpickedTime, setShowPickedTime] = useState(false);
 
-  const hideModal = () =>{
-      setShowModal(false);
+  const hidePickedTimeModal = () => {
+    setShowPickedTime(false);
+  }
+
+  const hideModal = () => {
+    setShowModal(false);
   }
 
   return (
@@ -35,12 +43,29 @@ const TransportRoute = () => {
         />
         <Table
         />
+      {/* <ItemsNotFound/> */}
+      <SubHeader heading='Transport Route Master' type='horizontal' onClick={() => setShowModal(!showModal)} />
+      <ExportHeader
+        smallHeading='All Routes'
+        smallHeding2='202 Records'
+        PrintIcon={PrintImage}
+        Excelicon={ExcelImage}
+      />
+      <TableNew
+        onClick={() => setShowPickedTime(!showpickedTime)}
+      />
 
-        {/* Add Route Modal */}
-        <AddRoutes
-          show={showModal}
-          handleClose={hideModal}
-        />
+      {/* Add Route Modal */}
+      <AddRoutes
+        show={showModal}
+        handleClose={hideModal}
+      />
+
+      {/* Picked/Drop Time Modal */}
+      <PickupDropTime
+        show={showpickedTime}
+        handleClose={hidePickedTimeModal}
+      />
     </Layout>
   )
 }

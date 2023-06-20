@@ -20,7 +20,8 @@ const Navigation = (props) => {
         let parts = url.split('/');
         switch (parts[3]) {
             case 'transport/transportRoute':
-            case 'transport/transportvehicle':
+            case 'transport/transportVehicle':
+            case 'transport/transportstop':
                 return 1;
             case 'studentmapping':
                 return 2;
@@ -38,7 +39,11 @@ const Navigation = (props) => {
         }
 
         if (tabname === 'TransportVehicle') {
-            active = url.includes('/transport/transportvehicle');
+            active = url.includes('/transport/transportVehicle');
+        }
+
+        if (tabname === 'Transportstop') {
+            active = url.includes('/transport/transportstop');
         }
 
         if (tabname === 'Transportstop') {
@@ -58,10 +63,7 @@ const Navigation = (props) => {
         return classNames(defaultClass, { active: active });
     };
 
-    const getActiveModule = (url) => {
-        let parts = url.split('/');
-        return parts[3];
-    };
+    
 
     return (
         <NavBar>
@@ -89,17 +91,17 @@ const Navigation = (props) => {
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'TransportVehicle',)}>
                             <NavigationItems
-                                url="/transport/transportvehicle"
+                                url="/transport/transportVehicle"
                                 tabname="Transport Vehicle"
                                 drop="true"
-                                isActive={activeModule === '/transport/transportvehicle'}
+                                isActive={activeModule === '/transport/transportVehicle'}
                             />
                         </SidebarDropList>
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'Transportstop',)}>
                             <NavigationItems
                                 url="/transport/transportstop"
-                                tabname="Transport Stops"
+                                tabname="Transport Stop"
                                 drop="true"
                                 isActive={activeModule === '/transport/transportstop'}
                             />
