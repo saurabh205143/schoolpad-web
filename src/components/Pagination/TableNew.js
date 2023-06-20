@@ -10,7 +10,7 @@ import DeleteIcon from '../../images/delete-icon.svg';
 import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
 
-let PageSize = 10;
+let PageSize = 14;
 
 const TableNew = ({onClick}) => {
   const [currentPage, setCurrentPage] = useState(1);

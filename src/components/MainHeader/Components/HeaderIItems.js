@@ -2,17 +2,21 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import HeaderNavigation from './SubComponents/HeaderNavigation';
+import HeaderMegaMenu from './SubComponents/HeaderMegaMenu';
+import CustomDrop from './SubComponents/CustomDrop';
+import Notification from '../../Notifications/Notification';
+import Input from '../../Inputs/Input';
 
 // Assets
 import MenuIcon from '../../../images/menu-icon.svg';
-import NotificationIcon from '../../../images/header-noti-icon.svg';
+import NotificationIcon from '../../../images/notification-icon.svg';
 import SettingIcon from '../../../images/header-seting-icon.svg';
 import UserIcon from '../../../images/header-user-icon.svg';
-import Input from '../../Inputs/Input';
 import SearchIcon from '../../../images/search-icon.svg';
 import TriangleIcon from '../../../images/triangle.svg';
-import HeaderMegaMenu from './SubComponents/HeaderMegaMenu';
-import CustomDrop from './SubComponents/CustomDrop';
+import InboxIcon from '../../../images/inbox-icon.svg';
+import DropIcon from '../../../images/down-icon.svg';
+
 
 
 export const HeaderContainer = styled.div`
@@ -33,7 +37,13 @@ export const HeaderLeftContainer = styled.div`
 `;
 
 export const IconContainer = styled.img`
-    width:32px;
+    width:28px;
+`;
+
+export const SettingsContainer = styled(Link)`
+    >img{
+        width:28px;
+    }
 `;
 
 export const HeaderRightContainer = styled.div`
@@ -49,6 +59,7 @@ export const HeaderRightContainer = styled.div`
 export const SearchContainer = styled.div`
     > div{
         margin-bottom:0px;
+        padding-right:10px;
         >.simple-input{
             width:240px;
             height:32px;
@@ -87,6 +98,12 @@ export const MegaMenuBox = styled.div`
     margin:10px;
 `;
 
+export const DropContianer = styled.div`
+    position:absolute;
+    right:20px;
+    z-index:99;
+`;
+
 // Hook
 function useOnClickOutside(ref, buttonRef, handler) {
     useEffect(
@@ -122,9 +139,16 @@ const HeaderIItems = () => {
     const buttonRef = useRef();
     const ref2 = useRef();
     const buttonRef2 = useRef();
+    const ref3 = useRef();
+    const buttonRef3 = useRef();
+
     const [showDrop, setShowDrop] = useState(false);
+    const [showSettingDrop, setShowSettingDrop] = useState(false);
+
     useOnClickOutside(ref, buttonRef, () => setShowmegaMenu(false));
-    useOnClickOutside(ref2, buttonRef2, () => setShowDrop(false));
+    useOnClickOutside(ref2, buttonRef2, () => setShowSettingDrop(false));
+    useOnClickOutside(ref3, buttonRef3, () => setShowDrop(false));
+    
 
     return (
         <>
@@ -132,11 +156,11 @@ const HeaderIItems = () => {
                 <HeaderLeftContainer>
                     <MegaMenuIconContainer>
                         <Link
-                        ref={buttonRef}
-                        onClick={() => setShowmegaMenu(!showmegaMenu)}
+                            ref={buttonRef}
+                            onClick={() => setShowmegaMenu(!showmegaMenu)}
                         >
                             <IconContainer src={MenuIcon} alt="Menu Icon" />
-                            {showmegaMenu && 
+                            {showmegaMenu &&
                                 <MaxMegaMenu ref={ref} className='max-mega-menu'>
                                     <TriangleContainer>
                                         <img src={TriangleIcon} alt="Icon" />
@@ -147,7 +171,7 @@ const HeaderIItems = () => {
                                 </MaxMegaMenu>
                             }
                         </Link>
-                        
+
                     </MegaMenuIconContainer>
                     <HeaderNavigation />
                 </HeaderLeftContainer>
@@ -159,27 +183,38 @@ const HeaderIItems = () => {
                             name='search'
                         />
                     </SearchContainer>
-                    <Link>
-                        <IconContainer src={NotificationIcon} alt="Notification Icon" />
-                    </Link>
-                    <Link>
-                        <IconContainer src={SettingIcon} alt="Notification Icon" />
-                    </Link>
-                    <Link ref={buttonRef2} onClick={() => setShowDrop(!showDrop)}>
-                        <IconContainer src={UserIcon} alt="Notification Icon" />
-                        {/* Show Drop Down */}
-                            {showDrop && (
-                                <div ref={ref2}>
-                                    <CustomDrop />
-                                </div>
-                                
-                            )}
-                    </Link>
+                    {/* All Notification */}
+                    <Notification countText='9' icon={NotificationIcon} />
 
-                    
+                    {/* Messages Notification */}
+                    <Notification countText='2' icon={InboxIcon} />
+
+                    {/* Setting Container */}
+                    <SettingsContainer ref={buttonRef2} onClick={() => setShowSettingDrop(!showSettingDrop)}>
+                        <IconContainer src={SettingIcon} alt="Icon" />
+                        <IconContainer src={DropIcon} alt="Icon" />
+                        {/* Setting Drop Down */}
+                        {showSettingDrop && (
+                            <DropContianer ref={ref2}>
+                                <CustomDrop type='setting' />
+                            </DropContianer>
+
+                        )}
+                    </SettingsContainer>
+
+                    {/* Profile Container */}
+                    <Link ref={buttonRef3} onClick={() => setShowDrop(!showDrop)}>
+                        <IconContainer src={UserIcon} alt="Icon" />
+
+                        {/* Profile Drop Down */}
+                        {showDrop && (
+                            <DropContianer ref={ref3}>
+                                <CustomDrop />
+                            </DropContianer>
+                        )}
+                    </Link>
                 </HeaderRightContainer>
             </HeaderContainer>
-
         </>
     )
 }

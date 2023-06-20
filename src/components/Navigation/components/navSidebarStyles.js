@@ -88,7 +88,7 @@ export const SidebarDropDown = styled.ul`
 `;
 
 export const SidebarDropList = styled.li`
-    padding-bottom:10px;
+    padding-bottom:14px;
  >a{
     text-decoration:none;
     padding:0 10px;

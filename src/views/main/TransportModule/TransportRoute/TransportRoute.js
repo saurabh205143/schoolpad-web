@@ -9,7 +9,6 @@ import AddRoutes from './components/AddRoutes';
 // Assets
 import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
-import Pagination from '../../../../components/Pagination/Pagination';
 import TableNew from '../../../../components/Pagination/TableNew';
 import PickupDropTime from './components/PickupDropTime';
 
@@ -29,7 +28,11 @@ const TransportRoute = () => {
   return (
     <Layout>
       {/* <ItemsNotFound/> */}
-      <SubHeader heading='Transport Route Master' type='horizontal' onClick={() => setShowModal(!showModal)} />
+      <SubHeader
+        heading='Transport Route Master'
+        type='horizontal'
+        onClick={() => setShowModal(!showModal)}
+      />
       <ExportHeader
         smallHeading='All Routes'
         smallHeding2='202 Records'

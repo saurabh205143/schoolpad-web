@@ -21,12 +21,16 @@ export const ContainerRight = styled.div`
 
 export const ButtonContainer = styled.div`
     margin-left:8px;
+    position:relative;
     >div{
         margin-bottom:0px;
         >.simple-input{
             height:32px;
             width:256px;
         }
+    }
+    >button{
+        position:relative;
     }
 `;
 
