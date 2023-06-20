@@ -29,20 +29,6 @@ const TransportRoute = () => {
 
   return (
     <Layout>
-        {/* <ItemsNotFound/> */}
-        <SubHeader heading='Transport Route Master' type='horizontal' buttonAdd='Add New Route' buttonOption='Associated Options' buttonOrders='Order Routes' onClick={()=> setShowModal(!showModal)}>
-          <ContainerRight>
-            
-          </ContainerRight>
-        </SubHeader>
-        <ExportHeader
-          smallHeading='All Routes'
-          smallHeding2='202 Records'
-          PrintIcon={PrintImage}
-          Excelicon={ExcelImage}
-        />
-        <Table
-        />
       {/* <ItemsNotFound/> */}
       <SubHeader heading='Transport Route Master' type='horizontal' onClick={() => setShowModal(!showModal)} />
       <ExportHeader
