@@ -21,6 +21,7 @@ export const ButtonClassic = styled.button`
     &.secondary {
         background: ${({ theme }) => theme.bgSecondary};
         color: ${({ theme }) => theme.darkColor};
+        border:2px solid ${({ theme }) => theme.bgSecondary};
 
         &:hover{
             background: ${({ theme }) => theme.secondarHover};

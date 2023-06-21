@@ -71,6 +71,41 @@ export const ActionsConatiner = styled.ul`
 export const ActionsList = styled.li`
     padding:0 10px 0 0;
     display:inline-block;
+    >.more-options{
+        >button{
+            background:transparent !important;
+            color:#0065FF;
+            border:none;
+            padding:0px;
+            height:auto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        >.dropdown-toggle::after{
+            margin-top:1px;
+        }
+        >.dropdown-menu{
+            padding:0px;
+            box-shadow: 0px 0px 1px rgba(9, 30, 66, 0.31), 0px 8px 12px rgba(9, 30, 66, 0.15);
+            border-radius: 3px;
+            background: #ffffff;
+            border: none;
+            >.dropdown-item{
+                font-size: 14px;
+                padding: 0px 16px;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                border-bottom: 1px solid rgba(9, 30, 66, 0.1412);
+            }
+        }
+    }
 `;
 
 export const MoreAction = styled.div`

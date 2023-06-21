@@ -35,7 +35,7 @@ const TransportRoute = () => {
       />
       <ExportHeader
         smallHeading='All Routes'
-        smallHeding2='202 Records'
+        smallHeding2='(202 Records)'
         PrintIcon={PrintImage}
         Excelicon={ExcelImage}
       />
