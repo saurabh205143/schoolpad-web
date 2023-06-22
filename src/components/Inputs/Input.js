@@ -73,8 +73,6 @@ export const InputContainer = styled.div`
   }
  
 `;
-
-
 export const TextInput = styled.input`
   width:100%;
   height:39px;

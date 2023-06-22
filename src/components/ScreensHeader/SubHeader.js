@@ -21,7 +21,7 @@ const options = [
 ];
 
 
-const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOption }) => {
+const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList }) => {
 
     const on = useLocation();
     const pathName = on.pathname;
@@ -50,12 +50,12 @@ const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOpti
                             onClick={onClick}
                         />
                     </ButtonContainer>
-                    {
-                        buttonOrders &&
+                    {buttonOrders &&
                         <ButtonContainer>
                             <Button
                                 className='secondary'
                                 buttonText={buttonOrders}
+                                onClick={buttonOrderDragList}
                             />
                         </ButtonContainer>
                     }

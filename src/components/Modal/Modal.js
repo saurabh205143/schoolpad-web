@@ -6,9 +6,10 @@ import Button from '../Buttons/Button';
 // Assets
 import CloseIcon from '../../images/close-icon.svg';
 import { useLocation } from 'react-router-dom';
+import { SubHeadingText } from '../Headings/headingStyles';
 
 const Modal = props => {
-    const { show, handleClose, modalHeading, submitText, saveAction, children, actionText } = props;
+    const { show, handleClose, modalHeading, modalSubHeading, submitText, saveAction, children, actionText } = props;
 
     const on = useLocation();
     const pathName = on.pathname;
@@ -20,6 +21,7 @@ const Modal = props => {
             <ModalContent>
                 <ModalHeader>
                     <Headings xtrasubHeading={modalHeading} />
+                    <SubHeadingText subHeading={modalSubHeading}/>
                     <Button
                         onlyIcon={CloseIcon}
                         onClick={handleClose}

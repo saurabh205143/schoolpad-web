@@ -13,11 +13,13 @@ import { ContainerRight } from '../../../../components/ScreensHeader/subHeaderSt
 import Pagination from '../../../../components/Pagination/Pagination';
 import TableNew from '../../../../components/Pagination/TableNew';
 import PickupDropTime from './components/PickupDropTime';
+import RouteOrders from './components/RouteOrders';
 
 const TransportRoute = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [showpickedTime, setShowPickedTime] = useState(false);
+  const [showRouteOrderModal, setShowRouteOrderModal] = useState(false);
 
   const hidePickedTimeModal = () => {
     setShowPickedTime(false);
@@ -27,10 +29,22 @@ const TransportRoute = () => {
     setShowModal(false);
   }
 
+  const hideRouteOrderModal = () => {
+    setShowRouteOrderModal(false);
+  }
+
   return (
     <Layout>
       {/* <ItemsNotFound/> */}
-      <SubHeader heading='Transport Route Master' type='horizontal' onClick={() => setShowModal(!showModal)} />
+      <SubHeader
+        heading='Transport Route Master'
+        type='horizontal' 
+        buttonAdd='Add New Route'
+        buttonOrders='Order Routes(s)'
+        buttonOption='Associated Options'
+        buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
+        onClick={() =>  setShowModal(!showModal)}
+      />
       <ExportHeader
         smallHeading='All Routes'
         smallHeding2='202 Records'
@@ -45,6 +59,12 @@ const TransportRoute = () => {
       <AddRoutes
         show={showModal}
         handleClose={hideModal}
+      />
+
+      {/* Route Order Modal */}
+      <RouteOrders
+        show={showRouteOrderModal}
+        handleClose={hideRouteOrderModal}
       />
 
       {/* Picked/Drop Time Modal */}

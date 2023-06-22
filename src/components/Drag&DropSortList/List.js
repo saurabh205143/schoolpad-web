@@ -2,28 +2,28 @@ const List = {
   list: [
     {
       id: 1,
-      title: "Read some news",
+      title: "Route 1",
     },
     {
       id: 2,
-      title: "Go out for a walk",
+      title: "Zirakpur Route",
     },
-    {
-      id: 3,
-      title: "Do some exercise",
-    },
-    {
-      id: 4,
-      title: "Watch tutorials on YouTube",
-    },
-    {
-      id: 5,
-      title: "Netflix and chill",
-    },
-    {
-      id: 6,
-      title: "Read a book",
-    },
+    // {
+    //   id: 3,
+    //   title: "Route 12",
+    // },
+    // {
+    //   id: 4,
+    //   title: "Old Panchkula Route",
+    // },
+    // {
+    //   id: 5,
+    //   title: "Manimajra Route",
+    // },
+    // {
+    //   id: 6,
+    //   title: "Patiala phase 2",
+    // },
   ],
   getList: function () {
     return (
