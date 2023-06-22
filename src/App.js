@@ -11,14 +11,14 @@ import Setup from './views/main/TransportModule/Setup/Setup';
 import TransportRoute from './views/main/TransportModule/TransportRoute/TransportRoute';
 import TransportVehicle from './views/main/TransportModule/TransportVehicle/TransportVehicle';
 import StudentMapping from './views/main/TransportModule/StudentMapping/StudentMapping';
+import TransportZoneMaster from './views/main/TransportModule/TransportZoneMaster/TransportZoneMaster';
+import TransportReport from './views/main/TransportModule/TransportReport/TransportReport';
 import TransportStopMaster from './views/main/TransportModule/TransportStopMaster/TransportStopMaster';
-import DragDropList from './components/Drag&DropSortList/DragDropList';
-
-
+import TransportAttendance from './views/main/TransportModule/TransportAttendance/TransportAttendance';
 
 export const ThemeContext = React.createContext(null);
 
-function App()  {
+function App() {
 
   const [theme, setTheme] = useState("light");
   const themeStyle = theme === 'light' ? lightTheme : darkTheme;
@@ -34,18 +34,21 @@ function App()  {
           <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet" />
         </Helmet>
         <>
-            <Routes>
-              <Route path='/transport' element={<Transport />} />
-              <Route path='/transport/transportRoute' element={<TransportRoute />} />
-              <Route path='/transport/transportVehicle' element={<TransportVehicle />} />
-              <Route path='/transport/transportstop' element={<TransportStopMaster/>} />
-              <Route path='/studentmapping' element={<StudentMapping />} />
-              <Route path='/setup' element={<Setup />} />
-              <Route path='/hrpayrol' element={<h1>Hr & Payroll</h1>} />
-              <Route path='/studentdata' element={<h1>Student Data</h1>} />
-              <Route path='/drag' element={<DragDropList/>}/>
-            </Routes>
-          
+          <Routes>
+            <Route path='/' element={<Transport />} />
+            <Route path='/transport' element={<Transport />} />
+            <Route path='/transport/transportRoute' element={<TransportRoute />} />
+            <Route path='/transport/transportVehicle' element={<TransportVehicle />} />
+            <Route path='/transport/transportZone' element={<TransportZoneMaster />} />
+            <Route path='/transport/transportReport' element={<TransportReport />} />
+            <Route path='/transport/transportAttendance' element={<TransportAttendance />} />
+            <Route path='/transport/transportstop' element={<TransportStopMaster />} />
+            <Route path='/studentmapping' element={<StudentMapping />} />
+            <Route path='/setup' element={<Setup />} />
+            <Route path='/hrpayrol' element={<h1>Hr & Payroll</h1>} />
+            <Route path='/studentdata' element={<h1>Student Data</h1>} />
+          </Routes>
+
         </>
       </ThemeProvider>
     </ThemeContext.Provider>

@@ -58,7 +58,7 @@ export const DropOptions = styled.li`
 
 const options = ["9:00 AM", "9:30 AM", "10:00 AM"];
 
-const CustomSelect = () => {
+const CustomSelect = (props) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
@@ -68,6 +68,7 @@ const CustomSelect = () => {
     const onOptionClicked = value => () => {
         setSelectedOption(value);
         setIsOpen(false);
+        console.log(value);
     };
 
     return (
@@ -84,7 +85,7 @@ const CustomSelect = () => {
             {isOpen && (
                 <DropDownListContainer>
                     <DropDownList>
-                        {options.map(option => (
+                        {props.options.map(option => (
                             <DropOptions onClick={onOptionClicked(option)} key={Math.random()}>{option}</DropOptions>
                         ))}
                     </DropDownList>

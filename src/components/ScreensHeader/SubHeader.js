@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ButtonContainer, Container, ContainerLeft, ContainerRight, DescriptionText, GetRecordsContainer, RecordBox, VerticalContainer } from './subHeaderStyles';
 import Headings from '../Headings/Headings';
 import Button from '../Buttons/Button';
@@ -8,6 +8,43 @@ import Icon from '../../images/icon-before.svg';
 import SearchIcon from '../../images/search-icon.svg';
 import Input from '../Inputs/Input';
 import { useLocation } from 'react-router-dom';
+import { styled } from 'styled-components';
+import CustomDrop from '../MainHeader/Components/SubComponents/CustomDrop';
+
+export const DropContianer = styled.div`
+    position:absolute;
+    right:10px;
+    z-index:99;
+    top:41px;
+`;
+
+// Hook
+function useOnClickOutside(ref, buttonRef, handler) {
+    useEffect(
+        () => {
+            const listener = (event) => {
+                // Do nothing if clicking ref's element or descendent elements
+                if (!ref.current || ref.current.contains(event.target) || (buttonRef && buttonRef.current.contains(event.target))) {
+                    return;
+                }
+                handler(event);
+            };
+            document.addEventListener("mousedown", listener);
+            document.addEventListener("touchstart", listener);
+            return () => {
+                document.removeEventListener("mousedown", listener);
+                document.removeEventListener("touchstart", listener);
+            };
+        },
+        // Add ref and handler to effect dependencies
+        // It's worth noting that because passed in handler is a new ...
+        // ... function on every render that will cause this effect ...
+        // ... callback/cleanup to run every render. It's not a big deal ...
+        // ... but to optimize you can wrap handler in useCallback before ...
+        // ... passing it into this hook.
+        [ref, handler]
+    );
+}
 
 const options = [
     {
@@ -28,6 +65,12 @@ const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOpti
     let params = pathName.split('/');
     console.log(params);
 
+    const [showAssociateDrop, setShowAssociateDrop] = useState(false);
+
+    const ref = useRef();
+    const buttonRef = useRef();
+
+    useOnClickOutside(ref, buttonRef, () => setShowAssociateDrop(false));
 
     if (type === 'horizontal') {
         return (
@@ -62,13 +105,23 @@ const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOpti
                     {buttonOption &&
 
                         <ButtonContainer>
-                            <Button
-                                className='secondary'
-                                buttonText={buttonOption}
-                                leftIcon={Icon}
-                            />
+                            <div ref={buttonRef}>
+                                <Button
+                                    className='secondary'
+                                    buttonText={buttonOption || 'Associated Options'}
+                                    leftIcon={Icon}
+                                    onClick={() => setShowAssociateDrop(!showAssociateDrop)}
+                                />
+                            </div>
+                            {/* Associate Drop Down */}
+                            {showAssociateDrop &&
+                                <DropContianer ref={ref}>
+                                    <CustomDrop type='associatedoptions' />
+                                </DropContianer>
+                            }
                         </ButtonContainer>
                     }
+
                 </ContainerRight>
             </Container>
         )

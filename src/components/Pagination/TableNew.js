@@ -3,6 +3,8 @@ import data from './data.json';
 import Pagination from './Pagination';
 import { ActionsConatiner, ActionsList, MoreAction, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
 import LinkButton from '../Buttons/LinkButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 // Assets
 import EditIcon from '../../images/edit-icon.svg';
@@ -10,9 +12,9 @@ import DeleteIcon from '../../images/delete-icon.svg';
 import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
 
-let PageSize = 10;
+let PageSize = 14;
 
-const TableNew = ({onClick}) => {
+const TableNew = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const currentTableData = useMemo(() => {
@@ -68,13 +70,11 @@ const TableNew = ({onClick}) => {
                       />
                     </ActionsList>
                     <ActionsList>
-                      <MoreAction>
-                        <Button
-                          buttonText='More'
-                          rightIcon={DropIcon}
-                          className='link-button'
-                        />
-                      </MoreAction>
+                      <DropdownButton id="dropdown-basic-button" title="More" className='more-options'>
+                        <Dropdown.Item href="#/action-1">Student List</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Print Student</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Add GPS Link</Dropdown.Item>
+                      </DropdownButton>
                     </ActionsList>
                   </ActionsConatiner>
                 </Tabledata>

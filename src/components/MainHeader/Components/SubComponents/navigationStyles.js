@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const NavBar = styled.ul`
  margin:0;
- padding:0 0px 0 20px;
+ padding:0 0px 0 10px;
  list-style:none;
  display:flex;
  align-items:center;
 `;
 
 export const NavBarItem = styled.li`
-    padding:0px 10px;
+    padding:0px 8px;
 >a{
     text-decoration:none;
     height:55px;

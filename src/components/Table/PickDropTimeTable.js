@@ -2,6 +2,8 @@ import React from 'react';
 import { SelectBoxContainer, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
 import CustomSelect from '../Inputs/CustomSelect';
 
+const options = ["9:00 AM", "9:30 AM", "10:00 AM"];
+
 const PickDropTimeTable = (props) => {
 
     return (
@@ -21,12 +23,40 @@ const PickDropTimeTable = (props) => {
                         <Tabledata>Sector 17, Chandigarh</Tabledata>
                         <Tabledata>
                             <SelectBoxContainer>
-                                <CustomSelect />
+                                <CustomSelect options={options} />
                             </SelectBoxContainer>
                         </Tabledata>
                         <Tabledata>
                             <SelectBoxContainer>
-                                <CustomSelect />
+                                <CustomSelect options={options}  />
+                            </SelectBoxContainer>
+                        </Tabledata>
+                    </TableRow>
+                    <TableRow>
+                        <Tabledata>1</Tabledata>
+                        <Tabledata>Sector 17, Chandigarh</Tabledata>
+                        <Tabledata>
+                            <SelectBoxContainer>
+                                <CustomSelect options={options}  />
+                            </SelectBoxContainer>
+                        </Tabledata>
+                        <Tabledata>
+                            <SelectBoxContainer>
+                                <CustomSelect options={options}  />
+                            </SelectBoxContainer>
+                        </Tabledata>
+                    </TableRow>
+                    <TableRow>
+                        <Tabledata>1</Tabledata>
+                        <Tabledata>Sector 17, Chandigarh</Tabledata>
+                        <Tabledata>
+                            <SelectBoxContainer>
+                                <CustomSelect options={options}  />
+                            </SelectBoxContainer>
+                        </Tabledata>
+                        <Tabledata>
+                            <SelectBoxContainer>
+                                <CustomSelect options={options}  />
                             </SelectBoxContainer>
                         </Tabledata>
                     </TableRow>
