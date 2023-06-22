@@ -11,6 +11,9 @@ import Setup from './views/main/TransportModule/Setup/Setup';
 import TransportRoute from './views/main/TransportModule/TransportRoute/TransportRoute';
 import TransportVehicle from './views/main/TransportModule/TransportVehicle/TransportVehicle';
 import StudentMapping from './views/main/TransportModule/StudentMapping/StudentMapping';
+import TransportZoneMaster from './views/main/TransportModule/TransportZoneMaster/TransportZoneMaster';
+import TransportReport from './views/main/TransportModule/TransportReport/TransportReport';
+import TransportAttendance from './views/main/TransportModule/TransportAttendance/TransportAttendance';
 
 export const ThemeContext = React.createContext(null);
 
@@ -36,6 +39,9 @@ function App() {
             <Route path='/transport' element={<Transport />} />
             <Route path='/transport/transportRoute' element={<TransportRoute />} />
             <Route path='/transport/transportVehicle' element={<TransportVehicle />} />
+            <Route path='/transport/transportZone' element={<TransportZoneMaster />} />
+            <Route path='/transport/transportReport' element={<TransportReport />} />
+            <Route path='/transport/transportAttendance' element={<TransportAttendance />} />
             <Route path='/transport/transportstop' element={<h1>Transport Stop</h1>} />
             <Route path='/studentmapping' element={<StudentMapping />} />
             <Route path='/setup' element={<Setup />} />

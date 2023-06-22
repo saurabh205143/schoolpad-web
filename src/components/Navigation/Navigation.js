@@ -22,6 +22,9 @@ const Navigation = (props) => {
             case 'transport/transportRoute':
             case 'transport/transportVehicle':
             case 'transport/transportstop':
+            case 'transport/transportZone':
+            case 'transport/transportAttendance':
+            case 'transport/transportReport':
                 return 1;
             case 'studentmapping':
                 return 2;
@@ -42,6 +45,18 @@ const Navigation = (props) => {
             active = url.includes('/transport/transportVehicle');
         }
 
+        if (tabname === 'TransportZone') {
+            active = url.includes('/transport/transportZone');
+        }
+
+        if (tabname === 'TransportZone') {
+            active = url.includes('/transport/transportAttendance');
+        }
+
+        if (tabname === 'TransportReport') {
+            active = url.includes('/transport/transportReport');
+        }
+
         if (tabname === 'Transportstop') {
             active = url.includes('/transport/transportstop');
         }
@@ -59,7 +74,7 @@ const Navigation = (props) => {
         return classNames(defaultClass, { active: active });
     };
 
-    
+
 
     return (
         <NavBar>
@@ -91,6 +106,33 @@ const Navigation = (props) => {
                                 tabname="Transport Vehicle"
                                 drop="true"
                                 isActive={activeModule === '/transport/transportVehicle'}
+                            />
+                        </SidebarDropList>
+                        <SidebarDropList
+                            className={getActiveClassNames('nav-item', 'TransportZone',)}>
+                            <NavigationItems
+                                url="/transport/transportZone"
+                                tabname="Transport Zone Master"
+                                drop="true"
+                                isActive={activeModule === '/transport/transportZone'}
+                            />
+                        </SidebarDropList>
+                        <SidebarDropList
+                            className={getActiveClassNames('nav-item', 'TransportAttendance',)}>
+                            <NavigationItems
+                                url="/transport/transportAttendance"
+                                tabname="Transport Attendance "
+                                drop="true"
+                                isActive={activeModule === '/transport/transportAttendance'}
+                            />
+                        </SidebarDropList>
+                        <SidebarDropList
+                            className={getActiveClassNames('nav-item', 'TransportReport',)}>
+                            <NavigationItems
+                                url="/transport/transportReport"
+                                tabname="Transport Report"
+                                drop="true"
+                                isActive={activeModule === '/transport/transportReport'}
                             />
                         </SidebarDropList>
                         <SidebarDropList
