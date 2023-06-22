@@ -6,6 +6,7 @@ export const PaginationContainer = styled.div`
     align-items:center;
     justify-content:center;
     padding-top:20px;
+    padding-bottom:20px;
 `;
 
 export const PaginationUnderList = styled.ul`

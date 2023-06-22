@@ -61,7 +61,7 @@ export const SearchContainer = styled.div`
         margin-bottom:0px;
         padding-right:10px;
         >.simple-input{
-            width:240px;
+            width:210px;
             height:32px;
         }
     }

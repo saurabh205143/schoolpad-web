@@ -9,7 +9,7 @@ export const NavBar = styled.ul`
 `;
 
 export const NavBarItem = styled.li`
-    padding:0px 5px;
+    padding:0px 8px;
 >a{
     text-decoration:none;
     height:55px;
