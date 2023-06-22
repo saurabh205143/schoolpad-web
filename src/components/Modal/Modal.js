@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 import { SubHeadingText } from '../Headings/headingStyles';
 
 const Modal = props => {
-    const { show, handleClose, modalHeading, modalSubHeading, submitText, saveAction, children, actionText } = props;
+    const { show, handleClose, modalHeading, modalSubHeading, submitText, saveAction, children, actionText , cancelText} = props;
 
     const on = useLocation();
     const pathName = on.pathname;
@@ -33,15 +33,16 @@ const Modal = props => {
                 </ModalBody>
                 <ModalFooter>
                     <FooterButtonContainer>
+                    {cancelText &&
                         <Button
                             buttonText='Cancel'
                             className={'link-button-black'}
                             onClick={handleClose}
                         />
+                    }
                     </FooterButtonContainer>
                     <FooterButtonContainer>
-                        {
-                            actionText &&
+                        {actionText &&
                             <Button
                                 buttonText={actionText}
                                 className={'primary'}

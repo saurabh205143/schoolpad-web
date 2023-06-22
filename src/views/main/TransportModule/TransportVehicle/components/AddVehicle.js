@@ -23,6 +23,7 @@ const AddVehicle = props => {
             handleClose={handleClose}
             modalHeading={'Add New Vehicle'}
             submitText='Confirm'
+            cancelText='Cancel'
         >
             <FieldContainer>
                 <Input

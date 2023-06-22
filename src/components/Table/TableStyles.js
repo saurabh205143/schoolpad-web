@@ -61,6 +61,10 @@ export const Tabledata = styled.td`
     border-bottom: 1px solid rgba(9, 30, 66, 0.1412);
 `;
 
+export const Tabledatatext = styled.span`
+    padding-left: 10px;
+`;
+
 export const ActionsConatiner = styled.ul`
     display:inline;
     margin:0;

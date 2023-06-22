@@ -10,7 +10,7 @@ import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
 import AvatarIcon from '../../images/avatar-icon.svg';
 
-const TableStopMaster = (props) => {
+const TableStopMaster = ({onClick}) => {
 
     // get table column
     const column = Object.keys(TableData[0]);
@@ -35,10 +35,10 @@ const TableStopMaster = (props) => {
                     <Tabledata>
                         <ActionsConatiner>
                             <ActionsList>
-                                <LinkButton
-                                    linkText='1 Students(s)'
-                                    onlyIcon={AvatarIcon}
-                                    paddingRight="8px"
+                                <Button
+                                    buttonText='1 Students(s)'
+                                    className='link-button'
+                                    onClick={onClick}
                                 />
                             </ActionsList>
 
@@ -77,7 +77,7 @@ const TableStopMaster = (props) => {
                 <TableRow>
                     {ThData()}
                     <TableHeading
-                    >{props.heading}</TableHeading>
+                    ></TableHeading>
                     <TableHeading>Actions</TableHeading>
                 </TableRow>
             </TableHead>

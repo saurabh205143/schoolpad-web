@@ -64,6 +64,7 @@ const AddRoutes = props => {
             handleClose={handleClose}
             modalHeading={'Add New Route'}
             submitText='Confirm'
+            cancelText='Cancel'
         >
             <form onSubmit={handleSubmit}>
                 <FieldContainer>

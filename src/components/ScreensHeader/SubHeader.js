@@ -121,7 +121,6 @@ const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOpti
                             }
                         </ButtonContainer>
                     }
-
                 </ContainerRight>
             </Container>
         )
