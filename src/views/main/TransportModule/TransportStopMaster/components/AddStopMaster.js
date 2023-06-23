@@ -23,6 +23,7 @@ const AddStopMaster = props => {
             modalHeading={'Add New Stop'}
             submitText='Save and Close'
             actionText='Save and Continue'
+            cancelText='Cancel'
         >
         <FieldContainer>
                 <Input

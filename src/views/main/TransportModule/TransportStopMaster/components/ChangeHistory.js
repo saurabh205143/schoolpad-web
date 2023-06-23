@@ -1,18 +1,18 @@
 import React from 'react';
 import Modal from '../../../../../components/Modal/Modal';
-import StudentList from '../../../../../components/Table Stops/StudentList';
+import ChangeHistoryList from '../../../../../components/Table Stops/components/ChangeHistoryList';
 
-const StudentListTable = props => {
+const ChangeHistory = props => {
     const {show,handleClose} = props;
     return (
         <Modal
             show={show}
             handleClose={handleClose}
-            modalHeading={'Student List (12)'}
+            modalHeading={'Change History'}
         >
-            <StudentList/>
+            <ChangeHistoryList/>
         </Modal>
     );
 };
 
-export default StudentListTable;
+export default ChangeHistory;
