@@ -19,13 +19,12 @@ export const HistoryList = styled.ul`
     font-size: font-weight: 700;
     font-size: 14px;
     color: #000000;
-    margin-bottom: 20px;
 `;
 
 
 export const HistoryItem = styled.li`
     display: flex;
-
+    margin-top: 20px;
 `;
 
 export const LeftContainer = styled.div`

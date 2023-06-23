@@ -24,8 +24,6 @@ const ChangeHistoryList = () => {
                 <span>Mr. Administrator Added staff abc, abc in Route R 1</span>
               </RightContainer>
             </HistoryItem>
-          </HistoryList>
-          <HistoryList>
             <HistoryItem >
               <LeftContainer>
                 <img src={CalendarIcon} />
@@ -40,8 +38,6 @@ const ChangeHistoryList = () => {
                 <span>2. Mr. Administrator Moved Stop SAMBA II from Route SAMBA(32) to SUPWAL(JK21)</span>
               </RightContainer>
             </HistoryItem>
-          </HistoryList>
-          <HistoryList>
             <HistoryItem >
               <LeftContainer>
                 <img src={CalendarIcon} />
@@ -56,8 +52,6 @@ const ChangeHistoryList = () => {
                 <span>2. Mr. Administrator Moved Stop SAMBA II from Route SAMBA(32) to SUPWAL(JK21)</span>
               </RightContainer>
             </HistoryItem>
-          </HistoryList>
-          <HistoryList>
             <HistoryItem >
               <LeftContainer>
                 <img src={CalendarIcon} />
@@ -76,8 +70,6 @@ const ChangeHistoryList = () => {
                   Administrator in Route NUD(36)</span>
               </RightContainer>
             </HistoryItem>
-          </HistoryList>
-          <HistoryList>
             <HistoryItem >
               <LeftContainer>
                 <img src={CalendarIcon} />
@@ -91,8 +83,6 @@ const ChangeHistoryList = () => {
                   for all the students.</span>
               </RightContainer>
             </HistoryItem>
-          </HistoryList>
-          <HistoryList>
             <HistoryItem >
               <LeftContainer>
                 <img src={CalendarIcon} />
@@ -105,8 +95,6 @@ const ChangeHistoryList = () => {
                 <span>You have an upcoming event</span>
               </RightContainer>
             </HistoryItem>
-          </HistoryList>
-          <HistoryList>
             <HistoryItem >
               <LeftContainer>
                 <img src={CalendarIcon} />
