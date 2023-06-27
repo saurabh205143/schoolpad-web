@@ -44,6 +44,13 @@ const Notification = ({icon,countText,tooltiptext}) => {
                 effect="solid"
                 place="bottom"
                 content={tooltiptext}
+                style={{
+                    backgroundColor: '#44546F',
+                    color: 'white',
+                    borderRadius: '4px',
+                    padding: '2px 8px 2px 8px',
+                    fontSize: '12px',
+                }}
         />
         }
 

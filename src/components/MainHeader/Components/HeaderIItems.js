@@ -14,7 +14,7 @@ import SettingIcon from '../../../images/header-setting-icon.svg';
 import UserIcon from '../../../images/header-user-icon.svg';
 import SearchIcon from '../../../images/search-icon.svg';
 import TriangleIcon from '../../../images/triangle.svg';
-import DropIcon from '../../../images/down-icon.svg';
+import DropIcon from '../../../images/drop-down-icon.svg';
 import ChatIcon from '../../../images/chat.svg';
 
 
@@ -36,7 +36,9 @@ export const HeaderLeftContainer = styled.div`
 `;
 
 export const IconContainer = styled.img`
-    width:28px;
+    >img{
+        width:20px;
+    }
 `;
 
 export const SettingsContainer = styled(Link)`
@@ -197,9 +199,12 @@ const HeaderIItems = () => {
                     {/* Setting Container */}
                     <SettingsContainer ref={buttonRef2} onClick={() => setShowSettingDrop(!showSettingDrop)}>
                         <IconContainer 
-                        tooltiptext='Notification'
-                        src={SettingIcon} alt="Icon" />
-                        <IconContainer src={DropIcon} alt="Icon" />
+                        src={SettingIcon} 
+                        alt="Icon" />
+                        <IconContainer 
+                        src={DropIcon}
+                        alt="Icon"
+                        />
                         {/* Setting Drop Down */}
                         {showSettingDrop && (
                             <DropContianer ref={ref2}>
@@ -216,6 +221,10 @@ const HeaderIItems = () => {
                         <IconContainer 
                         src={UserIcon} 
                         alt="Icon" />
+                        <IconContainer 
+                        src={DropIcon}
+                        alt="Icon"
+                        />
 
                         {/* Profile Drop Down */}
                         {showDrop && (

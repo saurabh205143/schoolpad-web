@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
-import RemoveIcon from '../../../../../images/remove.png';
+import RemoveIcon from '../../../../../images/remove-icon.svg';
 
 const options = [
     {

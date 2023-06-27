@@ -66,8 +66,8 @@ export const RemoveContianer = styled.div`
     margin-top:12px;
     >button{
         >img{
-            width:32px;
-            height:32px;
+            width:20px;
+            height:20px;
         }
     }
 `;

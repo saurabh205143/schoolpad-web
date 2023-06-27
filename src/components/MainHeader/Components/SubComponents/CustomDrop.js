@@ -60,13 +60,13 @@ const CustomDrop = ({ type }) => {
         <DropBox>
           <DropList>
             <DropItems>
-              <ItemIcon src={InfoIcon} alt="Icon" />
+              <ItemIcon/>
               <ItemText>Basic Setup</ItemText>
             </DropItems>
           </DropList>
           <DropList>
             <DropItems>
-              <ItemIcon src={LogoutIcon} alt="Icon" />
+              <ItemIcon/>
               <ItemText>SMS Left 11</ItemText>
             </DropItems>
           </DropList>
@@ -108,13 +108,13 @@ const CustomDrop = ({ type }) => {
         <DropBox>
           <DropList>
             <DropItems>
-              <ItemIcon src={InfoIcon} alt="Icon" />
+              <ItemIcon/>
               <ItemText>My Info</ItemText>
             </DropItems>
           </DropList>
           <DropList>
             <DropItems>
-              <ItemIcon src={LogoutIcon} alt="Icon" />
+              <ItemIcon/>
               <ItemText>Logout</ItemText>
             </DropItems>
           </DropList>
