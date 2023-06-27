@@ -8,6 +8,7 @@ import CloseIcon from '../../images/close-icon.svg';
 import { useLocation } from 'react-router-dom';
 import { SubHeadingText } from '../Headings/headingStyles';
 
+
 const Modal = props => {
     const { show, handleClose, modalHeading, modalSubHeading, submitText, saveAction, children, actionText , cancelText} = props;
 
@@ -35,20 +36,22 @@ const Modal = props => {
                     <FooterButtonContainer>
                     {cancelText &&
                         <Button
-                            buttonText='Cancel'
+                            buttonText={cancelText}
                             className={'link-button-black'}
                             onClick={handleClose}
                         />
                     }
                     </FooterButtonContainer>
                     <FooterButtonContainer>
-                        {actionText &&
+                    {actionText && 
                             <Button
                                 buttonText={actionText}
                                 className={'primary'}
                                 onClick={saveAction}
                             />
                         }
+                    </FooterButtonContainer>
+                    <FooterButtonContainer>
                         {submitText &&
                             <Button
                                 buttonText={submitText}

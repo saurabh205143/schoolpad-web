@@ -4,7 +4,7 @@ import Headings from '../Headings/Headings';
 import Button from '../Buttons/Button';
 
 // Assets
-import Icon from '../../images/icon-before.svg';
+import Icon from '../../images/down-icon.svg';
 import SearchIcon from '../../images/search-icon.svg';
 import Input from '../Inputs/Input';
 import { useLocation } from 'react-router-dom';
@@ -45,6 +45,10 @@ function useOnClickOutside(ref, buttonRef, handler) {
         [ref, handler]
     );
 }
+
+const theme = {
+    marginRight: '20px'
+};
 
 const options = [
     {
@@ -91,6 +95,7 @@ const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOpti
                             className='primary'
                             buttonText={buttonAdd}
                             onClick={onClick}
+                            theme={theme}
                         />
                     </ButtonContainer>
                     {buttonOrders &&
@@ -109,7 +114,7 @@ const SubHeader = ({ type, heading, onClick, buttonAdd, buttonOrders, buttonOpti
                                 <Button
                                     className='secondary'
                                     buttonText={buttonOption || 'Associated Options'}
-                                    leftIcon={Icon}
+                                    rightIcon={Icon}
                                     onClick={() => setShowAssociateDrop(!showAssociateDrop)}
                                 />
                             </div>

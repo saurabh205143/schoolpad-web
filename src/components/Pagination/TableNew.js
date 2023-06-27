@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import data from './data.json';
 import Pagination from './Pagination';
-import { ActionsConatiner, ActionsList, MoreAction, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
+import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
 import LinkButton from '../Buttons/LinkButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -9,13 +9,25 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 // Assets
 import EditIcon from '../../images/edit-icon.svg';
 import DeleteIcon from '../../images/delete-icon.svg';
-import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
+import AddRoutes from '../../views/main/TransportModule/TransportRoute/components/AddRoutes';
+import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
+
 
 let PageSize = 14;
 
 const TableNew = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const hideDeleteModal = () => {
+    setShowDeleteModal(false);
+  }
+
+  const hideModal = () => {
+    setShowModal(false);
+  }
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
@@ -62,11 +74,15 @@ const TableNew = ({ onClick }) => {
                     <ActionsList>
                       <LinkButton
                         onlyIcon={EditIcon}
+                        tooltiptext='Edit'
+                        onClick={() => setShowModal(!showModal)}
                       />
                     </ActionsList>
                     <ActionsList>
                       <LinkButton
                         onlyIcon={DeleteIcon}
+                        tooltiptext='Delete'
+                        onClick={() => setShowDeleteModal(!showModal)} 
                       />
                     </ActionsList>
                     <ActionsList>
@@ -89,6 +105,18 @@ const TableNew = ({ onClick }) => {
         totalCount={data.length}
         pageSize={PageSize}
         onPageChange={page => setCurrentPage(page)}
+      />
+
+      {/* Edit Route Modal */}
+      <AddRoutes
+        show={showModal}
+        handleClose={hideModal}
+      />
+
+      {/* Delete Modal */}
+      <DeleteRouteModal
+        show={showDeleteModal}
+        handleClose={hideDeleteModal}
       />
     </>
   );

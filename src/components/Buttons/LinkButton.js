@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Tooltip } from 'react-tooltip';
 
 export const LinkClassic = styled(Link)`
     color:${({ theme }) => theme.blueColor};
@@ -13,12 +14,25 @@ export const LinkClassic = styled(Link)`
     padding:${({theme}) => theme.padding};
 `;
 
-const LinkButton = ({ to, linkText, onlyIcon, paddingRight}) => {
+const LinkButton = ({ to, linkText, onlyIcon, tooltiptext, onClick, backgroundColor}) => {
     return (
-        <LinkClassic to={to} >
+        <LinkClassic 
+            to={to} 
+            onClick={onClick}
+            backgroundColor={backgroundColor}
+            >
             {linkText}
             {onlyIcon &&
-                <img src={onlyIcon} alt="Icon" />
+                <img src={onlyIcon} alt="Icon" data-tooltip-id={tooltiptext} />
+            }
+            {tooltiptext && 
+                <Tooltip
+                id={tooltiptext}
+                type="dark"
+                effect="solid"
+                place="bottom"
+                content={tooltiptext}
+                />
             }
         </LinkClassic>
     )

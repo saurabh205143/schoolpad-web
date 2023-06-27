@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChangeHistoryContainer, HistoryContainer, HistoryItem, HistoryList, HistoryListItem, LeftContainer, LeftContainerProgressLine, RightContainer } from './ChangeHistoryStyles';
+import { ChangeHistoryContainer, HistoryContainer, HistoryItem, HistoryList, LeftContainer, LeftContainerProgressLine, RightContainer } from './ChangeHistoryStyles';
 
 // Assets
 import CalendarIcon from '../../../images/calendar.svg';
@@ -14,9 +14,9 @@ const ChangeHistoryList = () => {
           <HistoryList>
             <HistoryItem >
               <LeftContainer>
-                <img src={CalendarIcon} />
+                <img src={CalendarIcon} alt="Icon" />
                 <LeftContainerProgressLine>
-                  <img src={ProgressLine} />
+                  <img src={ProgressLine} alt="Icon" />
                 </LeftContainerProgressLine>
               </LeftContainer>
               <RightContainer>
@@ -26,9 +26,9 @@ const ChangeHistoryList = () => {
             </HistoryItem>
             <HistoryItem >
               <LeftContainer>
-                <img src={CalendarIcon} />
+                <img src={CalendarIcon} alt="Icon" />
                 <LeftContainerProgressLine>
-                  <img src={ProgressLine} />
+                  <img src={ProgressLine} alt="Icon"/>
                 </LeftContainerProgressLine>
               </LeftContainer>
               <RightContainer>
@@ -40,9 +40,9 @@ const ChangeHistoryList = () => {
             </HistoryItem>
             <HistoryItem >
               <LeftContainer>
-                <img src={CalendarIcon} />
+                <img src={CalendarIcon} alt="Icon"/>
                 <LeftContainerProgressLine>
-                  <img src={ProgressLine} />
+                  <img src={ProgressLine} alt="Icon"/>
                 </LeftContainerProgressLine>
               </LeftContainer>
               <RightContainer>
@@ -54,9 +54,9 @@ const ChangeHistoryList = () => {
             </HistoryItem>
             <HistoryItem >
               <LeftContainer>
-                <img src={CalendarIcon} />
+                <img src={CalendarIcon} alt="Icon" />
                 <LeftContainerProgressLine>
-                  <img src={ProgressLine} />
+                  <img src={ProgressLine} alt="Icon" />
                 </LeftContainerProgressLine>
               </LeftContainer>
               <RightContainer>
@@ -72,9 +72,9 @@ const ChangeHistoryList = () => {
             </HistoryItem>
             <HistoryItem >
               <LeftContainer>
-                <img src={CalendarIcon} />
+                <img src={CalendarIcon} alt="Icon"/>
                 <LeftContainerProgressLine>
-                  <img src={ProgressLine} />
+                  <img src={ProgressLine} alt="Icon" />
                 </LeftContainerProgressLine>
               </LeftContainer>
               <RightContainer>
@@ -85,9 +85,9 @@ const ChangeHistoryList = () => {
             </HistoryItem>
             <HistoryItem >
               <LeftContainer>
-                <img src={CalendarIcon} />
+                <img src={CalendarIcon} alt="Icon" />
                 <LeftContainerProgressLine>
-                  <img src={ProgressLine} />
+                  <img src={ProgressLine} alt="Icon" />
                 </LeftContainerProgressLine>
               </LeftContainer>
               <RightContainer>
@@ -97,9 +97,9 @@ const ChangeHistoryList = () => {
             </HistoryItem>
             <HistoryItem >
               <LeftContainer>
-                <img src={CalendarIcon} />
+                <img src={CalendarIcon} alt="Icon"/>
                 <LeftContainerProgressLine>
-                  <img src={ProgressLine} />
+                  <img src={ProgressLine} alt="Icon" />
                 </LeftContainerProgressLine>
               </LeftContainer>
               <RightContainer>

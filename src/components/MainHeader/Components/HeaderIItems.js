@@ -10,13 +10,12 @@ import Input from '../../Inputs/Input';
 // Assets
 import MenuIcon from '../../../images/menu-icon.svg';
 import NotificationIcon from '../../../images/notification-icon.svg';
-import SettingIcon from '../../../images/header-seting-icon.svg';
+import SettingIcon from '../../../images/header-setting-icon.svg';
 import UserIcon from '../../../images/header-user-icon.svg';
 import SearchIcon from '../../../images/search-icon.svg';
 import TriangleIcon from '../../../images/triangle.svg';
-import InboxIcon from '../../../images/inbox-icon.svg';
 import DropIcon from '../../../images/down-icon.svg';
-
+import ChatIcon from '../../../images/chat.svg';
 
 
 export const HeaderContainer = styled.div`
@@ -42,7 +41,7 @@ export const IconContainer = styled.img`
 
 export const SettingsContainer = styled(Link)`
     >img{
-        width:28px;
+        width:20px;
     }
 `;
 
@@ -184,14 +183,22 @@ const HeaderIItems = () => {
                         />
                     </SearchContainer>
                     {/* All Notification */}
-                    <Notification countText='9' icon={NotificationIcon} />
+                    <Notification 
+                    tooltiptext='Notification'
+                    countText='9' 
+                    icon={NotificationIcon} />
 
                     {/* Messages Notification */}
-                    <Notification countText='2' icon={InboxIcon} />
+                    <Notification 
+                    tooltiptext='Chat'
+                    countText='2' 
+                    icon={ChatIcon} />
 
                     {/* Setting Container */}
                     <SettingsContainer ref={buttonRef2} onClick={() => setShowSettingDrop(!showSettingDrop)}>
-                        <IconContainer src={SettingIcon} alt="Icon" />
+                        <IconContainer 
+                        tooltiptext='Notification'
+                        src={SettingIcon} alt="Icon" />
                         <IconContainer src={DropIcon} alt="Icon" />
                         {/* Setting Drop Down */}
                         {showSettingDrop && (
@@ -203,8 +210,12 @@ const HeaderIItems = () => {
                     </SettingsContainer>
 
                     {/* Profile Container */}
-                    <Link ref={buttonRef3} onClick={() => setShowDrop(!showDrop)}>
-                        <IconContainer src={UserIcon} alt="Icon" />
+                    <Link 
+                    ref={buttonRef3} 
+                    onClick={() => setShowDrop(!showDrop)}>
+                        <IconContainer 
+                        src={UserIcon} 
+                        alt="Icon" />
 
                         {/* Profile Drop Down */}
                         {showDrop && (

@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import TableData from './TableData';
-import { ActionsConatiner, ActionsList, MoreAction, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
+import { ActionListStatus, ActionsConatiner, ActionsList, ListStatus, MoreAction, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
 
 // Assets
 import EditIcon from '../../images/edit-icon.svg';
@@ -8,8 +8,21 @@ import DeleteIcon from '../../images/delete-icon.svg';
 import LinkButton from '../Buttons/LinkButton';
 import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
+import AddRoutes from '../../views/main/TransportModule/TransportRoute/components/AddRoutes';
+import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 
 const Table = (props) => {
+
+    const [showModal, setShowModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+    const hideModal = () => {
+        setShowModal(false);
+    }
+
+    const hideDeleteModal = () => {
+        setShowDeleteModal(false);
+    }
 
     // get table column
     const column = Object.keys(TableData[0]);
@@ -34,9 +47,9 @@ const Table = (props) => {
                     <Tabledata>
                         <ActionsConatiner>
                             <ActionsList>
-                                <LinkButton
-                                    linkText='IN SERVICE'
-                                />
+                                <ActionListStatus>
+                                <span>IN SERVICE</span>
+                                </ActionListStatus>
                             </ActionsList>
 
                         </ActionsConatiner>
@@ -46,11 +59,15 @@ const Table = (props) => {
                             <ActionsList>
                                 <LinkButton
                                     onlyIcon={EditIcon}
+                                    tooltiptext='Edit'
+                                    onClick={() => setShowModal(!showModal)}
                                 />
                             </ActionsList>
                             <ActionsList>
                                 <LinkButton
                                     onlyIcon={DeleteIcon}
+                                    tooltiptext='Delete'
+                                    onClick={() => setShowDeleteModal(!showModal)}
                                 />
                             </ActionsList>
                             <ActionsList>
@@ -67,8 +84,11 @@ const Table = (props) => {
                 </TableRow>
             )
         })
+        
     }
+
     return (
+        <>
         <TableContainer className="table">
             <TableHead>
                 <TableRow>
@@ -80,9 +100,21 @@ const Table = (props) => {
             </TableHead>
             <TableBody>
                 {tdData()}
-
             </TableBody>
         </TableContainer>
+
+        {/* Edit Vehicle Modal */}
+        <AddRoutes
+        show={showModal}
+        handleClose={hideModal}
+        />
+
+        {/* Delete Modal */}
+        <DeleteRouteModal
+        show={showDeleteModal}
+        handleClose={hideDeleteModal}
+        />
+        </>
     )
 }
 

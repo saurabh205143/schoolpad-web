@@ -56,7 +56,6 @@ export const DropOptions = styled.li`
     color:#000000;
 `;
 
-const options = ["9:00 AM", "9:30 AM", "10:00 AM"];
 
 const CustomSelect = (props) => {
 

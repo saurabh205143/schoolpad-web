@@ -108,7 +108,7 @@ const Navigation = (props) => {
                                 isActive={activeModule === '/transport/transportVehicle'}
                             />
                         </SidebarDropList>
-                        <SidebarDropList
+                        {/* <SidebarDropList
                             className={getActiveClassNames('nav-item', 'TransportZone',)}>
                             <NavigationItems
                                 url="/transport/transportZone"
@@ -116,8 +116,8 @@ const Navigation = (props) => {
                                 drop="true"
                                 isActive={activeModule === '/transport/transportZone'}
                             />
-                        </SidebarDropList>
-                        <SidebarDropList
+                        </SidebarDropList> */}
+                        {/* <SidebarDropList
                             className={getActiveClassNames('nav-item', 'TransportAttendance',)}>
                             <NavigationItems
                                 url="/transport/transportAttendance"
@@ -125,8 +125,8 @@ const Navigation = (props) => {
                                 drop="true"
                                 isActive={activeModule === '/transport/transportAttendance'}
                             />
-                        </SidebarDropList>
-                        <SidebarDropList
+                        </SidebarDropList> */}
+                        {/* <SidebarDropList
                             className={getActiveClassNames('nav-item', 'TransportReport',)}>
                             <NavigationItems
                                 url="/transport/transportReport"
@@ -134,7 +134,7 @@ const Navigation = (props) => {
                                 drop="true"
                                 isActive={activeModule === '/transport/transportReport'}
                             />
-                        </SidebarDropList>
+                        </SidebarDropList> */}
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'Transportstop',)}>
                             <NavigationItems

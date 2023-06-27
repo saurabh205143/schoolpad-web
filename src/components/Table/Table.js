@@ -46,11 +46,13 @@ const Table = () => {
                             <ActionsList>
                                 <LinkButton
                                     onlyIcon={EditIcon}
+                                    tooltiptext='Edit'
                                 />
                             </ActionsList>
                             <ActionsList>
                                 <LinkButton
                                     onlyIcon={DeleteIcon}
+                                    tooltiptext='Delete'
                                 />
                             </ActionsList>
                             <ActionsList>

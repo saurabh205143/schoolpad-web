@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
-import { FieldContainer, FieldDivider, FieldLeftContainer, FieldRightContainer } from '../../TransportRoute/components/AddRouteStyles';
+import { FieldContainer } from '../../TransportRoute/components/AddRouteStyles';
 import LeftIcon from '../../../../../images/phone-icon.svg';
 
 const options = [

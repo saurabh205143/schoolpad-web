@@ -9,19 +9,6 @@ import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
 import AddVehicle from './components/AddVehicle';
 import TableVehicle from '../../../../components/Table copy/TableVehicle';
-import Input, { SelectContainer } from '../../../../components/Inputs/Input';
-
-
-const options = [
-  { 
-    value: 1,
-    label: "Leanne Graham"
-  },
-  {
-    value:  2,
-    label: "Ervin Howell"
-  }
-];
 
 const TransportVehicle = () => {
   const [showModal, setShowModal] = useState(false);

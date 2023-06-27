@@ -11,6 +11,7 @@ const PickupDropTime = props => {
             handleClose={handleClose}
             modalHeading={'Pickup and Drop Time'}
             submitText='Save'
+            cancelText='Cancel'
         >
             <PickedDropContainer>
                 <PickDropTimeTable />

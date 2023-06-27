@@ -24,6 +24,7 @@ const AddStopMaster = props => {
             submitText='Save and Close'
             actionText='Save and Continue'
             cancelText='Cancel'
+            
         >
         <FieldContainer>
                 <Input

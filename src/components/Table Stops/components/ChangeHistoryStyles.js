@@ -46,7 +46,7 @@ export const RightContainer = styled.div`
     >h6 {
       font-weight: 700;
       font-size: 14px;
-      color: #000000;
+      color: #0065FF;
       margin-bottom: 0px;
       display: flex;
       flex-direction: column;

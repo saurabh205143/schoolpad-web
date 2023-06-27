@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { Tooltip } from 'react-tooltip';
 
 export const NotificationContainer = styled(Link)`
     position:relative;
@@ -31,17 +32,28 @@ export const CountText = styled.span`
     color: ${({ theme }) => theme.whiteColor};
 `;
 
-const Notification = ({icon,countText}) => {
-  return (
+const Notification = ({icon,countText,tooltiptext}) => {
+    return (
     <NotificationContainer >
-        <img src={icon} alt="Icon" />
+        <img src={icon} alt="Icon" data-tooltip-id={tooltiptext}
+        />
+        {tooltiptext && 
+        <Tooltip
+                id={tooltiptext}
+                type="dark"
+                effect="solid"
+                place="bottom"
+                content={tooltiptext}
+        />
+        }
 
         {/* notification count */}
         <NotificationCount>
             <CountText>{countText}</CountText>
         </NotificationCount>
     </NotificationContainer>
-  )
+
+    )
 }
 
 export default Notification;

@@ -11,6 +11,7 @@ const RouteOrders = props => {
             modalHeading={'Route Order(s)'}
             modalSubHeading={'hello'}
             submitText='Save'
+            cancelText='Cancel'
         >
         <DragDropList/>
         </Modal>

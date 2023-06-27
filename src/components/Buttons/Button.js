@@ -1,3 +1,4 @@
+import { Tooltip } from "react-tooltip";
 import styled from "styled-components";
 
 export const ButtonClassic = styled.button` 
@@ -16,6 +17,7 @@ export const ButtonClassic = styled.button`
     &.primary {
         background: ${({ theme }) => theme.bgPrimary};
         color: ${({ theme }) => theme.whiteColor};
+        margin-right: ${({ theme }) => theme.marginRight};
     } 
     
     &.secondary {
@@ -98,26 +100,40 @@ export const ButtonClassic = styled.button`
         margin-right:8px;
     }
 
- `;
+`;
 
-const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon,onlyIcon }) => {
+const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon,onlyIcon, tooltiptext}) => {
     return (
         <ButtonClassic
             disabled={disabled}
             className={className}
             onClick={onClick}
+            data-tooltip-id={tooltiptext}
+            data-tooltip-content={buttonText}
         >
             {leftIcon &&
                 <img src={leftIcon} alt="Icon" className="button-left-icon" />
             }
             {buttonText}
             {onlyIcon &&
-                <img src={onlyIcon} alt="Icon" className="only-icon" />
+                <img src={onlyIcon} alt="Icon" className="only-icon" data-tooltip-id={tooltiptext} />
             }
             {rightIcon &&
-                <img src={rightIcon} alt="Icon" className="button-left-icon" />
+                <img src={rightIcon} alt="Icon" className="button-right-icon" />
+            }
+            
+            {tooltiptext && 
+        <Tooltip
+            id={tooltiptext}
+            type="dark"
+            effect="solid"
+            place="bottom"
+            content={tooltiptext}
+        />
             }
         </ButtonClassic>
+        
+       
     )
 }
 

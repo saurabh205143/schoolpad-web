@@ -1,5 +1,4 @@
 import React from 'react';
-import Layout from '../../../../../components/Layouts/Layout';
 import SubHeader from '../../../../../components/ScreensHeader/SubHeader';
 import ExportHeader from '../../../../../components/ScreensHeader/ExportHeader';
 import { DefaultContainer, DefaultDescriptionContainer, DefaultIconContainer, TitleContainer } from './DefaultStyles';

@@ -17,7 +17,7 @@ const StudentList = ({onClick}) => {
                 <TableBody>
                     <TableRow>
                         <Tabledata>
-                            <img src={AvatarIcon}/>
+                            <img src={AvatarIcon} alt="Icon"/>
                             <Tabledatatext>
                             Jane Rotanson
                             </Tabledatatext>
@@ -31,7 +31,7 @@ const StudentList = ({onClick}) => {
                     </TableRow>
                     <TableRow>
                         <Tabledata>
-                            <img src={AvatarIcon}/>
+                            <img src={AvatarIcon} alt="Icon"/>
                             <Tabledatatext>
                             Salman Ansari
                             </Tabledatatext>
@@ -45,7 +45,7 @@ const StudentList = ({onClick}) => {
                     </TableRow>
                     <TableRow>
                         <Tabledata>
-                            <img src={AvatarIcon}/>
+                            <img src={AvatarIcon} alt="Icon"/>
                             <Tabledatatext>
                             Jatin Sharma
                             </Tabledatatext>
@@ -59,7 +59,7 @@ const StudentList = ({onClick}) => {
                     </TableRow>
                     <TableRow>
                         <Tabledata>
-                            <img src={AvatarIcon}/>
+                            <img src={AvatarIcon} alt="Icon"/>
                             <Tabledatatext>
                             Aditya Roy
                             </Tabledatatext>
@@ -73,7 +73,7 @@ const StudentList = ({onClick}) => {
                     </TableRow>
                     <TableRow>
                         <Tabledata>
-                            <img src={AvatarIcon}/>
+                            <img src={AvatarIcon} alt="Icon"/>
                             <Tabledatatext>
                             Sheena Arora
                             </Tabledatatext>
@@ -87,7 +87,7 @@ const StudentList = ({onClick}) => {
                     </TableRow>
                     <TableRow>
                         <Tabledata>
-                            <img src={AvatarIcon}/>
+                            <img src={AvatarIcon} alt="Icon"/>
                             <Tabledatatext>
                             Ankita Sharma
                             </Tabledatatext>
@@ -101,7 +101,7 @@ const StudentList = ({onClick}) => {
                     </TableRow>
                     <TableRow>
                         <Tabledata>
-                            <img src={AvatarIcon}/>
+                            <img src={AvatarIcon} alt="Icon"/>
                             <Tabledatatext>
                             Rishab Aggarwal
                             </Tabledatatext>
@@ -115,7 +115,7 @@ const StudentList = ({onClick}) => {
                     </TableRow>
                     <TableRow>
                         <Tabledata>
-                            <img src={AvatarIcon}/>
+                            <img src={AvatarIcon} alt="Icon"/>
                             <Tabledatatext>
                             Harvinder Kaur
                             </Tabledatatext>
@@ -129,7 +129,7 @@ const StudentList = ({onClick}) => {
                     </TableRow>
                     <TableRow>
                         <Tabledata>
-                            <img src={AvatarIcon}/>
+                            <img src={AvatarIcon} alt="Icon"/>
                             <Tabledatatext>
                             Nandini Sharma
                             </Tabledatatext>

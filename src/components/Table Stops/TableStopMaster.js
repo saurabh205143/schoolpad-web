@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import TableData from './TableData';
 import { ActionsConatiner, ActionsList, MoreAction, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
 
@@ -8,9 +8,9 @@ import DeleteIcon from '../../images/delete-icon.svg';
 import LinkButton from '../Buttons/LinkButton';
 import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
-import AvatarIcon from '../../images/avatar-icon.svg';
 
-const TableStopMaster = ({onClick}) => {
+
+const TableStopMaster = ({onClick,heading}) => {
 
     // get table column
     const column = Object.keys(TableData[0]);
@@ -49,11 +49,13 @@ const TableStopMaster = ({onClick}) => {
                             <ActionsList>
                                 <LinkButton
                                     onlyIcon={EditIcon}
+                                    tooltiptext='Edit'
                                 />
                             </ActionsList>
                             <ActionsList>
                                 <LinkButton
                                     onlyIcon={DeleteIcon}
+                                    tooltiptext='Delete'
                                 />
                             </ActionsList>
                             <ActionsList>
@@ -77,13 +79,12 @@ const TableStopMaster = ({onClick}) => {
                 <TableRow>
                     {ThData()}
                     <TableHeading
-                    ></TableHeading>
+                    >{heading}</TableHeading>
                     <TableHeading>Actions</TableHeading>
                 </TableRow>
             </TableHead>
             <TableBody>
                 {tdData()}
-
             </TableBody>
         </TableContainer>
     )

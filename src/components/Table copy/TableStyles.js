@@ -21,7 +21,7 @@ export const TableRow = styled.tr`
         width:215px;       
     }
     & >th:nth-child(5) {
-        width:240px;     
+        width:240px;  
     }
     @media only screen and (max-width: 1340px) {
         & >th:nth-child(2) {
@@ -67,6 +67,18 @@ export const ActionsConatiner = styled.ul`
 export const ActionsList = styled.li`
     padding:0 10px 0 0;
     display:inline-block;
+`;
+
+export const ActionListStatus = styled.td`
+    background-color: #DFFCF0;
+    border-radius: 3px;
+    padding: 0 4px 0 4px;
+
+    >span {
+        color: #216E4E;
+        font-weight: 700;
+        font-size: 12px;
+    }
 `;
 
 export const MoreAction = styled.div`
