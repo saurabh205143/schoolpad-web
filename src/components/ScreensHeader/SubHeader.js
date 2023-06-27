@@ -48,20 +48,37 @@ function useOnClickOutside(ref, buttonRef, handler) {
 const options = [
     {
         value: 1,
-        label: "Leanne Graham"
+        label: "Class Wise"
     },
     {
         value: 2,
-        label: "Ervin Howell"
+        label: "Admission No"
     }
 ];
 
-const SubHeader = ({ onClick, type, heading }) => {
+const options1 = [
+    {
+        value: 1,
+        label: "Class "
+    },
+    {
+        value: 2,
+        label: "Admission No"
+    }
+];
+
+const SubHeader = ({ onClick, type, heading ,getRecords}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
+    const [showDependentDrop, setShowDependentDrop] = useState();
+
     const ref = useRef();
     const buttonRef = useRef();
+    
+    const onChange = (e) =>{
+        console.log(e.target);
+    }
 
     useOnClickOutside(ref, buttonRef, () => setShowAssociateDrop(false));
 
@@ -128,11 +145,36 @@ const SubHeader = ({ onClick, type, heading }) => {
                             type='select'
                             placeholder={'Mapping Type'}
                             options={options}
+                            onChange={(e)=>{
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
                         />
                     </RecordBox>
+                    {showDependentDrop == "Class Wise" &&
+                        <RecordBox>
+                            <Input
+                                type='select'
+                                placeholder={'Mapping Type'}
+                                options={options1}
+                                onChange={()=>{
+
+                                }}
+                            />
+                        </RecordBox>
+                    }
+                    {showDependentDrop == "Admission No" &&
+                        <RecordBox>
+                            <Input
+                                type='text'
+                                placeholder={'Admission no'} 
+                            />
+                        </RecordBox>
+                    }
                     <Button
                         className='primary'
                         buttonText="Get Records"
+                        onClick={getRecords}
                     />
                 </GetRecordsContainer>
             </VerticalContainer>

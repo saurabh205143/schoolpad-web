@@ -23,16 +23,21 @@ const TableNew = ({ onClick }) => {
     return data.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
 
+  // get table column
+  
+  const column = Object.keys(data[0]);
+  const ThData = () => {
+      return column.map((data) => {
+          return <TableHeading key={data}>{data}</TableHeading>
+      })
+  }
+
   return (
     <>
       <TableContainer>
         <TableHead>
           <TableRow>
-            <TableHeading>S No.</TableHeading>
-            <TableHeading>Route Name</TableHeading>
-            <TableHeading>Stops</TableHeading>
-            <TableHeading>Vehicle Number</TableHeading>
-            <TableHeading>Vehicle Capacity</TableHeading>
+            {ThData()}
             <TableHeading>Set Time</TableHeading>
             <TableHeading>Actions</TableHeading>
           </TableRow>

@@ -13,4 +13,5 @@ export const Screen = styled.div`
     position:relative;
     float:right;
     overflow:auto;
+    height:100vh;
 `

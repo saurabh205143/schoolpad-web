@@ -126,6 +126,7 @@ const Input = (
                         options={options}
                         placeholder={placeholder}
                         className='select-drop'
+                        onChange={(e)=>onChange(e)}
                     />
                 </SelectContainer>
             </Container>
