@@ -35,15 +35,25 @@ export const HeaderLeftContainer = styled.div`
     justify-content:flex-start;
 `;
 
-export const IconContainer = styled.img`
+export const ProfileContainer = styled(Link)`
     >img{
         width:20px;
     }
 `;
 
+export const IconContainer = styled.img`
+        width:20px;
+        &.user-icon {
+            width: 26px;
+        }
+`;
+
 export const SettingsContainer = styled(Link)`
     >img{
         width:20px;
+    }
+    &.setting-container{
+        padding: 0 4px 0 6px;
     }
 `;
 
@@ -197,7 +207,10 @@ const HeaderIItems = () => {
                     icon={ChatIcon} />
 
                     {/* Setting Container */}
-                    <SettingsContainer ref={buttonRef2} onClick={() => setShowSettingDrop(!showSettingDrop)}>
+                    <SettingsContainer
+                    className='setting-container'
+                    ref={buttonRef2} 
+                    onClick={() => setShowSettingDrop(!showSettingDrop)}>
                         <IconContainer 
                         src={SettingIcon} 
                         alt="Icon" />
@@ -210,7 +223,6 @@ const HeaderIItems = () => {
                             <DropContianer ref={ref2}>
                                 <CustomDrop type='setting' />
                             </DropContianer>
-
                         )}
                     </SettingsContainer>
 
@@ -220,7 +232,9 @@ const HeaderIItems = () => {
                     onClick={() => setShowDrop(!showDrop)}>
                         <IconContainer 
                         src={UserIcon} 
-                        alt="Icon" />
+                        alt="Icon" 
+                        className='user-icon'
+                        />
                         <IconContainer 
                         src={DropIcon}
                         alt="Icon"
