@@ -74,10 +74,14 @@ export const RecordBox = styled.div`
         > div{
             > .select-drop{
                 width:226px;
-                height:36px;
-                min-height:36px;
+                height:32px;
+                min-height:32px;
             }
         }
+    }
+    >.simple-input{
+        width:226px;
+        height:32px;
     }
  }
 `;

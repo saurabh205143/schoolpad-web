@@ -1,0 +1,9 @@
+[
+    {
+      "SNo":1,
+      "RouteName": "Route 1",
+      "Stops": "1 Stops",
+      "VehicleNumber": "PB 00 AA 8767",
+      "VehicleCapacity": "20"
+    }
+]
