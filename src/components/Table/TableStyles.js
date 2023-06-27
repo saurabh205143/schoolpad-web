@@ -59,6 +59,20 @@ export const Tabledata = styled.td`
     font-size: ${({ theme }) => theme.smallFont};
     padding:7px 12px !important;
     border-bottom: 1px solid rgba(9, 30, 66, 0.1412);
+    >div{
+        margin-bottom:0px;
+        >div{
+            >div{
+                >.select-drop{
+                    height:32px;
+                    min-height:32px;
+                }
+            }
+            &.simple-input{
+                height:32px;
+            }
+        }
+    }
 `;
 
 export const ActionsConatiner = styled.ul`
