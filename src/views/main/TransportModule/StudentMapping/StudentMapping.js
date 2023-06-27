@@ -8,6 +8,7 @@ import MappingTable from './components/MappingTable';
 import { styled } from 'styled-components';
 import { FooterButtonContainer } from '../../../../components/Modal/ModalStyles';
 import Button from '../../../../components/Buttons/Button';
+import ItemsNotFound from '../../../../components/NotFoundItems/ItemsNotFound';
 
 export const FixedBottomContainer = styled.div`
   width:100%;
@@ -42,7 +43,7 @@ const StudentMapping = () => {
       />
 
       {/* Show Mapping records */}
-      {showRecords &&
+      {showRecords   ? (
         <div>
           <ExportHeader
             smallHeading='Students Mapping'
@@ -69,6 +70,11 @@ const StudentMapping = () => {
               </FixedInnerContainer>
           </FixedBottomContainer>
         </div>
+      )
+      :
+      (
+        <ItemsNotFound />
+      )
       }
     </Layout>
   )

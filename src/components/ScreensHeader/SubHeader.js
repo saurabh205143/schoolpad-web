@@ -102,7 +102,6 @@ const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders,
                             className='primary'
                             buttonText={buttonAdd}
                             onClick={onClick}
-                            theme={theme}
                         />
                     </ButtonContainer>
                     {buttonOrders &&
