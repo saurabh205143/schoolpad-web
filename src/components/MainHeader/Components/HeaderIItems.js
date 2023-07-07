@@ -212,16 +212,15 @@ const HeaderIItems = () => {
                     ref={buttonRef2} 
                     onClick={() => setShowSettingDrop(!showSettingDrop)}>
                         <IconContainer 
+                        tooltiptext='Settings'
                         src={SettingIcon} 
                         alt="Icon" />
-                        <IconContainer 
-                        src={DropIcon}
-                        alt="Icon"
-                        />
                         {/* Setting Drop Down */}
                         {showSettingDrop && (
-                            <DropContianer ref={ref2}>
-                                <CustomDrop type='setting' />
+                            <DropContianer 
+                            ref={ref2}>
+                                <CustomDrop 
+                                type='setting' />
                             </DropContianer>
                         )}
                     </SettingsContainer>

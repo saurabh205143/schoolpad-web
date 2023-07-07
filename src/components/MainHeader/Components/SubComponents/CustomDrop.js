@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
+
 
 // Assets
 import LogoutIcon from '../../../../images/logout.svg';
 import InfoIcon from '../../../../images/inbox-icon.svg';
+import AddRoutes from '../../../../views/main/TransportModule/TransportRoute/components/AddRoutes';
+import Button from '../../../Buttons/Button';
 
 export const DropContainer = styled.div`
   
@@ -53,7 +56,8 @@ export const ItemIcon = styled.img`
 margin-right:10px;
 `;
 
-const CustomDrop = ({ type }) => {
+const CustomDrop = ({ type, formFiledClick }) => {
+
   if (type === 'setting') {
     return (
       <DropContainer>
@@ -80,7 +84,13 @@ const CustomDrop = ({ type }) => {
         <DropBox>
           <DropList>
             <DropItems>
-              <ItemText>Add Form Field</ItemText>
+              <ItemText>
+                <Button
+                    buttonText='Add Form Field'
+                    className='link-button'
+                    onClick={formFiledClick}
+              />
+              </ItemText>
             </DropItems>
           </DropList>
           <DropList>
@@ -122,6 +132,8 @@ const CustomDrop = ({ type }) => {
       </DropContainer>
     );
   }
+  
 }
+
 
 export default CustomDrop;

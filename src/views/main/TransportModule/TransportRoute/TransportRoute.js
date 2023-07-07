@@ -10,12 +10,14 @@ import ExcelImage from '../../../../images/excel-icon.svg';
 import TableNew from '../../../../components/Pagination/TableNew';
 import PickupDropTime from './components/PickupDropTime';
 import RouteOrders from './components/RouteOrders';
+import AddFormField from './components/AddFormField';
 
 const TransportRoute = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [showpickedTime, setShowPickedTime] = useState(false);
   const [showRouteOrderModal, setShowRouteOrderModal] = useState(false);
+  const [showFormFieldModal, setShowFormFieldModal ] = useState(false);
 
   const hidePickedTimeModal = () => {
     setShowPickedTime(false);
@@ -29,6 +31,10 @@ const TransportRoute = () => {
     setShowRouteOrderModal(false);
   }
 
+  const hideFormFieldModal = () => {
+    setShowFormFieldModal(false);
+  }
+
   return (
     <Layout>
       {/* <ItemsNotFound/> */}
@@ -40,6 +46,7 @@ const TransportRoute = () => {
         buttonOption='Associated Options'
         buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
         onClick={() =>  setShowModal(!showModal)}
+        formField={() => setShowFormFieldModal(!showFormFieldModal)}
       />
       <ExportHeader
         smallHeading='All Routes'
@@ -61,6 +68,12 @@ const TransportRoute = () => {
       <RouteOrders
         show={showRouteOrderModal}
         handleClose={hideRouteOrderModal}
+      />
+
+      {/* Associated Options - Add Form Field */}
+      <AddFormField
+        show={showFormFieldModal}
+        handleClose={hideFormFieldModal}
       />
 
       {/* Picked/Drop Time Modal */}

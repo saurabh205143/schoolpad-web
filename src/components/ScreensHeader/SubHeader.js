@@ -46,7 +46,6 @@ function useOnClickOutside(ref, buttonRef, handler) {
     );
 }
 
-
 const options = [
     {
         value: 1,
@@ -68,7 +67,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders, buttonOption, buttonOrderDragList}) => {
+const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -127,7 +126,7 @@ const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders,
                             {/* Associate Drop Down */}
                             {showAssociateDrop &&
                                 <DropContianer ref={ref}>
-                                    <CustomDrop type='associatedoptions' />
+                                    <CustomDrop type='associatedoptions' formFiledClick={formField} />
                                 </DropContianer>
                             }
                         </ButtonContainer>
@@ -187,7 +186,6 @@ const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders,
             </VerticalContainer>
         )
     }
-
 
 }
 

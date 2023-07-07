@@ -1,39 +1,35 @@
 import React from 'react';
-import { FooterButtonContainer, ModalBody, ModalContainer, ModalContent, ModalFooter, ModalHeader } from './ModalStyles';
+import { DeleteInnerContainer, DeleteIcon, DeleteModalBody, DeleteModalContainer, DeleteModalContent, DeleteModalFooter, DeleteModalHeader, FooterButtonContainer, ModalContainer, } from './ModalStyles';
 import Headings from '../Headings/Headings';
 import Button from '../Buttons/Button';
 
 // Assets
 import CloseIcon from '../../images/close-icon.svg';
-import { useLocation } from 'react-router-dom';
-import { SubHeadingText } from '../Headings/headingStyles';
+import WarningIcon from '../../images/warning.svg';
 
 
-const Modal = props => {
+const DeleteModal = props => {
     const { show, handleClose, modalHeading, modalSubHeading, submitText, saveAction, children, actionText , cancelText} = props;
 
-    const on = useLocation();
-    const pathName = on.pathname;
-    let params = pathName.split('/');
-    console.log(params);
 
     return (
         <ModalContainer block={show ? 'block' : 'none'}>
-            <ModalContent>
-                <ModalHeader>
-                    <Headings 
-                    xtrasubHeading={modalHeading} />
-                    <SubHeadingText subHeading={modalSubHeading}/>
-                    <Button
-                        onlyIcon={CloseIcon}
-                        onClick={handleClose}
-                        className={'only-icon-button'}
-                    />
-                </ModalHeader>
-                <ModalBody>
-                    {children}
-                </ModalBody>
-                <ModalFooter>
+            <DeleteModalContent>
+                <DeleteModalHeader>
+                    <DeleteInnerContainer>
+                    <DeleteIcon>
+                    <img src={WarningIcon} alt="Icon"/>
+                    </DeleteIcon>
+                        
+                <Headings xtrasubHeading={modalHeading}/>
+                </DeleteInnerContainer>
+                </DeleteModalHeader>
+                <DeleteModalBody>
+                <DeleteModalContainer>
+                    <span>You're about to delete route. Doing this means you will no longer be able to restore this route. Are you sure you want to delete it?</span>
+                </DeleteModalContainer>
+                </DeleteModalBody>
+                <DeleteModalFooter>
                     <FooterButtonContainer>
                     {cancelText &&
                         <Button
@@ -62,12 +58,12 @@ const Modal = props => {
 
                         }
                     </FooterButtonContainer>
-                </ModalFooter>
-            </ModalContent>
+                    </DeleteModalFooter>
+                    </DeleteModalContent>
         </ModalContainer>
     );
 };
 
 
 
-export default Modal
+export default DeleteModal

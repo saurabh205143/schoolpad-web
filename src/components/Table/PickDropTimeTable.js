@@ -4,7 +4,7 @@ import CustomSelect from '../Inputs/CustomSelect';
 
 const options = ["9:00 AM", "9:30 AM", "10:00 AM"];
 
-const PickDropTimeTable = (props) => {
+const PickDropTimeTable = () => {
 
     return (
         <>

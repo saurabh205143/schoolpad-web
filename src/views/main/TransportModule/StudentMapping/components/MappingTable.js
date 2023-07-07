@@ -1,5 +1,5 @@
 import React from 'react'
-import { TableBody, TableContainer, TableHead, TableHeading,Tabledata, TableRow } from '../../../../../components/Table/TableStyles';
+import { TableBody, TableContainer, TableHead, TableHeading,Tabledata, TableRow, Container } from '../../../../../components/Table/TableStyles';
 import Input from '../../../../../components/Inputs/Input';
 
 const options = [
@@ -14,7 +14,8 @@ const options = [
 ];
 
 const MappingTable = (props) => {
-  return (
+    return (
+    <Container>
     <TableContainer>
         <TableHead>
             <TableRow>
@@ -29,7 +30,7 @@ const MappingTable = (props) => {
             </TableRow>
         </TableHead>
         <TableBody>
-             <TableRow>
+            <TableRow>
                 <Tabledata>1</Tabledata>
                 <Tabledata>0000007800</Tabledata>
                 <Tabledata>Jane Rotanson</Tabledata>
@@ -541,6 +542,7 @@ const MappingTable = (props) => {
             </TableRow> 
         </TableBody>
     </TableContainer>
+    </Container>
   );
 }
 

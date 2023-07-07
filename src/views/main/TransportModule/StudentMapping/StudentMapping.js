@@ -36,20 +36,20 @@ const StudentMapping = () => {
 
   return (
     <Layout>
-      {/* <DefaultMappingScreen /> */}
+
       <SubHeader
         heading='Student Mapping'
         getRecords={() => setShowRecords(!showRecords)}
       />
 
-      {/* Show Mapping records */}
-      {showRecords   ? (
-        <div>
-          <ExportHeader
+      <ExportHeader
             smallHeading='Students Mapping'
             smallHeding2='(202 Records)'
-          />
+      />
 
+      {/* Show Mapping records */}
+      {showRecords ?
+        <div>
           <MappingTable />
 
           {/* Save Mapping Container */}
@@ -70,12 +70,9 @@ const StudentMapping = () => {
               </FixedInnerContainer>
           </FixedBottomContainer>
         </div>
-      )
-      :
-      (
-        <ItemsNotFound />
-      )
-      }
+        :
+        <DefaultMappingScreen /> 
+}
     </Layout>
   )
 }

@@ -24,9 +24,8 @@ export const FieldRightContainer = styled.div`
     padding-left:8px;
 `;
 export const FieldLeftContainer1 = styled.div`
-    width:63%;
+    width:100%;
     float:left;
-    padding-right:8px;
 `;
 
 export const FieldRightContainer1 = styled.div`
@@ -71,3 +70,38 @@ export const RemoveContianer = styled.div`
         }
     }
 `;
+
+export const AddFormFieldTab = styled.div`
+    margin: 10px 0 10px 0;
+`
+
+export const AddFormFieldTabText = styled.div`
+    font-size: 14px;
+    font-weight: 600;
+    color: #44546F;
+    cursor: pointer;
+`
+
+export const AddFormFieldInnerTab = styled.div`
+    .form-field-tab {
+        padding-left: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        border-bottom: none;
+        border-radius: 0px;
+        > li {
+            > button{
+                border:none;
+                color: #44546F;
+                border-bottom: 2px solid #091E4224;
+            }
+            >.nav-link.active{
+                color: #0C66E4;
+                border-bottom: 2px solid  #0C66E4;
+            }
+        }
+    }
+`
+

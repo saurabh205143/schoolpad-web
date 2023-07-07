@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import RemoveIcon from '../../../../../images/remove-icon.svg';
+import { AddFormField, AddFormFieldHeading } from '../../../../../components/Modal/ModalStyles';
 
 const options = [
     {

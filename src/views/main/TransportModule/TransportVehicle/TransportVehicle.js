@@ -9,6 +9,7 @@ import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
 import AddVehicle from './components/AddVehicle';
 import TableVehicle from '../../../../components/Table copy/TableVehicle';
+import Toaster from '../../../../components/Toaster/Toaster';
 
 const TransportVehicle = () => {
   const [showModal, setShowModal] = useState(false);
@@ -28,9 +29,9 @@ const TransportVehicle = () => {
         Excelicon={ExcelImage}
       />
 
-      <TableVehicle
-      heading='Status'
-      />
+        <TableVehicle
+        heading='Status'
+        />
 
          {/* Add Vehicle Modal */}
           <AddVehicle

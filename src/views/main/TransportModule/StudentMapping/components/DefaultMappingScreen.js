@@ -10,11 +10,7 @@ import Headings from '../../../../../components/Headings/Headings';
 const DefaultMappingScreen = () => {
   return (
     <>
-       <SubHeader
-        heading='Student Mapping'
-       />
-       <ExportHeader smallHeading={'All Records'} />
-       <DefaultContainer>
+      <DefaultContainer>
             <DefaultIconContainer>
                 <img src={DefaultIcon} alt='Icon' />
                 <TitleContainer>
@@ -28,7 +24,7 @@ const DefaultMappingScreen = () => {
                         bus fees accordingly." 
                     />
                 </DefaultDescriptionContainer>
-       </DefaultContainer>
+      </DefaultContainer>
     </>
   )
 }

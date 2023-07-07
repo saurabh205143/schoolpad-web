@@ -1,10 +1,16 @@
 import { styled } from "styled-components";
 
+export const Container = styled.div`
+    max-height:450px;
+    height:100%;
+    overflow:auto;
+`;
+
 export const TableContainer = styled.table`
-   width:100%;
-   &.picked-table{
+    width:100%;
+    &.picked-table{
         border:1px solid #EBECF0;
-   }
+    }
 `;
 
 export const TableHead = styled.thead`
@@ -14,18 +20,18 @@ export const TableHead = styled.thead`
 `;
 
 export const TableRow = styled.tr`
-    & >th:nth-child(2) {
-        width:213px;       
-    }
-    & >th:nth-child(3) {
-        width:192px;       
-    }
-    & >th:nth-child(4) {
-        width:234px;       
-    }
-    & >th:nth-child(5) {
-        width:178px; 
-    }
+    // & >th:nth-child(2) {
+    //     width:213px;       
+    // }
+    // & >th:nth-child(3) {
+    //     width:192px;       
+    // }
+    // & >th:nth-child(4) {
+    //     width:234px;       
+    // }
+    // & >th:nth-child(5) {
+    //     width:178px; 
+    // }
     @media only screen and (max-width: 1340px) {
         & >th:nth-child(2) {
             width:auto;       

@@ -117,7 +117,7 @@ const Input = (
                         {label}
                     </Title>
                 }
-                 <SelectContainer>
+                <SelectContainer>
                     <Select 
                         options={options}
                         placeholder={placeholder}

@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { usePagination } from './usePagination';
 import { DOTS } from './usePagination';
-import { PagesList, PaginationContainer, PaginationUnderList } from './paginationStyles';
+import { FixedBottomPagination, FixedInnerPagination, PagesList, PaginationContainer, PaginationUnderList } from './paginationStyles';
 
 // Assets
 import NextActive from '../../images/next-active.svg';
@@ -42,6 +42,7 @@ const Pagination = props => {
 
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
+
     <PaginationContainer>
       <PaginationUnderList
         className={classnames('pagination-container', { [className]: className })}

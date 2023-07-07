@@ -54,3 +54,57 @@ export const FooterButtonContainer = styled.div`
     margin-left:8px;
 `;
 
+export const DeleteModalContent = styled.div`
+    position:fixed;
+    background: #ffffff;
+    width:auto;
+    width:440px;
+    top:50%;
+    left:50%;
+    height: auto;
+    transform:translate(-50%, -50%);
+    border-radius:3px;
+    padding: 24px;
+`;
+
+export const DeleteModalHeader = styled.div`
+    width:100%;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-radius: 3px 3px 0px 0px;
+`;
+
+export const DeleteInnerContainer = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+`
+export const DeleteIcon = styled. div`
+    padding-right: 10px;
+`
+export const DeleteModalBody = styled.div`
+    max-height:80vh;
+    overflow:auto;
+`;
+
+export const DeleteModalContainer = styled.div`
+    display: flex;
+    >span {
+        font-size: 14px;
+    }
+`;
+
+export const DeleteModalFooter = styled.div`
+    border-radius: 0px 0px 3px 3px;
+    width:100%;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    padding-top: 16px;
+`;
+
+
+
