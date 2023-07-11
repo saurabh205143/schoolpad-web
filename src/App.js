@@ -15,7 +15,8 @@ import TransportZoneMaster from './views/main/TransportModule/TransportZoneMaste
 import TransportReport from './views/main/TransportModule/TransportReport/TransportReport';
 import TransportStopMaster from './views/main/TransportModule/TransportStopMaster/TransportStopMaster';
 import TransportAttendance from './views/main/TransportModule/TransportAttendance/TransportAttendance';
-import Toaster from './components/Toaster/Toaster';
+import Inventory from './views/main/InventoryModule/Inventory';
+import ManageStore from './views/main/InventoryModule/ManageStore/components/ManageStore';
 
 export const ThemeContext = React.createContext(null);
 
@@ -48,6 +49,8 @@ function App() {
             <Route path='/setup' element={<Setup />} />
             <Route path='/hrpayrol' element={<h1>Hr & Payroll</h1>} />
             <Route path='/studentdata' element={<h1>Student Data</h1>} />
+            <Route path='/' element={<Inventory/>}/>
+            <Route path='/inventory/manageStore' element={<ManageStore/>}/>
           </Routes>
         </>
       </ThemeProvider>

@@ -1,0 +1,99 @@
+[
+  {
+    "SNo":1,
+    "StoreName": "Awards/Gifts Room (Primary)",
+    "StoreDescription": "Don't go there!",
+    "StoreCode": "K00256",
+    "Manager": "Kailash Chaurasia"
+  },
+  {
+    "SNo":2,
+    "StoreName": "Store Room 1",
+    "StoreDescription": "How big was your contribution?",
+    "StoreCode": "P00065",
+    "Manager": "Paartho Ghosh"
+  },
+  {
+    "SNo":3,
+    "StoreName": "Store Room 2",
+    "StoreDescription": "Tom is in a big hurry",
+    "StoreCode": "K00256",
+    "Manager": "Mamta Lodhi"
+  },
+  {
+    "SNo":4,
+    "StoreName": "Electronics Room",
+    "StoreDescription": "Don't go there!",
+    "StoreCode": "K00256",
+    "Manager": "Kailash Chaurasia"
+  },
+  {
+    "SNo":5,
+    "StoreName": "Gifts Room",
+    "StoreDescription": "Don't go there!",
+    "StoreCode": "P00065",
+    "Manager": "Vikas Tiwari"
+  },
+  {
+    "SNo":6,
+    "StoreName": "Store Room 5",
+    "StoreDescription": "I just walked on the furriest lawn",
+    "StoreCode": "K00256",
+    "Manager": "Kailash Chaurasia"
+  },
+  {
+    "SNo":7,
+    "StoreName": "Sports Equipments Room",
+    "StoreDescription": "Don't go there!",
+    "StoreCode": "K00256",
+    "Manager": "Mamta Lodhi"
+  },
+  {
+    "SNo":8,
+    "StoreName": "Computer Store Room",
+    "StoreDescription": "She usually has to give in to her big sister",
+    "StoreCode": "K00256",
+    "Manager": "Rahul Choudhary"
+  },
+  {
+    "SNo":9,
+    "StoreName": "Kitchen Store Room",
+    "StoreDescription": "Don't go there!",
+    "StoreCode": "K00256",
+    "Manager": "Vikas Tiwari"
+  },
+  {
+    "SNo":10,
+    "StoreName": "Store Room 7",
+    "StoreDescription": "I'm hoping for a really big discount",
+    "StoreCode": "K00256",
+    "Manager": "Kailash Chaurasia"
+  },
+  {
+    "SNo":11,
+    "StoreName": "Store Room 9",
+    "StoreDescription": "Don't go there!",
+    "StoreCode": "K00256",
+    "Manager": "Hillery Moses"
+  },
+  {
+    "SNo":12,
+    "StoreName": "Sports Equipments Room",
+    "StoreDescription": "Don't go there!",
+    "StoreCode": "K00256",
+    "Manager": "Rahul Choudhary"
+  },
+  {
+    "SNo":13,
+    "StoreName": "Awards/Gifts Room ",
+    "StoreDescription": "That class was so hard!",
+    "StoreCode": "P00065",
+    "Manager": "Kailash Chaurasia"
+  },  {
+    "SNo":14,
+    "StoreName": "Awards/Gifts Room ",
+    "StoreDescription": "Don't go there!",
+    "StoreCode": "P00065",
+    "Manager": "Hillery Moses"
+  }
+]
