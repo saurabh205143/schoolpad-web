@@ -8,24 +8,32 @@ import PrintImage from '../../../../../images/print-icon.svg';
 import ExcelImage from '../../../../../images/excel-icon.svg';
 import ManageStoreTable from '../../../../../components/InventoryTable/ManageStoreTable';
 import AddStore from './AddStore';
+import MoveItem from './MoveItem';
+
 
 const ManageStore = () => {
 
   const [showModal, setShowModal] = useState(false);
+  const [showMoveItemModal, setShowMoveItemModal] = useState(false);
 
   const hideModal = () => {
     setShowModal(false);
   }
 
+  const hideMoveItemModal = () => {
+    setShowMoveItemModal(false);
+  }
+
   return(
     <>
-    <Layout>
+    <Layout type='inventory'>
       <SubHeader
           heading='Manage Stores'
           type='horizontal' 
           buttonAdd='Add New Store'
-          buttonOption='Move Items'
+          buttonOrders='Move Items'  
           onClick={() =>  setShowModal(!showModal)}
+          buttonOrderDragList={() => setShowMoveItemModal(!showMoveItemModal)}
       />
       <ExportHeader
           smallHeading='All Stores'
@@ -43,7 +51,10 @@ const ManageStore = () => {
       />
 
       {/* Move Items Modal */}
-      
+      <MoveItem
+          show={showMoveItemModal}
+          handleClose={hideMoveItemModal}
+      />
     </Layout>
     </>
 

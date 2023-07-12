@@ -9,7 +9,6 @@ import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
 import AddVehicle from './components/AddVehicle';
 import TableVehicle from '../../../../components/Table copy/TableVehicle';
-import Toaster from '../../../../components/Toaster/Toaster';
 
 const TransportVehicle = () => {
   const [showModal, setShowModal] = useState(false);
@@ -19,7 +18,7 @@ const TransportVehicle = () => {
   }
 
   return (
-    <Layout>
+    <Layout type='transport'>
       {/* <ItemsNotFound/> */}
       <SubHeader heading='Transport Vehicle Master' type='horizontal' buttonAdd='Add New Vehicle' buttonOption='Associated Options' onClick={() => setShowModal(!showModal)} />
       <ExportHeader

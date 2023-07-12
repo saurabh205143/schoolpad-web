@@ -33,7 +33,7 @@ const TransportStopMaster = () => {
 
 
   return (
-    <Layout>
+    <Layout type='transport'>
       {/* <ItemsNotFound/> */}
       <SubHeader 
       heading='Transport Stop Master' 

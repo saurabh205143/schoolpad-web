@@ -61,6 +61,66 @@ export const NavBarItem = styled.li`
     }
 `;
 
+export const NavBars = styled.ul`
+    margin:20px 8px 0px ;
+    padding:0px;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    flex:1;
+    max-height:calc(100vh - 200px);
+    overflow:auto;
+    `;
+
+export const NavBarItems = styled.li`
+    padding: 0px 14px 0px;
+    &.active {
+        >a{
+            >span{
+                color:${({ theme }) => theme.blueColor};
+            }
+            >.inactive-icons{
+                display:none;
+            }
+            >.active-icons{
+                display:flex;
+            }           
+        }
+        >.sidebar-drop{
+            li.active{
+                a{
+                    background: #E9F2FF;
+                    border-radius: 3px;
+                    height:40px;
+                    display:flex;
+                    align-items:center;
+                    justify-content:flex-start;
+                    > span{
+                        color:${({ theme }) => theme.blueColor};
+                    }
+                }
+            }
+        }
+    }
+    >a{
+        text-decoration:none;
+        height:40px;
+        display:flex;
+        align-items:center;
+        width:100%;
+        >.active-icons{
+            display:none;
+        }
+        >.inactive-icons{
+            display:flex;
+        }
+    }
+    &:last-child{
+        border-bottom:none;
+    }
+`;
+
 export const LinkTitle = styled.span`
     font-style: normal;
     font-weight: 600;

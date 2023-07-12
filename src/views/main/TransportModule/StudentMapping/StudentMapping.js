@@ -35,7 +35,7 @@ const StudentMapping = () => {
   const [showRecords, setShowRecords] = useState(false);
 
   return (
-    <Layout>
+    <Layout type='transport'>
 
       <SubHeader
         heading='Student Mapping'

@@ -4,10 +4,10 @@ import Navigation from '../Navigation/Navigation';
 import SchoolLogo from '../../images/school-logo.svg';
 import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
+const Sidebar = ({type}) => {
   return (
     <SidebarContainer>
-      <Navigation />
+      <Navigation type={type} />
       <LogoContainer>
         <Link>
           <img src={SchoolLogo} alt="Logo" />

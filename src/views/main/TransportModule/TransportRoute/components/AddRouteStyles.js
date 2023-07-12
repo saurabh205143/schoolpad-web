@@ -5,6 +5,15 @@ export const FieldContainer = styled.div`
     float:left;
 `;
 
+export const FieldContainerBottomLine = styled.div`
+    border-bottom: 1px solid #C1C7D0;
+    border-radius: 0px 0px 3px 3px;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+`;
+
 export const FieldDivider = styled.div`
     width:100%;
     display:flex;

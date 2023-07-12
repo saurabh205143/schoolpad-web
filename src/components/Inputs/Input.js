@@ -100,6 +100,7 @@ const Input = (
     {
         label, 
         leftIcon,
+        rightIcon,
         name,
         type,
         value,
@@ -136,7 +137,7 @@ const Input = (
                     </Title>
                 }
             <InputContainer className={disabled ? 'disabled-input':'simple-input'}>
-                {leftIcon &&
+                {leftIcon && 
                     <img src={leftIcon} alt="icon" className='leftIcon' />
                 }
                 <TextInput
@@ -148,6 +149,9 @@ const Input = (
                     placeholder={placeholder}
                     disabled={disabled}
                 />
+                {rightIcon && 
+                    <img src={rightIcon} alt="icon" className='rightIcon' />
+                }
             </InputContainer>
             </Container>
         );

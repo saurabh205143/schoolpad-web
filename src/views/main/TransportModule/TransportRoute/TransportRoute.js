@@ -36,7 +36,7 @@ const TransportRoute = () => {
   }
 
   return (
-    <Layout>
+    <Layout type='transport'>
       {/* <ItemsNotFound/> */}
       <SubHeader
         heading='Transport Route Master'

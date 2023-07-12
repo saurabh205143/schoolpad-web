@@ -2,16 +2,15 @@ import React, { useState, useMemo } from 'react';
 import data from './data.json';
 import { ActionsConatiner, ActionsList, Container, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
 import LinkButton from '../Buttons/LinkButton';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 
 // Assets
 import EditIcon from '../../images/edit-icon.svg';
 import DeleteIcon from '../../images/delete-icon.svg';
-import Button from '../Buttons/Button';
-import AddRoutes from '../../views/main/TransportModule/TransportRoute/components/AddRoutes';
 import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../Pagination/Pagination';
+import AddStore from '../../views/main/InventoryModule/ManageStore/components/AddStore';
+
+
 
 let PageSize = 14;
 
@@ -93,7 +92,7 @@ const ManageStoreTable = ({ onClick }) => {
       />
 
       {/* Edit Route Modal */}
-      <AddRoutes
+      <AddStore
         show={showModal}
         handleClose={hideModal}
       />
