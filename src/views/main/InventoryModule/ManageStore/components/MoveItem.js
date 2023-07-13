@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
-import { AddMoreField, FieldContainer, FieldContainerBottomLine, FieldDivider, FieldLeftContainer, FieldLeftContainer1, FieldRightContainer, FieldRightContainer1, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import { AddMoreField, FieldContainer, FieldContainerBottomLine, FieldDivider, FieldLeftContainer, FieldLeftContainer1, FieldRightContainer, FieldRightContainer1, FieldRightContainerItem, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
@@ -101,7 +101,7 @@ const MoveItem = props => {
                                 onChange={e => handleChange(index, e)}
                             />
                         </FieldLeftContainer1>
-                        <FieldRightContainer1>
+                        <FieldRightContainerItem>
                             <Input
                                 type="text"
                                 placeholder={'From Category'}
@@ -110,7 +110,7 @@ const MoveItem = props => {
                                 value={element.set_order || ""}
                                 onChange={e => handleChange(index, e)}
                             />
-                        </FieldRightContainer1>
+                        </FieldRightContainerItem>
                     </FieldDivider>
                     
                 ))}
@@ -171,7 +171,7 @@ const MoveItem = props => {
                                 onChange={e => handleChange(index, e)}
                             />
                         </FieldLeftContainer1>
-                        <FieldRightContainer1>
+                        <FieldRightContainerItem>
                             <Input
                                 type="text"
                                 placeholder={'Enter category'}
@@ -180,7 +180,7 @@ const MoveItem = props => {
                                 value={element.set_order || ""}
                                 onChange={e => handleChange(index, e)}
                             />
-                        </FieldRightContainer1>
+                        </FieldRightContainerItem>
                     </FieldDivider>
                     
                 ))}

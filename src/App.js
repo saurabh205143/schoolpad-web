@@ -17,6 +17,8 @@ import TransportStopMaster from './views/main/TransportModule/TransportStopMaste
 import TransportAttendance from './views/main/TransportModule/TransportAttendance/TransportAttendance';
 import Inventory from './views/main/InventoryModule/Inventory';
 import ManageStore from './views/main/InventoryModule/ManageStore/components/ManageStore';
+import Toasters from './components/Toaster/Toasters';
+import ManageCategories from './views/main/InventoryModule/ManageCategories/components/ManageCategories';
 
 export const ThemeContext = React.createContext(null);
 
@@ -51,6 +53,8 @@ function App() {
             <Route path='/studentdata' element={<h1>Student Data</h1>} />
             <Route path='/' element={<Inventory/>}/>
             <Route path='/inventory/manageStore' element={<ManageStore/>}/>
+            <Route path='/inventory/manageCategories' element={<ManageCategories/>}/>
+            <Route path='/toasters' element={<Toasters/>}/>
           </Routes>
         </>
       </ThemeProvider>

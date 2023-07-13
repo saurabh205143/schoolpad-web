@@ -7,55 +7,40 @@ import ExportHeader from '../../../../../components/ScreensHeader/ExportHeader';
 import PrintImage from '../../../../../images/print-icon.svg';
 import ExcelImage from '../../../../../images/excel-icon.svg';
 import ManageStoreTable from '../../../../../components/InventoryTable/ManageStoreTable';
-import AddStore from './AddStore';
-import MoveItem from './MoveItem';
+import AddCategories from './AddCategories';
+import ManageCategoriesTable from '../../../../../components/InventoryTable/ManageCategoriesTable/ManageCategoriesTable';
 
 
-const ManageStore = () => {
+const ManageCategories = () => {
 
   const [showModal, setShowModal] = useState(false);
-  const [showMoveItemModal, setShowMoveItemModal] = useState(false);
 
   const hideModal = () => {
     setShowModal(false);
-  }
-
-  const hideMoveItemModal = () => {
-    setShowMoveItemModal(false);
   }
 
   return(
     <>
     <Layout type='inventory'>
       <SubHeader
-          heading='Manage Stores'
+          heading='Manage Categories'
           type='horizontal' 
-          buttonAdd='Add New Store'
-          buttonOrders='Move Items'  
+          buttonAdd='Add New Category' 
           onClick={() =>  setShowModal(!showModal)}
-          buttonOrderDragList={() => setShowMoveItemModal(!showMoveItemModal)}
       />
       <ExportHeader
-          smallHeading='All Stores'
+          smallHeading='All Categories'
           smallHeding2='(202 Records)'
           PrintIcon={PrintImage}
           Excelicon={ExcelImage}
       />
       
-      <ManageStoreTable/>
+      <ManageCategoriesTable/>
 
-      {/* <ToasterItem type= 'error'></ToasterItem> */}
-
-      {/* Add Store Modal */}
-      <AddStore
+      {/* Add Categories Modal */}
+      <AddCategories
           show={showModal}
           handleClose={hideModal}
-      />
-
-      {/* Move Items Modal */}
-      <MoveItem
-          show={showMoveItemModal}
-          handleClose={hideMoveItemModal}
       />
     </Layout>
     </>
@@ -63,4 +48,4 @@ const ManageStore = () => {
   )
 }
 
-export default ManageStore;
+export default ManageCategories;
