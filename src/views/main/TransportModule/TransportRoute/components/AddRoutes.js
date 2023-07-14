@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
-import RemoveIcon from '../../../../../images/remove-icon.svg';
+import RemoveIcon from '../../../../../images/delete-icon.svg';
 import { AddFormField, AddFormFieldHeading } from '../../../../../components/Modal/ModalStyles';
 
 const options = [
@@ -125,7 +125,7 @@ const AddRoutes = props => {
                 <AddMoreField>
                     <Link onClick={() => addFormFields()}>
                         <img src={AddMoreIcon} alt="Icon" />
-                        <span>Add Another</span>
+                        <span>Add Another Stop</span>
                     </Link>
                 </AddMoreField>
                 <FieldDivider>

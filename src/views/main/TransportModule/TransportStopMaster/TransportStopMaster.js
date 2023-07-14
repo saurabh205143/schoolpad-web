@@ -40,6 +40,7 @@ const TransportStopMaster = () => {
       type='horizontal' 
       buttonAdd='Add New Stop'
       buttonOrders='Order Stop(s)'  
+      searchPlaceholder='Search by stop name etc...'
       onClick={() => setShowModal(!showModal)} 
       buttonOrderDragList={() => setShowChangeHistory(!showchangeHistory)}
       />

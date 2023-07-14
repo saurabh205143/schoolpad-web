@@ -7,7 +7,7 @@ import { AddMoreField, FieldContainer, FieldContainerBottomLine, FieldDivider, F
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
-import RemoveIcon from '../../../../../images/remove-icon.svg';
+import RemoveIcon from '../../../../../images/delete-icon.svg';
 import RightIcon from '../../../../../images/date-icon.svg';
 
 const options = [
@@ -155,7 +155,7 @@ const MoveItem = props => {
                 <AddMoreField>
                     <Link onClick={() => addFormFields()}>
                         <img src={AddMoreIcon} alt="Icon" />
-                        <span>Add Another</span>
+                        <span>Add Another Items</span>
                     </Link>
                 </AddMoreField>
                 {formValues.map((element, index) => (

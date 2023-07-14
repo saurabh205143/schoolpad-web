@@ -187,70 +187,45 @@ export const ParagraphText = styled.div`
 `;
 
 const HeaderMegaMenu = props => {
-  return (
+return (
     <MegaMenu>
         <MenuCol>
             <MegaNavigation>
                 <MenuNavbar>
                     <MenuList>
                         <Link>
-                            <span>Setup</span>
+                            <span>Transport</span>
                             <img src={RightIcon} alt="Icon" className='inactive-icon' />
                             <img src={ActiveIcon} alt="Icon" className='active-icon' />
                         </Link>
                         <SubMenu className='sub-drop-down'>
                             <li>
                                 <Link>
-                                    <span>Staff Data Setup</span>
+                                    <span>Transport</span>
                                     <img src={RightIcon} alt="Icon" className='inactive-icon' />
                                     <img src={ActiveIcon} alt="Icon" className='active-icon' />
                                 </Link>
                                 <SubMenuLevelTwo className='sub-drop-level2'>
                                     <li>
                                         <Link>
-                                            <span>Staff Data Reports</span>
+                                            <span>Transport Route</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link>
+                                            <span>Transport Vehicle</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link>
+                                            <span>Transport Stop Master</span>
                                         </Link>
                                     </li>
                                 </SubMenuLevelTwo>
                             </li>
                             <li>
                                 <Link>
-                                    <span>Staff Data Reports</span>
-                                    <img src={RightIcon} alt="Icon" className='inactive-icon' />
-                                    <img src={ActiveIcon} alt="Icon" className='active-icon' />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <span>Setup Staff Attendance</span>
-                                    <img src={RightIcon} alt="Icon" className='inactive-icon' />
-                                    <img src={ActiveIcon} alt="Icon" className='active-icon' />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <span>Record Staff Attendance</span>
-                                    <img src={RightIcon} alt="Icon" className='inactive-icon' />
-                                    <img src={ActiveIcon} alt="Icon" className='active-icon' />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <span>Staff Attendance Reports</span>
-                                    <img src={RightIcon} alt="Icon" className='inactive-icon' />
-                                    <img src={ActiveIcon} alt="Icon" className='active-icon' />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <span>Salary Generation </span>
-                                    <img src={RightIcon} alt="Icon" className='inactive-icon' />
-                                    <img src={ActiveIcon} alt="Icon" className='active-icon' />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <span>Salary Generation Reports </span>
+                                    <span>Student Mapping</span>
                                     <img src={RightIcon} alt="Icon" className='inactive-icon' />
                                     <img src={ActiveIcon} alt="Icon" className='active-icon' />
                                 </Link>
@@ -259,14 +234,61 @@ const HeaderMegaMenu = props => {
                     </MenuList>
                     <MenuList>
                         <Link>
-                            <span>HR & Payroll</span>
+                            <span>Inventory</span>
                             <img src={RightIcon} alt="Icon" className='inactive-icon' />
                             <img src={ActiveIcon} alt="Icon" className='active-icon' />
                         </Link>
+                        <SubMenu className='sub-drop-down'>
+                            <li>
+                                <Link>
+                                    <span>Manage Store</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link>
+                                    <span>Manage Categories</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link>
+                                    <span>Add Item(s)</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link>
+                                    <span>Manage Vendor(s)</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link>
+                                    <span>Add PO</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link>
+                                    <span>Receive Items/GRN</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link>
+                                    <span>Issue Item</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link>
+                                    <span>Item Report</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link>
+                                    <span>Issue Report</span>
+                                </Link>
+                            </li>
+                        </SubMenu>
                     </MenuList>
                     <MenuList>
                         <Link>
-                            <span>Fees</span>
+                            <span>Setup</span>
                             <img src={RightIcon} alt="Icon" className='inactive-icon' />
                             <img src={ActiveIcon} alt="Icon" className='active-icon' />
                         </Link>
@@ -294,14 +316,14 @@ const HeaderMegaMenu = props => {
                     </MenuList>
                     <MenuList>
                         <Link>
-                            <span>Transport</span>
+                            <span>Examination</span>
                             <img src={RightIcon} alt="Icon" className='inactive-icon' />
                             <img src={ActiveIcon} alt="Icon" className='active-icon' />
                         </Link>
                     </MenuList>
                     <MenuList>
                         <Link>
-                            <span>Inventory</span>
+                            <span>Communication</span>
                             <img src={RightIcon} alt="Icon" className='inactive-icon' />
                             <img src={ActiveIcon} alt="Icon" className='active-icon' />
                         </Link>

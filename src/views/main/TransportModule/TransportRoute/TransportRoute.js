@@ -44,6 +44,7 @@ const TransportRoute = () => {
         buttonAdd='Add New Route'
         buttonOrders='Order Routes(s)'
         buttonOption='Associated Options'
+        searchPlaceholder='Search by route name etc...'
         buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
         onClick={() =>  setShowModal(!showModal)}
         formField={() => setShowFormFieldModal(!showFormFieldModal)}

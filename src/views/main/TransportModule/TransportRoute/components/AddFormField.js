@@ -9,7 +9,7 @@ import { Tab, Tabs } from 'react-bootstrap'
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
-import RemoveIcon from '../../../../../images/remove-icon.svg';
+import RemoveIcon from '../../../../../images/delete-icon.svg';
 import PickDropTimeTable from '../../../../../components/Table/PickDropTimeTable';
 import PreviousCustomField from '../../../../../components/Table/PreviousCustomField';
 
@@ -115,7 +115,7 @@ const AddFormField = props => {
                                     <AddMoreField>
                                         <Link onClick={() => addFormFields()}>
                                             <img src={AddMoreIcon} alt="Icon" />
-                                            <span>Add Another</span>
+                                            <span>Add Another Options</span>
                                         </Link>
                                     </AddMoreField>
                                 </form></p>

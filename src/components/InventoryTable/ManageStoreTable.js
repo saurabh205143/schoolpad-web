@@ -9,10 +9,11 @@ import DeleteIcon from '../../images/delete-icon.svg';
 import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../Pagination/Pagination';
 import AddStore from '../../views/main/InventoryModule/ManageStore/components/AddStore';
+import Button from '../Buttons/Button';
 
 
 
-let PageSize = 14;
+let PageSize = 10;
 
 const ManageStoreTable = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,7 +39,7 @@ const ManageStoreTable = ({ onClick }) => {
   const column = Object.keys(data[0]);
   const ThData = () => {
       return column.map((data) => {
-          return <TableHeading key={data}>{data}</TableHeading>
+          return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
       })
   }
 
@@ -48,6 +49,7 @@ const ManageStoreTable = ({ onClick }) => {
         <TableHead>
           <TableRow>
             {ThData()}
+            <TableHeading>Categories</TableHeading>
             <TableHeading>Actions</TableHeading>
           </TableRow>
         </TableHead>
@@ -60,6 +62,17 @@ const ManageStoreTable = ({ onClick }) => {
                 <Tabledata>{item.StoreDescription}</Tabledata>
                 <Tabledata>{item.StoreCode}</Tabledata>
                 <Tabledata>{item.Manager}</Tabledata>
+                <Tabledata>
+                  <ActionsConatiner>
+                    <ActionsList>
+                      <Button
+                        buttonText='Categories'
+                        className='link-button'
+                        onClick={onClick}
+                      />
+                    </ActionsList>
+                  </ActionsConatiner>
+                </Tabledata>
                 <Tabledata>
                   <ActionsConatiner>
                     <ActionsList>

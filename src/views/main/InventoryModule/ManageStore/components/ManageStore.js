@@ -9,12 +9,18 @@ import ExcelImage from '../../../../../images/excel-icon.svg';
 import ManageStoreTable from '../../../../../components/InventoryTable/ManageStoreTable';
 import AddStore from './AddStore';
 import MoveItem from './MoveItem';
+import StudentListTable from '../../../TransportModule/TransportStopMaster/components/StudentListTable';
 
 
 const ManageStore = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [showMoveItemModal, setShowMoveItemModal] = useState(false);
+  const [showstudentList, setShowStudentList] = useState(false);
+
+  const hideStudentListModal = () => {
+    setShowStudentList(false);
+  }
 
   const hideModal = () => {
     setShowModal(false);
@@ -32,6 +38,7 @@ const ManageStore = () => {
           type='horizontal' 
           buttonAdd='Add New Store'
           buttonOrders='Move Items'  
+          searchPlaceholder='Search by store name etc...'
           onClick={() =>  setShowModal(!showModal)}
           buttonOrderDragList={() => setShowMoveItemModal(!showMoveItemModal)}
       />
@@ -42,7 +49,9 @@ const ManageStore = () => {
           Excelicon={ExcelImage}
       />
       
-      <ManageStoreTable/>
+      <ManageStoreTable
+          onClick={() => setShowStudentList(!showstudentList)}
+      />
 
       {/* <ToasterItem type= 'error'></ToasterItem> */}
 
@@ -56,6 +65,12 @@ const ManageStore = () => {
       <MoveItem
           show={showMoveItemModal}
           handleClose={hideMoveItemModal}
+      />
+
+      {/* Categories List */}
+      <StudentListTable
+        show={showstudentList}
+        handleClose={hideStudentListModal}
       />
     </Layout>
     </>

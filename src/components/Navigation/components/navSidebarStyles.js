@@ -71,7 +71,7 @@ export const NavBars = styled.ul`
     flex:1;
     max-height:calc(100vh - 200px);
     overflow:auto;
-    `;
+`;
 
 export const NavBarItems = styled.li`
     padding: 0px 14px 0px;

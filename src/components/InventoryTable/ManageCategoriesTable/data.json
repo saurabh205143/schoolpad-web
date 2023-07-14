@@ -1,20 +1,20 @@
 [
   {
     "SNo":1,
-    "StoreName": "Awards/Gifts Room (Primary)",
-    "Categories": "Don't go there!",
-    "StoreCode": "K00256"
+    "CategoryName": "Store Room 1",
+    "CategoryCode": "K00256",
+    "StoreName" : "Awards/Gifts Room"
   },
   {
     "SNo":2,
-    "StoreName": "Store Room 1",
-    "Categories": "How big was your contribution?",
-    "StoreCode": "P00065"
+    "CategoryName": "Store Room 2",
+    "CategoryCode": "P00065",
+    "StoreName" : "Electronics Room"
   },
   {
     "SNo":3,
-    "StoreName": "Store Room 2",
-    "Categories": "Tom is in a big hurry",
-    "StoreCode": "K00256"
+    "CategoryName": "Store Room 3",
+    "CategoryCode": "K00256",
+    "StoreName" : "Computer Store Room"
   }
 ]

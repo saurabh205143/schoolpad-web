@@ -39,7 +39,9 @@ const TableNew = ({ onClick }) => {
   const column = Object.keys(data[0]);
   const ThData = () => {
       return column.map((data) => {
-          return <TableHeading key={data}>{data}</TableHeading>
+        
+          return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")
+        }</TableHeading>
       })
   }
 

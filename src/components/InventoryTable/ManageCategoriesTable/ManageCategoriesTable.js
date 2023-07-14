@@ -6,12 +6,11 @@ import LinkButton from '../../Buttons/LinkButton';
 // Assets
 import EditIcon from '../../../images/edit-icon.svg';
 import DeleteIcon from '../../../images/delete-icon.svg';
-import Pagination from '../../Pagination/Pagination';
 import AddCategories from '../../../views/main/InventoryModule/ManageCategories/components/AddCategories';
 import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
+import Pagination from '../../Pagination/Pagination';
 
-
-let PageSize = 14;
+let PageSize = 2;
 
 const ManageCategoriesTable = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,7 +36,7 @@ const ManageCategoriesTable = ({ onClick }) => {
   const column = Object.keys(data[0]);
   const ThData = () => {
       return column.map((data) => {
-          return <TableHeading key={data}>{data}</TableHeading>
+          return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
       })
   }
 
@@ -55,9 +54,9 @@ const ManageCategoriesTable = ({ onClick }) => {
             return (
               <TableRow>
                 <Tabledata>{item.SNo}</Tabledata>
+                <Tabledata>{item.CategoryName}</Tabledata>
+                <Tabledata>{item.CategoryCode}</Tabledata>
                 <Tabledata>{item.StoreName}</Tabledata>
-                <Tabledata>{item.Categories}</Tabledata>
-                <Tabledata>{item.StoreCode}</Tabledata>
                 <Tabledata>
                   <ActionsConatiner>
                     <ActionsList>

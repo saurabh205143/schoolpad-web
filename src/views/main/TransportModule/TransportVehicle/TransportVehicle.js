@@ -20,7 +20,10 @@ const TransportVehicle = () => {
   return (
     <Layout type='transport'>
       {/* <ItemsNotFound/> */}
-      <SubHeader heading='Transport Vehicle Master' type='horizontal' buttonAdd='Add New Vehicle' buttonOption='Associated Options' onClick={() => setShowModal(!showModal)} />
+
+      <SubHeader heading='Transport Vehicle Master' type='horizontal' buttonAdd='Add New Vehicle' buttonOption='Associated Options' 
+      searchPlaceholder='Search by vehicle name etc...'
+      onClick={() => setShowModal(!showModal)} />
       <ExportHeader
         smallHeading='All Vehicles'
         smallHeding2='(202 Records)'

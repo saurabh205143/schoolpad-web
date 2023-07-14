@@ -6,15 +6,15 @@ import ExportHeader from '../../../../../components/ScreensHeader/ExportHeader';
 //Assets
 import PrintImage from '../../../../../images/print-icon.svg';
 import ExcelImage from '../../../../../images/excel-icon.svg';
-import ManageStoreTable from '../../../../../components/InventoryTable/ManageStoreTable';
 import AddCategories from './AddCategories';
 import ManageCategoriesTable from '../../../../../components/InventoryTable/ManageCategoriesTable/ManageCategoriesTable';
+import StudentListTable from '../../../TransportModule/TransportStopMaster/components/StudentListTable';
 
 
 const ManageCategories = () => {
 
   const [showModal, setShowModal] = useState(false);
-
+  
   const hideModal = () => {
     setShowModal(false);
   }
@@ -27,6 +27,7 @@ const ManageCategories = () => {
           type='horizontal' 
           buttonAdd='Add New Category' 
           onClick={() =>  setShowModal(!showModal)}
+          searchPlaceholder='Search by store code, categories,  etc...'
       />
       <ExportHeader
           smallHeading='All Categories'
@@ -42,6 +43,7 @@ const ManageCategories = () => {
           show={showModal}
           handleClose={hideModal}
       />
+      
     </Layout>
     </>
 

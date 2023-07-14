@@ -61,7 +61,8 @@ export const AddMoreField = styled.div`
         align-items:center;
         justify-content:flex-start;
         text-decoration:none;
-        width:120px;
+        margin-top: -6px;
+        // width:120px;
         >span{
             font-weight: ${({ theme }) => theme.fontWeightSemiBold};
             font-size: ${({ theme }) => theme.smallFont};

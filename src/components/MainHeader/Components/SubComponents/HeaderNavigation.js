@@ -31,11 +31,11 @@ const AllRoutes = [
     },
     {
         tabname: "Transport",
-        link: "/transport",
+        link: "/transport/transportRoute",
     },
     {
-        tabname: "Communication",
-        link: "/communication",
+        tabname: "Inventory",
+        link: "/inventory/manageStore",
     },
 ];
 

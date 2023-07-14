@@ -67,7 +67,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField}) => {
+const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -92,7 +92,7 @@ const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders,
                     <ButtonContainer>
                         <Input
                             leftIcon={SearchIcon}
-                            placeholder={'Search route by stop, Vehicle etc'}
+                            placeholder={searchPlaceholder}
                             name='search'
                         />
                     </ButtonContainer>
