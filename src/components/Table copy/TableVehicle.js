@@ -51,7 +51,6 @@ const Table = (props) => {
                                 <span>IN SERVICE</span>
                                 </ActionListStatus>
                             </ActionsList>
-
                         </ActionsConatiner>
                     </Tabledata>
                     <Tabledata>

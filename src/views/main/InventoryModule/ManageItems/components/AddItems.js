@@ -10,7 +10,7 @@ import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 
-const AddCategories = props => {
+const AddItems = props => {
 
     const options = [
         {
@@ -64,7 +64,7 @@ const AddCategories = props => {
         <Modal
             show={show}
             handleClose={handleClose}
-            modalHeading={'Add New Category'}
+            modalHeading={'Add New Items'}
             submitText='Confirm'
             cancelText='Cancel'
         >
@@ -72,9 +72,36 @@ const AddCategories = props => {
                 <FieldContainer>
                     <Input
                         type="select"
-                        label={'Store Name*'}
+                        label={'Select Store*'}
                         options={options}
                         placeholder={'---- Select store name ----'}
+                        name='store_name'
+                    />
+                </FieldContainer>
+                <FieldContainer>
+                    <Input
+                        type="select"
+                        label={'Select Categories'}
+                        options={options}
+                        placeholder={'---- Select categories ----'}
+                        name='store_name'
+                    />
+                </FieldContainer>
+                <FieldContainer>
+                    <Input
+                        type="text"
+                        label={'Alert Me If Item Count Falls Below'}
+                        options={options}
+                        placeholder={'Enter if item count falls below'}
+                        name='store_name'
+                    />
+                </FieldContainer>
+                <FieldContainer>
+                    <Input
+                        type="text"
+                        label={'Add Email IDs For Alert'}
+                        options={options}
+                        placeholder={'Enter email address'}
                         name='store_name'
                     />
                 </FieldContainer>
@@ -84,8 +111,8 @@ const AddCategories = props => {
                             <Input
                                 type="text"
                                 options={options}
-                                label={'Category Name'}
-                                placeholder={'Enter category name'}
+                                label={'Name'}
+                                placeholder={'Enter name of the item'}
                                 name='stops'
                                 onChange={e => handleChange(index, e)}
                             />
@@ -93,8 +120,42 @@ const AddCategories = props => {
                         <FieldRightContainerItem>
                             <Input
                                 type="text"
-                                placeholder={'Enter category code'}
-                                label={'Category Code'}
+                                placeholder={'Enter purchase cost'}
+                                label={'Purchase Cost'}
+                                name={'set_order'}
+                                onChange={e => handleChange(index, e)}
+                            />
+                        </FieldRightContainerItem>
+                        {
+                            index ?
+                                <RemoveContianer>
+                                    <Button
+                                        className={'only-icon-button'}
+                                        onlyIcon={RemoveIcon}
+                                        onClick={() => removeFormFields(index)}
+                                    />
+                                </RemoveContianer>
+                                : null
+                        }
+                    </FieldDivider>
+                    ))}
+                    {formValues.map((element, index) => (
+                <FieldDivider>
+                        <FieldLeftContainer1>
+                            <Input
+                                type="select"
+                                options={options}
+                                label={'Unit'}
+                                placeholder={'---- Select unit ----'}
+                                name='stops'
+                                onChange={e => handleChange(index, e)}
+                            />
+                        </FieldLeftContainer1>
+                        <FieldRightContainerItem>
+                            <Input
+                                type="select"
+                                placeholder={'---- Select rtn/cns ----'}
+                                label={'Rtn/Cns'}
                                 name={'set_order'}
                                 onChange={e => handleChange(index, e)}
                             />
@@ -116,7 +177,7 @@ const AddCategories = props => {
                 <AddMoreField>
                     <Link onClick={() => addFormFields()}>
                         <img src={AddMoreIcon} alt="Icon" />
-                        <span>Add Another Category</span>
+                        <span>Add Another Item</span>
                     </Link>
                 </AddMoreField>
             </form>
@@ -124,4 +185,4 @@ const AddCategories = props => {
     );
 };
 
-export default AddCategories;
+export default AddItems;

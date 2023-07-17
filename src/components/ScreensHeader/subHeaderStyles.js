@@ -44,6 +44,14 @@ export const ExportContainer = styled.div`
     border-bottom:1px solid rgba(9, 30, 66, 0.1412);
 `;
 
+export const HeaderFilterHeadings = styled.div`
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-top:1px solid rgba(9, 30, 66, 0.1412);
+`;
+
 export const ExportHeadings = styled.div`
     margin-right:15px;
 `;

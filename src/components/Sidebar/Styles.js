@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const SidebarContainer = styled.div`
-    width:240px;
+    width:246px;
     background: ${({theme}) => theme.bg2};
     display:flex;
     flex-direction:column;

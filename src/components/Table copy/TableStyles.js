@@ -62,6 +62,7 @@ export const ActionsConatiner = styled.ul`
     margin:0;
     padding:0;
     list-style:none;
+
 `;
 
 export const ActionsList = styled.li`
@@ -81,8 +82,97 @@ export const ActionListStatus = styled.td`
     }
 `;
 
+export const ActionListStatusItems = styled.td`
+    background-color: #DFFCF0;
+    border-radius: 3px;
+    padding: 0 4px 0 4px;
+
+    >span {
+        color: #00B8D9;
+        font-weight: 700;
+        font-size: 12px;
+    }
+`;
+
+export const ActionListStatusItem = styled.td`
+    background-color: #EAE6FF;
+    border-radius: 3px;
+    padding: 0 4px 0 4px;
+
+    >span {
+        color: #8777D9;
+        font-weight: 700;
+        font-size: 12px;
+    }
+`;
+
+export const ActionListStatusPending = styled.td`
+    background-color: #FFEDEB;
+    border-radius: 3px;
+    padding: 0 4px 0 4px;
+
+    >span {
+        color: #AE2A19;
+        font-weight: 700;
+        font-size: 12px;
+    }
+`;
+
 export const MoreAction = styled.div`
     padding-left:10px;
 `;
 
 
+const TableStylesStatus = ({type, statusType}) => { 
+    if(type === 'item-type-consumable'){
+        return (
+            <>
+            <ActionsConatiner>
+                <ActionsList>
+                    <ActionListStatusItems>
+                        <span>{statusType}</span>
+                    </ActionListStatusItems>
+                </ActionsList>
+            </ActionsConatiner>
+            </>
+        )}
+        else if (type === 'item-type-non-consumable') {
+            return (
+            <>
+            <ActionsConatiner>
+                <ActionsList>
+                    <ActionListStatusItem>
+                        <span>{statusType}</span>
+                    </ActionListStatusItem>
+                </ActionsList>
+            </ActionsConatiner>
+            </>
+        )}
+        else if (type === 'item-type-returnable') {
+            return (
+            <>
+            <ActionsConatiner>
+                <ActionsList>
+                    <ActionListStatus>
+                        <span>{statusType}</span>
+                    </ActionListStatus>
+                </ActionsList>
+            </ActionsConatiner>
+            </>
+        )}
+        else if (type === 'pending') {
+            return (
+            <>
+            <ActionsConatiner>
+                <ActionsList>
+                    <ActionListStatusPending>
+                        <span>{statusType}</span>
+                    </ActionListStatusPending>
+                </ActionsList>
+            </ActionsConatiner>
+            </>
+        )}
+
+}
+
+export default TableStylesStatus;

@@ -1,0 +1,179 @@
+[
+  {
+    "SNo":1,
+    "StoreName": "Sports Equipments Room",
+    "StoreCode" : "K00256",
+    "Address" : "35 Fernleigh Ave, New Farm EC1A 1AE",
+    "Region" : "Rampura",
+    "ConatctNo" : "+919655523240",
+    "GstNo" : "08ABEPG0311R1ZQ"
+  },
+  {
+    "SNo":2,
+    "StoreName": "Electronics Room",
+    "StoreCode" : "U00296",
+    "Address" : "12 Helen St, Newstead EC50 9DN",
+    "Region" : "Baba Deep Singh",
+    "ConatctNo" : "+919755523289",
+    "GstNo" : "07YUABEPG0311R1ZQ"
+  },
+  {
+    "SNo":3,
+    "StoreName": "Computer Store Room",
+    "StoreCode" : "T00250",
+    "Address" : "73 McLeans Rd, Newstead EC88 1AT",
+    "Region" : "Mediya",
+    "ConatctNo" : "+91975523240",
+    "GstNo" : "0765ABEPG0311OL"
+  },
+  {
+    "SNo":4,
+    "StoreName": "Kitchen Store Room",
+    "StoreCode" : "Y00257",
+    "Address" : "81 Grange Ave, New Farm EC88 1BE",
+    "Region" : "Korianwali",
+    "ConatctNo" : "+919755523240",
+    "GstNo" : "0789BEPG0311R1ZQ"
+  },  {
+    "SNo":5,
+    "StoreName": "Sports Equipments Room",
+    "StoreCode" : "K00256",
+    "Address" : "35 Fernleigh Ave, New Farm EC1A 1AE",
+    "Region" : "Rampura",
+    "ConatctNo" : "+919655523240",
+    "GstNo" : "08ABEPG0311R1ZQ"
+  },
+  {
+    "SNo":6,
+    "StoreName": "Electronics Room",
+    "StoreCode" : "U00296",
+    "Address" : "12 Helen St, Newstead EC50 9DN",
+    "Region" : "Baba Deep Singh",
+    "ConatctNo" : "+919755523289",
+    "GstNo" : "07YUABEPG0311R1ZQ"
+  },
+  {
+    "SNo":7,
+    "StoreName": "Computer Store Room",
+    "StoreCode" : "T00250",
+    "Address" : "73 McLeans Rd, Newstead EC88 1AT",
+    "Region" : "Mediya",
+    "ConatctNo" : "+91975523240",
+    "GstNo" : "0765ABEPG0311OL"
+  },
+  {
+    "SNo":8,
+    "StoreName": "Kitchen Store Room",
+    "StoreCode" : "Y00257",
+    "Address" : "81 Grange Ave, New Farm EC88 1BE",
+    "Region" : "Korianwali",
+    "ConatctNo" : "+919755523240",
+    "GstNo" : "0789BEPG0311R1ZQ"
+  },  {
+    "SNo":9,
+    "StoreName": "Sports Equipments Room",
+    "StoreCode" : "K00256",
+    "Address" : "35 Fernleigh Ave, New Farm EC1A 1AE",
+    "Region" : "Rampura",
+    "ConatctNo" : "+919655523240",
+    "GstNo" : "08ABEPG0311R1ZQ"
+  },
+  {
+    "SNo":10,
+    "StoreName": "Electronics Room",
+    "StoreCode" : "U00296",
+    "Address" : "12 Helen St, Newstead EC50 9DN",
+    "Region" : "Baba Deep Singh",
+    "ConatctNo" : "+919755523289",
+    "GstNo" : "07YUABEPG0311R1ZQ"
+  },
+  {
+    "SNo":11,
+    "StoreName": "Computer Store Room",
+    "StoreCode" : "T00250",
+    "Address" : "73 McLeans Rd, Newstead EC88 1AT",
+    "Region" : "Mediya",
+    "ConatctNo" : "+91975523240",
+    "GstNo" : "0765ABEPG0311OL"
+  },
+  {
+    "SNo":12,
+    "StoreName": "Kitchen Store Room",
+    "StoreCode" : "Y00257",
+    "Address" : "81 Grange Ave, New Farm EC88 1BE",
+    "Region" : "Korianwali",
+    "ConatctNo" : "+919755523240",
+    "GstNo" : "0789BEPG0311R1ZQ"
+  },  {
+    "SNo":13,
+    "StoreName": "Sports Equipments Room",
+    "StoreCode" : "K00256",
+    "Address" : "35 Fernleigh Ave, New Farm EC1A 1AE",
+    "Region" : "Rampura",
+    "ConatctNo" : "+919655523240",
+    "GstNo" : "08ABEPG0311R1ZQ"
+  },
+  {
+    "SNo":14,
+    "StoreName": "Electronics Room",
+    "StoreCode" : "U00296",
+    "Address" : "12 Helen St, Newstead EC50 9DN",
+    "Region" : "Baba Deep Singh",
+    "ConatctNo" : "+919755523289",
+    "GstNo" : "07YUABEPG0311R1ZQ"
+  },
+  {
+    "SNo":15,
+    "StoreName": "Computer Store Room",
+    "StoreCode" : "T00250",
+    "Address" : "73 McLeans Rd, Newstead EC88 1AT",
+    "Region" : "Mediya",
+    "ConatctNo" : "+91975523240",
+    "GstNo" : "0765ABEPG0311OL"
+  },
+  {
+    "SNo":16,
+    "StoreName": "Kitchen Store Room",
+    "StoreCode" : "Y00257",
+    "Address" : "81 Grange Ave, New Farm EC88 1BE",
+    "Region" : "Korianwali",
+    "ConatctNo" : "+919755523240",
+    "GstNo" : "0789BEPG0311R1ZQ"
+  },  {
+    "SNo":17,
+    "StoreName": "Sports Equipments Room",
+    "StoreCode" : "K00256",
+    "Address" : "35 Fernleigh Ave, New Farm EC1A 1AE",
+    "Region" : "Rampura",
+    "ConatctNo" : "+919655523240",
+    "GstNo" : "08ABEPG0311R1ZQ"
+  },
+  {
+    "SNo":18,
+    "StoreName": "Electronics Room",
+    "StoreCode" : "U00296",
+    "Address" : "12 Helen St, Newstead EC50 9DN",
+    "Region" : "Baba Deep Singh",
+    "ConatctNo" : "+919755523289",
+    "GstNo" : "07YUABEPG0311R1ZQ"
+  },
+  {
+    "SNo":19,
+    "StoreName": "Computer Store Room",
+    "StoreCode" : "T00250",
+    "Address" : "73 McLeans Rd, Newstead EC88 1AT",
+    "Region" : "Mediya",
+    "ConatctNo" : "+91975523240",
+    "GstNo" : "0765ABEPG0311OL"
+  },
+  {
+    "SNo":20,
+    "StoreName": "Kitchen Store Room",
+    "StoreCode" : "Y00257",
+    "Address" : "81 Grange Ave, New Farm EC88 1BE",
+    "Region" : "Korianwali",
+    "ConatctNo" : "+919755523240",
+    "GstNo" : "0789BEPG0311R1ZQ"
+  }
+  
+]

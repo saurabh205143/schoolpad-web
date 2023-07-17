@@ -19,6 +19,9 @@ import Inventory from './views/main/InventoryModule/Inventory';
 import ManageStore from './views/main/InventoryModule/ManageStore/components/ManageStore';
 import Toasters from './components/Toaster/Toasters';
 import ManageCategories from './views/main/InventoryModule/ManageCategories/components/ManageCategories';
+import ManageItems from './views/main/InventoryModule/ManageItems/ManageItems';
+import ManageVendors from './views/main/InventoryModule/ManageVendors/ManageVendors';
+import PurchaseOrders from './views/main/InventoryModule/PurchaseOrders/PurchaseOrders';
 
 export const ThemeContext = React.createContext(null);
 
@@ -54,6 +57,9 @@ function App() {
             <Route path='/' element={<Inventory/>}/>
             <Route path='/inventory/manageStore' element={<ManageStore/>}/>
             <Route path='/inventory/manageCategories' element={<ManageCategories/>}/>
+            <Route path='/inventory/manageItems' element={<ManageItems/>}/>
+            <Route path='/inventory/manageVendors' element={<ManageVendors/>}/>
+            <Route path='/inventory/purchaseOrders' element={<PurchaseOrders/>}/>
             <Route path='/toasters' element={<Toasters/>}/>
           </Routes>
         </>

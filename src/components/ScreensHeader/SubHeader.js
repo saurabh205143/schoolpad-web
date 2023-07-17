@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ButtonContainer, Container, ContainerLeft, ContainerRight, DescriptionText, GetRecordsContainer, RecordBox, VerticalContainer } from './subHeaderStyles';
+import { ButtonContainer, Container, ContainerLeft, ContainerRight, DescriptionText, GetRecordsContainer, HeaderFilterHeadings, RecordBox, VerticalContainer } from './subHeaderStyles';
 import Headings from '../Headings/Headings';
 import Button from '../Buttons/Button';
 
@@ -67,7 +67,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder}) => {
+const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder }) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -75,8 +75,8 @@ const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders,
 
     const ref = useRef();
     const buttonRef = useRef();
-    
-    const onChange = (e) =>{
+
+    const onChange = (e) => {
         console.log(e.target);
     }
 
@@ -134,7 +134,7 @@ const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders,
                 </ContainerRight>
             </Container>
         )
-    } else {
+    } else if (type === 'vertical') {
         return (
             <VerticalContainer>
                 <ContainerLeft>
@@ -151,7 +151,7 @@ const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders,
                             type='select'
                             placeholder={'Mapping Type'}
                             options={options}
-                            onChange={(e)=>{
+                            onChange={(e) => {
                                 console.log(e[0].label)
                                 setShowDependentDrop(e[0].label)
                             }}
@@ -163,7 +163,7 @@ const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders,
                                 type='select'
                                 placeholder={'Mapping Type'}
                                 options={options1}
-                                onChange={()=>{
+                                onChange={() => {
 
                                 }}
                             />
@@ -173,7 +173,7 @@ const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders,
                         <RecordBox>
                             <Input
                                 type='text'
-                                placeholder={'Admission no'} 
+                                placeholder={'Admission no'}
                             />
                         </RecordBox>
                     }
@@ -184,6 +184,129 @@ const SubHeader = ({ onClick, type, heading ,getRecords,buttonAdd, buttonOrders,
                     />
                 </GetRecordsContainer>
             </VerticalContainer>
+        )
+    }
+
+    else if (type === 'header-filters') {
+        return (
+            <>
+                <Container>
+                    <ContainerLeft>
+                        <Headings heading={heading} />
+                    </ContainerLeft>
+                    <ContainerRight>
+                        <ButtonContainer>
+                            <Input
+                                leftIcon={SearchIcon}
+                                placeholder={searchPlaceholder}
+                                name='search'
+                            />
+                        </ButtonContainer>
+                        <ButtonContainer>
+                            <Button
+                                className='primary'
+                                buttonText={buttonAdd}
+                                onClick={onClick}
+                            />
+                        </ButtonContainer>
+                        {buttonOrders &&
+                            <ButtonContainer>
+                                <Button
+                                    className='secondary'
+                                    buttonText={buttonOrders}
+                                    onClick={buttonOrderDragList}
+                                />
+                            </ButtonContainer>
+                        }
+                        {buttonOption &&
+
+                            <ButtonContainer>
+                                <div ref={buttonRef}>
+                                    <Button
+                                        className='secondary'
+                                        buttonText={buttonOption || 'Associated Options'}
+                                        rightIcon={Icon}
+                                        onClick={() => setShowAssociateDrop(!showAssociateDrop)}
+                                    />
+                                </div>
+                                {/* Associate Drop Down */}
+                                {showAssociateDrop &&
+                                    <DropContianer ref={ref}>
+                                        <CustomDrop type='associatedoptions' formFiledClick={formField} />
+                                    </DropContianer>
+                                }
+                            </ButtonContainer>
+                        }
+                    </ContainerRight>
+                </Container>
+                <HeaderFilterHeadings>
+                <VerticalContainer>
+                    <GetRecordsContainer>
+                    <RecordBox>
+                            <Input
+                                type='text'
+                                label='Item Name'
+                                placeholder={'Enter item name'}
+                                options={options}
+                                onChange={(e) => {
+                                    console.log(e[0].label)
+                                    setShowDependentDrop(e[0].label)
+                                }}
+                            />
+                        </RecordBox>
+                        <RecordBox>
+                            <Input
+                                type='select'
+                                label='Select Store'
+                                placeholder={'Select store'}
+                                options={options}
+                                onChange={(e) => {
+                                    console.log(e[0].label)
+                                    setShowDependentDrop(e[0].label)
+                                }}
+                            />
+                        </RecordBox>
+                        <RecordBox>
+                            <Input
+                                type='select'
+                                label='Select Category'
+                                placeholder={'Select category'}
+                                options={options}
+                                onChange={(e) => {
+                                    console.log(e[0].label)
+                                    setShowDependentDrop(e[0].label)
+                                }}
+                            />
+                        </RecordBox>
+                        {showDependentDrop == "Store 1" &&
+                            <RecordBox>
+                                <Input
+                                    type='select'
+                                    placeholder={'Store 2'}
+                                    options={options1}
+                                    onChange={() => {
+
+                                    }}
+                                />
+                            </RecordBox>
+                        }
+                        {showDependentDrop == "Store 2" &&
+                            <RecordBox>
+                                <Input
+                                    type='text'
+                                    placeholder={'Store 2'}
+                                />
+                            </RecordBox>
+                        }
+                        <Button
+                            className='primary'
+                            buttonText="Get Records"
+                            onClick={getRecords}
+                        />
+                    </GetRecordsContainer>
+                </VerticalContainer>
+                </HeaderFilterHeadings>
+            </>
         )
     }
 

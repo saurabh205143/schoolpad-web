@@ -115,7 +115,7 @@ const AddFormField = props => {
                                     <AddMoreField>
                                         <Link onClick={() => addFormFields()}>
                                             <img src={AddMoreIcon} alt="Icon" />
-                                            <span>Add Another Options</span>
+                                            <span>Add Another Option</span>
                                         </Link>
                                     </AddMoreField>
                                 </form></p>

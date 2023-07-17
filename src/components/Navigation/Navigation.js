@@ -272,7 +272,7 @@ const Navigation = ({type}) => {
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'AddItems',)}>
                             <NavigationItems
-                                url="/inventory/addItems"
+                                url="/inventory/manageItems"
                                 tabname="Add Item(s)"
                                 drop="true"
                             />
@@ -310,7 +310,7 @@ const Navigation = ({type}) => {
             >
                 <NavigationItems
                     url=''
-                    tabname="Add PO"
+                    tabname="Purchase Order"
                     inactiveIcon={InactiveIcon}
                     activeIcon={ActiveIcon}
                     containsDrop="true"
@@ -320,12 +320,21 @@ const Navigation = ({type}) => {
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'AddPO',)}>
                             <NavigationItems
-                                url="/inventory/addPo"
-                                tabname="Add PO"
+                                url="/inventory/purchaseOrders"
+                                tabname="List of Purchase Order(s)"
+                                drop="true"
+                            />
+                        </SidebarDropList>
+                        <SidebarDropList
+                            className={getActiveClassNames('nav-item', 'AddPO',)}>
+                            <NavigationItems
+                                url="/inventory/purchaseOrders"
+                                tabname="Add New Purchase Order"
                                 drop="true"
                             />
                         </SidebarDropList>
                     </SidebarDropDown>
+                    
                 )}
             </NavBarItems>
             <NavBarItems

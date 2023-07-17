@@ -39,6 +39,7 @@ const StudentMapping = () => {
 
       <SubHeader
         heading='Student Mapping'
+        type='vertical' 
         getRecords={() => setShowRecords(!showRecords)}
       />
 
@@ -50,7 +51,7 @@ const StudentMapping = () => {
       {/* Show Mapping records */}
       {showRecords ?
         <div>
-          <MappingTable />
+          <MappingTable/>
 
           {/* Save Mapping Container */}
           <FixedBottomContainer>

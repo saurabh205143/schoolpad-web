@@ -9,17 +9,17 @@ import ExcelImage from '../../../../../images/excel-icon.svg';
 import ManageStoreTable from '../../../../../components/InventoryTable/ManageStoreTable';
 import AddStore from './AddStore';
 import MoveItem from './MoveItem';
-import StudentListTable from '../../../TransportModule/TransportStopMaster/components/StudentListTable';
+import CategoriesListTable from './CategoriesListTable';
 
 
 const ManageStore = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [showMoveItemModal, setShowMoveItemModal] = useState(false);
-  const [showstudentList, setShowStudentList] = useState(false);
+  const [showcategoriesList, setShowCategoriesList] = useState(false);
 
-  const hideStudentListModal = () => {
-    setShowStudentList(false);
+  const hideCategoriesListModal = () => {
+    setShowCategoriesList(false);
   }
 
   const hideModal = () => {
@@ -50,7 +50,7 @@ const ManageStore = () => {
       />
       
       <ManageStoreTable
-          onClick={() => setShowStudentList(!showstudentList)}
+          onClick={() => setShowCategoriesList(!showcategoriesList)}
       />
 
       {/* <ToasterItem type= 'error'></ToasterItem> */}
@@ -68,9 +68,9 @@ const ManageStore = () => {
       />
 
       {/* Categories List */}
-      <StudentListTable
-        show={showstudentList}
-        handleClose={hideStudentListModal}
+      <CategoriesListTable
+        show={showcategoriesList}
+        handleClose={hideCategoriesListModal}
       />
     </Layout>
     </>

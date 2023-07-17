@@ -1,0 +1,20 @@
+[
+  {
+    "SNo":1,
+    "CategoryName": "Store Roomzzzz 1",
+    "CategoryCode": "K00256",
+    "StoreName" : "Awards/Gifts Room"
+  },
+  {
+    "SNo":2,
+    "CategoryName": "Store Room 2",
+    "CategoryCode": "P00065",
+    "StoreName" : "Electronics Room"
+  },
+  {
+    "SNo":3,
+    "CategoryName": "Store Room 3",
+    "CategoryCode": "K00256",
+    "StoreName" : "Computer Store Room"
+  }
+]

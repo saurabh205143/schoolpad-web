@@ -8,8 +8,6 @@ import PrintImage from '../../../../../images/print-icon.svg';
 import ExcelImage from '../../../../../images/excel-icon.svg';
 import AddCategories from './AddCategories';
 import ManageCategoriesTable from '../../../../../components/InventoryTable/ManageCategoriesTable/ManageCategoriesTable';
-import StudentListTable from '../../../TransportModule/TransportStopMaster/components/StudentListTable';
-
 
 const ManageCategories = () => {
 

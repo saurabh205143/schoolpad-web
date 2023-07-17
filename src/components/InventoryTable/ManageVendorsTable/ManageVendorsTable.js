@@ -1,19 +1,18 @@
 import React, { useState, useMemo } from 'react';
 import data from './data.json';
-import { ActionsConatiner, ActionsList, Container, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
-import LinkButton from '../Buttons/LinkButton';
+import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../Table/TableStyles';
+import LinkButton from '../../Buttons/LinkButton';
 
 // Assets
-import EditIcon from '../../images/edit-icon.svg';
-import DeleteIcon from '../../images/delete-icon.svg';
-import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
-import Pagination from '../Pagination/Pagination';
-import AddStore from '../../views/main/InventoryModule/ManageStore/components/AddStore';
-import Button from '../Buttons/Button';
+import EditIcon from '../../../images/edit-icon.svg';
+import DeleteIcon from '../../../images/delete-icon.svg';
+import AddCategories from '../../../views/main/InventoryModule/ManageCategories/components/AddCategories';
+import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
+import Pagination from '../../Pagination/Pagination';
 
-let PageSize = 10;
+let PageSize = 2;
 
-const ManageStoreTable = ({ onClick }) => {
+const ManageVendorsTable = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -47,7 +46,6 @@ const ManageStoreTable = ({ onClick }) => {
         <TableHead>
           <TableRow>
             {ThData()}
-            <TableHeading>Categories</TableHeading>
             <TableHeading>Actions</TableHeading>
           </TableRow>
         </TableHead>
@@ -57,20 +55,11 @@ const ManageStoreTable = ({ onClick }) => {
               <TableRow>
                 <Tabledata>{item.SNo}</Tabledata>
                 <Tabledata>{item.StoreName}</Tabledata>
-                <Tabledata>{item.StoreDescription}</Tabledata>
                 <Tabledata>{item.StoreCode}</Tabledata>
-                <Tabledata>{item.Manager}</Tabledata>
-                <Tabledata>
-                  <ActionsConatiner>
-                    <ActionsList>
-                      <Button
-                        buttonText='Categories'
-                        className='link-button'
-                        onClick={onClick}
-                      />
-                    </ActionsList>
-                  </ActionsConatiner>
-                </Tabledata>
+                <Tabledata>{item.Address}</Tabledata>
+                <Tabledata>{item.Region}</Tabledata>
+                <Tabledata>{item.ConatctNo}</Tabledata>
+                <Tabledata>{item.GstNo}</Tabledata>
                 <Tabledata>
                   <ActionsConatiner>
                     <ActionsList>
@@ -102,13 +91,12 @@ const ManageStoreTable = ({ onClick }) => {
         onPageChange={page => setCurrentPage(page)}
       />
 
-      {/* Edit Route Modal */}
-      <AddStore
-        show={showModal}
-        handleClose={hideModal}
-      />
+      {/* Edit Categories Modal */}
+        <AddCategories
+            show={showModal}
+            handleClose={hideModal}
+        />
 
-      {/* Delete Modal */}
       <DeleteRouteModal
         show={showDeleteModal}
         handleClose={hideDeleteModal}
@@ -117,4 +105,4 @@ const ManageStoreTable = ({ onClick }) => {
   );
 }
 
-export default ManageStoreTable;
+export default ManageVendorsTable;
