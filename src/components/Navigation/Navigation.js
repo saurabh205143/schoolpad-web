@@ -38,7 +38,7 @@ const Navigation = ({type}) => {
                 return 5;  
             case '/inventory/manageVendors':
                 return 6;           
-            case '/inventory/addPo':
+            case '/inventory/purchaseOrders':
                 return 7;             
             case '/inventory/receiveItems':
                 return 8;             
@@ -86,6 +86,14 @@ const Navigation = ({type}) => {
 
         if (tabname === 'ManageStore') {
             active = url.includes('/inventory/manageStore');
+        }
+
+        if (tabname === 'PurchaseOrderList') {
+            active = url.includes('/inventory/purchaseOrders');
+        }
+
+        if (tabname === 'PurchaseOrderAdd') {
+            active = url.includes('/inventory/purchaseOrders');
         }
         return classNames(defaultClass, { active: active });
     };
@@ -213,13 +221,14 @@ const Navigation = ({type}) => {
                 className={getClassNames('nav-item', showDrop === 3)}
             >
                 <NavigationItems
-                    url=''
+                    url='/inventory/manageStore'
                     tabname="Manage Store"
                     inactiveIcon={InactiveIcon}
                     activeIcon={ActiveIcon}
-                    containsDrop="true"
+                    containsDrop="false"
+                    active={showDrop === 3} 
                 />
-                {showDrop === 3 && (
+                {/* {showDrop === 3 && (
                     <SidebarDropDown className='sidebar-drop'>
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'ManageStore',)}>
@@ -230,20 +239,20 @@ const Navigation = ({type}) => {
                             />
                         </SidebarDropList>
                     </SidebarDropDown>
-                )}
+                )} */}
             </NavBarItems>
             <NavBarItems
                 onClick={() => setShowDrop(showDrop === 4 ? null : 4)}
                 className={getClassNames('nav-item', showDrop === 4)}
             >
                 <NavigationItems
-                    url=''
+                    url='/inventory/manageCategories'
                     tabname="Manage Categories"
                     inactiveIcon={InactiveIcon}
                     activeIcon={ActiveIcon}
-                    containsDrop="true"
+                    containsDrop="false"
                 />
-                {showDrop === 4 && (
+                {/* {showDrop === 4 && (
                     <SidebarDropDown className='sidebar-drop'>
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'ManageCategories',)}>
@@ -254,20 +263,20 @@ const Navigation = ({type}) => {
                             />
                         </SidebarDropList>
                     </SidebarDropDown>
-                )}
+                )} */}
             </NavBarItems>
             <NavBarItems
                 onClick={() => setShowDrop(showDrop === 5 ? null : 5)}
                 className={getClassNames('nav-item', showDrop === 5)}
             >
                 <NavigationItems
-                    url=''
+                    url='/inventory/manageItems'
                     tabname="Add Item(s)"
                     inactiveIcon={InactiveIcon}
                     activeIcon={ActiveIcon}
                     containsDrop="true"
                 />
-                {showDrop === 5 && (
+                {/* {showDrop === 5 && (
                     <SidebarDropDown className='sidebar-drop'>
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'AddItems',)}>
@@ -278,20 +287,20 @@ const Navigation = ({type}) => {
                             />
                         </SidebarDropList>
                     </SidebarDropDown>
-                )}
+                )} */}
             </NavBarItems>
             <NavBarItems
                 onClick={() => setShowDrop(showDrop === 6 ? null : 6)}
                 className={getClassNames('nav-item', showDrop === 6)}
             >
                 <NavigationItems
-                    url=''
+                    url='/inventory/manageVendors'
                     tabname="Manage Vendor(s)"
                     inactiveIcon={InactiveIcon}
                     activeIcon={ActiveIcon}
                     containsDrop="true"
                 />
-                {showDrop === 6 && (
+                {/* {showDrop === 6 && (
                     <SidebarDropDown className='sidebar-drop'>
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'ManageVendors',)}>
@@ -302,15 +311,15 @@ const Navigation = ({type}) => {
                             />
                         </SidebarDropList>
                     </SidebarDropDown>
-                )}
+                )} */}
             </NavBarItems>
             <NavBarItems
                 onClick={() => setShowDrop(showDrop === 7 ? null : 7)}
                 className={getClassNames('nav-item', showDrop === 7)}
             >
                 <NavigationItems
-                    url=''
-                    tabname="Purchase Order"
+                    url='/inventory/purchaseOrders'
+                    tabname="Purchase Order(s)"
                     inactiveIcon={InactiveIcon}
                     activeIcon={ActiveIcon}
                     containsDrop="true"
@@ -318,15 +327,16 @@ const Navigation = ({type}) => {
                 {showDrop === 7 && (
                     <SidebarDropDown className='sidebar-drop'>
                         <SidebarDropList
-                            className={getActiveClassNames('nav-item', 'AddPO',)}>
+                            className={getActiveClassNames('nav-item', 'PurchaseOrderList',)}>
                             <NavigationItems
                                 url="/inventory/purchaseOrders"
                                 tabname="List of Purchase Order(s)"
                                 drop="true"
+                                isActive={activeModule === '/inventory/purchaseOrders'}
                             />
                         </SidebarDropList>
                         <SidebarDropList
-                            className={getActiveClassNames('nav-item', 'AddPO',)}>
+                            className={getActiveClassNames('nav-item', 'PurchaseOrderAdd',)}>
                             <NavigationItems
                                 url="/inventory/purchaseOrders"
                                 tabname="Add New Purchase Order"
@@ -334,7 +344,6 @@ const Navigation = ({type}) => {
                             />
                         </SidebarDropList>
                     </SidebarDropDown>
-                    
                 )}
             </NavBarItems>
             <NavBarItems
@@ -348,7 +357,7 @@ const Navigation = ({type}) => {
                     activeIcon={ActiveIcon}
                     containsDrop="true"
                 />
-                {showDrop === 8 && (
+                {/* {showDrop === 8 && (
                     <SidebarDropDown className='sidebar-drop'>
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'ReceiveItems/GRN',)}>
@@ -359,7 +368,7 @@ const Navigation = ({type}) => {
                             />
                         </SidebarDropList>
                     </SidebarDropDown>
-                )}
+                )} */}
             </NavBarItems>
             <NavBarItems
                 onClick={() => setShowDrop(showDrop === 9 ? null : 9)}
@@ -372,7 +381,7 @@ const Navigation = ({type}) => {
                     activeIcon={ActiveIcon}
                     containsDrop="true"
                 />
-                {showDrop === 9 && (
+                {/* {showDrop === 9 && (
                     <SidebarDropDown className='sidebar-drop'>
                         <SidebarDropList
                             className={getActiveClassNames('nav-item', 'IssueItem',)}>
@@ -383,7 +392,7 @@ const Navigation = ({type}) => {
                             />
                         </SidebarDropList>
                     </SidebarDropDown>
-                )}
+                )} */}
             </NavBarItems>
             <NavBarItems
                 onClick={() => setShowDrop(showDrop === 10 ? null : 10)}

@@ -67,7 +67,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder }) => {
+const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -149,6 +149,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                     <RecordBox>
                         <Input
                             type='select'
+                            label='Mapping Type'
                             placeholder={'Mapping Type'}
                             options={options}
                             onChange={(e) => {
@@ -161,6 +162,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                         <RecordBox>
                             <Input
                                 type='select'
+                                label='Class Wise'
                                 placeholder={'Mapping Type'}
                                 options={options1}
                                 onChange={() => {
@@ -173,6 +175,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                         <RecordBox>
                             <Input
                                 type='text'
+                                label='Admission No'
                                 placeholder={'Admission no'}
                             />
                         </RecordBox>
@@ -244,9 +247,37 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                     <GetRecordsContainer>
                     <RecordBox>
                             <Input
+                                label={inputLabel3}
                                 type='text'
-                                label='Item Name'
-                                placeholder={'Enter item name'}
+                                placeholder={inputPlaceholder3}
+                                rightIcon={rightIcon}
+                                options={options}
+                                onChange={(e) => {
+                                    console.log(e[0].label)
+                                    setShowDependentDrop(e[0].label)
+                                }}
+                            />
+                        </RecordBox>
+                        {showHeaderFilter &&
+                        <RecordBox>
+                            <Input
+                                label={inputLabel4}
+                                type='text'
+                                placeholder={inputPlaceholder4}
+                                rightIcon={rightIcon}
+                                options={options}
+                                onChange={(e) => {
+                                    console.log(e[0].label)
+                                    setShowDependentDrop(e[0].label)
+                                }}
+                            />
+                        </RecordBox>
+                        }
+                        <RecordBox>
+                            <Input
+                                label={inputLabel1}
+                                type='select'
+                                placeholder={inputPlaceholder1}
                                 options={options}
                                 onChange={(e) => {
                                     console.log(e[0].label)
@@ -256,21 +287,9 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                         </RecordBox>
                         <RecordBox>
                             <Input
+                                label={inputLabel2}
                                 type='select'
-                                label='Select Store'
-                                placeholder={'Select store'}
-                                options={options}
-                                onChange={(e) => {
-                                    console.log(e[0].label)
-                                    setShowDependentDrop(e[0].label)
-                                }}
-                            />
-                        </RecordBox>
-                        <RecordBox>
-                            <Input
-                                type='select'
-                                label='Select Category'
-                                placeholder={'Select category'}
+                                placeholder={inputPlaceholder2}
                                 options={options}
                                 onChange={(e) => {
                                     console.log(e[0].label)
@@ -299,9 +318,9 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             </RecordBox>
                         }
                         <Button
-                            className='primary'
-                            buttonText="Get Records"
-                            onClick={getRecords}
+                        className='primary'
+                        buttonText="Get Records"
+                        onClick={getRecords}
                         />
                     </GetRecordsContainer>
                 </VerticalContainer>

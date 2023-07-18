@@ -3,14 +3,6 @@ import styled from 'styled-components';
 import InactiveCheckbox from '../../images/inactive-checkbox.svg';
 import ActiveCheckbox from '../../images/active-checkbox.svg';
 
-export const CheckboxContainer = styled.div`
-    >span {
-        display: flex;
-        padding-left: 10px;
-    }
-
-`;
-
 const CustomCheckbox = ({ isChecked, onChange, disabled, checkboxtext}) => {
     return (
         <>
@@ -28,7 +20,7 @@ const CustomCheckbox = ({ isChecked, onChange, disabled, checkboxtext}) => {
                     <img src={ActiveCheckbox} alt={'Checkbox'} />
                     
                 )}
-                <span>{checkboxtext}</span>
+                <span style={{paddingLeft: '10px'}}>{checkboxtext}</span>
             </div>
         </>
     );

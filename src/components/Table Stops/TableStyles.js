@@ -54,7 +54,7 @@ export const Tabledata = styled.td`
     color:${({ theme }) => theme.darkColor};
     font-weight: ${({ theme }) => theme.fontWeightRegular};
     font-size: ${({ theme }) => theme.smallFont};
-    padding:7px 12px !important;
+    padding:7px 10px !important;
     width: 100px;
 `;
 

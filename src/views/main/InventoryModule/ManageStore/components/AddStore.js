@@ -55,12 +55,12 @@ const AddStore = props => {
                         name={'store_manager'}
                     />
                 </FieldContainer>
-            </form>
-            <CustomCheckbox
+                <CustomCheckbox
                     checkboxtext='Make this store primary'
                     isChecked={isChecked}
                     onChange={handleChange}
                 />
+            </form>
         </Modal>
     );
 };

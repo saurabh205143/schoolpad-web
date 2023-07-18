@@ -34,6 +34,12 @@ const ManageItems = () => {
           onClick={() =>  setShowModal(!showModal)}
           searchPlaceholder='Search by item name, purchase cost, etc...'
           formField={() => setShowFormFieldModal(!showFormFieldModal)}
+          inputLabel1='Select Store'
+          inputPlaceholder1='Select Store'
+          inputLabel2='Select Category'
+          inputPlaceholder2='Select Category'
+          inputLabel3='Item Name'
+          inputPlaceholder3='Enter item name'
       />
       <ExportHeader
           smallHeading='All Items'

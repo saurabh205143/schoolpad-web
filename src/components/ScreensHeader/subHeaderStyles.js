@@ -71,7 +71,7 @@ export const GetRecordsContainer = styled.div`
     width:100%;
     display:flex;
     flex-direction:row;
-    align-items:center;
+    align-items:flex-end;
 `;
 
 export const RecordBox = styled.div`
