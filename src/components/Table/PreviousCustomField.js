@@ -5,11 +5,13 @@ import LinkButton from '../Buttons/LinkButton';
 // Assets
 import EditIcon from '../../images/edit-icon.svg';
 import DeleteIcon from '../../images/delete-icon.svg';
+import { ModalBodyConatiner } from '../../views/main/TransportModule/TransportRoute/components/AddRouteStyles';
 
 const PreviousCustomField = (props) => {
 
   return (
     <>
+    <ModalBodyConatiner>
       <TableContainer className='picked-table'>
         <TableHead>
           <TableRow>
@@ -89,6 +91,7 @@ const PreviousCustomField = (props) => {
           </TableRow>
         </TableBody>
       </TableContainer>
+      </ModalBodyConatiner>
     </>
   );
 }

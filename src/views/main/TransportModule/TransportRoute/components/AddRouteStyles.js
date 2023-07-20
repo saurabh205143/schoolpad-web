@@ -23,6 +23,11 @@ export const FieldContainerBottom = styled.div`
     align-items:center;
 `;
 
+export const FieldContainerBox = styled.div`
+    padding: 11px 22px;
+    width: 100%;
+`
+
 export const FieldContainerBottomLine = styled.div`
     border-bottom: 1px solid #C1C7D0;
     width:100%;

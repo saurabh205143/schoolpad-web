@@ -40,6 +40,9 @@ const ManageItems = () => {
           inputPlaceholder2='Select Category'
           inputLabel3='Item Name'
           inputPlaceholder3='Enter item name'
+          showGetRecordButton ={true}
+          showPrimaryButton ={true}
+          showSearchButtonRight={true}
       />
       <ExportHeader
           smallHeading='All Items'

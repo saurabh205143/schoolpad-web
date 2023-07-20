@@ -10,6 +10,7 @@ import ManageStoreTable from '../../../../../components/InventoryTable/ManageSto
 import AddStore from './AddStore';
 import MoveItem from './MoveItem';
 import CategoriesListTable from './CategoriesListTable';
+import MoveIcon from '../../../../../images/move-item-icon.svg';
 
 
 const ManageStore = () => {
@@ -38,6 +39,7 @@ const ManageStore = () => {
           type='horizontal' 
           buttonAdd='Add New Store'
           buttonOrders='Move Items'  
+          leftIcon={MoveIcon}
           searchPlaceholder='Search by store name etc...'
           onClick={() =>  setShowModal(!showModal)}
           buttonOrderDragList={() => setShowMoveItemModal(!showMoveItemModal)}

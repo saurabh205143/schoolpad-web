@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
-import {AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer1, FieldRightContainerItem, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import {AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer1, FieldRightContainerItem, ModalBodyConatiner, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
@@ -63,6 +63,7 @@ const AddCategories = props => {
             cancelText='Cancel'
         >
             <form>
+                <ModalBodyConatiner>
                 <FieldContainer>
                     <Input
                         type="select"
@@ -107,12 +108,13 @@ const AddCategories = props => {
                     </FieldDivider>
                     ))}
                 {/* Add More field button */}
-                <AddMoreField>
+                <AddMoreField style={{marginBottom: '14px'}}>
                     <Link onClick={() => addFormFields()}>
                         <img src={AddMoreIcon} alt="Icon" />
                         <span>Add Another Category</span>
                     </Link>
                 </AddMoreField>
+                </ModalBodyConatiner>
             </form>
         </Modal>
     );

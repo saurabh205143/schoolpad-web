@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
-import { AddFormFieldInnerTab, AddFormFieldTab, AddFormFieldTabText, AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer1,RemoveContianer } from './AddRouteStyles';
+import { AddFormFieldInnerTab, AddFormFieldTab, AddFormFieldTabText, AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer1,ModalBodyConatiner,RemoveContianer } from './AddRouteStyles';
 import { Link } from 'react-router-dom';
 import { Tab, Tabs } from 'react-bootstrap'
 
@@ -69,6 +69,7 @@ const AddFormField = props => {
                         <Tabs className='form-field-tab' activeKey={tabKey} onSelect={(e) => initTabKey(e)}>
                             <Tab className='form-field-tab-name' eventKey="one" title="Add New Form Field">
                                 <p><form>
+                                    <ModalBodyConatiner>
                                     <FieldContainer>
                                         <Input
                                             type='select'
@@ -117,6 +118,7 @@ const AddFormField = props => {
                                             <span>Add Another Option</span>
                                         </Link>
                                     </AddMoreField>
+                                    </ModalBodyConatiner>
                                 </form></p>
                             </Tab>
                             <Tab eventKey="two" title="Previous Custom Fields">

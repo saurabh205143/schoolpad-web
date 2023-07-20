@@ -10,7 +10,7 @@ import AddCategories from '../../../views/main/InventoryModule/ManageCategories/
 import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../../Pagination/Pagination';
 
-let PageSize = 2;
+let PageSize = 10;
 
 const ManageCategoriesTable = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);

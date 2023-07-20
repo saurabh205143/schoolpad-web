@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
-import {AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer1, FieldRightContainerItem, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import {AddMoreField, FieldContainer, FieldContainerBottom, FieldContainerBottomLine, FieldContainerBox, FieldDivider, FieldDividerBottom, FieldDividerHeading, FieldLeftContainer1, FieldRightContainerItem, ModalBodyConatiner, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 
 
 // Assets
@@ -64,6 +64,9 @@ const AddItems = props => {
             cancelText='Cancel'
         >
             <form>
+                    <>
+                <FieldContainerBottom>
+                    <FieldContainerBox>
                 <FieldContainer>
                     <Input
                         type="select"
@@ -72,8 +75,6 @@ const AddItems = props => {
                         placeholder={'---- Select store name ----'}
                         name='store_name'
                     />
-                </FieldContainer>
-                <FieldContainer>
                     <Input
                         type="select"
                         label={'Select Categories'}
@@ -81,8 +82,6 @@ const AddItems = props => {
                         placeholder={'---- Select categories ----'}
                         name='store_name'
                     />
-                </FieldContainer>
-                <FieldContainer>
                     <Input
                         type="text"
                         label={'Alert Me If Item Count Falls Below'}
@@ -90,8 +89,6 @@ const AddItems = props => {
                         placeholder={'Enter if item count falls below'}
                         name='store_name'
                     />
-                </FieldContainer>
-                <FieldContainer>
                     <Input
                         type="text"
                         label={'Add Email IDs For Alert'}
@@ -100,7 +97,23 @@ const AddItems = props => {
                         name='store_name'
                     />
                 </FieldContainer>
+                {/* Add More field button */}
+                <AddMoreField style={{marginBottom: '14px'}}>
+                    <Link onClick={() => addFormFields()}>
+                        <img src={AddMoreIcon} alt="Icon" />
+                        <span>Add Another Email</span>
+                    </Link>
+                </AddMoreField>
+                </FieldContainerBox>
+                </FieldContainerBottom>
+                </>
+                <>
+                <FieldDividerBottom>
                 {formValues.map((element, index) => (
+                <>
+                    <FieldDividerHeading>
+                        <span>Add Item Details Below</span>
+                    </FieldDividerHeading>
                 <FieldDivider>
                         <FieldLeftContainer1>
                             <Input
@@ -131,10 +144,12 @@ const AddItems = props => {
                                     />
                                 </RemoveContianer>
                                 : null
-                        }
+                    }
                     </FieldDivider>
+                    </>
                     ))}
                     {formValues.map((element, index) => (
+                <>
                 <FieldDivider>
                         <FieldLeftContainer1>
                             <Input
@@ -167,14 +182,17 @@ const AddItems = props => {
                                 : null
                         }
                     </FieldDivider>
-                    ))}
-                {/* Add More field button */}
-                <AddMoreField>
+                    {/* Add More field button */}
+                    <AddMoreField style={{marginBottom: '14px'}}>
                     <Link onClick={() => addFormFields()}>
                         <img src={AddMoreIcon} alt="Icon" />
                         <span>Add Another Item</span>
                     </Link>
-                </AddMoreField>
+                    </AddMoreField>
+                    </>
+                    ))}
+                    </FieldDividerBottom>
+                    </>
             </form>
         </Modal>
     );

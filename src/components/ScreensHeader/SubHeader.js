@@ -66,7 +66,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, dateLabel, datePlaceholder, showDateInput, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3}) => {
+const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, dateLabel, datePlaceholder, showDateInput, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon,}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -93,7 +93,6 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                         />
                     </ButtonContainer>  
                 
-                
                     <ButtonContainer>
                         <Button
                             className='primary'
@@ -101,13 +100,13 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             onClick={onClick}
                         />
                     </ButtonContainer>
-                
                     {buttonOrders &&
                         <ButtonContainer>
                             <Button
                                 className='secondary'
                                 buttonText={buttonOrders}
                                 onClick={buttonOrderDragList}
+                                leftIcon={leftIcon}
                             />
                         </ButtonContainer>
                     }
