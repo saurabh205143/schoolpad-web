@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
-import { FieldContainer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
-import CustomCheckbox, { CustomCheckboxContainer } from '../../../../../components/Checkbox/CustomCheckbox';
+import { FieldContainer, ModalBodyConatiner } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import CustomCheckbox from '../../../../../components/Checkbox/CustomCheckbox';
 
 
 const AddStore = props => {
@@ -23,6 +23,8 @@ const AddStore = props => {
             cancelText='Cancel'
         >
             <form>
+                <>
+                <ModalBodyConatiner>
                 <FieldContainer>
                     <Input
                         type="text"
@@ -60,6 +62,8 @@ const AddStore = props => {
                     isChecked={isChecked}
                     onChange={handleChange}
                 />
+                </ModalBodyConatiner>
+                </>
             </form>
         </Modal>
     );

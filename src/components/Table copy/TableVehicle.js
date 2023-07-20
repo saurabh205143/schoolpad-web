@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import TableData from './TableData';
-import { ActionListStatus, ActionsConatiner, ActionsList, ListStatus, MoreAction, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
+import { ActionListStatus, ActionsConatiner, ActionsList, MoreAction, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
 
 // Assets
 import EditIcon from '../../images/edit-icon.svg';

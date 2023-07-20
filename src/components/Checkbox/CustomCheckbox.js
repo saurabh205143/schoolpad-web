@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import InactiveCheckbox from '../../images/inactive-checkbox.svg';
 import ActiveCheckbox from '../../images/active-checkbox.svg';
 
@@ -20,7 +19,7 @@ const CustomCheckbox = ({ isChecked, onChange, disabled, checkboxtext}) => {
                     <img src={ActiveCheckbox} alt={'Checkbox'} />
                     
                 )}
-                <span style={{paddingLeft: '10px'}}>{checkboxtext}</span>
+                <span style={{paddingLeft: '8px', fontSize: '14px'}}>{checkboxtext}</span>
             </div>
         </>
     );

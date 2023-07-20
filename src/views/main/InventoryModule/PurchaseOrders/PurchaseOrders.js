@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Layout from '../../../../components/Layouts/Layout';
 import SubHeader from '../../../../components/ScreensHeader/SubHeader';
 import ExportHeader from '../../../../components/ScreensHeader/ExportHeader';
@@ -29,6 +29,8 @@ const PurchaseOrders = () => {
           inputPlaceholder3='DD/MM/YYYY'
           rightIcon={DateIcon}
           showHeaderFilter={true}
+          showSearchButtonRight={true}
+          showPrimaryButton={true}
           inputLabel4='To'
           inputPlaceholder4='DD/MM/YYYY'
       />

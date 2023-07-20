@@ -8,6 +8,15 @@ export const Container = styled.div`
     justify-content:space-between;
 `;
 
+export const HeaderFilterContainder = styled.div`
+    width:100%;
+    padding:16px 16px;
+    display:flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content:space-between;
+`
+
 export const ContainerLeft = styled.div`
     display:flex;
     align-items:center;
@@ -64,13 +73,13 @@ export const VerticalContainer = styled.div`
 `;
 
 export const DescriptionText = styled.div`
-    margin:15px 0;
+    margin: 8px 0;
 `;
 
 export const GetRecordsContainer = styled.div`
     width:100%;
     display:flex;
-    flex-direction:row;
+    flex-flow: wrap;
     align-items:flex-end;
 `;
 

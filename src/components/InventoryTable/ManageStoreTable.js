@@ -64,7 +64,7 @@ const ManageStoreTable = ({ onClick }) => {
                   <ActionsConatiner>
                     <ActionsList>
                       <Button
-                        buttonText='Categories'
+                        buttonText='1 Categories'
                         className='link-button'
                         onClick={onClick}
                       />

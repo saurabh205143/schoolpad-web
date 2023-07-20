@@ -37,7 +37,7 @@ export const SelectContainer = styled.div`
 
 export const Title = styled.label`
     font-style: normal;
-    font-weight: ${({ theme }) => theme.fontWeightBold};
+    font-weight: 600;
     font-size: ${({ theme }) => theme.xsmallFont};
     color: ${({ theme }) => theme.darkColor};
     line-height:16px;
@@ -45,7 +45,7 @@ export const Title = styled.label`
 
 export const InputContainer = styled.div`
   width:100%;
-  height:40px;
+  height:36px;
   display: flex;
   flex: 1 0;
   align-items: center;

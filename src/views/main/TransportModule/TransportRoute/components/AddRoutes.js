@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
-import { AddFormField, AddFormFieldHeading } from '../../../../../components/Modal/ModalStyles';
 
 const options = [
     {
@@ -112,9 +111,9 @@ const AddRoutes = props => {
                             index ?
                                 <RemoveContianer>
                                     <Button
-                                     className={'only-icon-button'}
-                                     onlyIcon={RemoveIcon}
-                                     onClick={() => removeFormFields(index)}
+                                        className={'only-icon-button'}
+                                        onlyIcon={RemoveIcon}
+                                        onClick={() => removeFormFields(index)}
                                     />
                                 </RemoveContianer>
                                 : null

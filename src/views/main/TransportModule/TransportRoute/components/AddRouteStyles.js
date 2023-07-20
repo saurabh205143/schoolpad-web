@@ -1,17 +1,58 @@
 import { styled } from "styled-components";
 
+export const ModalBodyConatiner = styled.div`
+    padding: 11px 22px;
+`
+
 export const FieldContainer = styled.div`
     width:100%;
     float:left;
 `;
 
-export const FieldContainerBottomLine = styled.div`
+export const FieldContainerMove = styled.div`
+    width:100%;
+    float:left;
+    padding: 11px 22px;
+`;
+
+export const FieldContainerBottom = styled.div`
     border-bottom: 1px solid #C1C7D0;
-    border-radius: 0px 0px 3px 3px;
     width:100%;
     display:flex;
+    flex-direction: column;
     align-items:center;
-    justify-content:flex-end;
+`;
+
+export const FieldContainerBottomLine = styled.div`
+    border-bottom: 1px solid #C1C7D0;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items:flex-start;
+    padding: 11px 22px;
+`;
+
+export const FieldDividerHeading = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    >span {
+        font-size: 14px;
+        font-weight: 600;
+    }
+`;
+
+export const FiledDividerHeadingContent = styled.div`
+    display: flex;
+    width: 100%;
+`
+
+export const FieldDividerHeadingBottom = styled.div`
+    >span {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 11px 22px;
+    }
 `;
 
 export const FieldDivider = styled.div`
@@ -19,6 +60,15 @@ export const FieldDivider = styled.div`
     display:flex;
     align-items:center;
     justify-content:flex-start;
+`;
+
+export const FieldDividerBottom = styled.div`
+    width:100%;
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-start;
+    padding: 11px 22px;
+    flex-direction:column;
 `;
 
 export const FieldLeftContainer = styled.div`

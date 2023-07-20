@@ -19,7 +19,7 @@ export const lightTheme = {
     bgHover:"#0055CC",
     bgFocus:"#388BFF",
     bgDisabled:"rgba(9, 30, 66, 0.0588235)",
-    fontWeightBold:"600",
+    fontWeightBold:"400",
     fontWeightSemiBold:"500",
     fontWeightRegular:"400",
     secondarHover:"rgba(9, 30, 66, 0.141176)",

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavBar = styled.ul`
  margin:0;
- padding:0px;
+ padding:10px 0;
  list-style:none;
  display:flex;
  flex-direction:column;
@@ -13,12 +13,13 @@ export const NavBar = styled.ul`
 `;
 
 export const NavBarItem = styled.li`
-    padding:10px 14px;
-    border-bottom:1px solid #C1C7D0;
+    padding:0px 14px;
+    // border-bottom:1px solid #C1C7D0;
     &.active {
         >a{
             >span{
                 color:${({ theme }) => theme.blueColor};
+                font-weight: 600;
             }
             >.inactive-icons{
                 display:none;
@@ -79,6 +80,7 @@ export const NavBarItems = styled.li`
         >a{
             >span{
                 color:${({ theme }) => theme.blueColor};
+                
             }
             >.inactive-icons{
                 display:none;
@@ -123,7 +125,7 @@ export const NavBarItems = styled.li`
 
 export const LinkTitle = styled.span`
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 14px;
     line-height: 32px;
     color:#091E42;

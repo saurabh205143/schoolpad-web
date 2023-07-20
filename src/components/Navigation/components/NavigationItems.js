@@ -28,7 +28,7 @@ const NavigationItems = (props) => {
                 }
                 {props.isActive && (
                     <LinkTitle>
-                        {props.tabname}
+                        {props.tabname} {props.url}
                     </LinkTitle>
                 )}
                 {!props.isActive && <LinkTitle>{props.tabname}</LinkTitle>}

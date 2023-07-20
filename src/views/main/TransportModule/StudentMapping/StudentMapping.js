@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import Layout from '../../../../components/Layouts/Layout';
 import DefaultMappingScreen from './components/DefaultMappingScreen';
-import TestSelect from '../../../../components/Inputs/TestSelect';
 import SubHeader from '../../../../components/ScreensHeader/SubHeader';
 import ExportHeader from '../../../../components/ScreensHeader/ExportHeader';
 import MappingTable from './components/MappingTable';
 import { styled } from 'styled-components';
 import { FooterButtonContainer } from '../../../../components/Modal/ModalStyles';
 import Button from '../../../../components/Buttons/Button';
-import ItemsNotFound from '../../../../components/NotFoundItems/ItemsNotFound';
 
 export const FixedBottomContainer = styled.div`
   width:100%;
@@ -40,6 +38,13 @@ const StudentMapping = () => {
       <SubHeader
         heading='Student Mapping'
         type='vertical' 
+        headerDescription='Please select the type of data on which you want to add mapping below. You can choose class wise, route wise, admission number wise etc'
+        showGetRecordButton={true}
+        showTextInput={false}
+        showDateInput={false}
+        showSelectInput1={true}
+        selectLabel1='Mapping Type'
+        selectPlaceholder1='----Select mapping type----'
         getRecords={() => setShowRecords(!showRecords)}
       />
 

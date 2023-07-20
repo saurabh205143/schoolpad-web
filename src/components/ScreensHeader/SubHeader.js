@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ButtonContainer, Container, ContainerLeft, ContainerRight, DescriptionText, GetRecordsContainer, HeaderFilterHeadings, RecordBox, VerticalContainer } from './subHeaderStyles';
+import { ButtonContainer, Container, ContainerLeft, ContainerRight, DescriptionText, GetRecordsContainer, HeaderFilterContainder, HeaderFilterHeadings,RecordBox, VerticalContainer } from './subHeaderStyles';
 import Headings from '../Headings/Headings';
 import Button from '../Buttons/Button';
 
@@ -7,7 +7,6 @@ import Button from '../Buttons/Button';
 import Icon from '../../images/down-icon.svg';
 import SearchIcon from '../../images/search-icon.svg';
 import Input from '../Inputs/Input';
-import { useLocation } from 'react-router-dom';
 import { styled } from 'styled-components';
 import CustomDrop from '../MainHeader/Components/SubComponents/CustomDrop';
 
@@ -67,7 +66,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter}) => {
+const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, dateLabel, datePlaceholder, showDateInput, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -75,10 +74,6 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
 
     const ref = useRef();
     const buttonRef = useRef();
-
-    const onChange = (e) => {
-        console.log(e.target);
-    }
 
     useOnClickOutside(ref, buttonRef, () => setShowAssociateDrop(false));
 
@@ -89,13 +84,16 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                     <Headings heading={heading} />
                 </ContainerLeft>
                 <ContainerRight >
+                
                     <ButtonContainer>
                         <Input
                             leftIcon={SearchIcon}
                             placeholder={searchPlaceholder}
                             name='search'
                         />
-                    </ButtonContainer>
+                    </ButtonContainer>  
+                
+                
                     <ButtonContainer>
                         <Button
                             className='primary'
@@ -103,6 +101,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             onClick={onClick}
                         />
                     </ButtonContainer>
+                
                     {buttonOrders &&
                         <ButtonContainer>
                             <Button
@@ -113,7 +112,6 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                         </ButtonContainer>
                     }
                     {buttonOption &&
-
                         <ButtonContainer>
                             <div ref={buttonRef}>
                                 <Button
@@ -142,15 +140,30 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                 </ContainerLeft>
                 <DescriptionText>
                     <Headings
-                        description={'Please select the type of data on which you want to add mapping below. You can choose class wise, route wise, admission number wise etc'}
+                        description={headerDescription}
                     />
                 </DescriptionText>
                 <GetRecordsContainer>
+                {showTextInput && 
                     <RecordBox>
                         <Input
-                            type='select'
-                            label='Mapping Type'
-                            placeholder={'Mapping Type'}
+                            type='text'
+                            label={textLabel}
+                            placeholder={textPlaceholder}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
+                    </RecordBox>
+                }
+                {showDateInput && 
+                    <RecordBox>
+                        <Input
+                            type='text'
+                            label={dateLabel}
+                            placeholder={datePlaceholder}
+                            rightIcon={rightIcon}
                             options={options}
                             onChange={(e) => {
                                 console.log(e[0].label)
@@ -158,7 +171,63 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             }}
                         />
                     </RecordBox>
-                    {showDependentDrop == "Class Wise" &&
+                }
+                {showSelectInput1 && 
+                    <RecordBox>
+                        <Input
+                            type='select'
+                            label={selectLabel1}
+                            placeholder={selectPlaceholder1}
+                            options={options}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
+                    </RecordBox>
+                }
+                {showSelectInput2 && 
+                    <RecordBox>
+                        <Input
+                            type='select'
+                            label={selectLabel2}
+                            placeholder={selectPlaceholder2}
+                            options={options}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
+                    </RecordBox>
+                }
+                {showSelectInput3 && 
+                    <RecordBox>
+                        <Input
+                            type='select'
+                            label={selectLabel3}
+                            placeholder={selectPlaceholder3}
+                            options={options}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
+                    </RecordBox>
+                }
+                {showTextInput1 && 
+                    <RecordBox>
+                        <Input
+                            type='text'
+                            label={textLabel1}
+                            placeholder={textPlaceholder1}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
+                    </RecordBox>
+                }
+                    {showDependentDrop === "Class Wise" &&
                         <RecordBox>
                             <Input
                                 type='select'
@@ -171,7 +240,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             />
                         </RecordBox>
                     }
-                    {showDependentDrop == "Admission No" &&
+                    {showDependentDrop === "Admission No" &&
                         <RecordBox>
                             <Input
                                 type='text'
@@ -180,11 +249,13 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             />
                         </RecordBox>
                     }
+                    {showGetRecordButton &&
                     <Button
                         className='primary'
                         buttonText="Get Records"
                         onClick={getRecords}
                     />
+                    }
                 </GetRecordsContainer>
             </VerticalContainer>
         )
@@ -197,14 +268,22 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                     <ContainerLeft>
                         <Headings heading={heading} />
                     </ContainerLeft>
+                    <DescriptionText>
+                    <Headings
+                        description={headerDescription}
+                    />
+                </DescriptionText>
                     <ContainerRight>
+                    {showSearchButtonRight &&
                         <ButtonContainer>
                             <Input
                                 leftIcon={SearchIcon}
                                 placeholder={searchPlaceholder}
                                 name='search'
                             />
-                        </ButtonContainer>
+                        </ButtonContainer>    
+                    }
+                    {showPrimaryButton && 
                         <ButtonContainer>
                             <Button
                                 className='primary'
@@ -212,6 +291,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                                 onClick={onClick}
                             />
                         </ButtonContainer>
+                    }
                         {buttonOrders &&
                             <ButtonContainer>
                                 <Button
@@ -297,7 +377,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                                 }}
                             />
                         </RecordBox>
-                        {showDependentDrop == "Store 1" &&
+                        {showDependentDrop === "Store 1" &&
                             <RecordBox>
                                 <Input
                                     type='select'
@@ -309,7 +389,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                                 />
                             </RecordBox>
                         }
-                        {showDependentDrop == "Store 2" &&
+                        {showDependentDrop === "Store 2" &&
                             <RecordBox>
                                 <Input
                                     type='text'
@@ -317,11 +397,13 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                                 />
                             </RecordBox>
                         }
+                        {showGetRecordButton &&
                         <Button
                         className='primary'
                         buttonText="Get Records"
                         onClick={getRecords}
                         />
+                        }
                     </GetRecordsContainer>
                 </VerticalContainer>
                 </HeaderFilterHeadings>

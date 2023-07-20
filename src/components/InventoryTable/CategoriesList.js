@@ -150,7 +150,6 @@ const CategoriesList = ({ onClick }) => {
                             </Tabledatatext>
                         </Tabledata>
                     </TableRow>
-
                 </TableBody>
             </TableContainer>
         </>

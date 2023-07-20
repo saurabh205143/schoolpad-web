@@ -55,11 +55,6 @@ const AddItems = props => {
         setFormValues(newFormValues)
     }
 
-    let handleSubmit = (event) => {
-        event.preventDefault();
-        alert(JSON.stringify(formValues));
-    }
-
     return (
         <Modal
             show={show}

@@ -4,7 +4,6 @@ import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
 import {AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer1, FieldRightContainerItem, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 
-
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
@@ -53,11 +52,6 @@ const AddCategories = props => {
         let newFormValues = [...formValues];
         newFormValues.splice(i, 1);
         setFormValues(newFormValues)
-    }
-
-    let handleSubmit = (event) => {
-        event.preventDefault();
-        alert(JSON.stringify(formValues));
     }
 
     return (

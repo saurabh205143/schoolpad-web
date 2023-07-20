@@ -31,7 +31,6 @@ export const NavBarItem = styled.li`
         background: ${({theme}) => theme.bgPrimary};
     }
 }
-
 `;
 
 export const LinkTitle = styled.span`

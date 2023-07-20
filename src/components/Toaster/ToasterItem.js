@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toaster, ToasterConatiner, ToasterConatinerError, ToasterConatinerSuccessful, ToasterConatinerWarning, ToasterInnerText } from './ToasterStyle';
+import { Toaster, ToasterConatinerError, ToasterConatinerSuccessful, ToasterConatinerWarning, ToasterInnerText } from './ToasterStyle';
 
 //Assest
 import ErrorIcon from '../../images/toaster-alert.svg';

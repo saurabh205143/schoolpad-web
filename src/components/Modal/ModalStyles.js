@@ -14,7 +14,7 @@ export const ModalContent = styled.div`
     position:fixed;
     background: #ffffff;
     width:auto;
-    min-width:640px;
+    min-width:600px;
     top:50%;
     left:50%;
     height: auto;
@@ -34,7 +34,7 @@ export const ModalHeader = styled.div`
 `;
 
 export const ModalBody = styled.div`
-    padding:11px 22px;
+    // padding:11px 22px;
     max-height:80vh;
     overflow:auto;
 `;

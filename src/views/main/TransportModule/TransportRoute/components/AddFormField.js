@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
-import { AddFormFieldInnerTab, AddFormFieldTab, AddFormFieldTabText, AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer1, PickedDropContainer, RemoveContianer } from './AddRouteStyles';
+import { AddFormFieldInnerTab, AddFormFieldTab, AddFormFieldTabText, AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer1,RemoveContianer } from './AddRouteStyles';
 import { Link } from 'react-router-dom';
 import { Tab, Tabs } from 'react-bootstrap'
 
@@ -10,7 +10,6 @@ import { Tab, Tabs } from 'react-bootstrap'
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
-import PickDropTimeTable from '../../../../../components/Table/PickDropTimeTable';
 import PreviousCustomField from '../../../../../components/Table/PreviousCustomField';
 
 const options = [

@@ -6,6 +6,10 @@ export const Container = styled.div`
     overflow:auto;
 `;
 
+export const ContainerTable = styled.div`
+    padding: 20px;
+`;
+
 export const TableContainer = styled.table`
     width:100%;
     &.picked-table{

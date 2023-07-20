@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
-import { AddMoreField, FieldContainer, FieldContainerBottomLine, FieldDivider, FieldLeftContainer, FieldLeftContainer1, FieldRightContainer, FieldRightContainer1, FieldRightContainerItem, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import { AddMoreField, FieldContainer, FieldContainerBottomLine, FieldContainerBottom, FieldDivider,FieldLeftContainer1, FieldRightContainer1, FieldRightContainerItem, RemoveContianer, FieldDividerBottom, FieldContainerMove, FieldDividerHeading, FieldDividerHeadingBottom, FiledDividerHeadingContent } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
@@ -68,7 +68,8 @@ const MoveItem = props => {
             cancelText='Cancel'
         >
             <form onSubmit={handleSubmit}>
-                <FieldContainer>
+            <FieldContainerBottom>
+                <FieldContainerMove>
                     <Input
                         type='select'
                         options={options}
@@ -76,8 +77,6 @@ const MoveItem = props => {
                         placeholder={'---- Select movement type ----'}
                         name='staff_member'
                     />
-                </FieldContainer>
-                <FieldContainer>
                     <Input
                         type="text"
                         placeholder={'Date'}
@@ -85,10 +84,15 @@ const MoveItem = props => {
                         name={'route_name'}
                         rightIcon={RightIcon}
                     />
-                </FieldContainer>
-                {/* <FieldContainerBottomLine>
-                </FieldContainerBottomLine> */}
+                </FieldContainerMove>
+            </FieldContainerBottom>
+                <>
+                <FieldContainerBottomLine>
                 {formValues.map((element, index) => (
+                    <>
+                    <FieldDividerHeading>
+                    <span>Move Items From</span>
+                    </FieldDividerHeading>
                     <FieldDivider>
                         <FieldLeftContainer1>
                             <Input
@@ -112,8 +116,9 @@ const MoveItem = props => {
                             />
                         </FieldRightContainerItem>
                     </FieldDivider>
-                    
+                    </>
                 ))}
+
                 {formValues.map((element, index) => (
                     <FieldDivider>
                         <FieldLeftContainer1>
@@ -151,6 +156,7 @@ const MoveItem = props => {
                     </FieldDivider>
                     
                 ))}
+
                 {/* Add More field button */}
                 <AddMoreField>
                     <Link onClick={() => addFormFields()}>
@@ -158,8 +164,15 @@ const MoveItem = props => {
                         <span>Add Another Items</span>
                     </Link>
                 </AddMoreField>
+                </FieldContainerBottomLine>
+                </>
                 {formValues.map((element, index) => (
-                    <FieldDivider>
+                    <>
+                    <FieldDividerBottom>
+                    <FieldDividerHeading>
+                    <span>Move Items From</span>
+                    </FieldDividerHeading>
+                    <FiledDividerHeadingContent>
                         <FieldLeftContainer1>
                             <Input
                                 type='select'
@@ -181,8 +194,9 @@ const MoveItem = props => {
                                 onChange={e => handleChange(index, e)}
                             />
                         </FieldRightContainerItem>
-                    </FieldDivider>
-                    
+                        </FiledDividerHeadingContent>
+                    </FieldDividerBottom>
+                    </>
                 ))}
             </form>
         </Modal>
