@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import LeftIcon from '../../../../../images/phone-icon.svg';
-import { FieldContainer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import { FieldContainer, ModalBodyConatiner } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 
 const options = [
     { 
@@ -25,6 +25,7 @@ const AddVendor = props => {
             submitText='Confirm'
             cancelText='Cancel'
         >
+            <ModalBodyConatiner>
             <FieldContainer>
                 <Input
                     type='text'
@@ -74,6 +75,7 @@ const AddVendor = props => {
                     name={'bus_help'}
                 />
             </FieldContainer>
+            </ModalBodyConatiner>
         </Modal>
     );
 };

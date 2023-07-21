@@ -55,9 +55,10 @@ const ManageItemsTable = ({ onClick }) => {
                             <ActionsConatiner>
                                 <ActionsList>
                                     <Button
-                                        buttonText='1 Categories'
+                                        buttonText='8 Categories'
                                         className='link-button'
                                         onClick={onClick}
+                                        borderBottom='1px solid #0000'
                                     />
                                 </ActionsList>
                             </ActionsConatiner>

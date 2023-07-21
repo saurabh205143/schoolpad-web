@@ -64,7 +64,8 @@ const AddItems = props => {
             cancelText='Cancel'
         >
             <form>
-                    <>
+                <>
+                    
                 <FieldContainerBottom>
                     <FieldContainerBox>
                 <FieldContainer>
@@ -89,13 +90,16 @@ const AddItems = props => {
                         placeholder={'Enter if item count falls below'}
                         name='store_name'
                     />
+                    {formValues.map((element, index) => (
                     <Input
                         type="text"
                         label={'Add Email IDs For Alert'}
                         options={options}
                         placeholder={'Enter email address'}
                         name='store_name'
+                        onChange={e => handleChange(index, e)}
                     />
+                    ))}
                 </FieldContainer>
                 {/* Add More field button */}
                 <AddMoreField style={{marginBottom: '14px'}}>
@@ -107,6 +111,7 @@ const AddItems = props => {
                 </FieldContainerBox>
                 </FieldContainerBottom>
                 </>
+                
                 <>
                 <FieldDividerBottom>
                 {formValues.map((element, index) => (

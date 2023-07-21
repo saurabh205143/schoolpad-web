@@ -1,10 +1,12 @@
 import React from 'react';
 import { TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata, Tabledatatext } from '../Table/TableStyles';
+import { ModalBodyConatiner } from '../../views/main/TransportModule/TransportRoute/components/AddRouteStyles';
 
 const CategoriesList = ({ onClick }) => {
 
     return (
         <>
+        <ModalBodyConatiner>
             <TableContainer className='picked-table'>
                 <TableHead>
                     <TableRow>
@@ -152,6 +154,7 @@ const CategoriesList = ({ onClick }) => {
                     </TableRow>
                 </TableBody>
             </TableContainer>
+            </ModalBodyConatiner>
         </>
     );
 }

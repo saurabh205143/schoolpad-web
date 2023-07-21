@@ -72,10 +72,10 @@ const AddFormField = props => {
                                     <ModalBodyConatiner>
                                     <FieldContainer>
                                         <Input
-                                            type='select'
+                                            type="select"
                                             options={options}
                                             label={'Field Type'}
-                                            placeholder={'---- List ----'}
+                                            placeholder={'----Select field type----'}
                                             name='field_type'
                                         />
                                     </FieldContainer>
@@ -93,7 +93,7 @@ const AddFormField = props => {
                                                 <Input
                                                     type='text'
                                                     label={'Option 1'}
-                                                    placeholder={'---- Enter option 1 ----'}
+                                                    placeholder={'Enter option'}
                                                     name='Option 1'
                                                     value={element.stops || ""}
                                                 />

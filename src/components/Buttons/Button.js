@@ -23,7 +23,7 @@ export const ButtonClassic = styled.button`
     &.secondary {
         background: ${({ theme }) => theme.bgSecondary};
         color: ${({ theme }) => theme.darkColor};
-        border:2px solid ${({ theme }) => theme.bgSecondary};
+        // border:2px solid ${({ theme }) => theme.bgSecondary};
 
         &:hover{
             background: ${({ theme }) => theme.secondarHover};
@@ -102,7 +102,7 @@ export const ButtonClassic = styled.button`
 
 `;
 
-const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon,onlyIcon, tooltiptext}) => {
+const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon,onlyIcon, tooltiptext, borderBottom, borderRadius}) => {
     return (
         <ButtonClassic
             disabled={disabled}
@@ -110,6 +110,7 @@ const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon,o
             onClick={onClick}
             data-tooltip-id={tooltiptext}
             data-tooltip-content={buttonText}
+            style={{ borderBottom, borderRadius }} 
         >
             {leftIcon &&
                 <img src={leftIcon} alt="Icon" className="button-left-icon" />

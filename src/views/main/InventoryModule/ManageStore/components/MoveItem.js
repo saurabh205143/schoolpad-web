@@ -88,7 +88,6 @@ const MoveItem = props => {
             </FieldContainerBottom>
                 <>
                 <FieldContainerBottomLine>
-                {formValues.map((element, index) => (
                     <>
                     <FieldDividerHeading>
                     <span>Move Items From</span>
@@ -101,8 +100,6 @@ const MoveItem = props => {
                                 label={'From Store'}
                                 placeholder={'---- Select from Store ----'}
                                 name='stops'
-                                value={element.stops || ""}
-                                onChange={e => handleChange(index, e)}
                             />
                         </FieldLeftContainer1>
                         <FieldRightContainerItem>
@@ -111,13 +108,10 @@ const MoveItem = props => {
                                 placeholder={'From Category'}
                                 label={'From Category'}
                                 name={'set_order'}
-                                value={element.set_order || ""}
-                                onChange={e => handleChange(index, e)}
                             />
                         </FieldRightContainerItem>
                     </FieldDivider>
                     </>
-                ))}
 
                 {formValues.map((element, index) => (
                     <FieldDivider>
@@ -166,7 +160,6 @@ const MoveItem = props => {
                 </AddMoreField>
                 </FieldContainerBottomLine>
                 </>
-                {formValues.map((element, index) => (
                     <>
                     <FieldDividerBottom>
                     <FieldDividerHeading>
@@ -180,8 +173,6 @@ const MoveItem = props => {
                                 label={'To Store'}
                                 placeholder={'---- Select store ----'}
                                 name='stops'
-                                value={element.stops || ""}
-                                onChange={e => handleChange(index, e)}
                             />
                         </FieldLeftContainer1>
                         <FieldRightContainerItem>
@@ -190,14 +181,11 @@ const MoveItem = props => {
                                 placeholder={'Enter category'}
                                 label={'To Category'}
                                 name={'set_order'}
-                                value={element.set_order || ""}
-                                onChange={e => handleChange(index, e)}
                             />
                         </FieldRightContainerItem>
                         </FiledDividerHeadingContent>
                     </FieldDividerBottom>
                     </>
-                ))}
             </form>
         </Modal>
     );
