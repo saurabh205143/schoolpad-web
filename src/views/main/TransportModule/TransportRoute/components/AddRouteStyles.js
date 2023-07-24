@@ -15,6 +15,10 @@ export const FieldContainerMove = styled.div`
     padding: 11px 22px;
 `;
 
+export const DateInputContainer = styled.div`
+    margin: 0 0 10px 0;
+`;
+
 export const FieldContainerBottom = styled.div`
     border-bottom: 1px solid #C1C7D0;
     width:100%;

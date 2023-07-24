@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ButtonContainer, Container, ContainerLeft, ContainerRight, DescriptionText, GetRecordsContainer, HeaderFilterContainder, HeaderFilterHeadings,RecordBox, VerticalContainer } from './subHeaderStyles';
+import { ButtonContainer, Container, ContainerLeft, ContainerRight, DateInputField, DateInputLabel, DescriptionText, GetRecordsContainer, HeaderFilterContainder, HeaderFilterHeadings,RecordBox, VerticalContainer } from './subHeaderStyles';
 import Headings from '../Headings/Headings';
 import Button from '../Buttons/Button';
 
@@ -9,6 +9,10 @@ import SearchIcon from '../../images/search-icon.svg';
 import Input from '../Inputs/Input';
 import { styled } from 'styled-components';
 import CustomDrop from '../MainHeader/Components/SubComponents/CustomDrop';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import calendarIcon from '../../images/date-icon.svg';
+import CustomDateInput from '../DateInputField/DateInputField';
 
 export const DropContianer = styled.div`
     position:absolute;
@@ -66,7 +70,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, dateLabel, datePlaceholder, showDateInput, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon,}) => {
+const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -76,6 +80,52 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
     const buttonRef = useRef();
 
     useOnClickOutside(ref, buttonRef, () => setShowAssociateDrop(false));
+
+    const [showDateInput, setShowDateInput] = useState(true);
+    const [selectedDate, setSelectedDate] = useState(null);
+    
+    const dateLabel = 'Date';
+    const datePlaceholder = 'MM/dd/yyyy';
+    
+    // Function to handle date selection
+    const handleDateSelect = (date) => {
+      setSelectedDate(date); // Update the selected date in the state
+    };
+
+    // Custom input component with the calendar image inside
+    const CustomDatePickerInput = ({ value, onClick }) => (
+    <div style={{ position: 'relative' }}>
+    <input
+        type="text"
+        value={value}
+        placeholder={datePlaceholder}
+        onClick={onClick}
+        readOnly 
+        style={{ 
+            paddingRight: '30px', 
+            borderRadius: '3px',
+            border: '1px solid rgba(9, 30, 66, 0.141176)',
+            height: '32px',
+            width: '226px',
+            fontSize: '14px',
+            padding: '0 10px' 
+        }}
+    />
+    <img
+        src={calendarIcon}
+        alt="Calendar"
+        style={{
+            position: 'absolute',
+            top: '50%',
+            right: '10px',
+            transform: 'translateY(-50%)',
+            cursor: 'pointer',
+        }}
+        onClick={onClick} 
+    />
+    </div>
+    );
+    
 
     if (type === 'horizontal') {
         return (
@@ -156,24 +206,17 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                         />
                     </RecordBox>
                 }
-                {showDateInput && 
+                {showDateInputField && 
                     <RecordBox>
-                        <Input
-                            type='text'
-                            label={dateLabel}
-                            placeholder={datePlaceholder}
-                            rightIcon={rightIcon}
-                            options={options}
-                            onChange={(e) => {
-                                console.log(e[0].label)
-                                setShowDependentDrop(e[0].label)
-                            }}
+                        <CustomDateInput
+                        width='280px'
                         />
                     </RecordBox>
                 }
                 {showSelectInput1 && 
                     <RecordBox>
                         <Input
+                            width='280px'
                             type='select'
                             label={selectLabel1}
                             placeholder={selectPlaceholder1}
@@ -325,35 +368,20 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                 <VerticalContainer>
                     <GetRecordsContainer>
                     <RecordBox>
-                            <Input
-                                label={inputLabel3}
-                                type='text'
-                                placeholder={inputPlaceholder3}
-                                rightIcon={rightIcon}
-                                options={options}
-                                onChange={(e) => {
-                                    console.log(e[0].label)
-                                    setShowDependentDrop(e[0].label)
-                                }}
+                            <CustomDateInput
+                            width='280px'
                             />
                         </RecordBox>
                         {showHeaderFilter &&
                         <RecordBox>
-                            <Input
-                                label={inputLabel4}
-                                type='text'
-                                placeholder={inputPlaceholder4}
-                                rightIcon={rightIcon}
-                                options={options}
-                                onChange={(e) => {
-                                    console.log(e[0].label)
-                                    setShowDependentDrop(e[0].label)
-                                }}
+                            <CustomDateInput
+                            width='280px'
                             />
                         </RecordBox>
                         }
                         <RecordBox>
                             <Input
+                                width='280px'
                                 label={inputLabel1}
                                 type='select'
                                 placeholder={inputPlaceholder1}

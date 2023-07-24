@@ -40,7 +40,7 @@ const ManageStore = () => {
           buttonAdd='Add New Store'
           buttonOrders='Move Items'  
           leftIcon={MoveIcon}
-          searchPlaceholder='Search by store name etc...'
+          searchPlaceholder='Search by store name...'
           onClick={() =>  setShowModal(!showModal)}
           buttonOrderDragList={() => setShowMoveItemModal(!showMoveItemModal)}
       />

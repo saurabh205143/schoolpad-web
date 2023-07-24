@@ -90,15 +90,33 @@ export const RecordBox = styled.div`
     > div{
         > div{
             > .select-drop{
-                width:226px;
+                width:280px;
                 height:32px;
                 min-height:32px;
             }
         }
     }
     >.simple-input{
-        width:226px;
+        width:280px;
         height:32px;
     }
  }
+`;
+
+export const DateContainer = styled.div`
+    margin-right: 0px;
+`;
+
+export const DateInputLabel = styled.div`
+    font-weight: 600;
+    font-size: 12px;
+    color: #000000;
+`;
+
+export const DateInputField = styled.div`
+    display: flex;
+    flex-direction: column;
+    input#placeholder {
+        color: #000000;
+    }
 `;

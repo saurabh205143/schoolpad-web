@@ -7,9 +7,6 @@ import PurchaseOrdersTable from '../../../../components/InventoryTable/PurchaseO
 //Assets
 import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
-import DateIcon from '../../../../images/date-icon.svg';
-
-
 
 const PurchaseOrders = () => {
 
@@ -25,14 +22,9 @@ const PurchaseOrders = () => {
           inputPlaceholder1='Enter purchase order no.'
           inputLabel2='Item Name'
           inputPlaceholder2='Enter item name'
-          inputLabel3='From'
-          inputPlaceholder3='DD/MM/YYYY'
-          rightIcon={DateIcon}
           showHeaderFilter={true}
           showSearchButtonRight={true}
           showPrimaryButton={true}
-          inputLabel4='To'
-          inputPlaceholder4='DD/MM/YYYY'
       />
       <ExportHeader
           smallHeading='All Purchase Orders'

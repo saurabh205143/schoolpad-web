@@ -25,7 +25,7 @@ const ManageCategories = () => {
           type='horizontal' 
           buttonAdd='Add New Category' 
           onClick={() =>  setShowModal(!showModal)}
-          searchPlaceholder='Search by store code, categories,  etc...'
+          searchPlaceholder='Search by store code, categories...'
       />
       <ExportHeader
           smallHeading='All Categories'

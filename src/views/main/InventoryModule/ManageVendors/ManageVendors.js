@@ -26,7 +26,7 @@ const ManageVendors = () => {
           type='horizontal' 
           buttonAdd='Add New Vendor' 
           onClick={() =>  setShowModal(!showModal)}
-          searchPlaceholder='Search by region, gst no,  etc...'
+          searchPlaceholder='Search by region, gst no...'
       />
       <ExportHeader
           smallHeading='All Vendors'

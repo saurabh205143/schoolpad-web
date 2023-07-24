@@ -35,7 +35,7 @@ const AllRoutes = [
     },
     {
         tabname: "Inventory",
-        link: "/inventory/manageStore",
+        link: "/manageStore",
     },
 ];
 

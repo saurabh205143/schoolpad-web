@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
-import { AddMoreField, FieldContainer, FieldContainerBottomLine, FieldContainerBottom, FieldDivider,FieldLeftContainer1, FieldRightContainer1, FieldRightContainerItem, RemoveContianer, FieldDividerBottom, FieldContainerMove, FieldDividerHeading, FieldDividerHeadingBottom, FiledDividerHeadingContent } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import { AddMoreField, FieldContainer, FieldContainerBottomLine, FieldContainerBottom, FieldDivider,FieldLeftContainer1, FieldRightContainer1, FieldRightContainerItem, RemoveContianer, FieldDividerBottom, FieldContainerMove, FieldDividerHeading, FieldDividerHeadingBottom, FiledDividerHeadingContent, DateInputContainer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
-import RightIcon from '../../../../../images/date-icon.svg';
+import DateInputField from '../../../../../components/DateInputField/DateInputField';
+import CustomDateInput from '../../../../../components/DateInputField/DateInputField';
+
 
 const options = [
     {
@@ -77,13 +79,11 @@ const MoveItem = props => {
                         placeholder={'---- Select movement type ----'}
                         name='staff_member'
                     />
-                    <Input
-                        type="text"
-                        placeholder={'Date'}
-                        label={'Date'}
-                        name={'route_name'}
-                        rightIcon={RightIcon}
-                    />
+                    <DateInputContainer>
+                        <CustomDateInput
+                        width='100%'
+                        />
+                    </DateInputContainer>
                 </FieldContainerMove>
             </FieldContainerBottom>
                 <>

@@ -22,22 +22,15 @@ const AddPurchaseOrder = () => {
           showTextInput={true}
           showTextInput1={true}
           showSelectInput1={true}
-          showSelectInput2={true}
-          showSelectInput3={true}
-          showDateInput={true}
+          showSelectInput2={false}
+          showSelectInput3={false}
+          showDateInputField={true}
           textLabel='Purchase Order No.'
           textPlaceholder='Enter purchase order no'
           textLabel1='Remark'
           textPlaceholder1='Enter remark here'
-          dateLabel='Date'
-          datePlaceholder='DD/MM/YY'
-          rightIcon={RightIcon}
           selectLabel1='Department'
           selectPlaceholder1='----Select department----'
-          selectLabel2='Store'
-          selectPlaceholder2='----Select store----'
-          selectLabel3='Category'
-          selectPlaceholder3='----Select category----'
       />
 
       {/* Add Purchase Table*/}

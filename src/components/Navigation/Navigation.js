@@ -28,9 +28,8 @@ const Navigation = ({type}) => {
                 return 1;
             case 'studentmapping':
                 return 2;
-            default:
-                return 1;
-            case '/inventory/manageStore':
+            
+            case '/manageStore':
                 return 3;
             case '/inventory/manageCategories':
                 return 4;
@@ -44,11 +43,12 @@ const Navigation = ({type}) => {
                 return 8;             
             case '/inventory/issueItems':
                 return 9;             
-            case '/inventory/itemReport':
+            case '/inventory/itemReports':
                 return 10;           
-            case '/inventory/issueReport':
+            case '/inventory/issueReports':
                 return 11;
-
+                default:
+                    return 1;
         }
     };
 
@@ -85,7 +85,7 @@ const Navigation = ({type}) => {
         }
 
         if (tabname === 'ManageStore') {
-            active = url.includes('/inventory/manageStore');
+            active = url.includes('/manageStore');
         }
 
         if (tabname === 'ManageCategories') {
@@ -122,6 +122,10 @@ const Navigation = ({type}) => {
 
         if (tabname === 'ItemReports') {
             active = url.includes('/inventory/itemReports');
+        }
+
+        if (tabname === 'IssueReports') {
+            active = url.includes('/inventory/issueReports');
         }
         return classNames(defaultClass, { active: active });
     };
@@ -203,25 +207,13 @@ const Navigation = ({type}) => {
                     className={getClassNames('nav-item', showDrop === 3)}
                 >
                     <NavigationItems
-                        url=''
+                        url='/manageStore'
                         tabname="Manage Store"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
-                        containsDrop="true"
+                        containsDrop="false"
                     />
-                    {showDrop === 3 && (
-                        <SidebarDropDown className='sidebar-drop'>
-                            <SidebarDropList
-                                className={getActiveClassNames('nav-item', 'ManageStore',)}>
-                                <NavigationItems
-                                    url="/inventory/manageStore"
-                                    tabname="Manage Store"
-                                    drop="true"
-                                    isActive={activeModule === '/inventory/manageStore'}
-                                />
-                            </SidebarDropList>
-                        </SidebarDropDown>
-                    )}
+                    
                 </NavBarItem> 
                 <NavBarItem
                     onClick={() => setShowDrop(showDrop === 4 ? null : 4)}
@@ -411,6 +403,31 @@ const Navigation = ({type}) => {
                                     tabname="Item Report"
                                     drop="true"
                                     isActive={activeModule === '/inventory/itemReports'}
+                                />
+                            </SidebarDropList>
+                        </SidebarDropDown>
+                    )}
+                </NavBarItem>
+                <NavBarItem
+                    onClick={() => setShowDrop(showDrop === 11 ? null : 11)}
+                    className={getClassNames('nav-item', showDrop === 11)}
+                >
+                    <NavigationItems
+                        url=''
+                        tabname="Issue Report"
+                        inactiveIcon={InactiveIcon}
+                        activeIcon={ActiveIcon}
+                        containsDrop="true"
+                    />
+                    {showDrop === 11 && (
+                        <SidebarDropDown className='sidebar-drop'>
+                            <SidebarDropList
+                                className={getActiveClassNames('nav-item', 'IssueReports',)}>
+                                <NavigationItems
+                                    url="/inventory/itemReports"
+                                    tabname="Issue Report"
+                                    drop="true"
+                                    isActive={activeModule === '/inventory/issueReports'}
                                 />
                             </SidebarDropList>
                         </SidebarDropDown>
