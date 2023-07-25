@@ -8,6 +8,7 @@ import {AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer1, FieldRi
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
+import SelectInput from '../../../../../components/Inputs/Select';
 
 const AddCategories = props => {
 
@@ -65,12 +66,9 @@ const AddCategories = props => {
             <form>
                 <ModalBodyConatiner>
                 <FieldContainer>
-                    <Input
-                        type="select"
-                        label={'Store Name*'}
-                        options={options}
-                        placeholder={'---- Select store name ----'}
-                        name='store_name'
+                    <SelectInput
+                        label='Select Store'
+                        placeholder='---- Select store ----'
                     />
                 </FieldContainer>
                 {formValues.map((element, index) => (

@@ -3,6 +3,7 @@ import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
 import { AddMoreField, FieldContainer, FieldContainerBottomLine, FieldContainerBottom, FieldDivider,FieldLeftContainer1, FieldRightContainer1, FieldRightContainerItem, RemoveContianer, FieldDividerBottom, FieldContainerMove, FieldDividerHeading, FieldDividerHeadingBottom, FiledDividerHeadingContent, DateInputContainer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import Select from 'react-select';
 
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
@@ -10,18 +11,13 @@ import Button from '../../../../../components/Buttons/Button';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
 import DateInputField from '../../../../../components/DateInputField/DateInputField';
 import CustomDateInput from '../../../../../components/DateInputField/DateInputField';
-
+import SelectInput, { SelectInputContainer } from '../../../../../components/Inputs/Select';
 
 const options = [
-    {
-        value: 1,
-        label: "Leanne Graham"
-    },
-    {
-        value: 2,
-        label: "Ervin Howell"
-    }
-];
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+    ];
 
 const MoveItem = props => {
 
@@ -61,6 +57,12 @@ const MoveItem = props => {
         alert(JSON.stringify(formValues));
     }
 
+    const handleSelectChange = (selectedValue) => {
+        console.log('Selected value:', selectedValue);
+    };
+
+    const [selectedOption, setSelectedOption] = useState(null);
+
     return (
         <Modal
             show={show}
@@ -72,12 +74,9 @@ const MoveItem = props => {
             <form onSubmit={handleSubmit}>
             <FieldContainerBottom>
                 <FieldContainerMove>
-                    <Input
-                        type='select'
-                        options={options}
-                        label={'Movement Type'}
-                        placeholder={'---- Select movement type ----'}
-                        name='staff_member'
+                    <SelectInput
+                    label='Movement Type'
+                    placeholder='---- Select movement type ----'
                     />
                     <DateInputContainer>
                         <CustomDateInput

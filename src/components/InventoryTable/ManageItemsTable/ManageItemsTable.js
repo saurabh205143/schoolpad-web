@@ -1,5 +1,5 @@
 import React, {useMemo, useState} from 'react';
-import { ActionsConatiner, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata, Tabledatatext } from '../../Table/TableStyles';
+import { ActionsConatiner, TableActionHeading, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata, Tabledatatext } from '../../Table/TableStyles';
 import TableStylesStatus, { ActionListStatus, ActionListStatusSorry, ActionsList } from '../../Table copy/TableStyles';
 import LinkButton from '../../Buttons/LinkButton';
 
@@ -31,10 +31,18 @@ const ManageItemsTable = ({ onClick }) => {
                         <TableHeading>Item Name</TableHeading>
                         <TableHeading>Purchase Cost</TableHeading>
                         <TableHeading>Unit(s)</TableHeading>
-                        <TableHeading>Categories</TableHeading>
+                        <TableHeading>
+                        <TableActionHeading>
+                            Categories
+                        </TableActionHeading>
+                        </TableHeading>
                         <TableHeading>Store Name</TableHeading>
                         <TableHeading>Type</TableHeading>
-                        <TableHeading>Actions</TableHeading>
+                        <TableHeading>
+                            <TableActionHeading>
+                                Actions
+                            </TableActionHeading>
+                            </TableHeading>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -482,13 +490,10 @@ const ManageItemsTable = ({ onClick }) => {
                             Electronics Room
                         </Tabledata>
                         <Tabledata>
-                            <ActionsConatiner>
-                                <ActionsList>
-                                    <ActionListStatus>
-                                        <span>RETURNABLE</span>
-                                    </ActionListStatus>
-                                </ActionsList>
-                            </ActionsConatiner>
+                        <TableStylesStatus type='item-type-non-consumable'
+                                statusType='NON CONSUMABLE'
+                            >
+                            </TableStylesStatus>
                         </Tabledata>
                         <Tabledata>
                             <ActionsConatiner>
@@ -589,13 +594,10 @@ const ManageItemsTable = ({ onClick }) => {
                             Electronics Room
                         </Tabledata>
                         <Tabledata>
-                            <ActionsConatiner>
-                                <ActionsList>
-                                    <ActionListStatus>
-                                        <span>RETURNABLE</span>
-                                    </ActionListStatus>
-                                </ActionsList>
-                            </ActionsConatiner>
+                        <TableStylesStatus type='item-type-consumable'
+                                statusType='CONSUMABLE'
+                            >
+                            </TableStylesStatus>
                         </Tabledata>
                         <Tabledata>
                             <ActionsConatiner>

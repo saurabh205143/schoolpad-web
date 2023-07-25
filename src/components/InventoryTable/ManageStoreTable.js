@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import data from './data.json';
-import { ActionsConatiner, ActionsList, Container, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
+import { ActionsConatiner, ActionsList, Container, TableActionHeading, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
 import LinkButton from '../Buttons/LinkButton';
 
 // Assets
@@ -10,13 +10,17 @@ import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/co
 import Pagination from '../Pagination/Pagination';
 import AddStore from '../../views/main/InventoryModule/ManageStore/components/AddStore';
 import Button from '../Buttons/Button';
+import CustomCheckbox from '../Checkbox/CustomCheckbox';
+import { ButtonContainer } from '../ScreensHeader/subHeaderStyles';
 
-let PageSize = 10;
+let PageSize = 14;
 
 const ManageStoreTable = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
+  const [showButton, setShowButton] = useState(false);
 
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
@@ -25,6 +29,11 @@ const ManageStoreTable = ({ onClick }) => {
   const hideModal = () => {
     setShowModal(false);
   }
+
+  const handleChange = () => {
+      setIsChecked(!isChecked);
+      setShowButton(!showButton);
+  };
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
@@ -36,10 +45,20 @@ const ManageStoreTable = ({ onClick }) => {
   
   const column = Object.keys(data[0]);
   const ThData = () => {
-      return column.map((data) => {
-          return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
-      })
-  }
+    return (
+      <>
+        <TableHeading>
+          <CustomCheckbox
+            isChecked={isChecked}
+            onChange={handleChange}
+          />
+        </TableHeading>
+        {column.map((data) => (
+          <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
+        ))}
+      </>
+    );
+  };
 
   return (
     <>
@@ -47,14 +66,28 @@ const ManageStoreTable = ({ onClick }) => {
         <TableHead>
           <TableRow>
             {ThData()}
-            <TableHeading>Categories</TableHeading>
-            <TableHeading>Actions</TableHeading>
+            <TableHeading>
+              <TableActionHeading>
+                  Categories
+              </TableActionHeading>
+              </TableHeading>
+            <TableHeading>
+              <TableActionHeading>
+                  Actions
+              </TableActionHeading>
+              </TableHeading>
           </TableRow>
         </TableHead>
         <TableBody>
           {currentTableData.map(item => {
             return (
               <TableRow>
+                  <Tabledata>
+                  <CustomCheckbox
+                    isChecked={isChecked}
+                    onChange={handleChange}
+                  />
+                </Tabledata>
                 <Tabledata>{item.SNo}</Tabledata>
                 <Tabledata>{item.StoreName}</Tabledata>
                 <Tabledata>{item.StoreDescription}</Tabledata>
@@ -67,8 +100,6 @@ const ManageStoreTable = ({ onClick }) => {
                         buttonText='8 Categories'
                         className='link-button'
                         onClick={onClick}
-                        borderBottom='1px solid #0065FF'
-                        borderRadius='0px'
                       />
                     </ActionsList>
                   </ActionsConatiner>
@@ -115,6 +146,17 @@ const ManageStoreTable = ({ onClick }) => {
         show={showDeleteModal}
         handleClose={hideDeleteModal}
       />
+
+      {/* Delete Button */}
+      <ButtonContainer>
+        {showButton && ( 
+          <Button
+            buttonText='Delete Store'
+            className='delete'
+          />
+        )}
+      </ButtonContainer>
+
     </>
   );
 }

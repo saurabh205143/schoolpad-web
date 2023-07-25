@@ -96,5 +96,103 @@
     "CategoryName": "Wooden",
     "CategoryCode": "K00256",
     "StoreName" : "Awards/Gifts Room"
+  },
+  {
+    "SNo":17,
+    "CategoryName": "Wooden",
+    "CategoryCode": "K00256",
+    "StoreName" : "Awards/Gifts Room"
+  },
+  {
+    "SNo":18,
+    "CategoryName": "Electronics Del",
+    "CategoryCode": "P00065",
+    "StoreName" : "Electronics Room"
+  },
+  {
+    "SNo":19,
+    "CategoryName": "Sports Equipments Room",
+    "CategoryCode": "K00256",
+    "StoreName" : "Computer Store Room"
+  },
+  {
+    "SNo":20,
+    "CategoryName": "Wooden",
+    "CategoryCode": "K00256",
+    "StoreName" : "Awards/Gifts Room"
+  },
+  {
+    "SNo":21,
+    "CategoryName": "Electronics Del",
+    "CategoryCode": "P00065",
+    "StoreName" : "Electronics Room"
+  },
+  {
+    "SNo":22,
+    "CategoryName": "Sports Equipments Room",
+    "CategoryCode": "K00256",
+    "StoreName" : "Computer Store Room"
+  }
+  ,
+  {
+    "SNo":23,
+    "CategoryName": "Sports Equipments Room",
+    "CategoryCode": "K00256",
+    "StoreName" : "Computer Store Room"
+  },
+  {
+    "SNo":24,
+    "CategoryName": "Wooden",
+    "CategoryCode": "K00256",
+    "StoreName" : "Awards/Gifts Room"
+  },
+  {
+    "SNo":25,
+    "CategoryName": "Electronics Del",
+    "CategoryCode": "P00065",
+    "StoreName" : "Electronics Room"
+  },
+  {
+    "SNo":26,
+    "CategoryName": "Sports Equipments Room",
+    "CategoryCode": "K00256",
+    "StoreName" : "Computer Store Room"
+  }
+  ,
+  {
+    "SNo":27,
+    "CategoryName": "Sports Equipments Room",
+    "CategoryCode": "K00256",
+    "StoreName" : "Computer Store Room"
+  },
+  {
+    "SNo":28,
+    "CategoryName": "Wooden",
+    "CategoryCode": "K00256",
+    "StoreName" : "Awards/Gifts Room"
+  },
+  {
+    "SNo":29,
+    "CategoryName": "Electronics Del",
+    "CategoryCode": "P00065",
+    "StoreName" : "Electronics Room"
+  },
+  {
+    "SNo":30,
+    "CategoryName": "Sports Equipments Room",
+    "CategoryCode": "K00256",
+    "StoreName" : "Computer Store Room"
+  },
+  {
+    "SNo":31,
+    "CategoryName": "Sports Equipments Room",
+    "CategoryCode": "K00256",
+    "StoreName" : "Computer Store Room"
+  },
+  {
+    "SNo":32,
+    "CategoryName": "Wooden",
+    "CategoryCode": "K00256",
+    "StoreName" : "Awards/Gifts Room"
   }
 ]

@@ -63,6 +63,20 @@ export const TableHeading = styled.th`
     padding:10px 12px !important;
 `;
 
+export const TableActionHeading = styled.div`
+    float: right;
+    font-size: ${({ theme }) => theme.xsmallFont};
+    font-weight: ${({ theme }) => theme.fontWeightBold};
+    padding-right: 27px;
+`;
+
+export const TableActionHeadings = styled.div`
+    float: right;
+    font-size: ${({ theme }) => theme.xsmallFont};
+    font-weight: ${({ theme }) => theme.fontWeightBold};
+    padding-right: 74px;
+`;
+
 export const Tabledata = styled.td`
     color:${({ theme }) => theme.darkColor};
     font-weight: ${({ theme }) => theme.fontWeightRegular};
@@ -94,6 +108,7 @@ export const ActionsConatiner = styled.ul`
     margin:0;
     padding:0;
     list-style:none;
+    float: right;
 
 `;
 

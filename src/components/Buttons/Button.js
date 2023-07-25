@@ -100,6 +100,10 @@ export const ButtonClassic = styled.button`
         margin-right:8px;
     }
 
+    &.delete {
+        background: ${({ theme }) => theme.bgDelete};
+    }
+
 `;
 
 const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon,onlyIcon, tooltiptext, borderBottom, borderRadius}) => {

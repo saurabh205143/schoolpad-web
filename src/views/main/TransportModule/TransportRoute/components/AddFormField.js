@@ -11,6 +11,7 @@ import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
 import PreviousCustomField from '../../../../../components/Table/PreviousCustomField';
+import SelectInput from '../../../../../components/Inputs/Select';
 
 const options = [
     {
@@ -71,12 +72,9 @@ const AddFormField = props => {
                                 <p><form>
                                     <ModalBodyConatiner>
                                     <FieldContainer>
-                                        <Input
-                                            type="select"
-                                            options={options}
-                                            label={'Field Type'}
-                                            placeholder={'----Select field type----'}
-                                            name='field_type'
+                                        <SelectInput
+                                            label='Field Type'
+                                            placeholder='---- Select field type ----'
                                         />
                                     </FieldContainer>
                                     <FieldContainer>

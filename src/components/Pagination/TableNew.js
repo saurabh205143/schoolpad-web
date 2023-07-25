@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import data from './data.json';
 import Pagination from './Pagination';
-import { ActionsConatiner, ActionsList, Container, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
+import { ActionsConatiner, ActionsList, Container, TableActionHeadings, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
 import LinkButton from '../Buttons/LinkButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -51,8 +51,16 @@ const TableNew = ({ onClick }) => {
         <TableHead>
           <TableRow>
             {ThData()}
-            <TableHeading>Set Time</TableHeading>
-            <TableHeading>Actions</TableHeading>
+            <TableHeading>
+            <TableActionHeadings>
+                  Set Time
+              </TableActionHeadings>
+              </TableHeading>
+            <TableHeading>
+              <TableActionHeadings>
+                  Actions
+              </TableActionHeadings>
+              </TableHeading>
           </TableRow>
         </TableHead>
         <TableBody>

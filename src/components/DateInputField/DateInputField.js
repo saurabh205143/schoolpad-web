@@ -30,7 +30,7 @@ import calendarIcon from '../../images/date-icon.svg';
         style={{ 
           borderRadius: '3px',
           border: '1px solid rgba(9, 30, 66, 0.141176)',
-          height: '32px',
+          height: '36px',
           fontSize: '14px',
           padding: '0 10px',
           width: '100%',

@@ -57,10 +57,6 @@ export const InputContainer = styled.div`
   background:${({ theme }) => theme.bg2};
   border-color: ${({ theme }) => theme.inputBorderColor};
 
-  &.simple-input{
-    width
-  }
-
   &.disabled-input{
     background:${({ theme }) => theme.disableInput};;
     border: 1px solid ${({ theme }) => theme.disabledBorder};

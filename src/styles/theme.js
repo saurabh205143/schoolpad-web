@@ -7,6 +7,7 @@ export const lightTheme = {
     blueColor: "#0065FF",
     bgPrimary: "#0C66E4",
     bgSecondary:"rgba(9, 30, 66, 0.0588235)",
+    bgDelete:"#CA3521",
     darkColor:"#000000",
     whiteColor:"#ffffff",
     largeFont:"24px",

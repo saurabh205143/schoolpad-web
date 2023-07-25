@@ -20,7 +20,6 @@ export const DefaultSelectBox = styled.div`
     height:32px;
     cursor:pointer;
     width:154px;
-    
 `;
 
 export const OptionText = styled.span`

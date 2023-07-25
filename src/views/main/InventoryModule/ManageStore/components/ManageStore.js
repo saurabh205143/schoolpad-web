@@ -40,7 +40,7 @@ const ManageStore = () => {
           buttonAdd='Add New Store'
           buttonOrders='Move Items'  
           leftIcon={MoveIcon}
-          searchPlaceholder='Search by store name...'
+          searchPlaceholder='Search by store name, store code...'
           onClick={() =>  setShowModal(!showModal)}
           buttonOrderDragList={() => setShowMoveItemModal(!showMoveItemModal)}
       />
@@ -49,6 +49,7 @@ const ManageStore = () => {
           smallHeding2='(202 Records)'
           PrintIcon={PrintImage}
           Excelicon={ExcelImage}
+          showDeleteButton={true}
       />
       
       <ManageStoreTable

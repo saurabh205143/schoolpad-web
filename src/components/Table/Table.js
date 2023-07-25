@@ -38,7 +38,6 @@ const Table = () => {
                                     linkText='Pickup/Drop Time'
                                 />
                             </ActionsList>
-
                         </ActionsConatiner>
                     </Tabledata>
                     <Tabledata>

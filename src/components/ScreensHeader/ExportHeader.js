@@ -5,7 +5,7 @@ import Headings from '../Headings/Headings';
 // Assets
 import Button from '../Buttons/Button';
 
-const ExportHeader = ({smallHeading,smallHeding2,Excelicon,PrintIcon}) => {
+const ExportHeader = ({smallHeading,smallHeding2,Excelicon,PrintIcon, showDeleteButton}) => {
     return (
         <ExportContainer>
             <ContainerLeft>
@@ -18,6 +18,14 @@ const ExportHeader = ({smallHeading,smallHeding2,Excelicon,PrintIcon}) => {
             </ContainerLeft>
             {Excelicon && PrintIcon && 
                 <ContainerRight>
+                    {/* {showDeleteButton &&
+                    <ButtonContainer>
+                    <Button
+                        buttonText='Delete Store'
+                        className='delete'
+                    />
+                    </ButtonContainer>
+                    } */}
                     <ButtonContainer>
                         <Button
                             onlyIcon={Excelicon}

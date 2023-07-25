@@ -62,7 +62,7 @@ export const HeaderFilterHeadings = styled.div`
 `;
 
 export const ExportHeadings = styled.div`
-    margin-right:15px;
+    margin-right:6px;
 `;
 
 export const VerticalContainer = styled.div`
