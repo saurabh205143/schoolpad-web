@@ -10,6 +10,8 @@ import ActiveIcon from '../../images/activeIcon.svg';
 
 const getActiveModule = (url) => {
     let parts = url.split('/');
+    console.log("dcdsfd")
+    console.log(parts[3]);
     return parts[3];
 };
 const activeModule = getActiveModule(window.location.href);
@@ -29,9 +31,9 @@ const Navigation = ({type}) => {
             case 'studentmapping':
                 return 2;
             
-            case '/manageStore':
+            case 'manageStore':
                 return 3;
-            case '/inventory/manageCategories':
+            case 'manageCategories':
                 return 4;
             case '/inventory/manageItems':
                 return 5;  
@@ -89,7 +91,7 @@ const Navigation = ({type}) => {
         }
 
         if (tabname === 'ManageCategories') {
-            active = url.includes('/inventory/manageCategories');
+            active = url.includes('/manageCategories');
         }
 
         if (tabname === 'ManageItems') {
@@ -220,25 +222,13 @@ const Navigation = ({type}) => {
                     className={getClassNames('nav-item', showDrop === 4)}
                 >
                     <NavigationItems
-                        url=''
+                        url='/manageCategories'
                         tabname="Manage Categories"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
-                        containsDrop="true"
+                        containsDrop="false"
                     />
-                    {showDrop === 4 && (
-                        <SidebarDropDown className='sidebar-drop'>
-                            <SidebarDropList
-                                className={getActiveClassNames('nav-item', 'ManageCategories',)}>
-                                <NavigationItems
-                                    url="/inventory/manageCategories"
-                                    tabname="Manage Categories"
-                                    drop="true"
-                                    isActive={activeModule === '/inventory/manageCategories'}
-                                />
-                            </SidebarDropList>
-                        </SidebarDropDown>
-                    )}
+                    
                 </NavBarItem>
                 <NavBarItem
                     onClick={() => setShowDrop(showDrop === 5 ? null : 5)}

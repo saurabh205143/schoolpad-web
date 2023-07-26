@@ -57,7 +57,7 @@ function App() {
             <Route path='/studentdata' element={<h1>Student Data</h1>} />
             <Route path='/' element={<Inventory/>}/>
             <Route path='/manageStore' element={<ManageStore/>}/>
-            <Route path='/inventory/manageCategories' element={<ManageCategories/>}/>
+            <Route path='/manageCategories' element={<ManageCategories/>}/>
             <Route path='/inventory/manageItems' element={<ManageItems/>}/>
             <Route path='/inventory/manageVendors' element={<ManageVendors/>}/>
             <Route path='/inventory/purchaseList' element={<PurchaseOrders/>}/>
