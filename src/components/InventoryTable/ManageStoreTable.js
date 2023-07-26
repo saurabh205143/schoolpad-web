@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import data from './data.json';
-import { ActionsConatiner, ActionsList, Container, TableActionHeading, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
+import { ActionsConatiner, ActionsList, Container, TableActionHeading, TableBody, TableCheckbox, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
 import LinkButton from '../Buttons/LinkButton';
 
 // Assets
@@ -31,8 +31,8 @@ const ManageStoreTable = ({ onClick }) => {
   }
 
   const handleChange = () => {
-      setIsChecked(!isChecked);
-      setShowButton(!showButton);
+    setIsChecked(!isChecked);
+    setShowButton(isChecked); // Set showButton to isChecked
   };
 
   const currentTableData = useMemo(() => {
@@ -48,10 +48,12 @@ const ManageStoreTable = ({ onClick }) => {
     return (
       <>
         <TableHeading>
+          <TableCheckbox>
           <CustomCheckbox
             isChecked={isChecked}
             onChange={handleChange}
           />
+          </TableCheckbox>
         </TableHeading>
         {column.map((data) => (
           <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
@@ -146,17 +148,6 @@ const ManageStoreTable = ({ onClick }) => {
         show={showDeleteModal}
         handleClose={hideDeleteModal}
       />
-
-      {/* Delete Button */}
-      <ButtonContainer>
-        {showButton && ( 
-          <Button
-            buttonText='Delete Store'
-            className='delete'
-          />
-        )}
-      </ButtonContainer>
-
     </>
   );
 }

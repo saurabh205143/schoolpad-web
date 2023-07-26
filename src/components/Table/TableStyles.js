@@ -63,6 +63,10 @@ export const TableHeading = styled.th`
     padding:10px 12px !important;
 `;
 
+export const TableCheckbox = styled.div`
+    padding-right: 10px;
+`;
+
 export const TableActionHeading = styled.div`
     float: right;
     font-size: ${({ theme }) => theme.xsmallFont};

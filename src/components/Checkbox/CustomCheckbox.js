@@ -6,7 +6,7 @@ const CustomCheckbox = ({ isChecked, onChange, disabled, checkboxtext}) => {
     return (
         <>
             <div
-                style={{marginBottom: '8px'}}
+                // style={{marginBottom: '8px'}}
                 onClick={() => {
                     if (!disabled) {
                         onChange();
