@@ -28,7 +28,7 @@ export const SelectContainer = styled.div`
 
             &:focus-within{
                 box-shadow:none;
-                border:1px solid ${({ theme }) => theme.blueColor};
+                border:1px solid ${({ theme }) => theme. buttonPrimary};
                 outline:1px;
             }
         }

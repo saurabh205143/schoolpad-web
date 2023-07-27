@@ -63,7 +63,7 @@ export const MenuList = styled.li`
         background:#ffffff;
         >a {
             > span{
-                color:${({ theme }) => theme.blueColor};
+                color:${({ theme }) => theme. buttonPrimary};
             }
             >.active-icon{
                 display:block;
@@ -118,7 +118,7 @@ export const SubMenu = styled.ul`
             background:#ffffff;
             >a {
                 > span{
-                    color:${({ theme }) => theme.blueColor};
+                    color:${({ theme }) => theme. buttonPrimary};
                 }
                 >.active-icon{
                     display:block;
@@ -166,7 +166,7 @@ export const SubMenuLevelTwo = styled.ul`
         &:hover{
             >a {
                 > span{
-                    color:${({ theme }) => theme.blueColor};
+                    color:${({ theme }) => theme. buttonPrimary};
                 }
             }
         }   

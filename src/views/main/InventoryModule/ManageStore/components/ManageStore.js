@@ -49,7 +49,6 @@ const ManageStore = () => {
           smallHeding2='(202 Records)'
           PrintIcon={PrintImage}
           Excelicon={ExcelImage}
-          showDeleteButton={true}
       />
       
       <ManageStoreTable

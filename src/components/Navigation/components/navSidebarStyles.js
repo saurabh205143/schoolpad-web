@@ -18,7 +18,7 @@ export const NavBarItem = styled.li`
     &.active {
         >a{
             >span{
-                color:${({ theme }) => theme.blueColor};
+                color:${({ theme }) => theme. buttonPrimary};
                 font-weight: 600;
             }
             >.inactive-icons{
@@ -38,7 +38,7 @@ export const NavBarItem = styled.li`
                     align-items:center;
                     justify-content:flex-start;
                     > span{
-                        color:${({ theme }) => theme.blueColor};
+                        color:${({ theme }) => theme. buttonPrimary};
                     }
                 }
             }
@@ -79,7 +79,7 @@ export const NavBarItems = styled.li`
     &.active {
         >a{
             >span{
-                color:${({ theme }) => theme.blueColor};
+                color:${({ theme }) => theme. buttonPrimary};
                 
             }
             >.inactive-icons{
@@ -99,7 +99,7 @@ export const NavBarItems = styled.li`
                     align-items:center;
                     justify-content:flex-start;
                     > span{
-                        color:${({ theme }) => theme.blueColor};
+                        color:${({ theme }) => theme. buttonPrimary};
                     }
                 }
             }

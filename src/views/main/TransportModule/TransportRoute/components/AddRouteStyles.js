@@ -125,7 +125,7 @@ export const AddMoreField = styled.div`
         >span{
             font-weight: ${({ theme }) => theme.fontWeightSemiBold};
             font-size: ${({ theme }) => theme.smallFont};
-            color: ${({ theme }) => theme.blueColor};
+            color: ${({ theme }) => theme. buttonPrimary};
         }
     }
 `;

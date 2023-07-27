@@ -19,7 +19,7 @@ export const NavBarItem = styled.li`
 >a.active{
     border-bottom:2px solid #0065FF;
     >span{
-        color:${({theme}) => theme.blueColor};
+        color:${({theme}) => theme. buttonPrimary};
     }
 }
 >.more-drop{
@@ -28,7 +28,7 @@ export const NavBarItem = styled.li`
         border-radius:3px;
         display:flex;
         align-items:center;
-        background: ${({theme}) => theme.bgPrimary};
+        background: ${({theme}) => theme.backgroundPrimary};
     }
 }
 `;

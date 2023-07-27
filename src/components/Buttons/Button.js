@@ -2,7 +2,7 @@ import { Tooltip } from "react-tooltip";
 import styled from "styled-components";
 
 export const ButtonClassic = styled.button` 
-    background: ${({ theme }) => theme.bgPrimary};
+    background: ${({ theme }) => theme.backgroundPrimary};
     color: ${({ theme }) => theme.whiteColor};
     font-size: ${({ theme }) => theme.smallFont};
     font-weight:${({ theme }) => theme.fontWeightBold};
@@ -15,15 +15,15 @@ export const ButtonClassic = styled.button`
     cursor: pointer;
 
     &.primary {
-        background: ${({ theme }) => theme.bgPrimary};
+        background: ${({ theme }) => theme.backgroundPrimary};
         color: ${({ theme }) => theme.whiteColor};
         margin-right: ${({ theme }) => theme.marginRight};
     } 
     
     &.secondary {
-        background: ${({ theme }) => theme.bgSecondary};
+        background: ${({ theme }) => theme.backgroundSecondary};
         color: ${({ theme }) => theme.darkColor};
-        // border:2px solid ${({ theme }) => theme.bgSecondary};
+        // border:2px solid ${({ theme }) => theme.backgroundSecondary};
 
         &:hover{
             background: ${({ theme }) => theme.secondarHover};
@@ -37,7 +37,7 @@ export const ButtonClassic = styled.button`
     
     &.link-button{
         background:transparent;
-        color:${({ theme }) => theme.blueColor};
+        color:${({ theme }) => theme.buttonPrimary};
         height:auto;
         padding:0;
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 
 export const LinkClassic = styled(Link)`
-    color:${({ theme }) => theme.blueColor};
+    color:${({ theme }) => theme. buttonPrimary};
     font-size: ${({ theme }) => theme.smallFont};
     font-weight:${({ theme }) => theme.fontWeightBold};
     font-family: 'Source Sans Pro',sans-serif;

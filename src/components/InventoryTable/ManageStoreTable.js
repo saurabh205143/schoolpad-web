@@ -19,7 +19,7 @@ const ManageStoreTable = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
   const [showButton, setShowButton] = useState(false);
 
   const hideDeleteModal = () => {
@@ -32,7 +32,6 @@ const ManageStoreTable = ({ onClick }) => {
 
   const handleChange = () => {
     setIsChecked(!isChecked);
-    setShowButton(isChecked); // Set showButton to isChecked
   };
 
   const currentTableData = useMemo(() => {
@@ -49,10 +48,10 @@ const ManageStoreTable = ({ onClick }) => {
       <>
         <TableHeading>
           <TableCheckbox>
-          <CustomCheckbox
-            isChecked={isChecked}
-            onChange={handleChange}
-          />
+            <CustomCheckbox
+              isChecked={isChecked}
+              onChange={handleChange}
+            />
           </TableCheckbox>
         </TableHeading>
         {column.map((data) => (
@@ -83,8 +82,8 @@ const ManageStoreTable = ({ onClick }) => {
         <TableBody>
           {currentTableData.map(item => {
             return (
-              <TableRow>
-                  <Tabledata>
+              <TableRow key={item.SNo}> {/* Added a unique key */}
+                <Tabledata>
                   <CustomCheckbox
                     isChecked={isChecked}
                     onChange={handleChange}
@@ -119,7 +118,7 @@ const ManageStoreTable = ({ onClick }) => {
                       <LinkButton
                         onlyIcon={DeleteIcon}
                         tooltiptext='Delete'
-                        onClick={() => setShowDeleteModal(!showModal)} 
+                        onClick={() => setShowDeleteModal(!showDeleteModal)} 
                       />
                     </ActionsList>
                   </ActionsConatiner>
@@ -148,6 +147,18 @@ const ManageStoreTable = ({ onClick }) => {
         show={showDeleteModal}
         handleClose={hideDeleteModal}
       />
+
+      {/* Delete Button */}
+      
+      <ButtonContainer>
+      {isChecked && (
+          <Button
+            buttonText='Delete Store'
+            className='delete'
+          />
+        )}
+      </ButtonContainer>
+      
     </>
   );
 }
