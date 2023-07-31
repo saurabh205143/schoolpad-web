@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
-import { AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer, FieldLeftContainer1, FieldRightContainer, FieldRightContainer1, RemoveContianer } from './AddRouteStyles';
+import { AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer, FieldLeftContainer1, FieldRightContainer, FieldRightContainer1, ModalBodyConatiner, RemoveContianer } from './AddRouteStyles';
 import { Link } from 'react-router-dom';
 
 // Assets
@@ -67,6 +67,7 @@ const AddRoutes = props => {
             cancelText='Cancel'
         >
             <form onSubmit={handleSubmit}>
+                <ModalBodyConatiner>
                 <FieldContainer>
                     <Input
                         type='select'
@@ -155,6 +156,7 @@ const AddRoutes = props => {
                         name={'bus_help'}
                     />
                 </FieldContainer>
+                </ModalBodyConatiner>
             </form>
         </Modal>
     );

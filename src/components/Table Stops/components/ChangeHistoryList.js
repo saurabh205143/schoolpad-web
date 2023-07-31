@@ -4,11 +4,13 @@ import { ChangeHistoryContainer, HistoryContainer, HistoryItem, HistoryList, Lef
 // Assets
 import CalendarIcon from '../../../images/calendar.svg';
 import ProgressLine from '../../../images/progress-line.svg';
+import { ModalBodyConatiner } from '../../../views/main/TransportModule/TransportRoute/components/AddRouteStyles';
 
 const ChangeHistoryList = () => {
 
   return (
     <>
+    <ModalBodyConatiner>
       <HistoryContainer>
         <ChangeHistoryContainer>
           <HistoryList>
@@ -111,6 +113,7 @@ const ChangeHistoryList = () => {
           </HistoryList>
         </ChangeHistoryContainer>
       </HistoryContainer>
+      </ModalBodyConatiner>
     </>
   );
 }

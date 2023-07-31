@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
-import { FieldContainer } from '../../TransportRoute/components/AddRouteStyles';
+import { FieldContainer, ModalBodyConatiner } from '../../TransportRoute/components/AddRouteStyles';
 import LeftIcon from '../../../../../images/phone-icon.svg';
 
 const options = [
@@ -25,6 +25,7 @@ const AddVehicle = props => {
             submitText='Confirm'
             cancelText='Cancel'
         >
+            <ModalBodyConatiner>
             <FieldContainer>
                 <Input
                     type='text'
@@ -133,6 +134,7 @@ const AddVehicle = props => {
                     options={options}
                 />
             </FieldContainer>
+            </ModalBodyConatiner>
         </Modal>
     );
 };

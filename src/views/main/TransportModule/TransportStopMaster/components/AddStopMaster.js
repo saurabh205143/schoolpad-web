@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from '../../../../../components/Modal/Modal';
-import { FieldContainer } from '../../TransportRoute/components/AddRouteStyles';
+import { FieldContainer, ModalBodyConatiner } from '../../TransportRoute/components/AddRouteStyles';
 import Input from '../../../../../components/Inputs/Input';
 
 const options = [
@@ -26,6 +26,7 @@ const AddStopMaster = props => {
             cancelText='Cancel'
             
         >
+        <ModalBodyConatiner>
         <FieldContainer>
                 <Input
                     type='text'
@@ -42,6 +43,7 @@ const AddStopMaster = props => {
                     name={'bus_help'}
                 />
             </FieldContainer>
+        </ModalBodyConatiner>
         </Modal>
     );
 };

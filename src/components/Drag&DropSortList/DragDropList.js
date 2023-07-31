@@ -3,11 +3,13 @@ import List from "./List";
 import { ListContainer, ListItem, RouteDiabledHeading, RouteModalHeading } from "./dragDropStyles";
 import { DragDropContext, Draggable, Droppable, } from 'react-beautiful-dnd';
 import { DragHandle } from "./DragHandle";
+import { ModalBodyConatiner } from "../../views/main/TransportModule/TransportRoute/components/AddRouteStyles";
 
 const DragDropList = () => {
   const list = List.getList();
   return (
     <>
+    <ModalBodyConatiner>
     <div className="App">
       <DragDropContext 
         onDragEnd={(param) => {
@@ -50,6 +52,7 @@ const DragDropList = () => {
         </ListContainer>
       </DragDropContext>
     </div>
+    </ModalBodyConatiner>
     </>
   );
 };
