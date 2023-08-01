@@ -93,12 +93,9 @@ const MoveItem = props => {
                     </FieldDividerHeading>
                     <FieldDivider>
                         <FieldLeftContainer1>
-                            <Input
-                                type='select'
-                                options={options}
-                                label={'From Store'}
-                                placeholder={'---- Select from Store ----'}
-                                name='stops'
+                            <SelectInput
+                                label='From store'
+                                placeholder='---- Select store ----'
                             />
                         </FieldLeftContainer1>
                         <FieldRightContainerItem>
@@ -115,7 +112,7 @@ const MoveItem = props => {
                 {formValues.map((element, index) => (
                     <FieldDivider>
                         <FieldLeftContainer1>
-                            <Input
+                            <SelectInput
                                 type='select'
                                 options={options}
                                 label={'Select Items'}
@@ -166,7 +163,7 @@ const MoveItem = props => {
                     </FieldDividerHeading>
                     <FiledDividerHeadingContent>
                         <FieldLeftContainer1>
-                            <Input
+                            <SelectInput
                                 type='select'
                                 options={options}
                                 label={'To Store'}
