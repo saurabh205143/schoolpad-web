@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react';
+import axios from 'axios';
+import config from '../../../../config';
 
 // Assets
 import PrintImage from '../../../../images/print-icon.svg';
@@ -20,6 +22,20 @@ const TransportStopMaster = () => {
   const [showchangeHistory, setShowChangeHistory] = useState(false);
   const [showRouteOrderModal, setShowRouteOrderModal] = useState(false);
 
+   const [getStopResponse, setStopResponse] = useState({getAllStop:[]});
+    /**
+     * 
+     * Calling APi get Post
+     */
+    useEffect(() => {
+        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1').then((response) => {
+            setStopResponse(response.data);
+            console.log(response.data);
+        }).catch((errorCatch) => {
+            console.log(errorCatch);
+        });
+    }, []);
+  
   const hideModal = () => {
     setShowModal(false);
   }
@@ -53,7 +69,7 @@ const TransportStopMaster = () => {
 
       <ExportHeader
         smallHeading='All Stops'
-        smallHeding2='(202 Records)'
+        smallHeding2={getStopResponse.getAllStop.length}
         PrintIcon={PrintImage}
         Excelicon={ExcelImage}
       />
