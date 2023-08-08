@@ -10,7 +10,7 @@ import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
 
 
-const TableStopMaster = ({onClick,heading}) => {
+const TableStopMaster = ({onClick,heading,EditOnclick}) => {
 
     // get table column
     const column = Object.keys(TableData[0]);
@@ -50,6 +50,7 @@ const TableStopMaster = ({onClick,heading}) => {
                                 <LinkButton
                                     onlyIcon={EditIcon}
                                     tooltiptext='Edit'
+                                    onClick={EditOnclick}
                                 />
                             </ActionsList>
                             <ActionsList>

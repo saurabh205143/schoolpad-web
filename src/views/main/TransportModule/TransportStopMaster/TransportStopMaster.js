@@ -10,6 +10,7 @@ import TableStopMaster from '../../../../components/Table Stops/TableStopMaster'
 import AddStopMaster from './components/AddStopMaster';
 import StudentListTable from './components/StudentListTable';
 import ChangeHistory from './components/ChangeHistory';
+import RouteOrders from './components/RouteOrders';
 
 
 
@@ -17,6 +18,7 @@ const TransportStopMaster = () => {
   const [showModal, setShowModal] = useState(false);
   const [showstudentList, setShowStudentList] = useState(false);
   const [showchangeHistory, setShowChangeHistory] = useState(false);
+  const [showRouteOrderModal, setShowRouteOrderModal] = useState(false);
 
   const hideModal = () => {
     setShowModal(false);
@@ -24,6 +26,10 @@ const TransportStopMaster = () => {
 
   const hideStudentListModal = () => {
     setShowStudentList(false);
+  }
+
+  const hideRouteOrderModal = () => {
+    setShowRouteOrderModal(false);
   }
 
   const hideChangeHistorytModal = () => {
@@ -42,7 +48,7 @@ const TransportStopMaster = () => {
       buttonOrders='Order Stop(s)'  
       searchPlaceholder='Search by stop name etc...'
       onClick={() => setShowModal(!showModal)} 
-      buttonOrderDragList={() => setShowChangeHistory(!showchangeHistory)}
+      buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
       />
 
       <ExportHeader
@@ -55,6 +61,7 @@ const TransportStopMaster = () => {
       <TableStopMaster
         heading='Child Name'
         onClick={() => setShowStudentList(!showstudentList)}
+        EditOnclick={() => setShowModal(!showModal)} 
       />
 
       {/* Add Stop Master Modal */}
@@ -67,6 +74,12 @@ const TransportStopMaster = () => {
       <StudentListTable
         show={showstudentList}
         handleClose={hideStudentListModal}
+      />
+
+      {/* Route Order Modal */}
+      <RouteOrders
+        show={showRouteOrderModal}
+        handleClose={hideRouteOrderModal}
       />
 
       {/* Change History */}
