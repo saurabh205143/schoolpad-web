@@ -21,7 +21,7 @@ const TransportStopMaster = () => {
   const [showRouteOrderModal, setShowRouteOrderModal] = useState(false);
 
   const hideModal = () => {
-    setShowModal(false);
+    setId(false);
   }
 
   const hideStudentListModal = () => {
@@ -46,7 +46,7 @@ const TransportStopMaster = () => {
       buttonAdd='Add New Stop'
       buttonOrders='Order Stop(s)'  
       searchPlaceholder='Search by stop name etc...'
-      onClick={() => setShowModal(!showModal)} 
+      onClick={() => setId(!id)} 
       buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
       />
 
@@ -65,7 +65,7 @@ const TransportStopMaster = () => {
 
       {/* Add Stop Master Modal */}
       <AddStopMaster
-        show={showModal}
+        show={id}
         handleClose={hideModal}
         id={id}
       />
