@@ -101,7 +101,7 @@ const TableStopMaster = ({ onClick, heading ,EditOnclick}) => {
                                 <LinkButton
                                     onlyIcon={EditIcon}
                                     tooltiptext='Edit'
-                                    onClick={EditOnclick}
+                                    onClick={()=>{EditOnclick(data[' S No.'])}}
                                 />
                             </ActionsList>
                             <ActionsList>

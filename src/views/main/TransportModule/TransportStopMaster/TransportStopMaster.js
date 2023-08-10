@@ -37,7 +37,7 @@ const TransportStopMaster = () => {
     }, []);
   
   const hideModal = () => {
-    setShowModal(false);
+    setId(false);
   }
 
   const hideStudentListModal = () => {
@@ -51,8 +51,7 @@ const TransportStopMaster = () => {
   const hideChangeHistorytModal = () => {
     setShowChangeHistory(false);
   }
-
-
+  const [id, setId] = useState(null);
 
   return (
     <Layout type='transport'>
@@ -63,7 +62,7 @@ const TransportStopMaster = () => {
       buttonAdd='Add New Stop'
       buttonOrders='Order Stop(s)'  
       searchPlaceholder='Search by stop name etc...'
-      onClick={() => setShowModal(!showModal)} 
+      onClick={() => setId(!id)} 
       buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
       />
 
@@ -77,13 +76,14 @@ const TransportStopMaster = () => {
       <TableStopMaster
         heading='Child Name'
         onClick={() => setShowStudentList(!showstudentList)}
-        EditOnclick={() => setShowModal(!showModal)} 
+        EditOnclick={(id) => {setId(id);}} 
       />
 
       {/* Add Stop Master Modal */}
       <AddStopMaster
-        show={showModal}
+        show={id}
         handleClose={hideModal}
+        id={id}
       />
 
       {/* Student List */}

@@ -59,6 +59,8 @@ const AddStopMaster = props => {
                 setStopAbbError('');
             }
      }
+    
+    console.log(props.id);
     return (
         <Modal
             show={show}
