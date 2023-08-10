@@ -80,6 +80,14 @@ const Navigation = ({type}) => {
             active = url.includes('/transport/transportstop');
         }
 
+        if (tabname === 'StudentMappings') {
+            active = url.includes('/transport/studentmappings');
+        }
+
+        if (tabname === 'AssignTransportFees') {
+            active = url.includes('/transport/assigntransportfees');
+        }
+
         if (tabname === 'StudentMapping') {
             active = url.includes('/studentmapping');
         }
@@ -178,6 +186,24 @@ const Navigation = ({type}) => {
                                 tabname="Transport Stop"
                                 drop="true"
                                 isActive={activeModule === '/transport/transportstop'}
+                            />
+                        </SidebarDropList>
+                        <SidebarDropList
+                            className={getActiveClassNames('nav-item', 'StudentMappings',)}>
+                            <NavigationItems
+                                url="/transport/studentmappings"
+                                tabname="Student Mapping"
+                                drop="true"
+                                isActive={activeModule === '/transport/studentmappings'}
+                            />
+                        </SidebarDropList>
+                        <SidebarDropList
+                            className={getActiveClassNames('nav-item', 'AssignTransportFees',)}>
+                            <NavigationItems
+                                url="/transport/assigntransportfees"
+                                tabname="Assign Transport Fees"
+                                drop="true"
+                                isActive={activeModule === '/transport/assigntransportfees'}
                             />
                         </SidebarDropList>
                     </SidebarDropDown>
