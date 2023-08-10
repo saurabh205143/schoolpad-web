@@ -7,7 +7,7 @@ import EditIcon from '../../images/edit-icon.svg';
 import DeleteIcon from '../../images/delete-icon.svg';
 import { ModalBodyConatiner } from '../../views/main/TransportModule/TransportRoute/components/AddRouteStyles';
 
-const PreviousCustomField = (props) => {
+const ExistingMaintenance= (props) => {
 
   return (
     <>
@@ -16,8 +16,7 @@ const PreviousCustomField = (props) => {
         <TableHead>
           <TableRow>
             <TableHeading>S No.</TableHeading>
-            <TableHeading>Field Name</TableHeading>
-            <TableHeading>Field Type</TableHeading>
+            <TableHeading>Maintenance Name</TableHeading>
             <TableHeading>
               <TableHeadingModalAction>Actions</TableHeadingModalAction>
               </TableHeading>
@@ -26,8 +25,7 @@ const PreviousCustomField = (props) => {
         <TableBody>
           <TableRow>
             <Tabledata>1</Tabledata>
-            <Tabledata>Date of Birth</Tabledata>
-            <Tabledata>Date Selector</Tabledata>
+            <Tabledata>Engine Issue</Tabledata>
             <Tabledata>
               <ActionsConatiner>
                 <ActionsList>
@@ -47,10 +45,7 @@ const PreviousCustomField = (props) => {
           </TableRow>
           <TableRow>
             <Tabledata>2</Tabledata>
-            <Tabledata>Nationality</Tabledata>
-            <Tabledata>
-              Dropdown
-            </Tabledata>
+            <Tabledata>Service</Tabledata>
             <Tabledata>
               <ActionsConatiner>
                 <ActionsList>
@@ -70,10 +65,7 @@ const PreviousCustomField = (props) => {
           </TableRow>
           <TableRow>
             <Tabledata>3</Tabledata>
-            <Tabledata>Blood Group</Tabledata>
-            <Tabledata>
-              Dropdown
-            </Tabledata>
+            <Tabledata>Mirror</Tabledata>
             <Tabledata>
               <ActionsConatiner>
                 <ActionsList>
@@ -98,4 +90,4 @@ const PreviousCustomField = (props) => {
   );
 }
 
-export default PreviousCustomField;
+export default ExistingMaintenance;

@@ -75,6 +75,7 @@ const Table = (props) => {
                                         buttonText='More'
                                         rightIcon={DropIcon}
                                         className='link-button'
+                                        onClick={() => setShowDeleteModal(!showModal)}
                                     />
                                 </MoreAction>
                             </ActionsList>

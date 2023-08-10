@@ -70,7 +70,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon}) => {
+const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -173,7 +173,14 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             {/* Associate Drop Down */}
                             {showAssociateDrop &&
                                 <DropContianer ref={ref}>
-                                    <CustomDrop type='associatedoptions' formFiledClick={formField} />
+                                    <CustomDrop 
+                                    type='associatedoptions' 
+                                    formFiledClick={formField}
+                                    formManageClick={formManageClick}
+                                    formMaintenanceClick={formMaintenanceClick}
+                                    buttonManageText={buttonManageText}
+                                    buttonManageMaintenance={buttonManageMaintenance}
+                                    />
                                 </DropContianer>
                             }
                         </ButtonContainer>

@@ -101,9 +101,10 @@ const TableNew = ({ onClick }) => {
                     </ActionsList>
                     <ActionsList>
                       <DropdownButton id="dropdown-basic-button" title="More" className='more-options'>
-                        <Dropdown.Item href="#/action-1">Student List</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Print Student</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Add GPS Link</Dropdown.Item>
+                        <Dropdown.Item href="#/action-1">Fuel Entry</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Maintenance Entry</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Daily Log</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Insurance Reminder</Dropdown.Item>
                       </DropdownButton>
                     </ActionsList>
                   </ActionsConatiner>

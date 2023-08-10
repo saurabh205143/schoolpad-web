@@ -22,7 +22,7 @@ export const DropBox = styled.ul`
 `;
 
 export const DropList = styled.li`
-    padding: 0px 16px;
+    padding: 0px 14px;
     height: 40px;
     display: flex;
     align-items: center;
@@ -56,7 +56,7 @@ export const ItemIcon = styled.img`
 margin-right:10px;
 `;
 
-const CustomDrop = ({ type, formFiledClick }) => {
+const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, buttonManageMaintenance, formMaintenanceClick}) => {
 
   if (type === 'setting') {
     return (
@@ -95,12 +95,22 @@ const CustomDrop = ({ type, formFiledClick }) => {
           </DropList>
           <DropList>
             <DropItems>
-              <ItemText>Add Pick/Drop Time</ItemText>
+              <ItemText>
+                <Button
+                    buttonText={buttonManageText}
+                    className='link-button'
+                    onClick={formManageClick}
+              /></ItemText>
             </DropItems>
           </DropList>
           <DropList>
             <DropItems>
-              <ItemText>Transport Settings</ItemText>
+              <ItemText>
+                <Button
+                    buttonText={buttonManageMaintenance}
+                    className='link-button'
+                    onClick={formMaintenanceClick}
+              /></ItemText>
             </DropItems>
           </DropList>
           <DropList>
