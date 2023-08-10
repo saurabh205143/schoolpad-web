@@ -54,7 +54,7 @@ const ManageMaintenance = props => {
         <Modal
             show={show}
             handleClose={handleClose}
-            modalHeading={'Manage Fuel Pump(s)'}
+            modalHeading={'Manage Maintenance'}
             submitText='Confirm'
             cancelText='Cancel'
         >
