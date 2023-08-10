@@ -16,6 +16,8 @@ const options = [
 
 const AddStopMaster = props => {
     const {show,handleClose} = props;
+    
+    console.log(props.id);
     return (
         <Modal
             show={show}

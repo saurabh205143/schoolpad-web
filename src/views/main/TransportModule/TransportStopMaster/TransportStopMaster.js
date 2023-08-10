@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Assets
 import PrintImage from '../../../../images/print-icon.svg';
@@ -35,8 +35,7 @@ const TransportStopMaster = () => {
   const hideChangeHistorytModal = () => {
     setShowChangeHistory(false);
   }
-
-
+  const [id, setId] = useState(null);
 
   return (
     <Layout type='transport'>
@@ -61,13 +60,14 @@ const TransportStopMaster = () => {
       <TableStopMaster
         heading='Child Name'
         onClick={() => setShowStudentList(!showstudentList)}
-        EditOnclick={() => setShowModal(!showModal)} 
+        EditOnclick={(id) => {setId(id);}} 
       />
 
       {/* Add Stop Master Modal */}
       <AddStopMaster
         show={showModal}
         handleClose={hideModal}
+        id={id}
       />
 
       {/* Student List */}
