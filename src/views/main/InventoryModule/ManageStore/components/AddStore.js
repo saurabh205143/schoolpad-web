@@ -9,11 +9,27 @@ const AddStore = props => {
 
     const { show, handleClose } = props;
     const [isChecked, setIsChecked] = useState(true);
+    const [name, setName] = useState('');
+    const { confirm, handleConfirm } = props;
 
     const handleChange = () => {
         setIsChecked(!isChecked);
     };
+    const handleStoreNameChange = (e) => {
+        setName(e.target.value);
+    };
 
+    const handleButtonClicked = () => {
+    // Do something when the button in the modal is clicked
+    console.log('Button inside modal clicked!');
+    // Close the modal
+    // setIsModalOpen(false);
+  };
+
+    const handleSubmit = event => {
+            event.preventDefault();
+            alert('You have submitted the form.')
+        }
     return (
         <Modal
             show={show}
@@ -21,16 +37,19 @@ const AddStore = props => {
             modalHeading={'Add New Store'}
             submitText='Confirm'
             cancelText='Cancel'
+            onButtonClicked={handleButtonClicked}
         >
-            <form>
+        <form onSubmit={handleSubmit}>            
                 <>
                 <ModalBodyConatiner>
                 <FieldContainer>
                     <Input
-                        type="text"
-                        label={'Store Name*'}
-                        placeholder={'Enter store name'}
-                        name='store_name'
+                                type="text"
+                                label={'Store Name*'}
+                                placeholder={'Enter store name'}
+                                name='store_name'
+                                value={name}
+                                onChange={(e) => { handleStoreNameChange(e) }}
                     />
                 </FieldContainer>
                 <FieldContainer>
@@ -64,8 +83,11 @@ const AddStore = props => {
                 />
                 </ModalBodyConatiner>
                 </>
+                
+                
             </form>
-        </Modal>
+            </Modal>
+        
     );
 };
 

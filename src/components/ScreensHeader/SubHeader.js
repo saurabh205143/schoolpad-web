@@ -200,7 +200,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             label={textLabel}
                             placeholder={textPlaceholder}
                             onChange={(e) => {
-                                console.log(e[0].label)
+                                // console.log(e[0].label)
                                 setShowDependentDrop(e[0].label)
                             }}
                         />
