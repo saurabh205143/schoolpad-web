@@ -3,7 +3,6 @@ import Layout from '../../../../components/Layouts/Layout';
 import SubHeader from '../../../../components/ScreensHeader/SubHeader';
 import ExportHeader from '../../../../components/ScreensHeader/ExportHeader';
 
-
 // Assets
 import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
@@ -12,6 +11,7 @@ import TableVehicle from '../../../../components/Table copy/TableVehicle';
 import AddFormField from '../TransportRoute/components/AddFormField';
 import ManageFuelPump from './components/ManageFuelPump';
 import ManageMaintenance from './components/ManageMaintenance';
+import TableVehicleMaster from '../../../../components/Table copy/TableVehicleMaster';
 
 
 const TransportVehicle = () => {
@@ -60,9 +60,7 @@ const TransportVehicle = () => {
         Excelicon={ExcelImage}
       />
 
-        <TableVehicle
-        heading='Status'
-        />
+      <TableVehicleMaster/>
 
          {/* Add Vehicle Modal */}
           <AddVehicle
