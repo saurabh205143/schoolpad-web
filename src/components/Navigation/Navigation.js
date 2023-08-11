@@ -188,7 +188,7 @@ const Navigation = ({type}) => {
                                 isActive={activeModule === '/transport/transportstop'}
                             />
                         </SidebarDropList>
-                        <SidebarDropList
+                        {/* <SidebarDropList
                             className={getActiveClassNames('nav-item', 'StudentMappings',)}>
                             <NavigationItems
                                 url="/transport/studentmappings"
@@ -205,7 +205,7 @@ const Navigation = ({type}) => {
                                 drop="true"
                                 isActive={activeModule === '/transport/assigntransportfees'}
                             />
-                        </SidebarDropList>
+                        </SidebarDropList> */}
                     </SidebarDropDown>
                 )}
 

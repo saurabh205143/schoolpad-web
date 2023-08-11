@@ -24,7 +24,7 @@ const TransportRoute = () => {
   }
 
   const hideModal = () => {
-    setShowModal(false);
+    setId(false);
   }
 
   const hideRouteOrderModal = () => {
@@ -34,6 +34,8 @@ const TransportRoute = () => {
   const hideFormFieldModal = () => {
     setShowFormFieldModal(false);
   }
+
+  const [id, setId] = useState(null);
 
   return (
     <Layout type='transport'>
@@ -46,7 +48,7 @@ const TransportRoute = () => {
         buttonOption='Associated Options'
         searchPlaceholder='Search by route name etc...'
         buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
-        onClick={() =>  setShowModal(!showModal)}
+        onClick={() => setId(!id)} 
         formField={() => setShowFormFieldModal(!showFormFieldModal)}
       />
       <ExportHeader
@@ -61,8 +63,9 @@ const TransportRoute = () => {
 
       {/* Add Route Modal */}
       <AddRoutes
-        show={showModal}
+        show={id}
         handleClose={hideModal}
+        id={id}
       />
 
       {/* Route Order Modal */}

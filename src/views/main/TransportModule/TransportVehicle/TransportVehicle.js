@@ -21,7 +21,7 @@ const TransportVehicle = () => {
   const [showMaintenanceModal, setShowMaintenanceModal ] = useState(false);
 
   const hideModal = () => {
-    setShowModal(false);
+    setId(false);
   }
 
   const hideFormFieldModal = () => {
@@ -36,6 +36,8 @@ const TransportVehicle = () => {
     setShowMaintenanceModal(false);
   }
 
+  const [id, setId] = useState(null);
+
   return (
     <Layout type='transport'>
       {/* <ItemsNotFound/> */}
@@ -48,7 +50,7 @@ const TransportVehicle = () => {
       buttonManageText='Manage Fuel Pump' 
       buttonManageMaintenance='Manage Maintenance'
       searchPlaceholder='Search by vehicle name etc...'
-      onClick={() => setShowModal(!showModal)} 
+      onClick={() => setId(!id)} 
       formField={() => setShowFormFieldModal(!showFormFieldModal)}
       formManageClick={() => setShowFormManageModal(!showFormManageModal)}
       formMaintenanceClick={() => setShowMaintenanceModal(!showMaintenanceModal)}
@@ -60,12 +62,15 @@ const TransportVehicle = () => {
         Excelicon={ExcelImage}
       />
 
-      <TableVehicleMaster/>
+      <TableVehicleMaster
+        EditOnclick={(id) => {setId(id);}} 
+      />
 
          {/* Add Vehicle Modal */}
           <AddVehicle
-            show={showModal}
+            show={id}
             handleClose={hideModal}
+            id={id}
           />
 
           {/* Associated Options - Add Form Field / Manage Fuel Pump*/}
