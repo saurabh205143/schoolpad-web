@@ -32,11 +32,23 @@ const AddStore = props => {
     const handleStoreManagerChange = (e) => {
         setstoreManager(e.target.value);
     }
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+	// 	res.setHeader("Access-Control-Allow-Credentials", "true");
+	// 	res.setHeader("Access-Control-Max-Age", "1800");
+	// 	res.setHeader("Access-Control-Allow-Headers", "content-type");
+	// 	res.setHeader("Access-Control-Allow-Methods","PUT, POST, GET, DELETE, PATCH, OPTIONS");
+		// res.setHeader("Content-Type", "application/json;charset=utf-8");
     const headers = {
         "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Max-Age": "1800",
+        "Access-Control-Allow-Headers": 'X-Requested-With, content-type',
         "Access-Control-Allow-Methods": "PUT, POST, GET, DELETE, PATCH, OPTIONS",
-        "Access-Control-Allow-Headers": "content-type",
-        "Access-Control-Allow-Credentials": "true"
+        "Content-Type": "application/json",
+        
+        
+        
+        
         // //'Content-Type': 'application/json',
         // 'Access-Control-Allow-Headers':'*',
         // 'Access-Control-Allow-Origin': '*',
@@ -53,7 +65,8 @@ const AddStore = props => {
                 },
                 {
                     headers: headers
-                });
+                    },
+                    { mode: 'no-cors' },);
                 console.log('POST successful:', response);
                 } catch (error) {
                 if (error.response) {
