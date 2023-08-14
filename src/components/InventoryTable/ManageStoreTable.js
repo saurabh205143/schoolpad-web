@@ -7,14 +7,16 @@ import config from '../../config';
 // Assets
 import EditIcon from '../../images/edit-icon.svg';
 import DeleteIcon from '../../images/delete-icon.svg';
-import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
+// import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../Pagination/Pagination';
 import AddStore from '../../views/main/InventoryModule/ManageStore/components/AddStore';
+import EditStore from '../../views/main/InventoryModule/ManageStore/components/EditStore';
+import DeleteStoreModal from '../../views/main/InventoryModule/ManageStore/components/DeleteStoreModal';
 import Button from '../Buttons/Button';
 import CustomCheckbox from '../Checkbox/CustomCheckbox';
 import { ButtonContainer } from '../ScreensHeader/subHeaderStyles';
 
-let PageSize = 10;
+let PageSize = 5;
 
 const ManageStoreTable = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,6 +26,8 @@ const ManageStoreTable = ({ onClick }) => {
   const [showButton, setShowButton] = useState(false);
   const [stores, storelist] = useState([]);
   const [sno, setSno] = useState(0);
+  const [storeid,setStoreId] = useState('');
+  const[record,setRecord] = useState({});
   
 
   const hideDeleteModal = () => {
@@ -33,22 +37,34 @@ const ManageStoreTable = ({ onClick }) => {
   const hideModal = () => {
     setShowModal(false);
   }
+  const getDetailByStoreId = (storeid)=>
+  {
+    setRecord(storeid);
+    //  console.log({storeid});
+  }
 
   const handleChange = () => {
     setIsChecked(!isChecked);
   };
+  const deleteStoreAction = (storeid) => {
+    // console.log({storeid});
+    setStoreId(storeid);
+  };
+  //+currentPage;
   const baseURL = config.baseUrl +"api/v1/inventory/store";
   useEffect(() => {
     axios.get(baseURL).then((resp) => {
       storelist(resp.data);
-      // console.log({ resp });
+      // setList(currentTableData);
     });
   }, []);
   
   
   const currentTableData = useMemo(() => {
+    console.log({currentPage});
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
+    console.log({lastPageIndex});
     return stores.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
   // get table column
@@ -91,7 +107,7 @@ const ManageStoreTable = ({ onClick }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {currentTableData.map((item,i) => {
+          {stores.map((item,i) => {
             return (
               <TableRow key={item.id}> {/* Added a unique key */}
                 <Tabledata>
@@ -121,15 +137,17 @@ const ManageStoreTable = ({ onClick }) => {
                     <ActionsList>
                       <LinkButton
                         onlyIcon={EditIcon}
-                        tooltiptext='Edit'
-                        onClick={() => setShowModal(!showModal)}
+                        tooltiptext='Edit'//{() => { func1(); func2();}}
+                        onClick={() => { setShowModal(!showModal); getDetailByStoreId(item);}}
+                        //onClick={() => setShowModal(!showModal,item.id)}
                       />
                     </ActionsList>
                     <ActionsList>
                       <LinkButton
                         onlyIcon={DeleteIcon}
                         tooltiptext='Delete'
-                        onClick={() => setShowDeleteModal(!showDeleteModal)} 
+                        onClick={() => {setShowDeleteModal(!showDeleteModal);deleteStoreAction(item.id)} }
+                        //onClick={() => setShowDeleteModal(!showDeleteModal)} 
                       />
                     </ActionsList>
                   </ActionsConatiner>
@@ -148,15 +166,20 @@ const ManageStoreTable = ({ onClick }) => {
       />
 
       {/* Edit Route Modal */}
-      <AddStore
+      {/* <AddStore
         show={showModal}
         handleClose={hideModal}
+      /> */}
+      <EditStore
+        show={showModal}
+        handleClose={hideModal}
+        record={record}
       />
-
       {/* Delete Modal */}
-      <DeleteRouteModal
+      <DeleteStoreModal
         show={showDeleteModal}
         handleClose={hideDeleteModal}
+        storeid={storeid}
       />
 
       {/* Delete Button */}
