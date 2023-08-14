@@ -63,6 +63,16 @@ export const TableHeading = styled.th`
     padding:10px 12px !important;
 `;
 
+export const TableHeadingModalAction = styled.th`
+    float: right;
+    background: #F8F8F8;
+    color: #000000;
+    font-weight: 400;
+    font-size: 12px;
+    border: none;
+    padding: 0 26px;
+`;
+
 export const TableCheckbox = styled.div`
     padding-right: 10px;
 `;
