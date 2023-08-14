@@ -52,8 +52,6 @@ const TransportVehicle = () => {
       searchPlaceholder='Search by vehicle name etc...'
       onClick={() => setId(!id)} 
       formField={() => setShowFormFieldModal(!showFormFieldModal)}
-      formManageClick={() => setShowFormManageModal(!showFormManageModal)}
-      formMaintenanceClick={() => setShowMaintenanceModal(!showMaintenanceModal)}
       />
       <ExportHeader
         smallHeading='All Vehicles'

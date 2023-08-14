@@ -9,6 +9,7 @@ import SelectInput from '../../../../../../components/Inputs/Select';
 import CustomDateInput from '../../../../../../components/DateInputField/DateInputField';
 import ExistingCustomField from '../../../../../../components/Table/ExistingCustomField';
 import ExistingFuelEntry from './ExistingFuelEntry';
+import DragAndDropUpload from '../../../../../../components/UploadDragDropFile/UploadDragDropStyle';
 
 const options = [
   {
@@ -143,6 +144,7 @@ const FuelEntry = props => {
                         />
                       </FieldRightContainerItem>
                     </FieldDivider>
+                    <DragAndDropUpload/>
                   </ModalBodyConatiner>
                 </form></p>
               </Tab>
