@@ -10,6 +10,8 @@ import CustomDateInput from '../../../../../../components/DateInputField/DateInp
 import ExistingCustomField from '../../../../../../components/Table/ExistingCustomField';
 import ExistingFuelEntry from './ExistingFuelEntry';
 import ExistingDailyLog from './ExistingDailyLog';
+import DragAndDropUpload from '../../../../../../components/UploadDragDropFile/UploadDragDropStyle';
+import UploadDragDrop from '../../../../../../components/UploadDragDropFile/UploadDragDrop';
 
 const options = [
   {
@@ -141,6 +143,7 @@ const DailyLog = props => {
                         name='store_name'
                     />
                 </FieldContainer>
+                <UploadDragDrop/>
                   </ModalBodyConatiner>
                 </form></p>
               </Tab>

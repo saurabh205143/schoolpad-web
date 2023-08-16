@@ -46,6 +46,8 @@ const TransportRoute = () => {
         buttonAdd='Add New Route'
         buttonOrders='Order Routes(s)'
         buttonOption='Associated Options'
+        buttonManageText='Add Pick/Drop Time' 
+        buttonManageMaintenance='Transport Settings'
         searchPlaceholder='Search by route name etc...'
         buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
         onClick={() => setId(!id)} 

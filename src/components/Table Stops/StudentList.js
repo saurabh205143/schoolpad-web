@@ -2,11 +2,13 @@ import React from 'react';
 import { TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata, Tabledatatext  } from '../Table/TableStyles';
 import Button from '../Buttons/Button';
 import AvatarIcon from '../../images/avatar-icon.svg';
+import { ModalBodyConatiner } from '../../views/main/TransportModule/TransportRoute/components/AddRouteStyles';
 
 const StudentList = ({onClick}) => {
 
     return (
         <>
+        <ModalBodyConatiner>
             <TableContainer className='picked-table'>
                 <TableHead>
                     <TableRow>
@@ -143,6 +145,7 @@ const StudentList = ({onClick}) => {
                     </TableRow>
                 </TableBody>
             </TableContainer>
+            </ModalBodyConatiner>
         </>
     );
 }

@@ -11,9 +11,10 @@ import LinkButton from '../Buttons/LinkButton';
 import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
 import Pagination from '../Pagination/Pagination';
+import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 
 
-const TableStopMaster = ({ onClick, heading ,EditOnclick}) => {
+const TableStopMaster = ({  onClick,  heading , EditOnclick }) => {
     const [getStopResponse, setStopResponse] = useState({ getAllStop: [] });
     const [deleteStopResponse, setdeleteStopResponse] = useState([]);
     let PageSize = 15;
@@ -53,6 +54,12 @@ const TableStopMaster = ({ onClick, heading ,EditOnclick}) => {
         });
     }
     
+    const [showModal, setShowDeleteModal] = useState(false);
+
+    const hideDeleteModal = () => {
+        setShowDeleteModal(false);
+    }
+
     /**
      * 
      * Pazination of All Stops
@@ -101,7 +108,7 @@ const TableStopMaster = ({ onClick, heading ,EditOnclick}) => {
                                 <LinkButton
                                     onlyIcon={EditIcon}
                                     tooltiptext='Edit'
-                                    onClick={()=>{EditOnclick(data[' S No.'])}}
+                                    onClick={() => { EditOnclick(data[' S No.']) }}
                                 />
                             </ActionsList>
                             <ActionsList>
@@ -109,6 +116,7 @@ const TableStopMaster = ({ onClick, heading ,EditOnclick}) => {
                                     onlyIcon={DeleteIcon}
                                     tooltiptext='Delete'
                                     onClick={() => deleteStop(data.StopId)}
+                                    onClick={() => setShowDeleteModal(!showModal)}
                                 />
                             </ActionsList>
                             <ActionsList>
@@ -126,6 +134,13 @@ const TableStopMaster = ({ onClick, heading ,EditOnclick}) => {
             )
         })
     }
+
+    {/* Delete Modal */ }
+    <DeleteRouteModal
+        show={showModal}
+        handleClose={hideDeleteModal}
+    />
+
     return (
         <>
         <TableContainer className="table">
@@ -151,5 +166,6 @@ const TableStopMaster = ({ onClick, heading ,EditOnclick}) => {
         </>
     )
 }
+
 
 export default TableStopMaster;

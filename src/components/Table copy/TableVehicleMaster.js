@@ -15,6 +15,7 @@ import FuelEntry from '../../views/main/TransportModule/TransportVehicle/compone
 import MaintenanceEntry from '../../views/main/TransportModule/TransportVehicle/components/More Actions/MaintenanceEntry';
 import DailyLog from '../../views/main/TransportModule/TransportVehicle/components/More Actions/DailyLog';
 import InsuranceReminder from '../../views/main/TransportModule/TransportVehicle/components/More Actions/InsuranceReminder';
+import TableStylesStatus from './TableStyles';
 
 
 const TableVehicleMaster = ({ onClick }) => {
@@ -92,15 +93,15 @@ const TableVehicleMaster = ({ onClick }) => {
                 <Tabledata>{item.VehicleCapacity}</Tabledata>
                 <Tabledata>{item.SerialNumber}</Tabledata>
                 <Tabledata>
-                  <ActionsConatiner>
+                <ActionsConatiner>
                     <ActionsList>
-                      <Button
-                        buttonText='IN SERVICE'
-                        className='link-button'
-                        onClick={onClick}
-                      />
-                    </ActionsList>
-                  </ActionsConatiner>
+                <TableStylesStatus 
+                    type='item-type-returnable'
+                    statusType='IN SERVICE'
+                >
+                </TableStylesStatus>
+                </ActionsList>
+                </ActionsConatiner>
                 </Tabledata>
                 <Tabledata>
                   <ActionsConatiner>
