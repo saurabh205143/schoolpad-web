@@ -12,7 +12,7 @@ import PickupDropTime from './components/PickupDropTime';
 import RouteOrders from './components/RouteOrders';
 import AddFormField from './components/AddFormField';
 
-const TransportRoute = () => {
+const TransportRoute = ({orderHeading}) => {
 
   const [showModal, setShowModal] = useState(false);
   const [showpickedTime, setShowPickedTime] = useState(false);
@@ -74,6 +74,7 @@ const TransportRoute = () => {
       <RouteOrders
         show={showRouteOrderModal}
         handleClose={hideRouteOrderModal}
+        orderHeading={orderHeading}
       />
 
       {/* Associated Options - Add Form Field */}
