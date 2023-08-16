@@ -23,7 +23,7 @@ export const TableRow = styled.tr`
     & >th:nth-child(5) {
         width:100px;   
     }
-    @media only screen and (max-width: 1340px) {
+    @media only screen and (max-width: 1240px) {
         & >th:nth-child(2) {
             width:auto;       
         }

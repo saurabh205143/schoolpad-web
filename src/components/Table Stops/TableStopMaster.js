@@ -8,16 +8,9 @@ import DeleteIcon from '../../images/delete-icon.svg';
 import LinkButton from '../Buttons/LinkButton';
 import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
-import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 
 
-const TableStopMaster = ({ onClick, heading, EditOnclick }) => {
-
-    const [showModal, setShowDeleteModal] = useState(false);
-
-    const hideDeleteModal = () => {
-        setShowDeleteModal(false);
-    }
+const TableStopMaster = ({ onClick, heading, EditOnclick,DeleteOnClick }) => {
 
     // get table column
     const column = Object.keys(TableData[0]);
@@ -64,7 +57,7 @@ const TableStopMaster = ({ onClick, heading, EditOnclick }) => {
                                 <LinkButton
                                     onlyIcon={DeleteIcon}
                                     tooltiptext='Delete'
-                                    onClick={() => setShowDeleteModal(!showModal)}
+                                    onClick={() => {DeleteOnClick(data[' S No.'])}}
                                 />
                             </ActionsList>
                             <ActionsList>
@@ -83,11 +76,7 @@ const TableStopMaster = ({ onClick, heading, EditOnclick }) => {
         })
     }
 
-    {/* Delete Modal */ }
-    <DeleteRouteModal
-        show={showModal}
-        handleClose={hideDeleteModal}
-    />
+    
 
     return (
         <TableContainer className="table">
