@@ -14,7 +14,7 @@ import Pagination from '../Pagination/Pagination';
 import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 
 
-const TableStopMaster = ({  onClick,  heading , EditOnclick }) => {
+const TableStopMaster = ({  onClick,  heading , EditOnclick,DeleteOnClick }) => {
     const [getStopResponse, setStopResponse] = useState({ getAllStop: [] });
     const [deleteStopResponse, setdeleteStopResponse] = useState([]);
     let PageSize = 15;
@@ -116,7 +116,7 @@ const TableStopMaster = ({  onClick,  heading , EditOnclick }) => {
                                     onlyIcon={DeleteIcon}
                                     tooltiptext='Delete'
                                     onClick={() => deleteStop(data.StopId)}
-                                    onClick={() => setShowDeleteModal(!showModal)}
+                                    onClick={() => {DeleteOnClick(data[' S No.'])}}
                                 />
                             </ActionsList>
                             <ActionsList>
@@ -135,11 +135,7 @@ const TableStopMaster = ({  onClick,  heading , EditOnclick }) => {
         })
     }
 
-    {/* Delete Modal */ }
-    <DeleteRouteModal
-        show={showModal}
-        handleClose={hideDeleteModal}
-    />
+    
 
     return (
         <>

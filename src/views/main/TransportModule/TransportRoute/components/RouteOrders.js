@@ -3,7 +3,7 @@ import Modal from '../../../../../components/Modal/Modal';
 import DragDropList from '../../../../../components/Drag&DropSortList/DragDropList';
 
 const RouteOrders = props => {
-    const {show,handleClose} = props;
+    const {show,handleClose,orderHeading} = props;
     return (
         <Modal
             show={show}
@@ -13,7 +13,7 @@ const RouteOrders = props => {
             submitText='Save'
             cancelText='Cancel'
         >
-        <DragDropList/>
+        <DragDropList orderHeading={orderHeading}/>
         </Modal>
     );
 };

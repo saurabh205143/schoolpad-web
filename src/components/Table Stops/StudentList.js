@@ -3,147 +3,54 @@ import { TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata
 import Button from '../Buttons/Button';
 import AvatarIcon from '../../images/avatar-icon.svg';
 import { ModalBodyConatiner } from '../../views/main/TransportModule/TransportRoute/components/AddRouteStyles';
+import StopListData from './StudentData';
 
-const StudentList = ({onClick}) => {
+const StudentList = ({onClick,heading}) => {
 
+    // get table column
+    const column = Object.keys(StopListData[0]);
+    // get table heading data
+    const ThData = () => {
+        return column.map((data) => {
+            return <TableHeading key={data}>{data}</TableHeading>
+        })
+    }
+    // get table row data
+    const tdData = () => {
+
+        return StopListData.map((data) => {
+            return (
+                <TableRow
+                >
+                    {
+                        column.map((v) => {
+                            return <Tabledata>{data[v]}</Tabledata>
+                        })
+                    }
+                    <Tabledata>
+                            <Button
+                            buttonText='View Details'
+                            className='link-button'
+                            onClick={onClick}
+                            />
+                        </Tabledata>
+                </TableRow>
+            )
+        })
+    }
     return (
         <>
         <ModalBodyConatiner>
             <TableContainer className='picked-table'>
-                <TableHead>
-                    <TableRow>
-                        <TableHeading>Student Name</TableHeading>
-                        <TableHeading>Actions</TableHeading>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    <TableRow>
-                        <Tabledata>
-                            <img src={AvatarIcon} alt="Icon"/>
-                            <Tabledatatext>
-                            Jane Rotanson
-                            </Tabledatatext>
-                        </Tabledata>
-                        <Tabledata>
-                            <Button
-                            buttonText='View Details'
-                            className='link-button'
-                            onClick={onClick}
-                            /></Tabledata>
-                    </TableRow>
-                    <TableRow>
-                        <Tabledata>
-                            <img src={AvatarIcon} alt="Icon"/>
-                            <Tabledatatext>
-                            Salman Ansari
-                            </Tabledatatext>
-                        </Tabledata>
-                        <Tabledata>
-                            <Button
-                            buttonText='View Details'
-                            className='link-button'
-                            onClick={onClick}
-                            /></Tabledata>
-                    </TableRow>
-                    <TableRow>
-                        <Tabledata>
-                            <img src={AvatarIcon} alt="Icon"/>
-                            <Tabledatatext>
-                            Jatin Sharma
-                            </Tabledatatext>
-                        </Tabledata>
-                        <Tabledata>
-                            <Button
-                            buttonText='View Details'
-                            className='link-button'
-                            onClick={onClick}
-                            /></Tabledata>
-                    </TableRow>
-                    <TableRow>
-                        <Tabledata>
-                            <img src={AvatarIcon} alt="Icon"/>
-                            <Tabledatatext>
-                            Aditya Roy
-                            </Tabledatatext>
-                        </Tabledata>
-                        <Tabledata>
-                            <Button
-                            buttonText='View Details'
-                            className='link-button'
-                            onClick={onClick}
-                            /></Tabledata>
-                    </TableRow>
-                    <TableRow>
-                        <Tabledata>
-                            <img src={AvatarIcon} alt="Icon"/>
-                            <Tabledatatext>
-                            Sheena Arora
-                            </Tabledatatext>
-                        </Tabledata>
-                        <Tabledata>
-                            <Button
-                            buttonText='View Details'
-                            className='link-button'
-                            onClick={onClick}
-                            /></Tabledata>
-                    </TableRow>
-                    <TableRow>
-                        <Tabledata>
-                            <img src={AvatarIcon} alt="Icon"/>
-                            <Tabledatatext>
-                            Ankita Sharma
-                            </Tabledatatext>
-                        </Tabledata>
-                        <Tabledata>
-                            <Button
-                            buttonText='View Details'
-                            className='link-button'
-                            onClick={onClick}
-                            /></Tabledata>
-                    </TableRow>
-                    <TableRow>
-                        <Tabledata>
-                            <img src={AvatarIcon} alt="Icon"/>
-                            <Tabledatatext>
-                            Rishab Aggarwal
-                            </Tabledatatext>
-                        </Tabledata>
-                        <Tabledata>
-                            <Button
-                            buttonText='View Details'
-                            className='link-button'
-                            onClick={onClick}
-                            /></Tabledata>
-                    </TableRow>
-                    <TableRow>
-                        <Tabledata>
-                            <img src={AvatarIcon} alt="Icon"/>
-                            <Tabledatatext>
-                            Harvinder Kaur
-                            </Tabledatatext>
-                        </Tabledata>
-                        <Tabledata>
-                            <Button
-                            buttonText='View Details'
-                            className='link-button'
-                            onClick={onClick}
-                            /></Tabledata>
-                    </TableRow>
-                    <TableRow>
-                        <Tabledata>
-                            <img src={AvatarIcon} alt="Icon"/>
-                            <Tabledatatext>
-                            Nandini Sharma
-                            </Tabledatatext>
-                        </Tabledata>
-                        <Tabledata>
-                            <Button
-                            buttonText='View Details'
-                            className='link-button'
-                            onClick={onClick}
-                            /></Tabledata>
-                    </TableRow>
-                </TableBody>
+            <TableHead>
+                <TableRow>
+                    {ThData()}
+                    <TableHeading>Actions</TableHeading>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {tdData()}
+            </TableBody>
             </TableContainer>
             </ModalBodyConatiner>
         </>

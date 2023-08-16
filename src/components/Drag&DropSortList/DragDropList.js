@@ -5,7 +5,7 @@ import { DragDropContext, Draggable, Droppable, } from 'react-beautiful-dnd';
 import { DragHandle } from "./DragHandle";
 import { ModalBodyConatiner } from "../../views/main/TransportModule/TransportRoute/components/AddRouteStyles";
 
-const DragDropList = () => {
+const DragDropList = ({orderHeading}) => {
   const list = List.getList();
   return (
     <>
@@ -24,7 +24,7 @@ const DragDropList = () => {
           <RouteModalHeading>
           <h6>Click on a head and drag it up or down to change it's order</h6>
           <RouteDiabledHeading>
-            <h6>Route Name</h6>
+            <h6>{orderHeading ? '' : 'Route Name'}</h6>
           </RouteDiabledHeading>
           </RouteModalHeading>
           <Droppable droppableId="droppable-1">

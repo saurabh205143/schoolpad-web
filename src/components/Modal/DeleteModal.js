@@ -10,7 +10,7 @@ import WarningIcon from '../../images/warning.svg';
 
 const DeleteModal = props => {
     const { show, handleClose, modalHeading, modalSubHeading, submitText, saveAction, children, actionText , cancelText} = props;
-
+    
 
     return (
         <ModalContainer block={show ? 'block' : 'none'}>

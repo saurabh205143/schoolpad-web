@@ -13,14 +13,16 @@ import AddStopMaster from './components/AddStopMaster';
 import StudentListTable from './components/StudentListTable';
 import ChangeHistory from './components/ChangeHistory';
 import RouteOrders from './components/RouteOrders';
+import DeleteStopModal from './components/DeleteStopModal';
 
 
 
-const TransportStopMaster = () => {
+const TransportStopMaster = ({orderHeading}) => {
   const [showModal, setShowModal] = useState(false);
   const [showstudentList, setShowStudentList] = useState(false);
   const [showchangeHistory, setShowChangeHistory] = useState(false);
   const [showRouteOrderModal, setShowRouteOrderModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
    const [getStopResponse, setStopResponse] = useState({getAllStop:[]});
     /**
@@ -51,7 +53,14 @@ const TransportStopMaster = () => {
   const hideChangeHistorytModal = () => {
     setShowChangeHistory(false);
   }
+  
+
+  const hideDeleteModal = () => {
+    setDeleteId(false);
+  }
+
   const [id, setId] = useState(null);
+  const [deleteId, setDeleteId] = useState(null);
 
   return (
     <Layout type='transport'>
@@ -77,6 +86,7 @@ const TransportStopMaster = () => {
         heading='Child Name'
         onClick={() => setShowStudentList(!showstudentList)}
         EditOnclick={(id) => {setId(id);}} 
+        DeleteOnClick={(deleteId) => {setDeleteId(deleteId);}} 
       />
 
       {/* Add Stop Master Modal */}
@@ -96,12 +106,20 @@ const TransportStopMaster = () => {
       <RouteOrders
         show={showRouteOrderModal}
         handleClose={hideRouteOrderModal}
+        orderHeading={orderHeading}
       />
 
       {/* Change History */}
       <ChangeHistory
         show={showchangeHistory}
         handleClose={hideChangeHistorytModal}
+      />
+
+      {/* Delete Modal */}
+      <DeleteStopModal
+        show={deleteId}
+        handleClose={hideDeleteModal}
+        id={deleteId}
       />
     </Layout>
 
