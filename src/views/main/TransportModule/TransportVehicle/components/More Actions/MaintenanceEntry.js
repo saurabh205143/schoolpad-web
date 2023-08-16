@@ -170,7 +170,6 @@ const MaintenanceEntry = props => {
                 <p>
                 <ExistingFuelEntry/>
                 </p>
-
               </Tab>
             </Tabs>
           </AddFormFieldInnerTab>

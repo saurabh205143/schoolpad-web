@@ -126,12 +126,12 @@ const DragAndDropUpload = () => {
 
   const fileInputRef = useRef(null);
 
-  const handleOverlayClick = () => {
+  const handleOverlayClick = (e) => {
+    e.stopPropagation(); // Stop the click event from propagating to the modal
     if (fileInputRef.current) {
       fileInputRef.current.click();
     }
   };
-
 
   return (
     <div>

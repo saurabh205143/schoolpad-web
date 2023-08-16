@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import TableData from './TableData';
 import { ActionsConatiner, ActionsList, MoreAction, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
 
@@ -11,7 +11,7 @@ import Button from '../Buttons/Button';
 import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 
 
-const TableStopMaster = ({onClick,heading,EditOnclick}) => {
+const TableStopMaster = ({ onClick, heading, EditOnclick }) => {
 
     const [showModal, setShowDeleteModal] = useState(false);
 
@@ -57,14 +57,14 @@ const TableStopMaster = ({onClick,heading,EditOnclick}) => {
                                 <LinkButton
                                     onlyIcon={EditIcon}
                                     tooltiptext='Edit'
-                                    onClick={()=>{EditOnclick(data[' S No.'])}}
+                                    onClick={() => { EditOnclick(data[' S No.']) }}
                                 />
                             </ActionsList>
                             <ActionsList>
                                 <LinkButton
                                     onlyIcon={DeleteIcon}
                                     tooltiptext='Delete'
-                                    onClick={() => setShowDeleteModal(!showModal)} 
+                                    onClick={() => setShowDeleteModal(!showModal)}
                                 />
                             </ActionsList>
                             <ActionsList>
@@ -82,11 +82,13 @@ const TableStopMaster = ({onClick,heading,EditOnclick}) => {
             )
         })
     }
-              {/* Delete Modal */}
-              <DeleteRouteModal
-              show={showModal}
-              handleClose={hideDeleteModal}
-              />
+
+    {/* Delete Modal */ }
+    <DeleteRouteModal
+        show={showModal}
+        handleClose={hideDeleteModal}
+    />
+
     return (
         <TableContainer className="table">
             <TableHead>
