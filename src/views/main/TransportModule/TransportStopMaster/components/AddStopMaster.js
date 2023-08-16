@@ -15,7 +15,10 @@ const options = [
 ];
 
 const AddStopMaster = props => {
-    const {show,handleClose} = props;
+
+    const {show,handleClose,saveAction} = props;
+    console.log(props.id);
+
     return (
         <Modal
             show={show}
@@ -24,6 +27,7 @@ const AddStopMaster = props => {
             submitText='Save and Close'
             actionText='Save and Continue'
             cancelText='Cancel'
+            saveAction={saveAction}
             
         >
         <ModalBodyConatiner>

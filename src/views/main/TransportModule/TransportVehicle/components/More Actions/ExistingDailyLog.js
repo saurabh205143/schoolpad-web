@@ -1,13 +1,13 @@
 import React from 'react';
-import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableHeadingModalAction, TableRow, Tabledata } from './TableStyles';
-import LinkButton from '../Buttons/LinkButton';
 
 // Assets
-import EditIcon from '../../images/edit-icon.svg';
-import DeleteIcon from '../../images/delete-icon.svg';
-import { ModalBodyConatiner } from '../../views/main/TransportModule/TransportRoute/components/AddRouteStyles';
+import EditIcon from '../../../../../../images/edit-icon.svg';
+import DeleteIcon from '../../../../../../images/delete-icon.svg';
+import LinkButton from '../../../../../../components/Buttons/LinkButton';
+import { ModalBodyConatiner } from '../../../TransportRoute/components/AddRouteStyles';
+import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableHeadingModalAction, TableRow, Tabledata } from '../../../../../../components/Table/TableStyles';
 
-const PreviousCustomField = (props) => {
+const ExistingDailyLog = (props) => {
 
   return (
     <>
@@ -16,8 +16,9 @@ const PreviousCustomField = (props) => {
         <TableHead>
           <TableRow>
             <TableHeading>S No.</TableHeading>
-            <TableHeading>Field Name</TableHeading>
-            <TableHeading>Field Type</TableHeading>
+            <TableHeading>Starting KM</TableHeading>
+            <TableHeading>Ending KM</TableHeading>
+            <TableHeading>Log Date</TableHeading>
             <TableHeading>
               <TableHeadingModalAction>Actions</TableHeadingModalAction>
               </TableHeading>
@@ -26,8 +27,9 @@ const PreviousCustomField = (props) => {
         <TableBody>
           <TableRow>
             <Tabledata>1</Tabledata>
-            <Tabledata>Date of Birth</Tabledata>
-            <Tabledata>Date Selector</Tabledata>
+            <Tabledata>10,000</Tabledata>
+            <Tabledata>12,000</Tabledata>
+            <Tabledata>Dec 24, 2020</Tabledata>
             <Tabledata>
               <ActionsConatiner>
                 <ActionsList>
@@ -46,11 +48,10 @@ const PreviousCustomField = (props) => {
             </Tabledata>
           </TableRow>
           <TableRow>
-            <Tabledata>2</Tabledata>
-            <Tabledata>Nationality</Tabledata>
-            <Tabledata>
-              Dropdown
-            </Tabledata>
+          <Tabledata>2</Tabledata>
+          <Tabledata>5,000</Tabledata>
+            <Tabledata>32,000</Tabledata>
+            <Tabledata>Dec 4, 2021</Tabledata>
             <Tabledata>
               <ActionsConatiner>
                 <ActionsList>
@@ -70,10 +71,9 @@ const PreviousCustomField = (props) => {
           </TableRow>
           <TableRow>
             <Tabledata>3</Tabledata>
-            <Tabledata>Blood Group</Tabledata>
-            <Tabledata>
-              Dropdown
-            </Tabledata>
+            <Tabledata>35,000</Tabledata>
+            <Tabledata>52,000</Tabledata>
+            <Tabledata>Nov 24, 2020</Tabledata>
             <Tabledata>
               <ActionsConatiner>
                 <ActionsList>
@@ -98,4 +98,4 @@ const PreviousCustomField = (props) => {
   );
 }
 
-export default PreviousCustomField;
+export default ExistingDailyLog;

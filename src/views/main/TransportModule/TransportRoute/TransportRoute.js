@@ -12,7 +12,7 @@ import PickupDropTime from './components/PickupDropTime';
 import RouteOrders from './components/RouteOrders';
 import AddFormField from './components/AddFormField';
 
-const TransportRoute = () => {
+const TransportRoute = ({orderHeading}) => {
 
   const [showModal, setShowModal] = useState(false);
   const [showpickedTime, setShowPickedTime] = useState(false);
@@ -24,7 +24,7 @@ const TransportRoute = () => {
   }
 
   const hideModal = () => {
-    setShowModal(false);
+    setId(false);
   }
 
   const hideRouteOrderModal = () => {
@@ -35,6 +35,8 @@ const TransportRoute = () => {
     setShowFormFieldModal(false);
   }
 
+  const [id, setId] = useState(null);
+
   return (
     <Layout type='transport'>
       {/* <ItemsNotFound/> */}
@@ -44,9 +46,11 @@ const TransportRoute = () => {
         buttonAdd='Add New Route'
         buttonOrders='Order Routes(s)'
         buttonOption='Associated Options'
+        buttonManageText='Add Pick/Drop Time' 
+        buttonManageMaintenance='Transport Settings'
         searchPlaceholder='Search by route name etc...'
         buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
-        onClick={() =>  setShowModal(!showModal)}
+        onClick={() => setId(!id)} 
         formField={() => setShowFormFieldModal(!showFormFieldModal)}
       />
       <ExportHeader
@@ -61,14 +65,16 @@ const TransportRoute = () => {
 
       {/* Add Route Modal */}
       <AddRoutes
-        show={showModal}
+        show={id}
         handleClose={hideModal}
+        id={id}
       />
 
       {/* Route Order Modal */}
       <RouteOrders
         show={showRouteOrderModal}
         handleClose={hideRouteOrderModal}
+        orderHeading={orderHeading}
       />
 
       {/* Associated Options - Add Form Field */}

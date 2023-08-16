@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import data from './data.json';
-import Pagination from './Pagination';
 import { ActionsConatiner, ActionsList, Container, TableActionHeadings, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
 import LinkButton from '../Buttons/LinkButton';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -12,13 +11,21 @@ import DeleteIcon from '../../images/delete-icon.svg';
 import Button from '../Buttons/Button';
 import AddRoutes from '../../views/main/TransportModule/TransportRoute/components/AddRoutes';
 import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
+import FuelEntry from '../../views/main/TransportModule/TransportVehicle/components/More Actions/FuelEntry';
+import MaintenanceEntry from '../../views/main/TransportModule/TransportVehicle/components/More Actions/MaintenanceEntry';
+import DailyLog from '../../views/main/TransportModule/TransportVehicle/components/More Actions/DailyLog';
+import InsuranceReminder from '../../views/main/TransportModule/TransportVehicle/components/More Actions/InsuranceReminder';
+import TableStylesStatus from './TableStyles';
 
-let PageSize = 14;
 
-const TableNew = ({ onClick }) => {
+const TableVehicleMaster = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showFuelEntryModal, setShowFuelEntryModal] = useState(false);
+  const [showMaintenanceEntryModal, setShowMaintenanceEntryModal] = useState(false);
+  const [showDailyLogModal, setShowDailyLogModal] = useState(false);
+  const [showInsuranceReminderModal, setShowInsuranceReminderModal] = useState(false);
 
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
@@ -28,10 +35,24 @@ const TableNew = ({ onClick }) => {
     setShowModal(false);
   }
 
+  const hideFuelEntryModal = () => {
+    setShowFuelEntryModal(false);
+  }
+
+  const hideMaintenanceEntryModal = () => {
+    setShowMaintenanceEntryModal(false);
+  }
+
+  const hideDailyLogModal = () => {
+    setShowDailyLogModal(false);
+  }
+
+  const hideInsuranceReminderModal = () => {
+    setShowInsuranceReminderModal(false);
+  }
+
   const currentTableData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * PageSize;
-    const lastPageIndex = firstPageIndex + PageSize;
-    return data.slice(firstPageIndex, lastPageIndex);
+    return data.slice();
   }, [currentPage]);
 
   // get table column
@@ -53,7 +74,7 @@ const TableNew = ({ onClick }) => {
             {ThData()}
             <TableHeading>
             <TableActionHeadings>
-                  Set Time
+            Status
               </TableActionHeadings>
               </TableHeading>
             <TableHeading>
@@ -68,20 +89,19 @@ const TableNew = ({ onClick }) => {
             return (
               <TableRow>
                 <Tabledata>{item.SNo}</Tabledata>
-                <Tabledata>{item.RouteName}</Tabledata>
-                <Tabledata>{item.Stops}</Tabledata>
                 <Tabledata>{item.VehicleNumber}</Tabledata>
                 <Tabledata>{item.VehicleCapacity}</Tabledata>
+                <Tabledata>{item.SerialNumber}</Tabledata>
                 <Tabledata>
-                  <ActionsConatiner>
+                <ActionsConatiner>
                     <ActionsList>
-                      <Button
-                        buttonText='Pickup/Drop Time'
-                        className='link-button'
-                        onClick={onClick}
-                      />
-                    </ActionsList>
-                  </ActionsConatiner>
+                <TableStylesStatus 
+                    type='item-type-returnable'
+                    statusType='IN SERVICE'
+                >
+                </TableStylesStatus>
+                </ActionsList>
+                </ActionsConatiner>
                 </Tabledata>
                 <Tabledata>
                   <ActionsConatiner>
@@ -103,19 +123,27 @@ const TableNew = ({ onClick }) => {
                       <DropdownButton id="dropdown-basic-button" title="More" className='more-options'>
                         <Dropdown.Item href="#/action-1">
                           <Button
-                              buttonText='Student List'
-                              className='link-button' 
-                              
+                              buttonText='Fuel Entry'
+                              className='link-button'
+                              onClick={() => setShowFuelEntryModal(!showFuelEntryModal)} 
                       /></Dropdown.Item>
-                        <Dropdown.Item href="#/action-2"> 
+                        <Dropdown.Item href="#/action-2">
                         <Button
-                              buttonText='Print Student'
-                              className='link-button' 
+                              buttonText='Maintenance Entry'
+                              className='link-button'
+                              onClick={() => setShowMaintenanceEntryModal(!showMaintenanceEntryModal)} 
                       /></Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">   
+                        <Dropdown.Item href="#/action-3">
+                          <Button
+                              buttonText='Daily Log'
+                              className='link-button'
+                              onClick={() => setShowDailyLogModal(!showDailyLogModal)} 
+                      /></Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">
                         <Button
-                              buttonText='Add GPS Link'
-                              className='link-button' 
+                              buttonText='Insurance Reminder'
+                              className='link-button'
+                              onClick={() => setShowInsuranceReminderModal(!showInsuranceReminderModal)} 
                       /></Dropdown.Item>
                       </DropdownButton>
                     </ActionsList>
@@ -126,13 +154,7 @@ const TableNew = ({ onClick }) => {
           })}
         </TableBody>
       </TableContainer>
-      <Pagination
-        className="pagination-bar"
-        currentPage={currentPage}
-        totalCount={data.length}
-        pageSize={PageSize}
-        onPageChange={page => setCurrentPage(page)}
-      />
+
 
       {/* Edit Route Modal */}
       <AddRoutes
@@ -145,8 +167,30 @@ const TableNew = ({ onClick }) => {
         show={showDeleteModal}
         handleClose={hideDeleteModal}
       />
+
+      {/* More Actions Tab - Modals  */}
+      {/* Fuel Entry - Modal */}
+      <FuelEntry
+          show={showFuelEntryModal}
+          handleClose={hideFuelEntryModal}
+      />
+      {/* Maintenance Entry - Modal */}
+      <MaintenanceEntry
+          show={showMaintenanceEntryModal}
+          handleClose={hideMaintenanceEntryModal}
+      />
+      {/* Daily Log - Modal */}
+      <DailyLog
+          show={showDailyLogModal}
+          handleClose={hideDailyLogModal}
+      />
+      {/* Insurance Reminder - Modal*/}
+      <InsuranceReminder
+          show={showInsuranceReminderModal}
+          handleClose={hideInsuranceReminderModal}
+      />
     </>
   );
 }
 
-export default TableNew;
+export default TableVehicleMaster;

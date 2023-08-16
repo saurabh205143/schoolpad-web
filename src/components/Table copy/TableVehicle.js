@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import TableData from './TableData';
 import { ActionListStatus, ActionsConatiner, ActionsList, MoreAction, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 // Assets
 import EditIcon from '../../images/edit-icon.svg';
@@ -70,13 +72,12 @@ const Table = (props) => {
                                 />
                             </ActionsList>
                             <ActionsList>
-                                <MoreAction>
-                                    <Button
-                                        buttonText='More'
-                                        rightIcon={DropIcon}
-                                        className='link-button'
-                                    />
-                                </MoreAction>
+                            <DropdownButton id="dropdown-basic-button" title="More" className='more-options'>
+                                <Dropdown.Item href="#/action-1">Fuel Entry</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Maintenance Entry</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Daily Log</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Insurance Reminder</Dropdown.Item>
+                            </DropdownButton>
                             </ActionsList>
                         </ActionsConatiner>
                     </Tabledata>

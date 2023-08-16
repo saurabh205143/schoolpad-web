@@ -9,8 +9,8 @@ import WarningIcon from '../../images/warning.svg';
 
 
 const DeleteModal = props => {
-    const { show, handleClose, modalHeading, modalSubHeading, submitText, saveAction, children, actionText , cancelText} = props;
-
+    const { show, handleClose, modalHeading, modalSubHeading, submitText, saveAction, onDelete, children, actionText , cancelText} = props;
+    
 
     return (
         <ModalContainer block={show ? 'block' : 'none'}>
@@ -39,7 +39,7 @@ const DeleteModal = props => {
                         />
                     }
                     </FooterButtonContainer>
-                    <FooterButtonContainer>
+                    {/* <FooterButtonContainer>
                     {actionText && 
                             <Button
                                 buttonText={actionText}
@@ -47,13 +47,13 @@ const DeleteModal = props => {
                                 onClick={saveAction}
                             />
                         }
-                    </FooterButtonContainer>
+                    </FooterButtonContainer> */}
                     <FooterButtonContainer>
                         {submitText &&
                             <Button
                                 buttonText={submitText}
                                 className={'primary'}
-                                onClick={saveAction}
+                                onClick={onDelete}
                             />
 
                         }

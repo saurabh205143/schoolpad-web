@@ -5,7 +5,7 @@ import Headings from '../Headings/Headings';
 // Assets
 import Button from '../Buttons/Button';
 
-const ExportHeader = ({ smallHeading, smallHeding2, Excelicon, PrintIcon, isChecked }) => {
+const ExportHeader = ({ smallHeading, smallHeding2, Excelicon, PrintIcon, deleteStoreText, isChecked }) => {
     return (
         <ExportContainer>
             <ContainerLeft>
@@ -16,15 +16,19 @@ const ExportHeader = ({ smallHeading, smallHeding2, Excelicon, PrintIcon, isChec
                     <Headings smallHeading={smallHeding2} />
                 </ExportHeadings>
             </ContainerLeft>
-            {Excelicon && PrintIcon &&
+            
                 <ContainerRight>
+                    {deleteStoreText &&
                     <ButtonContainer>
                             <Button
-                                buttonText='Delete Store'
+                                buttonText={deleteStoreText}
                                 className='delete'
                             />
                         
                     </ButtonContainer>
+}
+                    {Excelicon && PrintIcon &&
+                    <>
                     <ButtonContainer>
                         <Button
                             onlyIcon={Excelicon}
@@ -39,8 +43,10 @@ const ExportHeader = ({ smallHeading, smallHeding2, Excelicon, PrintIcon, isChec
                             tooltiptext='Print'
                         />
                     </ButtonContainer>
+                    </>
+                    }
                 </ContainerRight>
-            }
+            
         </ExportContainer>
     )
 }
