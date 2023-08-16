@@ -11,6 +11,7 @@ import ExistingCustomField from '../../../../../../components/Table/ExistingCust
 import ExistingFuelEntry from './ExistingFuelEntry';
 import ExistingDailyLog from './ExistingDailyLog';
 import DragAndDropUpload from '../../../../../../components/UploadDragDropFile/UploadDragDropStyle';
+import UploadDragDrop from '../../../../../../components/UploadDragDropFile/UploadDragDrop';
 
 const options = [
   {
@@ -142,7 +143,7 @@ const DailyLog = props => {
                         name='store_name'
                     />
                 </FieldContainer>
-                <DragAndDropUpload/>
+                <UploadDragDrop/>
                   </ModalBodyConatiner>
                 </form></p>
               </Tab>

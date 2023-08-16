@@ -7,9 +7,7 @@ import Input from '../../../../../../components/Inputs/Input';
 import { AddFormFieldInnerTab, AddFormFieldTab, AddFormFieldTabText, DateInputContainer, FieldContainer, FieldDivider, FieldLeftContainer1, FieldRightContainerItem, ModalBodyConatiner } from '../../../TransportRoute/components/AddRouteStyles';
 import SelectInput from '../../../../../../components/Inputs/Select';
 import CustomDateInput from '../../../../../../components/DateInputField/DateInputField';
-import ExistingCustomField from '../../../../../../components/Table/ExistingCustomField';
 import ExistingFuelEntry from './ExistingFuelEntry';
-import DragAndDropUpload from '../../../../../../components/UploadDragDropFile/UploadDragDropStyle';
 import UploadDragDrop from '../../../../../../components/UploadDragDropFile/UploadDragDrop';
 
 const options = [

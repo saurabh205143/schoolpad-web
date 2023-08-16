@@ -12,7 +12,7 @@ import ExistingFuelEntry from './ExistingFuelEntry';
 import Button from '../../../../../../components/Buttons/Button';
 import AddMoreIcon from '../../../../../../images/add-more-icon.svg';
 import RemoveIcon from '../../../../../../images/delete-icon.svg';
-import DragAndDropUpload from '../../../../../../components/UploadDragDropFile/UploadDragDropStyle';
+import UploadDragDrop from '../../../../../../components/UploadDragDropFile/UploadDragDrop';
 
 const options = [
   {
@@ -162,7 +162,7 @@ const MaintenanceEntry = props => {
                         />
                       </FieldRightContainerItem>
                     </FieldDivider>
-                    <DragAndDropUpload/>
+                  <UploadDragDrop/>
                   </ModalBodyConatiner>
                 </form></p>
               </Tab>
