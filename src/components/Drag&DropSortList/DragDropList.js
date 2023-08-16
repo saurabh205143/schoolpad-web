@@ -24,7 +24,7 @@ const DragDropList = ({orderHeading}) => {
           <RouteModalHeading>
           <h6>Click on a head and drag it up or down to change it's order</h6>
           <RouteDiabledHeading>
-            <h6>{orderHeading ? '' : 'Route Name'}</h6>
+            <h6>{orderHeading ? orderHeading : 'Route Name'}</h6>
           </RouteDiabledHeading>
           </RouteModalHeading>
           <Droppable droppableId="droppable-1">

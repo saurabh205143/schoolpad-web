@@ -18,7 +18,7 @@ const options = [
 ];
 
 const AddStopMaster = props => {
-    const { show, handleClose } = props;
+    const { show, handleClose,saveAction } = props;
     const [stop_name, setStopName] = useState('');
     const [stop_Abb, setStopAbb] = useState('');
     const [stopResponse, setStopResponse] = useState([]);
@@ -61,6 +61,7 @@ const AddStopMaster = props => {
      }
     
     console.log(props.id);
+
     return (
         <Modal
             show={show}
@@ -70,6 +71,7 @@ const AddStopMaster = props => {
             actionText='Save and Continue'
             cancelText='Cancel'
             saveAction={submit}
+            saveAction={saveAction}/
             
         >
         <ModalBodyConatiner>

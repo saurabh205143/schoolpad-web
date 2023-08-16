@@ -14,6 +14,8 @@ import StudentListTable from './components/StudentListTable';
 import ChangeHistory from './components/ChangeHistory';
 import RouteOrders from './components/RouteOrders';
 import DeleteStopModal from './components/DeleteStopModal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -62,6 +64,14 @@ const TransportStopMaster = ({orderHeading}) => {
   const [id, setId] = useState(null);
   const [deleteId, setDeleteId] = useState(null);
 
+  const showToastMessage = () => {
+    hideModal();
+    toast.success('Success Notification !', {
+        position: toast.POSITION.BOTTOM_CENTER,
+        className: 'toast-message'
+    });
+};
+
   return (
     <Layout type='transport'>
       {/* <ItemsNotFound/> */}
@@ -89,11 +99,14 @@ const TransportStopMaster = ({orderHeading}) => {
         DeleteOnClick={(deleteId) => {setDeleteId(deleteId);}} 
       />
 
+      <ToastContainer autoClose={8000} />
+
       {/* Add Stop Master Modal */}
       <AddStopMaster
         show={id}
         handleClose={hideModal}
         id={id}
+        saveAction={showToastMessage}
       />
 
       {/* Student List */}
@@ -106,7 +119,7 @@ const TransportStopMaster = ({orderHeading}) => {
       <RouteOrders
         show={showRouteOrderModal}
         handleClose={hideRouteOrderModal}
-        orderHeading={orderHeading}
+        orderHeading={'text'}
       />
 
       {/* Change History */}

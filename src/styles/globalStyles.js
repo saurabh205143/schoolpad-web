@@ -11,4 +11,13 @@ export const GlobalStyle = createGlobalStyle`
         color : ${({theme}) => theme.text};
         font-family: 'Source Sans Pro', sans-serif;
     }
+    .toast-message {
+        background:  #00875A;
+        color: #fff;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        padding: 12px;
+        border-radius:0px;
+    }
 `
