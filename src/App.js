@@ -23,6 +23,8 @@ import ManageItems from './views/main/InventoryModule/ManageItems/ManageItems';
 import ManageVendors from './views/main/InventoryModule/ManageVendors/ManageVendors';
 import PurchaseOrders from './views/main/InventoryModule/PurchaseOrders/PurchaseOrders';
 import AddPurchaseOrder from './views/main/InventoryModule/PurchaseOrders/components/AddPurchaseOrder';
+import ReceiveItems from './views/main/InventoryModule/ReceiveItems/ReceiveItems';
+import ApproveRejects from './views/main/InventoryModule/ReceiveItems/components/ApproveRejects.js/ApproveRejects';
 
 export const ThemeContext = React.createContext(null);
 
@@ -60,8 +62,10 @@ function App() {
             <Route path='/manageCategories' element={<ManageCategories/>}/>
             <Route path='/manageItems' element={<ManageItems/>}/>
             <Route path='/manageVendors' element={<ManageVendors/>}/>
-            <Route path='/inventory/purchaseList' element={<PurchaseOrders/>}/>
+            <Route path='/managePurchase' element={<PurchaseOrders/>}/>
             <Route path='/inventory/purchaseAdd' element={<AddPurchaseOrder/>}/>
+            <Route path='/manageReceive' element={<ReceiveItems/>}/>
+            <Route path='/manageReceive/approve-reject' element={<ApproveRejects/>}/>
             <Route path='/toasters' element={<Toasters/>}/>
           </Routes>
         </>

@@ -70,7 +70,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick}) => {
+const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -351,7 +351,6 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             </ButtonContainer>
                         }
                         {buttonOption &&
-
                             <ButtonContainer>
                                 <div ref={buttonRef}>
                                     <Button
@@ -390,7 +389,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             <Input
                                 width='280px'
                                 label={inputLabel1}
-                                type='select'
+                                type='text'
                                 placeholder={inputPlaceholder1}
                                 options={options}
                                 onChange={(e) => {
@@ -402,7 +401,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                         <RecordBox>
                             <Input
                                 label={inputLabel2}
-                                type='select'
+                                type='text'
                                 placeholder={inputPlaceholder2}
                                 options={options}
                                 onChange={(e) => {
@@ -411,6 +410,24 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                                 }}
                             />
                         </RecordBox>
+                        {showReceiveHeaderFilter &&
+                        <RecordBox>
+                            <Input
+                                label={inputLabel3}
+                                type='text'
+                                placeholder={inputPlaceholder3}
+                            />
+                        </RecordBox>
+                        }
+                        {showReceiveHeaderFilter1 &&
+                        <RecordBox>
+                            <Input
+                                label={inputLabel4}
+                                type='text'
+                                placeholder={inputPlaceholder4}
+                            />
+                        </RecordBox>
+                        }
                         {showDependentDrop === "Store 1" &&
                             <RecordBox>
                                 <Input
