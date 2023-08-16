@@ -16,7 +16,7 @@ import Button from '../Buttons/Button';
 import CustomCheckbox from '../Checkbox/CustomCheckbox';
 import { ButtonContainer } from '../ScreensHeader/subHeaderStyles';
 
-let PageSize = 5;
+let PageSize = 10;
 
 const ManageStoreTable = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,7 +50,7 @@ const ManageStoreTable = ({ onClick }) => {
     // console.log({storeid});
     setStoreId(storeid);
   };
-  //+currentPage;
+  //+currentPage;/?offset=0&limit=10
   const baseURL = config.baseUrl +"api/v1/inventory/store";
   useEffect(() => {
     axios.get(baseURL).then((resp) => {
@@ -107,7 +107,7 @@ const ManageStoreTable = ({ onClick }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {stores.map((item,i) => {
+          {currentTableData.map((item,i) => {
             return (
               <TableRow key={item.id}> {/* Added a unique key */}
                 <Tabledata>

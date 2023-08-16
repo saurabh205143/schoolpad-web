@@ -53,13 +53,13 @@ const EditStore = props => {
             // _method: 'PUT'
           })
           .then(function (response) {
-            if(response.ok)
+            // console.log(response);
+            if(response.status===200)
             {
-                alert('all ok');
+                alert(response.data.message);
             }
             else{
-                console.log(response);
-                throw new Error('Something went wrong ...');
+                alert(response.data.message);
             }
             // console.log(response);
           })
@@ -87,6 +87,7 @@ const EditStore = props => {
                                 name='store_name'
                                 value={storeName}
                                 onChange={(e) => { handleStoreNameChange(e) }}
+                                required={true}
                     />
                 </FieldContainer>
                 <FieldContainer>

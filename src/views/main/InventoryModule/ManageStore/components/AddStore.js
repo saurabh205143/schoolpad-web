@@ -5,7 +5,9 @@ import { FieldContainer, ModalBodyConatiner } from '../../../TransportModule/Tra
 import CustomCheckbox from '../../../../../components/Checkbox/CustomCheckbox';
 import axios from 'axios';
 import config from '../../../../../config';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ToastModals from '../../../../../components/Toaster/ToastModals';
 const AddStore = props => {
 
     const { show, handleClose } = props;
@@ -33,6 +35,12 @@ const AddStore = props => {
     const handleStoreManagerChange = (e) => {
         setstoreManager(e.target.value);
     }
+    const showToastMessage = () => {
+        // hideModal();
+        toast(
+          <ToastModals type='successful' message='Your have Added 1 stop successfully.' />
+        );
+    };
     const handleConfirmClicked = () => {
         axios.post(baseURL, {
             storeName: storeName,
@@ -43,15 +51,19 @@ const AddStore = props => {
             sessionId:8
           })
           .then(function (response) {
-            if(response.ok)
+            console.log(response.status);
+            if(response.status===200)
             {
-                alert('all ok');
+                alert(response.data.message);
+            }
+            else if(response.status === 201){
+                let errorMessage = response.data.details.error;
+                let messageList = errorMessage.split('-');
+                alert(messageList);
             }
             else{
-                console.log(response);
-                throw new Error('Something went wrong ...');
+                alert(response.data.message);
             }
-            // console.log(response);
           })
           .catch(function (error) {
             console.log(error.message);
