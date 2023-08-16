@@ -7,7 +7,7 @@ import SubHeader from '../ScreensHeader/SubHeader';
 import ToasterItem from './ToasterItem';
 
 
-const Toasters = () => {
+const Toasters = ({type}) => {
 
   const [showModal, setShowModal] = useState(false);
   const [showMoveItemModal, setShowMoveItemModal] = useState(false);
@@ -26,9 +26,9 @@ const Toasters = () => {
       />
       
 
-      <ToasterItem type='error'></ToasterItem>
-      <ToasterItem type='successful'></ToasterItem>
-      <ToasterItem type='warning'></ToasterItem>
+      <ToasterItem type={type}></ToasterItem>
+      <ToasterItem type={type}></ToasterItem>
+      <ToasterItem type={type}></ToasterItem>
     </Layout>
     </>
 

@@ -14,6 +14,7 @@ import RouteOrders from './components/RouteOrders';
 import DeleteStopModal from './components/DeleteStopModal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ToastModals from '../../../../components/Toaster/ToastModals';
 
 
 
@@ -50,10 +51,16 @@ const TransportStopMaster = ({orderHeading}) => {
 
   const showToastMessage = () => {
     hideModal();
-    toast.success('Success Notification !', {
-        position: toast.POSITION.BOTTOM_CENTER,
-        className: 'toast-message'
-    });
+    toast(
+      <ToastModals type='successful' message='Your have Added 1 stop successfully.' />
+    );
+};
+
+const showDeleteToastMessage = () => {
+  hideDeleteModal();
+  toast(
+    <ToastModals type='successful' message='Your have deleted 1 stop successfully.' />
+  );
 };
 
   return (
@@ -83,7 +90,12 @@ const TransportStopMaster = ({orderHeading}) => {
         DeleteOnClick={(deleteId) => {setDeleteId(deleteId);}} 
       />
 
-      <ToastContainer autoClose={8000} />
+      <ToastContainer
+       autoClose={4000} 
+       position="bottom-center"
+       hideProgressBar={true}
+       className="toaster-container"
+       />
 
       {/* Add Stop Master Modal */}
       <AddStopMaster
@@ -117,6 +129,7 @@ const TransportStopMaster = ({orderHeading}) => {
         show={deleteId}
         handleClose={hideDeleteModal}
         id={deleteId}
+        onDelete={showDeleteToastMessage}
       />
     </Layout>
 

@@ -14,7 +14,6 @@ export const ToasterConatinerError = styled.div`
   align-items: center;
   gap: 4px;
   background-color: #CA3521;
-  margin-bottom: 20px;
 `;
 
 export const ToasterConatinerSuccessful = styled.div`
@@ -24,7 +23,6 @@ export const ToasterConatinerSuccessful = styled.div`
   align-items: center;
   gap: 4px;
   background-color: #00875A;
-  margin-bottom: 20px;
 `
 
 export const ToasterConatinerWarning = styled.div`

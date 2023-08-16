@@ -3,7 +3,7 @@ import DeleteModal from '../../../../../components/Modal/DeleteModal';
 
 const DeleteStopModal = props => {
 
-    const { show, handleClose } = props;
+    const { show, handleClose,onDelete } = props;
     console.log(props.id);
     return (
         <DeleteModal
@@ -12,6 +12,7 @@ const DeleteStopModal = props => {
             modalHeading={'Delete Stop'}
             submitText='Yes, delete it'
             cancelText='No, do not delete it'
+            onDelete={onDelete}
         >
         </DeleteModal>
     );
