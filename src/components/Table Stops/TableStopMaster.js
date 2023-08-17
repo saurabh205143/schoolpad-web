@@ -15,44 +15,25 @@ import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/co
 
 
 const TableStopMaster = ({  onClick,  heading , EditOnclick,DeleteOnClick }) => {
-    const [getStopResponse, setStopResponse] = useState({ getAllStop: [] });
-    const [deleteStopResponse, setdeleteStopResponse] = useState([]);
+    const [getStopResponse, setStopResponse] = useState({ data: { column: [], rows: [],totalRecords: "0" } });
+    const [count, setCount] = useState(0);
     let PageSize = 15;
-    const [currentPage, setCurrentPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+
     /**
      * 
      * Calling APi get Post
      */
     useEffect(() => {
-        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1').then((response) => {
+        let offset = (currentPage - 1) * PageSize;
+        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/'+PageSize+'/'+offset).then((response) => {
             setStopResponse(response.data);
             console.log(response.data);
-            setCurrentPage(1)
+            setCount(parseInt(response.data.data.totalRecords));
         }).catch((errorCatch) => {
             console.log(errorCatch);
         });
-    }, []);
-
-    /**
-     * 
-     * DeleteStop Api
-     */
-    const deleteStop = (stopId) => { 
-    /**
-     * 
-     * Calling APi delete Post
-     */
-        console.log(stopId)
-
-        axios.delete(config.baseUrl + 'api-transport/transportStopApiManager/delete_stop', {
-            stopId: stopId
-        }).then((response) => {
-            setdeleteStopResponse(response.data);
-            console.log(response.data);
-        }).catch((errorCatch) => {
-            console.log(errorCatch);
-        });
-    }
+    }, [currentPage]);
     
     const [showModal, setShowDeleteModal] = useState(false);
 
@@ -64,29 +45,22 @@ const TableStopMaster = ({  onClick,  heading , EditOnclick,DeleteOnClick }) => 
      * 
      * Pazination of All Stops
      */
-    const currentTableData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * PageSize;
-    const lastPageIndex = firstPageIndex + PageSize;
-    return getStopResponse.getAllStop.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage]);
-    console.log(currentTableData)
-    const column = Object.keys(TableData[0]);
     // get table heading data
     const ThData = () => {
-        return column.map((data) => {
-            return <TableHeading key={data}>{data}</TableHeading>
+        return getStopResponse.data.column.map((data) => {
+            return <TableHeading key={data.field}>{data.name}</TableHeading>
         })
     }
     // get table row data
     const tdData = () => {
 
-        return currentTableData.map((data) => {
+        return getStopResponse.data.rows.map((data, index) => {
             return (
-                <TableRow
+                <TableRow key={ index }
                 >
                     {
-                        column.map((v) => {
-                            return <Tabledata>{data[v]}</Tabledata>
+                        getStopResponse.data.column.map((v) => {
+                            return <Tabledata key={v.field}>{data[v.field]}</Tabledata>
                         })
                     }
                     <Tabledata>
@@ -108,18 +82,17 @@ const TableStopMaster = ({  onClick,  heading , EditOnclick,DeleteOnClick }) => 
                                 <LinkButton
                                     onlyIcon={EditIcon}
                                     tooltiptext='Edit'
-                                    onClick={() => { EditOnclick(data[' S No.']) }}
+                                    onClick={() => { EditOnclick(data['stopId'])}}
                                 />
                             </ActionsList>
                             <ActionsList>
                                 <LinkButton
                                     onlyIcon={DeleteIcon}
                                     tooltiptext='Delete'
-                                    onClick={() => deleteStop(data.StopId)}
-                                    onClick={() => {DeleteOnClick(data[' S No.'])}}
+                                    onClick={() => {DeleteOnClick(data['stopId'])}}
                                 />
                             </ActionsList>
-                            <ActionsList>
+                            {/* <ActionsList>
                                 <MoreAction>
                                     <Button
                                         buttonText='More'
@@ -127,7 +100,7 @@ const TableStopMaster = ({  onClick,  heading , EditOnclick,DeleteOnClick }) => 
                                         className='link-button'
                                     />
                                 </MoreAction>
-                            </ActionsList>
+                            </ActionsList> */}
                         </ActionsConatiner>
                     </Tabledata>
                 </TableRow>
@@ -155,7 +128,7 @@ const TableStopMaster = ({  onClick,  heading , EditOnclick,DeleteOnClick }) => 
          <Pagination
         className="pagination-bar"
         currentPage={currentPage}
-        totalCount={getStopResponse.getAllStop.length}
+        totalCount={count}
         pageSize={PageSize}
         onPageChange={page => setCurrentPage(page)}
             />

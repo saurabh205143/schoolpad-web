@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from '../../../../../config';
 import Modal from '../../../../../components/Modal/Modal';
@@ -7,13 +7,13 @@ import { FieldContainer, ModalBodyConatiner } from '../../TransportRoute/compone
 import Input from '../../../../../components/Inputs/Input';
 
 const options = [
-    { 
-      value: 1,
-      label: "Leanne Graham"
+    {
+        value: 1,
+        label: "Leanne Graham"
     },
     {
-      value:  2,
-      label: "Ervin Howell"
+        value: 2,
+        label: "Ervin Howell"
     }
 ];
 
@@ -24,25 +24,78 @@ const AddStopMaster = props => {
     const [stopResponse, setStopResponse] = useState([]);
     const [stopNameError, setStopNameError] = useState('');
     const [stopAbbError, setStopAbbError] = useState('');
-    const submit = () => {
-        
+
     /**
      * 
-     * Calling APi get Post
+     * Get Edit Record Api
+     */
+    useEffect(() => {
+    if (props.id !== true) {
+        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/get_edit_record/' + props.id).then((response) => {
+            setStopName('');
+            setStopAbb('');
+            setStopNameError('');
+            setStopAbbError('');
+            setStopName(response.data[0].stopName);
+            setStopAbb(response.data[0].stopAbbr);
+            console.log(response.data);
+        }).catch((errorCatch) => {
+            console.log(errorCatch);
+        });
+        }
+    }, [props.id]);
+
+    /**
+     * 
+     * Submit Function Of Save
      */
 
-        axios.post(config.baseUrl+'api-transport/transportStopApiManager/add_Stop', {
-            stopName: stop_name,
-            stopAbbr: stop_Abb,
-            userId : "000",
-            instituteId:1
-        }).then((response) => {
-            setStopResponse(response.data);
-            console.log(response.data);
-            }).catch((errorCatch) => { 
+    const submit = () => {
+
+        /**
+         * 
+         * Calling APi get Post
+         */
+        if (props.id === true) {
+            /**
+             * 
+             * add_stop Api
+             */
+
+            axios.post(config.baseUrl + 'api-transport/transportStopApiManager/add_Stop', {
+                stopName: stop_name,
+                stopAbbr: stop_Abb,
+                userId: "000",
+                instituteId: 1
+            }).then((response) => {
+                setStopResponse(response.data);
+                console.log(response.data);
+                if (response.data.message) {
+                    window.location.reload();
+                }
+            }).catch((errorCatch) => {
                 console.log(errorCatch);
             });
-        
+        } else {
+            /**
+             * 
+             * edit_stop Api
+             */
+
+            axios.put(config.baseUrl + 'api-transport/transportStopApiManager/edit_stop', {
+                stopId: props.id,
+                stopName: stop_name,
+                stopAbbr: stop_Abb,
+                userId: "000"
+            }).then((response) => {
+                setStopResponse(response.data);
+                console.log(response.data);
+                window.location.reload();
+            }).catch((errorCatch) => {
+                console.log(errorCatch);
+            });
+        }
+
         /**
          * 
          * Basic validation Check if stop name and stop Abb is not empty
@@ -66,44 +119,46 @@ const AddStopMaster = props => {
         <Modal
             show={show}
             handleClose={handleClose}
-            modalHeading={'Add New Stop'}
+            modalHeading={props.id !== true ? 'Edit Stop' : 'Add New Stop'}
             submitText='Save and Close'
-            actionText='Save and Continue'
+            actionText={props.id !== true ? '' : 'Save and Continue'}
             cancelText='Cancel'
             saveAction={submit}
-            saveAction={saveAction}/
+            // saveAction={saveAction}
             
         >
-        <ModalBodyConatiner>
-        <FieldContainer>
-                <Input
-                    type='text'
-                    options={options}
-                    label={'Stop Name'}
-                    placeholder={'Enter stop name'}
+            <ModalBodyConatiner>
+                <FieldContainer>
+                    <Input
+                        type='text'
+                        options={options}
+                        label={'Stop Name'}
+                        placeholder={'Enter stop name'}
                         onChange={event => {
                             setStopName(event.target.value)
                             setStopNameError('')
                         }
-                    }
+                        }
+                        value = {stop_name}
                     />
                     {stopNameError && <span className="error-message">{stopNameError}</span>}
-            </FieldContainer>
-            <FieldContainer>
-                <Input
-                    type="text"
-                    placeholder={'Enter stop abbreviation'}
-                    label={'Stop Abbreviation'}
+                </FieldContainer>
+                <FieldContainer>
+                    <Input
+                        type="text"
+                        placeholder={'Enter stop abbreviation'}
+                        label={'Stop Abbreviation'}
                         name={'bus_help'}
                         onChange={event => {
                             setStopAbb(event.target.value)
                             setStopAbbError('');
-                        }   
-                    }
+                        }
+                        }
+                        value={stop_Abb}
                     />
                     {stopAbbError && <span className="error-message">{stopAbbError}</span>}
-            </FieldContainer>
-        </ModalBodyConatiner>
+                </FieldContainer>
+            </ModalBodyConatiner>
         </Modal>
     );
 };

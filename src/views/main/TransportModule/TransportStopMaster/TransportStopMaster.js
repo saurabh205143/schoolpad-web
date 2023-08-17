@@ -27,14 +27,14 @@ const TransportStopMaster = ({orderHeading}) => {
   const [showRouteOrderModal, setShowRouteOrderModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-   const [getStopResponse, setStopResponse] = useState({getAllStop:[]});
+  const [count, setCount] = useState(0);
     /**
      * 
      * Calling APi get Post
      */
     useEffect(() => {
-        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1').then((response) => {
-            setStopResponse(response.data);
+        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/15/0').then((response) => {
+            setCount(parseInt(response.data.data.totalRecords));
             console.log(response.data);
         }).catch((errorCatch) => {
             console.log(errorCatch);
@@ -94,13 +94,13 @@ const showDeleteToastMessage = () => {
 
       <ExportHeader
         smallHeading='All Stops'
-        smallHeding2={getStopResponse.getAllStop.length}
+        smallHeding2={count}
         PrintIcon={PrintImage}
         Excelicon={ExcelImage}
       />
 
       <TableStopMaster
-        heading='Child Name'
+        heading='Student(s)'
         onClick={() => setShowStudentList(!showstudentList)}
         EditOnclick={(id) => {setId(id);}} 
         DeleteOnClick={(deleteId) => {setDeleteId(deleteId);}} 
@@ -131,7 +131,7 @@ const showDeleteToastMessage = () => {
       <RouteOrders
         show={showRouteOrderModal}
         handleClose={hideRouteOrderModal}
-        orderHeading={'text'}
+        orderHeading={'Stops Name'}
       />
 
       {/* Change History */}

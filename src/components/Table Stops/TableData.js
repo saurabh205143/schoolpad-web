@@ -1,4 +1,4 @@
 const TableData=[
-    {'StopId':1, 'StopName':"Route 1", 'StopAbbreviation':"2 Stops"}
+    {'S No.':1, 'Stop Name':"Route 1", 'Stop Abbreviation':"2 Stops"}
 ]
 export default TableData;

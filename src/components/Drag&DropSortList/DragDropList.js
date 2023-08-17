@@ -4,9 +4,27 @@ import { ListContainer, ListItem, RouteDiabledHeading, RouteModalHeading } from 
 import { DragDropContext, Draggable, Droppable, } from 'react-beautiful-dnd';
 import { DragHandle } from "./DragHandle";
 import { ModalBodyConatiner } from "../../views/main/TransportModule/TransportRoute/components/AddRouteStyles";
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+import config from '../../config';
 
 const DragDropList = ({orderHeading}) => {
-  const list = List.getList();
+  const [response, setRespone] = useState([]);
+    
+/**
+ * 
+ * Get Order Stops
+ */
+useEffect(() => {
+        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/showStopOrder').then((response) => {
+            setRespone(response.data);
+            console.log(response.data);
+        }).catch((errorCatch) => {
+            console.log(errorCatch);
+        });
+}, []);
+  const list = response;
   return (
     <>
     <ModalBodyConatiner>
@@ -17,7 +35,7 @@ const DragDropList = ({orderHeading}) => {
         const desI = param.destination?.index;
         if (desI) {
         list.splice(desI, 0, list.splice(srcI, 1)[0]);
-        List.saveList(list);
+        // List.saveList(list);
         }
       }}>
         <ListContainer>
