@@ -13,7 +13,7 @@ const AddPurchaseOrder = () => {
     <Layout type='inventory'>
       <SubHeader
           heading='Add Purchase Order'
-          headerDescription='Order new or exhausted items by raising purchase order'
+          headerDescription='Please select the type of data on which you want to add mapping below. You can choose class wise, route wise, admission number wise etc'
           type='vertical' 
           showHeaderFilter={true}
           showSearchButtonRight={false}

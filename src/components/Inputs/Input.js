@@ -90,6 +90,9 @@ export const TextInput = styled.input`
   &:focus {
     outline: none;
   }
+  @media screen and (max-width: 1240px) {
+    font-size:12px;
+}
 `;
 
 export const Icon = styled.div`
