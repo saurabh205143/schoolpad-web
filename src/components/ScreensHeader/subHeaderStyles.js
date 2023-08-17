@@ -36,6 +36,9 @@ export const ButtonContainer = styled.div`
         >.simple-input{
             height:32px;
             width:256px;
+            @media screen and (max-width: 1240px) {
+                width:160px;
+            }
         }
     }
     >button{

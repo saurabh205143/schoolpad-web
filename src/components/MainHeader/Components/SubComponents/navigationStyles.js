@@ -29,7 +29,14 @@ export const NavBarItem = styled.li`
         display:flex;
         align-items:center;
         background: ${({theme}) => theme.backgroundPrimary};
+        @media screen and (max-width: 1240px) {
+            font-size:12px;
+            height:28px;
+        }
     }
+}
+@media screen and (max-width: 1240px) {
+    padding:0px 5px;
 }
 `;
 
@@ -39,6 +46,9 @@ export const LinkTitle = styled.span`
     font-size: 14px;
     line-height: 32px;
     color:#091E42;
+    @media screen and (max-width: 1240px) {
+        font-size:12px;
+    }
 `;
 
 export const InactiveIcon = styled.img``;

@@ -14,4 +14,7 @@ export const Screen = styled.div`
     float:right;
     overflow:auto;
     height:100vh;
+    @media screen and (max-width: 1240px) {
+        width:calc(100% - 220px);
+    }
 `

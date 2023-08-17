@@ -8,6 +8,10 @@ export const NotificationContainer = styled(Link)`
     >img{
         width:24px;
         height:24px;
+        @media screen and (max-width: 1240px) {
+            width: 18px;
+            height: 18px;
+        }
     }
 `;
 
@@ -23,6 +27,10 @@ export const NotificationCount = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media screen and (max-width: 1240px) {
+        width: 14px;
+        height: 14px;
+    }
 `;
 
 export const CountText = styled.span`

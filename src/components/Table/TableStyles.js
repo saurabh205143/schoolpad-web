@@ -52,7 +52,13 @@ export const TableRow = styled.tr`
     }
 `;
 
-export const TableBody = styled.tbody``;
+export const TableBody = styled.tbody`
+& > tr:nth-child(even) {
+    background: #FAFCFF;
+}
+& > tr:nth-child(odd) {
+    background: #ffffff;
+}`;
 
 export const TableHeading = styled.th`
     background:${({ theme }) => theme.tableheadingBack};
