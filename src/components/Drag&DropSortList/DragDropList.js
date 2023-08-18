@@ -11,6 +11,8 @@ import config from '../../config';
 
 const DragDropList = ({orderHeading}) => {
   const [response, setRespone] = useState([]);
+  const [visibleStops, setVisibleStops] = useState([]);
+  const [loadedCount, setLoadedCount] = useState(20);
     
 /**
  * 
@@ -20,11 +22,17 @@ useEffect(() => {
         axios.get(config.baseUrl + 'api-transport/transportStopApiManager/showStopOrder').then((response) => {
             setRespone(response.data);
             console.log(response.data);
+            setVisibleStops(response.data.slice(0, loadedCount));
         }).catch((errorCatch) => {
             console.log(errorCatch);
         });
 }, []);
-  const list = response;
+  
+  useEffect(() => {
+    setVisibleStops(response.slice(0, loadedCount));
+  }, [loadedCount, response]);
+
+  const list = visibleStops;
   return (
     <>
     <ModalBodyConatiner>
@@ -47,8 +55,13 @@ useEffect(() => {
           </RouteModalHeading>
           <Droppable droppableId="droppable-1">
             {(provided, _) => (
-              <div ref={provided.innerRef} {...provided.droppableProps}>
-                {list.map((item, i) => (
+                  <div ref={(el) => {
+                    provided.innerRef(el); el?.addEventListener('scroll', () => {
+                      if (el.scrollTop + el.clientHeight >= el.scrollHeight - 100 && loadedCount < response.length) {
+                        setLoadedCount(prevLoadedCount => prevLoadedCount + 20);
+                      }
+                    }); }} style={{ overflowY: 'auto', maxHeight: '400px' }} {...provided.droppableProps}>
+                {visibleStops.map((item, i) => (
                   <Draggable 
                   key={item.id} 
                   draggableId={"draggable-" + item.id} 

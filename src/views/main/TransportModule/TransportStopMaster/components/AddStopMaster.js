@@ -71,7 +71,10 @@ const AddStopMaster = props => {
                 setStopResponse(response.data);
                 console.log(response.data);
                 if (response.data.message) {
+                    saveAction();
+                    setTimeout(() => {
                     window.location.reload();
+                }, 4000);
                 }
             }).catch((errorCatch) => {
                 console.log(errorCatch);
@@ -90,7 +93,10 @@ const AddStopMaster = props => {
             }).then((response) => {
                 setStopResponse(response.data);
                 console.log(response.data);
+                saveAction();
+                setTimeout(() => {
                 window.location.reload();
+            }, 4000);
             }).catch((errorCatch) => {
                 console.log(errorCatch);
             });

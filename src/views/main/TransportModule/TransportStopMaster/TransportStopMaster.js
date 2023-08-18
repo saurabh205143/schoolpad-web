@@ -101,7 +101,7 @@ const showDeleteToastMessage = () => {
 
       <TableStopMaster
         heading='Student(s)'
-        viewList={(showstudentList) => setShowStudentList(!showstudentList)}
+        viewList={(showstudentList) => setShowStudentList(showstudentList)}
         EditOnclick={(id) => {setId(id);}} 
         DeleteOnClick={(deleteId) => {setDeleteId(deleteId);}} 
       />

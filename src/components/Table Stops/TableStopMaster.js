@@ -70,7 +70,7 @@ const TableStopMaster = ({  viewList,  heading , EditOnclick,DeleteOnClick }) =>
                                     // buttonText='1 Students(s)'
                                     buttonText={`${data.studentCount} Student${data.studentCount !== '1' ? 's' : ''}`}
                                     className='link-button'
-                                    onClick={() => { viewList(data[' S No.']) }}
+                                    onClick={() => { viewList(data['stopId']) }}
                                 />
                             </ActionsList>
 

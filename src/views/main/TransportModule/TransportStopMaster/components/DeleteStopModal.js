@@ -27,7 +27,10 @@ const DeleteStopModal = props => {
         }).then((response) => {
             setdeleteStopResponse(response.data);
             console.log(response.data);
-            window.location.reload();
+            onDelete();
+            setTimeout(() => {
+                window.location.reload();
+            }, 4000);
         }).catch((errorCatch) => {
             
             console.log(errorCatch);
