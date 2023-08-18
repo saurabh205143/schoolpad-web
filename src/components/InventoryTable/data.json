@@ -1,7 +1,7 @@
 [
   {
     "SNo":1,
-    "StoreName": "Awards/Gifts Room (Primary)",
+    "StoreName": "Stationary (Primary)",
     "StoreDescription": "Don't go there!",
     "StoreCode": "K00256",
     "Manager": "Kailash Chaurasia"
@@ -186,8 +186,8 @@
     "StoreCode": "P00065",
     "Manager": "Kailash Chaurasia"
   },  {
-    "SNo":27,
-    "StoreName": "Awards/Gifts Room ",
+    "SNo":28,
+    "StoreName": "IT ",
     "StoreDescription": "Don't go there!",
     "StoreCode": "P00065",
     "Manager": "Hillery Moses"

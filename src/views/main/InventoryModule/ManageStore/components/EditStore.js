@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { FieldContainer, ModalBodyConatiner } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 import CustomCheckbox from '../../../../../components/Checkbox/CustomCheckbox';
 import axios from 'axios';
 import config from '../../../../../config';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ToastModals from '../../../../../components/Toaster/ToastModals';
-const AddStore = props => {
+
+const EditStore = props => {
 
     const { show, handleClose } = props;
     const [isChecked, setIsChecked] = useState(true);
@@ -16,11 +14,17 @@ const AddStore = props => {
     const [storeCode, setstoreCode] = useState('');
     const [storeDesc, setstoreDesc] = useState('');
     const [storeManager, setstoreManager] = useState('');
-    const [id, setId] = useState(null);
-    const { confirm, handleConfirm } = props;
+    const { confirm, handleConfirm,record } = props;
     // const baseURL = "http://localhost/schoolpad/Inventory-api/StoreApiManager/addStore";
     const baseURL = config.baseUrl +"api/v1/inventory/store";
-
+    // console.log({baseURL});
+    useEffect(() => {
+        setstoreName(record.storeName);
+        setstoreCode(record.storeCode);
+        setstoreDesc(record.storeDesc);
+        setstoreManager(record.managerName);
+      }, [record]);
+    // 
     const handleChange = () => {
         setIsChecked(!isChecked);
     };
@@ -36,41 +40,28 @@ const AddStore = props => {
     const handleStoreManagerChange = (e) => {
         setstoreManager(e.target.value);
     }
-
-    const hideModal = () => {
-    setId(false);
-    }
-    
-    const showToastMessage = () => {
-      hideModal();
-      toast(
-        <ToastModals type='successful' message='Your have Added 1 stop successfully.' />
-      );
-  };
-    const handleConfirmClicked = () => {
-        axios.post(baseURL, {
+    const handleConfirmClickedEdit = () => {
+        // console.log(record.id);
+        axios.put(baseURL, {
             storeName: storeName,
             storeCode:storeCode,
             storeDesc:storeDesc,
             storeManager:storeManager,
             userId:214,
-            sessionId:8
+            sessionId:8,
+            id:record.id,
+            // _method: 'PUT'
           })
           .then(function (response) {
-            // console.log(response.status);
+            // console.log(response);
             if(response.status===200)
             {
-                showToastMessage();
                 alert(response.data.message);
-            }
-            else if(response.status === 201){
-                let errorMessage = response.data.details.error;
-                let messageList = errorMessage.split('-');
-                alert(messageList);
             }
             else{
                 alert(response.data.message);
             }
+            // console.log(response);
           })
           .catch(function (error) {
             console.log(error.message);
@@ -80,10 +71,10 @@ const AddStore = props => {
         <Modal
             show={show}
             handleClose={handleClose}
-            modalHeading={'Add New Store'}
+            modalHeading={'Edit New Store'}
             submitText='Confirm'
             cancelText='Cancel'
-            saveAction={handleConfirmClicked}
+            saveAction={handleConfirmClickedEdit}
         >
         <form>            
                 <>
@@ -96,6 +87,7 @@ const AddStore = props => {
                                 name='store_name'
                                 value={storeName}
                                 onChange={(e) => { handleStoreNameChange(e) }}
+                                required={true}
                     />
                 </FieldContainer>
                 <FieldContainer>
@@ -142,4 +134,4 @@ const AddStore = props => {
     );
 };
 
-export default AddStore;
+export default EditStore;

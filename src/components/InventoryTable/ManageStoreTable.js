@@ -1,19 +1,22 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import data from './data.json';
 import { ActionsConatiner, ActionsList, Container, TableActionHeading, TableBody, TableCheckbox, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
 import LinkButton from '../Buttons/LinkButton';
-
+import axios from 'axios';
+import config from '../../config';
 // Assets
 import EditIcon from '../../images/edit-icon.svg';
 import DeleteIcon from '../../images/delete-icon.svg';
-import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
+// import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../Pagination/Pagination';
 import AddStore from '../../views/main/InventoryModule/ManageStore/components/AddStore';
+import EditStore from '../../views/main/InventoryModule/ManageStore/components/EditStore';
+import DeleteStoreModal from '../../views/main/InventoryModule/ManageStore/components/DeleteStoreModal';
 import Button from '../Buttons/Button';
 import CustomCheckbox from '../Checkbox/CustomCheckbox';
 import { ButtonContainer } from '../ScreensHeader/subHeaderStyles';
 
-let PageSize = 14;
+let PageSize = 10;
 
 const ManageStoreTable = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,6 +24,11 @@ const ManageStoreTable = ({ onClick }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const [stores, storelist] = useState([]);
+  const [sno, setSno] = useState(0);
+  const [storeid,setStoreId] = useState('');
+  const[record,setRecord] = useState({});
+  const [searchinfo, setSearchinfo] = useState('');
 
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
@@ -29,30 +37,67 @@ const ManageStoreTable = ({ onClick }) => {
   const hideModal = () => {
     setShowModal(false);
   }
+  const getDetailByStoreId = (storeid)=>
+  {
+    setRecord(storeid);
+    //  console.log({storeid});
+  }
 
   const handleChange = () => {
     setIsChecked(!isChecked);
   };
-
+  const deleteStoreAction = (storeid) => {
+    // console.log({storeid});
+    setStoreId(storeid);
+  };
+  const searchData = (value) => {
+    const baseURL = config.baseUrl +"api/v1/inventory/store";
+    axios.get(baseURL, {
+      params:
+        { offset: 0, limit:10,search:value}
+    }).then((resp) => {
+      // console.log(resp);
+      storelist(resp.data);
+    });
+        // console.log(value);
+  }
+  
+  useEffect(() => {
+    searchData(searchinfo);
+    if (searchinfo) {
+      setSearchinfo('');
+    }
+  }, [searchinfo]);
+  //+currentPage;/?offset=0&limit=10
+  const baseURL = config.baseUrl +"api/v1/inventory/store";
+  useEffect(() => {
+    axios.get(baseURL).then((resp) => {
+      storelist(resp.data);
+      // setList(currentTableData);
+    });
+  }, []);
+  
+  
   const currentTableData = useMemo(() => {
+    // console.log({currentPage});
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return data.slice(firstPageIndex, lastPageIndex);
+    // console.log({lastPageIndex});
+    return stores.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
-
   // get table column
-  
+  // console.log({ currentTableData });
   const column = Object.keys(data[0]);
   const ThData = () => {
     return (
       <>
         <TableHeading>
-          <TableCheckbox>
+          {/* <TableCheckbox>
             <CustomCheckbox
               isChecked={isChecked}
               onChange={handleChange}
             />
-          </TableCheckbox>
+          </TableCheckbox> */}
         </TableHeading>
         {column.map((data) => (
           <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
@@ -80,20 +125,20 @@ const ManageStoreTable = ({ onClick }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {currentTableData.map(item => {
+          {currentTableData.map((item,i) => {
             return (
-              <TableRow key={item.SNo}> {/* Added a unique key */}
+              <TableRow key={item.id}> {/* Added a unique key */}
                 <Tabledata>
-                  <CustomCheckbox
+                  {/* <CustomCheckbox
                     isChecked={isChecked}
                     onChange={handleChange}
-                  />
+                  /> */}
                 </Tabledata>
-                <Tabledata>{item.SNo}</Tabledata>
-                <Tabledata>{item.StoreName}</Tabledata>
-                <Tabledata>{item.StoreDescription}</Tabledata>
-                <Tabledata>{item.StoreCode}</Tabledata>
-                <Tabledata>{item.Manager}</Tabledata>
+                <Tabledata>{++i}</Tabledata>
+                <Tabledata>{item.storeName}</Tabledata>
+                <Tabledata>{item.storeDesc}</Tabledata>
+                <Tabledata>{item.storeCode}</Tabledata>
+                <Tabledata>{item.storeManager}</Tabledata>
                 <Tabledata>
                   <ActionsConatiner>
                     <ActionsList>
@@ -110,15 +155,17 @@ const ManageStoreTable = ({ onClick }) => {
                     <ActionsList>
                       <LinkButton
                         onlyIcon={EditIcon}
-                        tooltiptext='Edit'
-                        onClick={() => setShowModal(!showModal)}
+                        tooltiptext='Edit'//{() => { func1(); func2();}}
+                        onClick={() => { setShowModal(!showModal); getDetailByStoreId(item);}}
+                        //onClick={() => setShowModal(!showModal,item.id)}
                       />
                     </ActionsList>
                     <ActionsList>
                       <LinkButton
                         onlyIcon={DeleteIcon}
                         tooltiptext='Delete'
-                        onClick={() => setShowDeleteModal(!showDeleteModal)} 
+                        onClick={() => {setShowDeleteModal(!showDeleteModal);deleteStoreAction(item.id)} }
+                        //onClick={() => setShowDeleteModal(!showDeleteModal)} 
                       />
                     </ActionsList>
                   </ActionsConatiner>
@@ -131,21 +178,26 @@ const ManageStoreTable = ({ onClick }) => {
       <Pagination
         className="pagination-bar"
         currentPage={currentPage}
-        totalCount={data.length}
+        totalCount={stores.length}
         pageSize={PageSize}
         onPageChange={page => setCurrentPage(page)}
       />
 
       {/* Edit Route Modal */}
-      <AddStore
+      {/* <AddStore
         show={showModal}
         handleClose={hideModal}
+      /> */}
+      <EditStore
+        show={showModal}
+        handleClose={hideModal}
+        record={record}
       />
-
       {/* Delete Modal */}
-      <DeleteRouteModal
+      <DeleteStoreModal
         show={showDeleteModal}
         handleClose={hideDeleteModal}
+        storeid={storeid}
       />
 
       {/* Delete Button */}

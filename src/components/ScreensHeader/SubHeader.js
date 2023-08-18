@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useCallback  } from 'react'
 import { ButtonContainer, Container, ContainerLeft, ContainerRight, DateInputField, DateInputLabel, DescriptionText, GetRecordsContainer, HeaderFilterContainder, HeaderFilterHeadings,RecordBox, VerticalContainer } from './subHeaderStyles';
 import Headings from '../Headings/Headings';
 import Button from '../Buttons/Button';
@@ -70,7 +70,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1}) => {
+const SubHeader = ({ searchState, onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -83,7 +83,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
 
     const [showDateInput, setShowDateInput] = useState(true);
     const [selectedDate, setSelectedDate] = useState(null);
-    
+    const [searchData, setSearch] = useState('');
     const dateLabel = 'Date';
     const datePlaceholder = 'MM/dd/yyyy';
     
@@ -92,6 +92,12 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
       setSelectedDate(date); // Update the selected date in the state
     };
 
+    const handleInputChange = useCallback(event => {
+        searchState(event.target.value);
+    }, [searchState]);
+    // const searchinfo = (info) => {
+    //     setSearchinfo(info);
+    // }
     // Custom input component with the calendar image inside
     const CustomDatePickerInput = ({ value, onClick }) => (
     <div style={{ position: 'relative' }}>
@@ -140,6 +146,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             leftIcon={SearchIcon}
                             placeholder={searchPlaceholder}
                             name='search'
+                            onChange={e => handleInputChange(e)}
                         />
                     </ButtonContainer>  
                 
@@ -207,7 +214,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             label={textLabel}
                             placeholder={textPlaceholder}
                             onChange={(e) => {
-                                console.log(e[0].label)
+                                // console.log(e[0].label)
                                 setShowDependentDrop(e[0].label)
                             }}
                         />

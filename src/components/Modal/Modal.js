@@ -15,7 +15,7 @@ const Modal = props => {
     const on = useLocation();
     const pathName = on.pathname;
     let params = pathName.split('/');
-    console.log(params);
+    // console.log(params);
 
     return (
         <ModalContainer block={show ? 'block' : 'none'}>
