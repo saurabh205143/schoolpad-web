@@ -28,7 +28,7 @@ const ManageStoreTable = ({ onClick }) => {
   const [sno, setSno] = useState(0);
   const [storeid,setStoreId] = useState('');
   const[record,setRecord] = useState({});
-  const [searchinfo, setSearchinfo] = useState('');
+  
 
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
@@ -50,43 +50,25 @@ const ManageStoreTable = ({ onClick }) => {
     // console.log({storeid});
     setStoreId(storeid);
   };
-  const searchData = (value) => {
-    const baseURL = config.baseUrl +"api/v1/inventory/store";
-    axios.get(baseURL, {
-      params:
-        { offset: 0, limit:10,search:value}
-    }).then((resp) => {
-      // console.log(resp);
-      storelist(resp.data);
-    });
-        // console.log(value);
-  }
-  
-  useEffect(() => {
-    searchData(searchinfo);
-    if (searchinfo) {
-      setSearchinfo('');
-    }
-  }, [searchinfo]);
   //+currentPage;/?offset=0&limit=10
-  const baseURL = config.baseUrl +"api/v1/inventory/store";
+  const baseURL = config.baseUrl + "api/v1/inventory/store";
+  const offSet = (currentPage - 1) * PageSize;
   useEffect(() => {
-    axios.get(baseURL).then((resp) => {
+    axios.get(baseURL,{
+      params:
+        { offset: offSet, limit:PageSize}
+    }).then((resp) => {
       storelist(resp.data);
-      // setList(currentTableData);
     });
   }, []);
   
   
   const currentTableData = useMemo(() => {
-    // console.log({currentPage});
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    // console.log({lastPageIndex});
     return stores.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
-  // get table column
-  // console.log({ currentTableData });
+  
   const column = Object.keys(data[0]);
   const ThData = () => {
     return (
@@ -125,7 +107,7 @@ const ManageStoreTable = ({ onClick }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {currentTableData.map((item,i) => {
+          {stores.map((item,i) => {
             return (
               <TableRow key={item.id}> {/* Added a unique key */}
                 <Tabledata>
