@@ -146,8 +146,9 @@ const AddStopMaster = props => {
                         }
                         }
                         value = {stop_name}
+                        error={stopNameError}
                     />
-                    {stopNameError && <span className="error-message">{stopNameError}</span>}
+                    
                 </FieldContainer>
                 <FieldContainer>
                     <Input
@@ -161,8 +162,9 @@ const AddStopMaster = props => {
                         }
                         }
                         value={stop_Abb}
+                        error={stopAbbError}
                     />
-                    {stopAbbError && <span className="error-message">{stopAbbError}</span>}
+                    
                 </FieldContainer>
             </ModalBodyConatiner>
         </Modal>
