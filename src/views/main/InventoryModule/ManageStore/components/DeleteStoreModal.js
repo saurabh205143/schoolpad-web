@@ -4,8 +4,10 @@ import axios from 'axios';
 import config from '../../../../../config';
 const DeleteRouteModal = props => {
 
-    const { show, handleClose,storeid } = props;
+    const { show, handleClose, storeid } = props;
+    console.log({storeid});
     const deleteStore = (id) => {
+        console.log({ id });
         axios.put(config.baseUrl +"api/v1/inventory/archivestore", {
         
             id:id,

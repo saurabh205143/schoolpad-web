@@ -28,7 +28,7 @@ const ManageStoreTable = ({ onClick }) => {
   const [sno, setSno] = useState(0);
   const [storeid,setStoreId] = useState('');
   const[record,setRecord] = useState({});
-  
+  const [searchinfo, setSearchinfo] = useState('');
 
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
@@ -50,6 +50,24 @@ const ManageStoreTable = ({ onClick }) => {
     // console.log({storeid});
     setStoreId(storeid);
   };
+  const searchData = (value) => {
+    const baseURL = config.baseUrl +"api/v1/inventory/store";
+    axios.get(baseURL, {
+      params:
+        { offset: 0, limit:10,search:value}
+    }).then((resp) => {
+      // console.log(resp);
+      storelist(resp.data);
+    });
+        // console.log(value);
+  }
+  
+  useEffect(() => {
+    searchData(searchinfo);
+    if (searchinfo) {
+      setSearchinfo('');
+    }
+  }, [searchinfo]);
   //+currentPage;/?offset=0&limit=10
   const baseURL = config.baseUrl +"api/v1/inventory/store";
   useEffect(() => {
@@ -61,10 +79,10 @@ const ManageStoreTable = ({ onClick }) => {
   
   
   const currentTableData = useMemo(() => {
-    console.log({currentPage});
+    // console.log({currentPage});
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    console.log({lastPageIndex});
+    // console.log({lastPageIndex});
     return stores.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
   // get table column

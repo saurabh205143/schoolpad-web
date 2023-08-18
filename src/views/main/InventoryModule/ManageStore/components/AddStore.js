@@ -16,6 +16,7 @@ const AddStore = props => {
     const [storeCode, setstoreCode] = useState('');
     const [storeDesc, setstoreDesc] = useState('');
     const [storeManager, setstoreManager] = useState('');
+    const [id, setId] = useState(null);
     const { confirm, handleConfirm } = props;
     // const baseURL = "http://localhost/schoolpad/Inventory-api/StoreApiManager/addStore";
     const baseURL = config.baseUrl +"api/v1/inventory/store";
@@ -35,12 +36,17 @@ const AddStore = props => {
     const handleStoreManagerChange = (e) => {
         setstoreManager(e.target.value);
     }
+
+    const hideModal = () => {
+    setId(false);
+    }
+    
     const showToastMessage = () => {
-        // hideModal();
-        toast(
-          <ToastModals type='successful' message='Your have Added 1 stop successfully.' />
-        );
-    };
+      hideModal();
+      toast(
+        <ToastModals type='successful' message='Your have Added 1 stop successfully.' />
+      );
+  };
     const handleConfirmClicked = () => {
         axios.post(baseURL, {
             storeName: storeName,
@@ -51,9 +57,10 @@ const AddStore = props => {
             sessionId:8
           })
           .then(function (response) {
-            console.log(response.status);
+            // console.log(response.status);
             if(response.status===200)
             {
+                showToastMessage();
                 alert(response.data.message);
             }
             else if(response.status === 201){
