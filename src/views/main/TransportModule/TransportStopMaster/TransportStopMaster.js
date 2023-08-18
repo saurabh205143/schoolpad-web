@@ -22,7 +22,7 @@ import ToastModals from '../../../../components/Toaster/ToastModals';
 
 const TransportStopMaster = ({orderHeading}) => {
   const [showModal, setShowModal] = useState(false);
-  const [showstudentList, setShowStudentList] = useState(false);
+  const [showstudentList, setShowStudentList] = useState(null);
   const [showchangeHistory, setShowChangeHistory] = useState(false);
   const [showRouteOrderModal, setShowRouteOrderModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -101,7 +101,7 @@ const showDeleteToastMessage = () => {
 
       <TableStopMaster
         heading='Student(s)'
-        onClick={() => setShowStudentList(!showstudentList)}
+        viewList={(showstudentList) => setShowStudentList(!showstudentList)}
         EditOnclick={(id) => {setId(id);}} 
         DeleteOnClick={(deleteId) => {setDeleteId(deleteId);}} 
       />
@@ -125,6 +125,7 @@ const showDeleteToastMessage = () => {
       <StudentListTable
         show={showstudentList}
         handleClose={hideStudentListModal}
+        id={showstudentList}
       />
 
       {/* Route Order Modal */}

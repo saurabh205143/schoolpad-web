@@ -4,13 +4,14 @@ import StudentList from '../../../../../components/Table Stops/StudentList';
 
 const StudentListTable = props => {
     const {show,handleClose} = props;
+    console.log(props.id);
     return (
         <Modal
             show={show}
             handleClose={handleClose}
             modalHeading={'Student List (12)'}
         >
-            <StudentList/>
+            <StudentList />
         </Modal>
     );
 };

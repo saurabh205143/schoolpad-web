@@ -14,7 +14,7 @@ import Pagination from '../Pagination/Pagination';
 import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 
 
-const TableStopMaster = ({  onClick,  heading , EditOnclick,DeleteOnClick }) => {
+const TableStopMaster = ({  viewList,  heading , EditOnclick,DeleteOnClick }) => {
     const [getStopResponse, setStopResponse] = useState({ data: { column: [], rows: [],totalRecords: "0" } });
     const [count, setCount] = useState(0);
     let PageSize = 15;
@@ -70,7 +70,7 @@ const TableStopMaster = ({  onClick,  heading , EditOnclick,DeleteOnClick }) => 
                                     // buttonText='1 Students(s)'
                                     buttonText={`${data.studentCount} Student${data.studentCount !== '1' ? 's' : ''}`}
                                     className='link-button'
-                                    onClick={onClick}
+                                    onClick={() => { viewList(data[' S No.']) }}
                                 />
                             </ActionsList>
 
