@@ -10,7 +10,7 @@ import DropIcon from '../../images/drop-arrow-icon.svg';
 import Button from '../Buttons/Button';
 
 
-const TableStopMaster = ({ onClick, heading, EditOnclick,DeleteOnClick }) => {
+const TableStopMaster = ({ viewList, heading, EditOnclick,DeleteOnClick }) => {
 
     // get table column
     const column = Object.keys(TableData[0]);
@@ -38,7 +38,7 @@ const TableStopMaster = ({ onClick, heading, EditOnclick,DeleteOnClick }) => {
                                 <Button
                                     buttonText='1 Students(s)'
                                     className='link-button'
-                                    onClick={onClick}
+                                    onClick={() => { viewList(data[' S No.']) }}
                                 />
                             </ActionsList>
 
