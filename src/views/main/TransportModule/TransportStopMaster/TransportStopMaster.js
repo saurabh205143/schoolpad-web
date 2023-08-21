@@ -16,8 +16,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastModals from '../../../../components/Toaster/ToastModals';
 
-
-
 const TransportStopMaster = ({orderHeading}) => {
   const [showModal, setShowModal] = useState(false);
   const [showstudentList, setShowStudentList] = useState(false);
