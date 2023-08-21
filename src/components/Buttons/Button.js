@@ -103,6 +103,7 @@ export const ButtonClassic = styled.button`
 
     &.delete {
         background: ${({ theme }) => theme.bgDelete};
+        margin-right: 8px;
     }
     @media screen and (max-width: 1240px) {
         font-size:12px;
@@ -110,7 +111,7 @@ export const ButtonClassic = styled.button`
 `;
 
 
-const Button = ({ className, disabled, loading, onClick, buttonText, leftIcon,rightIcon,onlyIcon, tooltiptext, borderBottom, borderRadius, href}) => {
+const Button = ({ className, disabled, loading, onClick, buttonText, leftIcon,rightIcon,onlyIcon, tooltiptext, borderBottom, borderRadius}) => {
     if (loading) {
         return (
                 <ButtonClassic

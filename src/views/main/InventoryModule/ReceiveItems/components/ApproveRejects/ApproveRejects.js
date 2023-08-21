@@ -30,7 +30,7 @@ const ApproveRejects = () => {
 
   return (
     <>
-      <Layout type="transport">
+      <Layout type="inventory">
         <SubHeader
           heading='Approve/Reject GRN'
           type='vertical'
@@ -63,6 +63,10 @@ const ApproveRejects = () => {
                     />
                   </FooterButtonContainer>
                   <FooterButtonContainer>
+                  <Button
+                      buttonText={'Reject'}
+                      className={'delete'}
+                  />
                     <Button
                       buttonText={'Approve'}
                       className={'primary'}

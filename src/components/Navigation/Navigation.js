@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { NavBar, NavBarItem, NavBarItems, NavBars, SidebarDropDown, SidebarDropList } from './components/navSidebarStyles';
+import { ModuleBoxCol, ModuleBoxLeft, ModuleBoxRight, ModuleBoxes, NavBar, NavBarItem, NavBarItems, NavBars, SidebarDropDown, SidebarDropList } from './components/navSidebarStyles';
 import classNames from 'classnames';
 import NavigationItems from './components/NavigationItems';
 
 // Assets
 import InactiveIcon from '../../images/inactive-icon.svg';
 import ActiveIcon from '../../images/activeIcon.svg';
+import TransportIcon from '../../images/transport-icon.svg';
 
 
 const getActiveModule = (url) => {
@@ -144,6 +145,16 @@ const Navigation = ({type}) => {
 
     if(type === 'transport'){
     return (
+        <ModuleBoxes>
+            <ModuleBoxCol>
+                <ModuleBoxLeft>
+                    <img src={TransportIcon} />
+                </ModuleBoxLeft>
+                <ModuleBoxRight>
+                    <h4>Transport</h4>
+                    <span>Transport Options</span>
+                </ModuleBoxRight>
+            </ModuleBoxCol>
         <NavBar>
             <NavBarItem
                 onClick={() => setShowDrop(showDrop === 1 ? null : 1)}
@@ -219,6 +230,7 @@ const Navigation = ({type}) => {
                 />
             </NavBarItem>
         </NavBar>
+        </ModuleBoxes>
     )}
 
     else if(type === 'inventory'){

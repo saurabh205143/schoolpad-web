@@ -88,10 +88,10 @@ export const TableCheckbox = styled.div`
 `;
 
 export const TableActionHeading = styled.div`
-    float: right;
+    // float: right;
     font-size: ${({ theme }) => theme.xsmallFont};
     font-weight: ${({ theme }) => theme.fontWeightBold};
-    padding-right: 27px;
+    // padding-right: 27px;
 `;
 
 export const TableActionHeadings = styled.div`
@@ -132,7 +132,7 @@ export const ActionsConatiner = styled.ul`
     margin:0;
     padding:0;
     list-style:none;
-    float: right;
+    // float: right;
 
 `;
 

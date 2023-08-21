@@ -1,6 +1,7 @@
 import React from 'react'
 import { ApproveContainer, Container, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../../../../../components/Table/TableStyles';
 import Input from '../../../../../../components/Inputs/Input';
+import FixedInput from '../../../../../../components/Inputs/FixedInput';
 
 
 const options = [
@@ -38,12 +39,9 @@ const ApproveRejectTable = (props) => {
                         <Tabledata>1</Tabledata>
                         <Tabledata>Pencils and Erasers</Tabledata>
                         <Tabledata>
-                            <Input
-                                type="text"
-                                placeholder={'Enter quantity'}
-                                onChange={() => {
-
-                                }}
+                            <FixedInput
+                            placeholder='Enter quantity'
+                            fixedtext='Pieces'
                             />
                         </Tabledata>
                         <Tabledata>
@@ -115,6 +113,7 @@ const ApproveRejectTable = (props) => {
             </TableContainer>
             </ApproveContainer>
         </Container>
+        
     );
 }
 

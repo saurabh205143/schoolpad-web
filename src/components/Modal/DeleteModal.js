@@ -9,7 +9,7 @@ import WarningIcon from '../../images/warning.svg';
 
 
 const DeleteModal = props => {
-    const { show, handleClose, modalHeading, modalSubHeading, submitText, saveAction, onDelete, children, actionText , cancelText} = props;
+    const { show, handleClose, description, modalHeading, modalSubHeading, submitText, saveAction, onDelete, children, actionText , cancelText} = props;
     
 
     return (
@@ -26,7 +26,7 @@ const DeleteModal = props => {
                 </DeleteModalHeader>
                 <DeleteModalBody>
                 <DeleteModalContainer>
-                    <span>You're about to delete route. Doing this means you will no longer be able to restore this route. Are you sure you want to delete it?</span>
+                    <span>{description}</span>
                 </DeleteModalContainer>
                 </DeleteModalBody>
                 <DeleteModalFooter>
