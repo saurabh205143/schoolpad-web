@@ -11,6 +11,9 @@ import AddStore from './AddStore';
 import MoveItem from './MoveItem';
 import CategoriesListTable from './CategoriesListTable';
 import MoveIcon from '../../../../../images/move-item-icon.svg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ToastModals from '../../../../../components/Toaster/ToastModals';
 
 
 const ManageStore = () => {
@@ -26,6 +29,13 @@ const ManageStore = () => {
   const hideModal = () => {
     setShowModal(false);
   }
+
+  const showToastMessage = () => {
+    hideModal();
+    toast(
+      <ToastModals type='successful' message='Store added successfully.' />
+    );
+  };
 
   const hideMoveItemModal = () => {
     setShowMoveItemModal(false);
@@ -55,12 +65,21 @@ const ManageStore = () => {
           onClick={() => setShowCategoriesList(!showcategoriesList)}
       />
 
+      {/* Toaster Container */}
+      <ToastContainer
+        autoClose={4000} 
+        position="bottom-center"
+        hideProgressBar={true}
+        className="toaster-container"
+       />
+
       {/* <ToasterItem type= 'error'></ToasterItem> */}
 
       {/* Add Store Modal */}
       <AddStore
           show={showModal}
           handleClose={hideModal}
+          saveAction={showToastMessage}
       />
 
       {/* Move Items Modal */}
