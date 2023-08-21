@@ -6,6 +6,10 @@ export const Container = styled.div`
     overflow:auto;
 `;
 
+export const ApproveContainer = styled.div`
+    padding: 20px;
+`;
+
 export const ContainerTable = styled.div`
     padding: 20px;
 `;
@@ -52,7 +56,13 @@ export const TableRow = styled.tr`
     }
 `;
 
-export const TableBody = styled.tbody``;
+export const TableBody = styled.tbody`
+& > tr:nth-child(even) {
+    background: #FAFCFF;
+}
+& > tr:nth-child(odd) {
+    background: #ffffff;
+}`;
 
 export const TableHeading = styled.th`
     background:${({ theme }) => theme.tableheadingBack};
@@ -102,7 +112,7 @@ export const Tabledata = styled.td`
         >div{
             >div{
                 >.select-drop{
-                    height:32px;
+                    height:36px;
                     min-height:32px;
                 }
             }

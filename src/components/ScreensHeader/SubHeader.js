@@ -70,7 +70,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1}) => {
+const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -148,6 +148,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             className='primary'
                             buttonText={buttonAdd}
                             onClick={onClick}
+                            href={href}
                         />
                     </ButtonContainer>
                     {buttonOrders &&
@@ -200,12 +201,12 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                     />
                 </DescriptionText>
                 <GetRecordsContainer>
-                {showTextInput && 
+                {showDisabledInput && 
                     <RecordBox>
                         <Input
-                            type='text'
-                            label={textLabel}
-                            placeholder={textPlaceholder}
+                            disabled={disabled}
+                            label={textLabelDisabled}
+                            placeholder={textPlaceholderDisabled}
                             onChange={(e) => {
                                 console.log(e[0].label)
                                 setShowDependentDrop(e[0].label)
@@ -235,6 +236,32 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                         />
                     </RecordBox>
                 }
+                {showDisabledInput && 
+                    <RecordBox>
+                        <Input
+                            disabled={disabled}
+                            label={textLabelDisabled1}
+                            placeholder={textPlaceholderDisabled1}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
+                    </RecordBox>
+                }
+                {showDisabledInput && 
+                    <RecordBox>
+                        <Input
+                            disabled={disabled}
+                            label={textLabelDisabled2}
+                            placeholder={textPlaceholderDisabled2}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
+                    </RecordBox>
+                }
                 {showSelectInput2 && 
                     <RecordBox>
                         <Input
@@ -256,6 +283,19 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             label={selectLabel3}
                             placeholder={selectPlaceholder3}
                             options={options}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
+                    </RecordBox>
+                }
+                {showTextInput && 
+                    <RecordBox>
+                        <Input
+                            type='text'
+                            label={textLabel}
+                            placeholder={textPlaceholder}
                             onChange={(e) => {
                                 console.log(e[0].label)
                                 setShowDependentDrop(e[0].label)
@@ -338,6 +378,7 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                                 className='primary'
                                 buttonText={buttonAdd}
                                 onClick={onClick}
+                                href={href}
                             />
                         </ButtonContainer>
                     }

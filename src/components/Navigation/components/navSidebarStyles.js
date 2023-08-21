@@ -129,6 +129,9 @@ export const LinkTitle = styled.span`
     font-size: 14px;
     line-height: 32px;
     color:#091E42;
+    @media screen and (max-width: 1240px) {
+        font-size:13px;
+    }
 `;
 
 export const InactiveIcon = styled.img`
@@ -160,6 +163,9 @@ export const SidebarDropList = styled.li`
         font-size: 14px;
         line-height: 18px;
         color: #000000;
+        @media screen and (max-width: 1240px) {
+            font-size:13px;
+        }
     }
  }
 

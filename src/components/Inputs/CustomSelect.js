@@ -17,7 +17,7 @@ export const DefaultSelectBox = styled.div`
     border-width:1px;
     border-radius: 3px;
     padding:0px 8px;
-    height:32px;
+    height:36px;
     cursor:pointer;
     width:154px;
 `;

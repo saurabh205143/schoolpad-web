@@ -23,6 +23,7 @@ export const TableRow = styled.tr`
     & >th:nth-child(5) {
         width:100px;   
     }
+   
     @media only screen and (max-width: 1240px) {
         & >th:nth-child(2) {
             width:auto;       
@@ -39,7 +40,14 @@ export const TableRow = styled.tr`
     }
 `;
 
-export const TableBody = styled.tbody``;
+export const TableBody = styled.tbody`
+& > tr:nth-child(even) {
+    background: #FAFCFF;
+}
+& > tr:nth-child(odd) {
+    background: #ffffff;
+}
+`;
 
 export const TableHeading = styled.th`
     background:${({ theme }) => theme.tableheadingBack};
@@ -56,6 +64,10 @@ export const Tabledata = styled.td`
     font-size: ${({ theme }) => theme.smallFont};
     padding:7px 10px !important;
     width: 100px;
+    @media screen and (max-width: 1240px) {
+        font-size:12px !important;
+    }
+    
 `;
 
 

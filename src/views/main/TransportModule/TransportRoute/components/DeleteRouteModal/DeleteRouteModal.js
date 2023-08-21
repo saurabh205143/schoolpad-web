@@ -3,7 +3,7 @@ import DeleteModal from '../../../../../../components/Modal/DeleteModal';
 
 const DeleteRouteModal = props => {
 
-    const { show, handleClose } = props;
+    const { show, handleClose,onDelete } = props;
 
     return (
         <DeleteModal
@@ -12,6 +12,7 @@ const DeleteRouteModal = props => {
             modalHeading={'Delete Route'}
             submitText='Yes, delete it'
             cancelText='No, do not delete it'
+            onDelete={onDelete}
         >
         </DeleteModal>
     );

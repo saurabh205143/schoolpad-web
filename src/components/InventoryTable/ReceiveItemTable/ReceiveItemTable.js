@@ -62,8 +62,10 @@ const ReceiveItemTable = ({ onClick }) => {
                                 <Tabledata>{item.Date}</Tabledata>
                                 <Tabledata>
                                     <TableStylesStatus 
-                                    type='item-type-returnable'
-                                    statusType='APPROVED'>
+                                    type='link-status'
+                                    statusType='Approve/Reject'
+                                    linkUrl='/manageReceive/approve-reject'
+                                    >
                                     </TableStylesStatus>
                                 </Tabledata>
                                 <Tabledata>

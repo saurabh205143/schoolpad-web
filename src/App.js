@@ -24,7 +24,8 @@ import ManageVendors from './views/main/InventoryModule/ManageVendors/ManageVend
 import PurchaseOrders from './views/main/InventoryModule/PurchaseOrders/PurchaseOrders';
 import AddPurchaseOrder from './views/main/InventoryModule/PurchaseOrders/components/AddPurchaseOrder';
 import ReceiveItems from './views/main/InventoryModule/ReceiveItems/ReceiveItems';
-import ApproveRejects from './views/main/InventoryModule/ReceiveItems/components/ApproveRejects.js/ApproveRejects';
+import ApproveRejects from './views/main/InventoryModule/ReceiveItems/components/ApproveRejects/ApproveRejects';
+
 
 export const ThemeContext = React.createContext(null);
 

@@ -12,6 +12,9 @@ import AddStore from '../../views/main/InventoryModule/ManageStore/components/Ad
 import Button from '../Buttons/Button';
 import CustomCheckbox from '../Checkbox/CustomCheckbox';
 import { ButtonContainer } from '../ScreensHeader/subHeaderStyles';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ToastModals from '../Toaster/ToastModals';
 
 let PageSize = 14;
 
@@ -29,6 +32,22 @@ const ManageStoreTable = ({ onClick }) => {
   const hideModal = () => {
     setShowModal(false);
   }
+  
+  // Successfull edited
+  const showToastMessage = () => {
+    hideModal();
+    toast(
+      <ToastModals type='successful' message='Store edit successfully.' />
+    );
+  };
+
+  // Successfull Deleted
+  const showDeleteToastMessage = () => {
+    hideDeleteModal();
+    toast(
+      <ToastModals type='successful' message='Store delete successfully.' />
+    );
+  };
 
   const handleChange = () => {
     setIsChecked(!isChecked);
@@ -135,17 +154,26 @@ const ManageStoreTable = ({ onClick }) => {
         pageSize={PageSize}
         onPageChange={page => setCurrentPage(page)}
       />
+      {/* Toaster Container */}
+      <ToastContainer
+        autoClose={4000} 
+        position="bottom-center"
+        hideProgressBar={true}
+        className="toaster-container"
+       />
 
       {/* Edit Route Modal */}
       <AddStore
         show={showModal}
         handleClose={hideModal}
+        saveAction={showToastMessage}
       />
 
       {/* Delete Modal */}
       <DeleteRouteModal
         show={showDeleteModal}
         handleClose={hideDeleteModal}
+        onDelete={showDeleteToastMessage}
       />
 
       {/* Delete Button */}

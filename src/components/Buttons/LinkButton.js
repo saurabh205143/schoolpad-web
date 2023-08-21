@@ -12,6 +12,9 @@ export const LinkClassic = styled(Link)`
     text-decoration:none;
     letter-spacing:0px;
     padding:${({theme}) => theme.padding};
+    > .only-icon{
+        width:18px;
+    }
 `;
 
 const LinkButton = ({ to, linkText, onlyIcon, tooltiptext, onClick, backgroundColor}) => {
@@ -23,7 +26,7 @@ const LinkButton = ({ to, linkText, onlyIcon, tooltiptext, onClick, backgroundCo
             >
             {linkText}
             {onlyIcon &&
-                <img src={onlyIcon} alt="Icon" data-tooltip-id={tooltiptext} />
+                <img src={onlyIcon} alt="Icon" className='only-icon' data-tooltip-id={tooltiptext} />
             }
             {tooltiptext && 
                 <Tooltip
