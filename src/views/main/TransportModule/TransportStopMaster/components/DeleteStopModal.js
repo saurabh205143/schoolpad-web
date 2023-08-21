@@ -45,6 +45,7 @@ const DeleteStopModal = props => {
             cancelText='No, do not delete it'
             // onDelete={onDelete}
             onDelete={() => { deleteStop(props.id) }}
+            description='Test'
         >
         </DeleteModal>
     );
