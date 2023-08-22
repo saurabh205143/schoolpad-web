@@ -37,9 +37,9 @@ export const HeaderLeftContainer = styled.div`
 
 export const ProfileContainer = styled(Link)`
     >img{
-        width:28px;
+        width:20px;
         @media screen and (max-width: 1240px) {
-            width: 20px;
+            width: 14px;
         }
     }
 `;
@@ -47,7 +47,7 @@ export const ProfileContainer = styled(Link)`
 export const IconContainer = styled.img`
         width:28px;
         &.user-icon {
-            width: 28px;
+            width: 26px;
             @media screen and (max-width: 1240px) {
                 width: 20px;
             }
@@ -56,10 +56,10 @@ export const IconContainer = styled.img`
 
 export const SettingsContainer = styled(Link)`
     >img{
-        width:28px;
+        width:20px;
         @media screen and (max-width: 1240px) {
-            width: 20px;
-            height: 20px;
+            width: 14px;
+            height: 14px;
         }
     }
     &.setting-container{
@@ -83,7 +83,7 @@ export const SearchContainer = styled.div`
         padding-right:10px;
         >.simple-input{
             width:210px;
-            height:36px;
+            height:32px;
             @media screen and (max-width: 1240px) {
                 width: 170px;
             }
