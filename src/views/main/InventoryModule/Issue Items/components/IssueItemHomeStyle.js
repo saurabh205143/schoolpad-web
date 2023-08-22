@@ -29,6 +29,9 @@ export const IssueItemBox = styled.div`
     cursor: pointer;
     margin-top: 64px;
     gap: 16px;
+    >a{
+      text-decoration: none;
+    }
 `;
 
 export const IssueItemConatinerStaff = styled.div`
@@ -83,4 +86,55 @@ export const IssueItemConatinerStudent = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+`;
+
+export const EmployeeDetailHeader = styled.div`
+  margin: 30px;
+>h6{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+}
+`;
+
+export const EmployeeDetailBox = styled.div`
+    width: 1135px;
+    height: 139px;
+    flex-shrink: 0;
+    border: 1px solid #DDE0E5;
+    margin: 30px;
+`;
+
+export const EmployeeDetailBoxLeft = styled.div`
+    width: 700px;
+    height: 139px;
+    border-right: 1px solid #DDE0E5;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 26px;
+`;
+
+export const EmployeeDetailBoxLeftData = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    >h6{
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      margin-bottom: 0px;
+      color: #172B4D;
+    }
+    >span{
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      color: #172B4D;
+    }
+`;
+
+export const EmployeeDetailBoxRight = styled.div`
+
 `;

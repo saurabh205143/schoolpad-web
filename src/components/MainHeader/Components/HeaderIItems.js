@@ -17,7 +17,6 @@ import TriangleIcon from '../../../images/triangle.svg';
 import DropIcon from '../../../images/arrow-down-white.svg';
 import ChatIcon from '../../../images/chat.svg';
 
-
 export const HeaderContainer = styled.div`
     width:100%;
     height:56px;
