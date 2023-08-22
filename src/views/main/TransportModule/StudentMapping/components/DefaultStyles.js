@@ -1,5 +1,9 @@
 import { styled } from "styled-components";
 
+export const DefaultHeaderFilters = styled.div`
+
+`;
+
 export const DefaultContainer = styled.div`
     width:100%;
     background:#F4F9FF;

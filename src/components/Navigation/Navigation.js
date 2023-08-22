@@ -41,8 +41,10 @@ const Navigation = ({type}) => {
                 return 7;
             case 'manageReceive':
                 return 8;             
-            case '/inventory/issueItems':
-                return 9;             
+            case '/manageIssue':
+                return 9;    
+            case '/manageReturn':
+                    return 9;  
             case '/inventory/itemReports':
                 return 10;           
             case '/inventory/issueReports':
@@ -121,7 +123,11 @@ const Navigation = ({type}) => {
         }
 
         if (tabname === 'IssueItems') {
-            active = url.includes('/inventory/issueItems');
+            active = url.includes('/manageIssue');
+        }
+
+        if (tabname === 'ReturnItems') {
+            active = url.includes('/manageReturn');
         }
 
         if (tabname === 'ItemReports') {
@@ -304,7 +310,7 @@ const Navigation = ({type}) => {
                 >
                     <NavigationItems
                         url=''
-                        tabname="Issue Item"
+                        tabname="Issue / Return Item(s)"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
                         containsDrop="true"
@@ -314,8 +320,17 @@ const Navigation = ({type}) => {
                             <SidebarDropList
                                 className={getActiveClassNames('nav-item', 'IssueItems',)}>
                                 <NavigationItems
-                                    url="/inventory/issueItems"
-                                    tabname="Issue Item"
+                                    url="/manageIssue"
+                                    tabname="Issue Item(s)"
+                                    drop="true"
+                                    isActive={activeModule === '/inventory/issueItems'}
+                                />
+                            </SidebarDropList>
+                            <SidebarDropList
+                                className={getActiveClassNames('nav-item', 'ReturnItems',)}>
+                                <NavigationItems
+                                    url="/manageReturn"
+                                    tabname="Return Item(s)"
                                     drop="true"
                                     isActive={activeModule === '/inventory/issueItems'}
                                 />

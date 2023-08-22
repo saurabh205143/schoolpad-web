@@ -28,6 +28,8 @@ import AddPurchaseOrder from './views/main/InventoryModule/PurchaseOrders/compon
 // =======
 import ReceiveItems from './views/main/InventoryModule/ReceiveItems/ReceiveItems';
 import ApproveRejects from './views/main/InventoryModule/ReceiveItems/components/ApproveRejects.js/ApproveRejects';
+import IssueItemHome from './views/main/InventoryModule/Issue Items/components/IssueItemHome';
+import IssueItemSelectFilter from './views/main/InventoryModule/Issue Items/components/IssueItemSelectFilter';
 // >>>>>>> upstream/new_transport_module
 
 export const ThemeContext = React.createContext(null);
@@ -70,6 +72,8 @@ function App() {
             <Route path='/inventory/purchaseAdd' element={<AddPurchaseOrder/>}/>
             <Route path='/manageReceive' element={<ReceiveItems/>}/>
             <Route path='/manageReceive/approve-reject' element={<ApproveRejects/>}/>
+            <Route path='/manageIssue' element={<IssueItemHome/>}/>
+            <Route path='/manageIssue/staff-select-filter' element={<IssueItemSelectFilter/>}/>
             <Route path='/toasters' element={<Toasters/>}/>
           </Routes>
         </>
