@@ -21,7 +21,7 @@ import ToastModals from '../Toaster/ToastModals';
 
 let PageSize = 10;
 
-const ManageStoreTable = ({ onClick }) => {
+const ManageStoreTable = ({ onClick,totalRecord }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -32,7 +32,7 @@ const ManageStoreTable = ({ onClick }) => {
   const [storeid,setStoreId] = useState('');
   const[record,setRecord] = useState({});
   
-
+  // console.log({ totalRecord });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -70,15 +70,20 @@ const ManageStoreTable = ({ onClick }) => {
     setStoreId(storeid);
   };
   //+currentPage;/?offset=0&limit=10
-  const baseURL = config.baseUrl + "api/v1/inventory/store";
+  
   const offSet = (currentPage - 1) * PageSize;
+  const getCurrentPageRecord = (page) => {
+    const baseURL = config.baseUrl + "api/v1/inventory/store";
+    // console.log({page});
+      axios.get(baseURL,{
+        params:
+          { offset: offSet, limit:PageSize}
+      }).then((resp) => {
+        storelist(resp.data);
+      });
+  }
   useEffect(() => {
-    axios.get(baseURL,{
-      params:
-        { offset: offSet, limit:PageSize}
-    }).then((resp) => {
-      storelist(resp.data);
-    });
+    getCurrentPageRecord();
   }, []);
   
   
@@ -179,9 +184,9 @@ const ManageStoreTable = ({ onClick }) => {
       <Pagination
         className="pagination-bar"
         currentPage={currentPage}
-        totalCount={stores.length}
+        totalCount={totalRecord}
         pageSize={PageSize}
-        onPageChange={page => setCurrentPage(page)}
+        onPageChange={(page) => { setCurrentPage(page) ;getCurrentPageRecord(page)}}
       />
       {/* Toaster Container */}
       <ToastContainer

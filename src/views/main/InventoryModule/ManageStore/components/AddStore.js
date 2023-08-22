@@ -12,13 +12,18 @@ const AddStore = props => {
 
     const { show, handleClose,saveAction } = props;
     const [isChecked, setIsChecked] = useState(true);
+    const [storeName, setstoreName] = useState('');
+    const [storeCode, setstoreCode] = useState('');
+    const [storeDesc, setstoreDesc] = useState('');
+    const [storeManager, setstoreManager] = useState('');
+    const [id, setId] = useState('');
     const [inputs, setInputs] = useState({
         store_name: '',
         store_code: '',
         store_description: '',
         store_manager: '',
     });
-
+    console.log({ inputs });
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 

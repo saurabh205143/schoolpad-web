@@ -15,7 +15,7 @@ import MoveIcon from '../../../../../images/move-item-icon.svg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastModals from '../../../../../components/Toaster/ToastModals';
-
+const baseURL = config.baseUrl;
 
 const ManageStore = () => {
 
@@ -23,6 +23,7 @@ const ManageStore = () => {
   const [showMoveItemModal, setShowMoveItemModal] = useState(false);
   const [showcategoriesList, setShowCategoriesList] = useState(false);
   const [searchinfo, setSearchinfo] = useState('');
+  const [totalRecord, settotalRecord] = useState(0);
   const hideCategoriesListModal = () => {
     setShowCategoriesList(false);
   }
@@ -42,19 +43,32 @@ const ManageStore = () => {
     setShowMoveItemModal(false);
   }
   
-  const searchData = (value) => {
-    const baseURL = config.baseUrl +"api/v1/inventory/store";
-    axios.get(baseURL, {
+  // const searchData = (value) => {
+  //   const fetchstoreURL = baseURL +"api/v1/inventory/store";
+  //   axios.get(fetchstoreURL, {
+  //     params:
+  //       { offset: 0, limit:10,search:value}
+  //   }).then((resp) => {
+  //     // console.log(resp);
+  //   });
+  //       // console.log(value);
+  // }
+
+  const totalRecordCount = (value) => { 
+    const fetchstoreURL = baseURL +"api/v1/inventory/storecount";
+    axios.get(fetchstoreURL, {
       params:
-        { offset: 0, limit:10,search:value}
+        { offset: 0, limit:0,search:''}
     }).then((resp) => {
-      console.log(resp);
+      settotalRecord(resp.data)
+      console.log(resp.data);
     });
-        // console.log(value);
+
   }
   
   useEffect(() => {
-    searchData(searchinfo);
+    // searchData(searchinfo);
+    totalRecordCount(searchinfo);
     if (searchinfo) {
       setSearchinfo('');
     }
@@ -75,15 +89,17 @@ const ManageStore = () => {
           onClick={() =>  setShowModal(!showModal)}
           buttonOrderDragList={() => setShowMoveItemModal(!showMoveItemModal)}
       />
-      <ExportHeader
+        <ExportHeader
           smallHeading='All Stores'
-          smallHeding2='(202 Records)'
+          smallHeding2={ "( " + totalRecord+" Records )"}
           PrintIcon={PrintImage}
           Excelicon={ExcelImage}
       />
       
       <ManageStoreTable
           onClick={() => setShowCategoriesList(!showcategoriesList)}
+          totalRecord={totalRecord}
+          searchinfo={searchinfo}
       />
 
       {/* Toaster Container */}
