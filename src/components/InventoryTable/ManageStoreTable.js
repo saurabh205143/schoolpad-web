@@ -21,7 +21,7 @@ import ToastModals from '../Toaster/ToastModals';
 
 let PageSize = 10;
 
-const ManageStoreTable = ({ onClick,totalRecord }) => {
+const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, searchData }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -32,7 +32,7 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
   const [storeid,setStoreId] = useState('');
   const[record,setRecord] = useState({});
   
-  // console.log({ totalRecord });
+  console.log({ searchinfo });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -45,7 +45,7 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
     setRecord(storeid);
     //  console.log({storeid});
   }
-  
+  // console.log({ searchinfo });
   // Successfull edited
   const showToastMessage = () => {
     hideModal();
@@ -73,14 +73,14 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
   
   const offSet = (currentPage - 1) * PageSize;
   const getCurrentPageRecord = (page) => {
-    const baseURL = config.baseUrl + "api/v1/inventory/store";
-    // console.log({page});
-      axios.get(baseURL,{
-        params:
-          { offset: offSet, limit:PageSize}
-      }).then((resp) => {
-        storelist(resp.data);
-      });
+    // const baseURL = config.baseUrl + "api/v1/inventory/store";
+    // // console.log({page});
+    //   axios.get(baseURL,{
+    //     params:
+    //       { offset: offSet, limit:PageSize,}
+    //   }).then((resp) => {
+    //     storelist(resp.data);
+    //   });
   }
   useEffect(() => {
     getCurrentPageRecord();
@@ -131,7 +131,7 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {stores.map((item,i) => {
+          {searchinfo.map((item,i) => {
             return (
               <TableRow key={item.id}> {/* Added a unique key */}
                 <Tabledata>
@@ -186,7 +186,7 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
         currentPage={currentPage}
         totalCount={totalRecord}
         pageSize={PageSize}
-        onPageChange={(page) => { setCurrentPage(page) ;getCurrentPageRecord(page)}}
+        onPageChange={(page) => { setCurrentPage(page); getCurrentPageRecord(page); searchData(offSet, PageSize, searchState);}}
       />
       {/* Toaster Container */}
       <ToastContainer

@@ -24,6 +24,7 @@ const ManageStore = () => {
   const [showcategoriesList, setShowCategoriesList] = useState(false);
   const [searchinfo, setSearchinfo] = useState('');
   const [totalRecord, settotalRecord] = useState(0);
+  const [record,setrecord]=useState({});
   const hideCategoriesListModal = () => {
     setShowCategoriesList(false);
   }
@@ -43,35 +44,34 @@ const ManageStore = () => {
     setShowMoveItemModal(false);
   }
   
-  // const searchData = (value) => {
-  //   const fetchstoreURL = baseURL +"api/v1/inventory/store";
-  //   axios.get(fetchstoreURL, {
-  //     params:
-  //       { offset: 0, limit:10,search:value}
-  //   }).then((resp) => {
-  //     // console.log(resp);
-  //   });
-  //       // console.log(value);
-  // }
-
-  const totalRecordCount = (value) => { 
-    const fetchstoreURL = baseURL +"api/v1/inventory/storecount";
+  const searchData = (offset,limit,value) => {
+    // setSearchinfo(value);
+    console.log({offset});
+    const fetchstoreURL = baseURL +"api/v1/inventory/store";
     axios.get(fetchstoreURL, {
       params:
-        { offset: 0, limit:0,search:''}
+        { offset: 0, limit:10,search:value}
+    }).then((resp) => {
+      // console.log(resp);
+      setrecord(resp.data);
+    });
+        // console.log(value);
+  }
+
+  const totalRecordCount = (value) => { 
+    const fetchCountstoreURL = baseURL +"api/v1/inventory/storecount";
+    axios.get(fetchCountstoreURL, {
+      params:
+        { offset: 0, limit:0,search:value}
     }).then((resp) => {
       settotalRecord(resp.data)
-      console.log(resp.data);
     });
 
   }
-  
+  // console.log({totalRecord});
   useEffect(() => {
-    // searchData(searchinfo);
+    searchData(searchinfo);
     totalRecordCount(searchinfo);
-    if (searchinfo) {
-      setSearchinfo('');
-    }
   }, [searchinfo]);
 
 // console.log({ searchData });
@@ -99,7 +99,9 @@ const ManageStore = () => {
       <ManageStoreTable
           onClick={() => setShowCategoriesList(!showcategoriesList)}
           totalRecord={totalRecord}
-          searchinfo={searchinfo}
+          searchinfo={record}
+          searchState={searchinfo}
+          searchData={searchData}
       />
 
       {/* Toaster Container */}

@@ -23,7 +23,7 @@ const AddStore = props => {
         store_description: '',
         store_manager: '',
     });
-    console.log({ inputs });
+    // console.log({ inputs });
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 
