@@ -29,7 +29,6 @@ export const NavBarItem = styled.li`
         border-radius:3px;
         display:flex;
         align-items:center;
-        background: ${({theme}) => theme.whiteColor};
         color:${({theme}) => theme.backgroundPrimary};
         font-size:14px;
         font-weight:600;
@@ -49,7 +48,7 @@ export const LinkTitle = styled.span`
     font-weight: 600;
     font-size: 14px;
     line-height: 32px;
-    color:#ffffff;
+    color:#091E42;
     @media screen and (max-width: 1240px) {
         font-size:12px;
     }
