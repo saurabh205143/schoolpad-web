@@ -34,7 +34,7 @@ export const ButtonContainer = styled.div`
     >div{
         margin-bottom:0px;
         >.simple-input{
-            height:32px;
+            height:36px;
             width:256px;
             @media screen and (max-width: 1240px) {
                 width:160px;
@@ -94,14 +94,14 @@ export const RecordBox = styled.div`
         > div{
             > .select-drop{
                 width:280px;
-                height:32px;
+                height:36px;
                 min-height:32px;
             }
         }
     }
     >.simple-input{
         width:280px;
-        height:32px;
+        height:36px;
     }
  }
 `;

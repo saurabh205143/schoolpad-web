@@ -23,14 +23,9 @@ import ManageItems from './views/main/InventoryModule/ManageItems/ManageItems';
 import ManageVendors from './views/main/InventoryModule/ManageVendors/ManageVendors';
 import PurchaseOrders from './views/main/InventoryModule/PurchaseOrders/PurchaseOrders';
 import AddPurchaseOrder from './views/main/InventoryModule/PurchaseOrders/components/AddPurchaseOrder';
-// <<<<<<< HEAD
-// import AddDemo from './views/main/Demo/AddDemo';
-// =======
 import ReceiveItems from './views/main/InventoryModule/ReceiveItems/ReceiveItems';
-import ApproveRejects from './views/main/InventoryModule/ReceiveItems/components/ApproveRejects.js/ApproveRejects';
-import IssueItemHome from './views/main/InventoryModule/Issue Items/components/IssueItemHome';
-import IssueItemSelectFilter from './views/main/InventoryModule/Issue Items/components/IssueItemSelectFilter';
-// >>>>>>> upstream/new_transport_module
+import ApproveRejects from './views/main/InventoryModule/ReceiveItems/components/ApproveRejects/ApproveRejects';
+
 
 export const ThemeContext = React.createContext(null);
 
@@ -72,8 +67,8 @@ function App() {
             <Route path='/inventory/purchaseAdd' element={<AddPurchaseOrder/>}/>
             <Route path='/manageReceive' element={<ReceiveItems/>}/>
             <Route path='/manageReceive/approve-reject' element={<ApproveRejects/>}/>
-            <Route path='/manageIssue' element={<IssueItemHome/>}/>
-            <Route path='/manageIssue/staff-select-filter' element={<IssueItemSelectFilter/>}/>
+            {/* <Route path='/manageIssue' element={<IssueItemHome/>}/>
+            <Route path='/manageIssue/staff-select-filter' element={<IssueItemSelectFilter/>}/> */}
             <Route path='/toasters' element={<Toasters/>}/>
           </Routes>
         </>

@@ -1,5 +1,37 @@
 import styled from "styled-components";
 
+export const ModuleBoxes = styled.div`
+`;
+
+export const ModuleBoxCol = styled.div`
+    padding:17px 12px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    border-bottom: 1px solid rgba(9, 30, 66, 0.14);
+`;
+
+export const ModuleBoxLeft = styled.div``;
+
+export const ModuleBoxRight = styled.div`
+    padding-left:12px;
+    >h4{
+        color: #000000;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 18px; /* 128.571% */
+        margin-bottom:0px;
+    }
+    >span{
+        color: #000000;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 12px; /* 100% */
+    }
+`;
+
 export const NavBar = styled.ul`
  margin:0;
  padding:10px 0;
@@ -26,6 +58,7 @@ export const NavBarItem = styled.li`
             }
             >.active-icons{
                 display:flex;
+                width:20px;
             }           
         }
         >.sidebar-drop{
@@ -55,6 +88,7 @@ export const NavBarItem = styled.li`
         }
         >.inactive-icons{
             display:flex;
+            width:20px;
         }
     }
     &:last-child{
@@ -87,6 +121,7 @@ export const NavBarItems = styled.li`
             }
             >.active-icons{
                 display:flex;
+                width:20px;
             }           
         }
         >.sidebar-drop{
@@ -100,6 +135,7 @@ export const NavBarItems = styled.li`
                     justify-content:flex-start;
                     > span{
                         color:${({ theme }) => theme. buttonPrimary};
+                        font-weight: 600;
                     }
                 }
             }
@@ -116,6 +152,7 @@ export const NavBarItems = styled.li`
         }
         >.inactive-icons{
             display:flex;
+            width:20px;
         }
     }
     &:last-child{
@@ -125,7 +162,7 @@ export const NavBarItems = styled.li`
 
 export const LinkTitle = styled.span`
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 14px;
     line-height: 32px;
     color:#091E42;

@@ -51,14 +51,17 @@ export const InputContainer = styled.div`
   align-items: center;
   min-width: 0;
   padding:0px 10px;
-  border-width:1px;
-  border-style: solid;
   border-radius:3px;
   background:${({ theme }) => theme.bg2};
-  border-color: ${({ theme }) => theme.inputBorderColor};
+  border: 1px solid ${(props) => (props.hasError ? '#AE2A19' : 'rgba(9, 30, 66, 0.141176)')}; 
+
+  &.error{
+    border: 1px solid ;
+  }
 
   &.disabled-input{
-    background:${({ theme }) => theme.disableInput};;
+    width:280px;
+    background:${({ theme }) => theme.disableInput};
     border: 1px solid ${({ theme }) => theme.disabledBorder};
     border-radius: 3px; 
     &:hover {
@@ -99,6 +102,14 @@ export const Icon = styled.div`
   flex: 0 0;
 `;
 
+export const ErrorContainer = styled.span`
+    color: #AE2A19;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+`;
+
 const Input = (
     {
         label, 
@@ -112,7 +123,8 @@ const Input = (
         placeholder,
         options,
         width,
-        disabled
+        disabled,
+        
     }) => {
     if(type === 'select'){
         return(
@@ -141,7 +153,7 @@ const Input = (
                         {label}
                     </Title>
                 }
-            <InputContainer className={disabled ? 'disabled-input':'simple-input'}>
+            <InputContainer hasError={error} className={disabled ? 'disabled-input':'simple-input'}>
                 {leftIcon && 
                     <img src={leftIcon} alt="icon" className='leftIcon' />
                 }
@@ -154,11 +166,15 @@ const Input = (
                     placeholder={placeholder}
                     disabled={disabled}
                     width={width}
+                    
                 />
                 {rightIcon && 
                     <img src={rightIcon} alt="icon" className='rightIcon' />
                 }
             </InputContainer>
+            {error && 
+                <ErrorContainer>{error}</ErrorContainer>
+            }
             </Container>
         );
     }

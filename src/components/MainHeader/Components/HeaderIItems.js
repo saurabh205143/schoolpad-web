@@ -8,20 +8,20 @@ import Notification from '../../Notifications/Notification';
 import Input from '../../Inputs/Input';
 
 // Assets
-import MenuIcon from '../../../images/menu-icon.svg';
-import NotificationIcon from '../../../images/notification-icon.svg';
-import SettingIcon from '../../../images/header-setting-icon.svg';
+import MenuIcon from '../../../images/menu-icon-white.svg';
+import NotificationIcon from '../../../images/notification-icon-white.svg';
+import SettingIcon from '../../../images/setting-icon-white.svg';
 import UserIcon from '../../../images/header-user-icon.svg';
 import SearchIcon from '../../../images/search-icon.svg';
 import TriangleIcon from '../../../images/triangle.svg';
-import DropIcon from '../../../images/drop-down-icon.svg';
+import DropIcon from '../../../images/arrow-down-white.svg';
 import ChatIcon from '../../../images/chat.svg';
 
 
 export const HeaderContainer = styled.div`
     width:100%;
     height:56px;
-    background:#ffffff;
+    background:#0C66E4;
     border-bottom:1px solid #C1C7D0;
     padding:0 12px;
     display:flex;
@@ -45,7 +45,7 @@ export const ProfileContainer = styled(Link)`
 `;
 
 export const IconContainer = styled.img`
-        width:20px;
+        width:28px;
         &.user-icon {
             width: 26px;
             @media screen and (max-width: 1240px) {
@@ -197,7 +197,10 @@ const HeaderIItems = () => {
                         </Link>
 
                     </MegaMenuIconContainer>
+
+                    {/* Header Menu */}
                     <HeaderNavigation />
+
                 </HeaderLeftContainer>
                 <HeaderRightContainer>
                     <SearchContainer>
@@ -214,10 +217,10 @@ const HeaderIItems = () => {
                     icon={NotificationIcon} />
 
                     {/* Messages Notification */}
-                    <Notification 
+                    {/* <Notification 
                     tooltiptext='Chat'
                     countText='2' 
-                    icon={ChatIcon} />
+                    icon={ChatIcon} /> */}
 
                     {/* Setting Container */}
                     <SettingsContainer
@@ -250,6 +253,7 @@ const HeaderIItems = () => {
                         <IconContainer 
                         src={DropIcon}
                         alt="Icon"
+                        style={{width:16,marginLeft:5}}
                         />
 
                         {/* Profile Drop Down */}
