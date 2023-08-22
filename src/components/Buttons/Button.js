@@ -1,5 +1,6 @@
 import { Tooltip } from "react-tooltip";
 import styled from "styled-components";
+import Loader from 'react-js-loader';
 
 export const ButtonClassic = styled.button` 
     background: ${({ theme }) => theme.backgroundPrimary};
@@ -102,11 +103,30 @@ export const ButtonClassic = styled.button`
 
     &.delete {
         background: ${({ theme }) => theme.bgDelete};
+        margin-right: 8px;
     }
-
+    @media screen and (max-width: 1240px) {
+        font-size:12px;
+    }
 `;
 
-const Button = ({ className, disabled, onClick, buttonText, leftIcon,rightIcon,onlyIcon, tooltiptext, borderBottom, borderRadius}) => {
+
+const Button = ({ className, disabled, loading, onClick, buttonText, leftIcon,rightIcon,onlyIcon, tooltiptext, borderBottom, borderRadius}) => {
+    if (loading) {
+        return (
+                <ButtonClassic
+                    className={className}
+                >
+                    <Loader
+                        type="bubble-scale"
+                        bgColor={'#FFFFFF'}
+                        color={'#FFFFFF'}
+                        size={28}
+                    />
+                </ButtonClassic>
+        );
+    }
+
     return (
         <ButtonClassic
             disabled={disabled}

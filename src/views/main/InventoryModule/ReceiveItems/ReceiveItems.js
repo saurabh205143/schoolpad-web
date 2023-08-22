@@ -31,6 +31,7 @@ const ReceiveItems = () => {
           showPrimaryButton={true}
           showReceiveHeaderFilter={true}
           showReceiveHeaderFilter1={true}
+          showGetRecordButton={true}
       />
       <ExportHeader
           smallHeading='All Purchase Orders'

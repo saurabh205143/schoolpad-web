@@ -9,6 +9,9 @@ export const SidebarContainer = styled.div`
     border-right: 1px solid rgba(9, 30, 66, 0.141176);
     float:left;
     height:calc(100vh - 56px);
+    @media screen and (max-width: 1240px) {
+        width: 220px;
+    }
    
 `;
 

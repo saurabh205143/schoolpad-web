@@ -4,9 +4,35 @@ import { ListContainer, ListItem, RouteDiabledHeading, RouteModalHeading } from 
 import { DragDropContext, Draggable, Droppable, } from 'react-beautiful-dnd';
 import { DragHandle } from "./DragHandle";
 import { ModalBodyConatiner } from "../../views/main/TransportModule/TransportRoute/components/AddRouteStyles";
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+import config from '../../config';
 
 const DragDropList = ({orderHeading}) => {
-  const list = List.getList();
+  const [response, setRespone] = useState([]);
+  const [visibleStops, setVisibleStops] = useState([]);
+  const [loadedCount, setLoadedCount] = useState(20);
+    
+/**
+ * 
+ * Get Order Stops
+ */
+useEffect(() => {
+        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/showStopOrder').then((response) => {
+            setRespone(response.data);
+            console.log(response.data);
+            setVisibleStops(response.data.slice(0, loadedCount));
+        }).catch((errorCatch) => {
+            console.log(errorCatch);
+        });
+}, []);
+  
+  useEffect(() => {
+    setVisibleStops(response.slice(0, loadedCount));
+  }, [loadedCount, response]);
+
+  const list = visibleStops;
   return (
     <>
     <ModalBodyConatiner>
@@ -17,7 +43,7 @@ const DragDropList = ({orderHeading}) => {
         const desI = param.destination?.index;
         if (desI) {
         list.splice(desI, 0, list.splice(srcI, 1)[0]);
-        List.saveList(list);
+        // List.saveList(list);
         }
       }}>
         <ListContainer>
@@ -29,8 +55,13 @@ const DragDropList = ({orderHeading}) => {
           </RouteModalHeading>
           <Droppable droppableId="droppable-1">
             {(provided, _) => (
-              <div ref={provided.innerRef} {...provided.droppableProps}>
-                {list.map((item, i) => (
+                  <div ref={(el) => {
+                    provided.innerRef(el); el?.addEventListener('scroll', () => {
+                      if (el.scrollTop + el.clientHeight >= el.scrollHeight - 100 && loadedCount < response.length) {
+                        setLoadedCount(prevLoadedCount => prevLoadedCount + 20);
+                      }
+                    }); }} style={{ overflowY: 'auto', maxHeight: '400px' }} {...provided.droppableProps}>
+                {visibleStops.map((item, i) => (
                   <Draggable 
                   key={item.id} 
                   draggableId={"draggable-" + item.id} 

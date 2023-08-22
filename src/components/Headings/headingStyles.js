@@ -7,6 +7,9 @@ export const MainHeadingText = styled.h1`
     line-height: 32px;
     color: ${({ theme }) => theme.darkColor};
     margin:0;
+    @media screen and (max-width: 1240px) {
+        font-size:20px;
+    }
 `;
 
 export const SubHeading = styled.h2`

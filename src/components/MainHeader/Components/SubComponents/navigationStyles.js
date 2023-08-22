@@ -17,9 +17,10 @@ export const NavBarItem = styled.li`
     align-items:center;
 }
 >a.active{
-    border-bottom:2px solid #0065FF;
+    border-bottom:2px solid ${({theme}) => theme.whiteColor};
     >span{
-        color:${({theme}) => theme. buttonPrimary};
+        color:${({theme}) => theme.whiteColor};
+        font-weight:900;
     }
 }
 >.more-drop{
@@ -28,8 +29,18 @@ export const NavBarItem = styled.li`
         border-radius:3px;
         display:flex;
         align-items:center;
-        background: ${({theme}) => theme.backgroundPrimary};
+        background: ${({theme}) => theme.whiteColor};
+        color:${({theme}) => theme.backgroundPrimary};
+        font-size:14px;
+        font-weight:600;
+        @media screen and (max-width: 1240px) {
+            font-size:12px;
+            height:28px;
+        }
     }
+}
+@media screen and (max-width: 1240px) {
+    padding:0px 5px;
 }
 `;
 
@@ -38,7 +49,10 @@ export const LinkTitle = styled.span`
     font-weight: 600;
     font-size: 14px;
     line-height: 32px;
-    color:#091E42;
+    color:#ffffff;
+    @media screen and (max-width: 1240px) {
+        font-size:12px;
+    }
 `;
 
 export const InactiveIcon = styled.img``;
