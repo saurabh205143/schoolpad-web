@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const TableContainer = styled.table`
-   
+
 `;
 
 export const TableHead = styled.thead`
@@ -118,12 +118,26 @@ export const ActionListStatusPending = styled.td`
     }
 `;
 
+export const ActionListStatusLink = styled.td`
+    background-color: none;
+    border-radius: 3px;
+    padding: 0 4px 0 4px;
+
+    >a {
+        color: #0C66E4;
+        font-weight: 600;
+        font-size: 12px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+`;
+
 export const MoreAction = styled.div`
     padding-left:10px;
 `;
 
 
-const TableStylesStatus = ({type, statusType}) => { 
+const TableStylesStatus = ({type, statusType, linkUrl}) => { 
     if(type === 'item-type-consumable'){
         return (
             <>
@@ -172,7 +186,18 @@ const TableStylesStatus = ({type, statusType}) => {
             </ActionsConatiner>
             </>
         )}
-
+        else if (type === 'link-status') {
+            return (
+            <>
+            <ActionsConatiner>
+                <ActionsList>
+                    <ActionListStatusLink>
+                    <a href={linkUrl}>{statusType}</a>
+                    </ActionListStatusLink>
+                </ActionsList>
+            </ActionsConatiner>
+            </>
+        )}
 }
 
 export default TableStylesStatus;

@@ -17,9 +17,10 @@ export const NavBarItem = styled.li`
     align-items:center;
 }
 >a.active{
-    border-bottom:2px solid #0065FF;
+    border-bottom:2px solid ${({theme}) => theme.whiteColor};
     >span{
-        color:${({theme}) => theme. buttonPrimary};
+        color:${({theme}) => theme.whiteColor};
+        font-weight:900;
     }
 }
 >.more-drop{
@@ -28,7 +29,9 @@ export const NavBarItem = styled.li`
         border-radius:3px;
         display:flex;
         align-items:center;
-        background: ${({theme}) => theme.backgroundPrimary};
+        color:${({theme}) => theme.backgroundPrimary};
+        font-size:14px;
+        font-weight:600;
         @media screen and (max-width: 1240px) {
             font-size:12px;
             height:28px;

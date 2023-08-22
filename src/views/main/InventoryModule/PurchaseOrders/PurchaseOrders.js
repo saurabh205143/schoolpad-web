@@ -25,6 +25,7 @@ const PurchaseOrders = () => {
           showHeaderFilter={true}
           showSearchButtonRight={true}
           showPrimaryButton={true}
+          href='/inventory/purchaseAdd'
       />
       <ExportHeader
           smallHeading='All Purchase Orders'
