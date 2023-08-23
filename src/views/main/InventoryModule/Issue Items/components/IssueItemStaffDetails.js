@@ -3,8 +3,16 @@ import { EmployeeContainer, EmployeeDetailBox, EmployeeDetailBoxLeft, EmployeeDe
 import EmployeeProfileImage from '../../../../../images/employee-profile.svg';
 import EmployeeIssueItemTable from './EmployeeIssueItemTable';
 import Button from '../../../../../components/Buttons/Button';
+import LinkButton from '../../../../../components/Buttons/LinkButton';
+import ViewIssueItemHistory from './ViewIssueItemHistory';
 
 const IssueItemStaffDetails = () => {
+
+  const [showViewIssueItemHistory, setShowViewIssueItemHistory] = useState();
+
+  const hideViewIssueItemHistoryModal = () => {
+    setShowViewIssueItemHistory(false);
+  }
 
   return (
     <>
@@ -56,21 +64,23 @@ const IssueItemStaffDetails = () => {
           <EmployeeDetailBoxRight>
             <h6>History</h6>
             <span>Click on the link below to view the history of items issued to Amit Sharma.</span>
-            <a href="/">View Issues Items</a>
+            <LinkButton
+              linkText='View Issued Item'
+              onClick={() => setShowViewIssueItemHistory(!showViewIssueItemHistory)}
+            />
           </EmployeeDetailBoxRight>
         </EmployeeContainer>
       </EmployeeDetailBox>
 
       {/* Issue New Items - Table */}
       <EmployeeDetailHeader>
-        <h6>Issue New Items</h6>
+        <h6>Issue New Item(s)</h6>
       </EmployeeDetailHeader>
       <IssueItemTable>
         <EmployeeIssueItemTable />
       </IssueItemTable>
 
       {/* Issue New Items - Footer Buttons */}
-      <>
       <IssueItemFooter>
         <IssueItemFooterButtons>
       <Button
@@ -83,7 +93,12 @@ const IssueItemStaffDetails = () => {
       />
       </IssueItemFooterButtons>
       </IssueItemFooter>
-      </>
+
+      {/* View Issue Item - History  */}
+      <ViewIssueItemHistory
+            show={showViewIssueItemHistory}
+            handleClose={hideViewIssueItemHistoryModal}
+      />
     </>
 
   )

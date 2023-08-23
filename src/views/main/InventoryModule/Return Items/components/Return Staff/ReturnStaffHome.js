@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import Layout from '../../../../../components/Layouts/Layout';
-import { IssueInnerBox, IssueInnerConatiner, IssueInnerConatinerText, IssueItemBox, IssueItemConatinerStaff, IssueItemConatinerStudent, IssueItemHeaderContainer } from './IssueItemHomeStyle';
+import Layout from '../../../../../../components/Layouts/Layout';
+import { IssueInnerBox, IssueInnerConatiner, IssueInnerConatinerText, IssueItemBox, IssueItemConatinerStaff, IssueItemConatinerStudent, IssueItemHeaderContainer } from '../../../Issue Items/components/IssueItemHomeStyle';
 
 //Assests
-import IssueStaffIcon from '../../../../../images/issue-staff-icon.svg';
-import IssueStudentIcon from '../../../../../images/issue-student-icon.svg';
+import IssueStaffIcon from '../../../../../../images/issue-staff-icon.svg';
+import IssueStudentIcon from '../../../../../../images/issue-student-icon.svg';
 
-const IssueItemHome = () => {
+const ReturnStaffHome = () => {
 
   const [isStaffActive, setIsStaffActive] = useState(false);
   const [isStudentActive, setIsStudentActive] = useState(false);
@@ -23,18 +23,18 @@ const IssueItemHome = () => {
     <>
       <Layout type='inventory'>
         <IssueItemHeaderContainer>
-          <h6>Issue Item(s)</h6>
-          <span>Please select either Staff or Student to issue item(s). </span>
+          <h6>Return Item(s)</h6>
+          <span>Please select either Staff or Student to Return item(s).</span>
         </IssueItemHeaderContainer>
         <IssueItemBox>
-          <a href="manageIssue/staff-select-filter">
+          <a href="/manageReturn/staff-select-filter">
           <IssueItemConatinerStaff isActive={isStaffActive} onClick={handleStaffClick}>
             <IssueInnerBox>
               <IssueInnerConatiner>
                 <img src={IssueStaffIcon}/>
               </IssueInnerConatiner>
               <IssueInnerConatinerText>
-                <h6>Issue to Staff</h6>
+                <h6>Return to Staff</h6>
                 <span>Click here to issue items to staff</span>
               </IssueInnerConatinerText>
             </IssueInnerBox>
@@ -47,7 +47,7 @@ const IssueItemHome = () => {
                 <img src={IssueStudentIcon} />
               </IssueInnerConatiner>
               <IssueInnerConatinerText>
-                <h6>Issue to Student</h6>
+                <h6>Return to Student</h6>
                 <span>Click here to issue items to student</span>
               </IssueInnerConatinerText>
             </IssueInnerBox>
@@ -60,4 +60,4 @@ const IssueItemHome = () => {
   )
 }
 
-export default IssueItemHome;
+export default ReturnStaffHome;

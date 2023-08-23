@@ -38,8 +38,8 @@ export const IssueItemConatinerStaff = styled.div`
     width: 404px;
     height: 305px;
     flex-shrink: 0;
-    border: 1px solid var(--text-text-tertiary, #0065FF);
-    background: var(--bakground-background-tertiary, #E9F2FF);
+    border: 1px solid ${props => (props.isActive ? '#0065FF' : 'var(--stroke-stroke-light, #C1C7D0)')};
+    background: ${props => (props.isActive ? '#E9F2FF' : 'var(--bakground-background-primary, #FFF)')};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,8 +81,8 @@ export const IssueItemConatinerStudent = styled.div`
     width: 404px;
     height: 305px;
     flex-shrink: 0;
-    border: 1px solid var(--stroke-stroke-light, #C1C7D0);
-    background: var(--bakground-background-primary, #FFF);
+    border: 1px solid ${props => (props.isActive ? '#0065FF' : 'var(--stroke-stroke-light, #C1C7D0)')};
+    background: ${props => (props.isActive ? '#E9F2FF' : 'var(--bakground-background-primary, #FFF)')};
     display: flex;
     justify-content: center;
     align-items: center;

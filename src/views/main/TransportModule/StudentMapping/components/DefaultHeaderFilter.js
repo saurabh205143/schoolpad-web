@@ -2,10 +2,17 @@ import React, { useState } from 'react'
 import SubHeader from '../../../../../components/ScreensHeader/SubHeader';
 import DefaultMappingScreen from './DefaultMappingScreen';
 import IssueItemStaffDetails from '../../../InventoryModule/Issue Items/components/IssueItemStaffDetails';
+import ReturnItemStaffDetails from '../../../InventoryModule/Return Items/components/Return Staff/ReturnItemStaffDetails';
 
 
 const DefaultHeaderFilter = () => {
-  const [showEmpolyeeRecords, setShowEmpolyeeRecords] = useState(false);
+  const [showEmpolyeeRecordsIssue, setShowEmpolyeeRecordsIssue] = useState(false);
+  const [showEmpolyeeRecordsReturn, setShowEmpolyeeRecordsReturn] = useState(false);
+
+  const toggleEmployeeRecords = () => {
+      setShowEmpolyeeRecordsIssue(!showEmpolyeeRecordsIssue);
+      setShowEmpolyeeRecordsReturn(!showEmpolyeeRecordsReturn);
+  };
 
   return (
     <>
@@ -24,19 +31,28 @@ const DefaultHeaderFilter = () => {
         showDefaultScreenHeaderFilter={false}
         showDefaultScreenHeaderFilters={false}
         selectPlaceholder1='----Select staff----'
-        getRecords={() => setShowEmpolyeeRecords(!showEmpolyeeRecords)}
-      />
+        getRecords={toggleEmployeeRecords}
+        />
 
-      {showEmpolyeeRecords ?
-        <div>
-          <IssueItemStaffDetails/>
-        </div>
-        :
-        <DefaultMappingScreen
-          xtrasubHeading='Enter the Employee Details'
-          description='Enter the Name, ID, Role Name, etc. of the staff  to whom you want to issue  item(s).'
-          showDefaultScreenHeader={true}
-        />}
+        {showEmpolyeeRecordsIssue && (
+            <div>
+                <IssueItemStaffDetails/>
+            </div>
+        )}
+
+        {showEmpolyeeRecordsReturn && (
+            <div>
+                <ReturnItemStaffDetails/>
+            </div>
+        )}
+
+        {!showEmpolyeeRecordsIssue && !showEmpolyeeRecordsReturn && (
+            <DefaultMappingScreen
+                xtrasubHeading='Enter the Employee Details'
+                description='Enter the Name, ID, Role Name, etc. of the staff to whom you want to issue item(s).'
+                showDefaultScreenHeader={true}
+            />
+        )}
     </>
 
   )

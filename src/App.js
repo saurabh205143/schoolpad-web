@@ -27,6 +27,8 @@ import ReceiveItems from './views/main/InventoryModule/ReceiveItems/ReceiveItems
 import ApproveRejects from './views/main/InventoryModule/ReceiveItems/components/ApproveRejects/ApproveRejects';
 import IssueItemHome from './views/main/InventoryModule/Issue Items/components/IssueItemHome';
 import IssueItemSelectFilter from './views/main/InventoryModule/Issue Items/components/IssueItemSelectFilter';
+import ReturnStaffHome from './views/main/InventoryModule/Return Items/components/Return Staff/ReturnStaffHome';
+import ReturnItemSelectFilter from './views/main/InventoryModule/Return Items/components/Return Staff/ReturnItemSelectFilter';
 
 
 export const ThemeContext = React.createContext(null);
@@ -71,6 +73,8 @@ function App() {
             <Route path='/manageReceive/approve-reject' element={<ApproveRejects/>}/>
             <Route path='/manageIssue' element={<IssueItemHome/>}/>
             <Route path='/manageIssue/staff-select-filter' element={<IssueItemSelectFilter/>}/>
+            <Route path='/manageReturn' element={<ReturnStaffHome/>}/>
+            <Route path='/manageReturn/staff-select-filter' element={<ReturnItemSelectFilter/>}/>
             <Route path='/toasters' element={<Toasters/>}/>
           </Routes>
         </>
