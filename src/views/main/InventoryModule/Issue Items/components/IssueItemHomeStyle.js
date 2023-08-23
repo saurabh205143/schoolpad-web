@@ -105,16 +105,23 @@ export const EmployeeDetailBox = styled.div`
     margin: 30px;
 `;
 
+export const EmployeeContainer = styled.div`
+    display: flex;
+`;
+
 export const EmployeeDetailBoxLeft = styled.div`
     width: 700px;
-    height: 139px;
+    height: 138px;
     border-right: 1px solid #DDE0E5;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     padding: 26px;
 `;
 
+export const EmployeeProfile = styled.div`
+    display: flex;
+`;
 export const EmployeeDetailBoxLeftData = styled.div`
     display: flex;
     flex-direction: column;
@@ -135,6 +142,66 @@ export const EmployeeDetailBoxLeftData = styled.div`
     }
 `;
 
-export const EmployeeDetailBoxRight = styled.div`
+export const EmployeeDetails = styled. div`
+    display: flex;
+`;
 
+export const EmployeeDetailInnerData = styled.div`
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    gap:20px;
+`;
+
+export const EmpolyeeDetailsData = styled.div`
+    display: flex;
+    width:500px;
+    justify-content: space-between;
+    align-items: flex-start;
+`;
+
+export const EmployeeDetailBoxRight = styled.div`
+      display: flex;
+      flex-direction: column;
+      justify-content: centre;
+      align-items: flex-start;
+      padding: 26px;
+      >h6{
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        color: #172B4D;
+      }
+      >span{
+        font-size: 14px;
+        font-weight: 400;
+        color:#000;
+      }
+      >a{
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        color: #0C66E4;
+      }
+`;
+
+export const IssueItemTable = styled.div`
+    margin: 30px;
+`;
+
+export const AddMoreIssueItem = styled.div`
+    margin-top: 15px;
+`;
+
+export const IssueItemFooter = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    border-top: 1px solid rgba(9, 30, 66, 0.1412);
+`;
+
+export const IssueItemFooterButtons = styled.div`
+  margin: 18px 30px 30px;
 `;

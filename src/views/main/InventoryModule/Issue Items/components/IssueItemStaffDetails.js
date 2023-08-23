@@ -1,25 +1,89 @@
 import React, { useState } from 'react'
-import { EmployeeDetailBox, EmployeeDetailBoxLeft, EmployeeDetailBoxLeftData, EmployeeDetailHeader } from './IssueItemHomeStyle';
+import { EmployeeContainer, EmployeeDetailBox, EmployeeDetailBoxLeft, EmployeeDetailBoxLeftData, EmployeeDetailBoxRight, EmployeeDetailHeader, EmployeeDetailInnerData, EmployeeDetails, EmployeeProfile, EmpolyeeDetailsData, IssueItemFooter, IssueItemFooterButtons, IssueItemTable } from './IssueItemHomeStyle';
+import EmployeeProfileImage from '../../../../../images/employee-profile.svg';
+import EmployeeIssueItemTable from './EmployeeIssueItemTable';
+import Button from '../../../../../components/Buttons/Button';
 
 const IssueItemStaffDetails = () => {
 
   return (
     <>
+      {/* Empolyee Details  */}
       <EmployeeDetailHeader>
         <h6>Employee Details</h6>
       </EmployeeDetailHeader>
       <EmployeeDetailBox>
-        <EmployeeDetailBoxLeft>
-          <EmployeeDetailBoxLeftData>
-            <h6>Name</h6>
-            <span>Kashish Agrahari</span>
-          </EmployeeDetailBoxLeftData>
-          <EmployeeDetailBoxLeftData>
-            <h6>Name</h6>
-            <span>Kashish Agrahari</span>
-          </EmployeeDetailBoxLeftData>
-        </EmployeeDetailBoxLeft>
+        <EmployeeContainer>
+          <EmployeeDetailBoxLeft>
+            <EmployeeDetails>
+              <EmpolyeeDetailsData>
+                <EmployeeDetailInnerData>
+                  <EmployeeDetailBoxLeftData>
+                    <h6>Name</h6>
+                    <span>Amit Sharma</span>
+                  </EmployeeDetailBoxLeftData>
+                  <EmployeeDetailBoxLeftData>
+                    <h6>Designation</h6>
+                    <span>Lab Incharge</span>
+                  </EmployeeDetailBoxLeftData>
+                </EmployeeDetailInnerData>
+                <EmployeeDetailInnerData>
+                  <EmployeeDetailBoxLeftData>
+                    <h6>Employee ID</h6>
+                    <span>2874564673</span>
+                  </EmployeeDetailBoxLeftData>
+                  <EmployeeDetailBoxLeftData>
+                    <h6>Department</h6>
+                    <span>Amit Chmistry</span>
+                  </EmployeeDetailBoxLeftData>
+                </EmployeeDetailInnerData>
+                <EmployeeDetailInnerData>
+                  <EmployeeDetailBoxLeftData>
+                    <h6>E-mail</h6>
+                    <span>amitsharma736@gmail.com</span>
+                  </EmployeeDetailBoxLeftData>
+                  <EmployeeDetailBoxLeftData>
+                    <h6>Phone Number</h6>
+                    <span>+91 7365 2737 485</span>
+                  </EmployeeDetailBoxLeftData>
+                </EmployeeDetailInnerData>
+              </EmpolyeeDetailsData>
+            </EmployeeDetails>
+            <EmployeeProfile>
+              <img src={EmployeeProfileImage} />
+            </EmployeeProfile>
+          </EmployeeDetailBoxLeft>
+          <EmployeeDetailBoxRight>
+            <h6>History</h6>
+            <span>Click on the link below to view the history of items issued to Amit Sharma.</span>
+            <a href="/">View Issues Items</a>
+          </EmployeeDetailBoxRight>
+        </EmployeeContainer>
       </EmployeeDetailBox>
+
+      {/* Issue New Items - Table */}
+      <EmployeeDetailHeader>
+        <h6>Issue New Items</h6>
+      </EmployeeDetailHeader>
+      <IssueItemTable>
+        <EmployeeIssueItemTable />
+      </IssueItemTable>
+
+      {/* Issue New Items - Footer Buttons */}
+      <>
+      <IssueItemFooter>
+        <IssueItemFooterButtons>
+      <Button
+        buttonText='Cancel'
+        className={'link-button-black'}
+      />
+      <Button
+        buttonText={'Submit'}
+        className={'primary'}
+      />
+      </IssueItemFooterButtons>
+      </IssueItemFooter>
+      </>
     </>
 
   )
