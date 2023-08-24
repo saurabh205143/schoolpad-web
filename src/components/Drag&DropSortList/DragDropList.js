@@ -21,7 +21,7 @@ const DragDropList = ({orderHeading}) => {
 useEffect(() => {
         axios.get(config.baseUrl + 'api-transport/transportStopApiManager/showStopOrder').then((response) => {
             setRespone(response.data);
-            console.log(response.data);
+            // console.log(response.data);
             setVisibleStops(response.data.slice(0, loadedCount));
         }).catch((errorCatch) => {
             console.log(errorCatch);

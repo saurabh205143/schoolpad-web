@@ -23,7 +23,7 @@ const RouteOrders = props => {
              * Update Stop Stop Order APi
              */
             axios.put(config.baseUrl + 'api/v1/transport/stops/Order', parsedData).then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 handleClose(false);
             }).catch((errorCatch) => {
                 console.log(errorCatch);

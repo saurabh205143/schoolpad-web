@@ -7,7 +7,6 @@ const DeleteStopModal = props => {
 
     const { show, handleClose,onDelete,setStopResponse1 } = props;
     const [deleteStopResponse, setdeleteStopResponse] = useState('');
-    console.log(props.id);
     /**
      * 
      * get Delete Stop Names and Abbr
@@ -15,7 +14,7 @@ const DeleteStopModal = props => {
      useEffect(() => {
             axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getDeleteStop/'+props.id).then((response) => {
                 setdeleteStopResponse(response.data.rows[0]['stopName']);
-                console.log(deleteStopResponse);
+                // console.log(deleteStopResponse);
             }).catch((errorCatch) => {
                 console.log(errorCatch);
             });
@@ -38,14 +37,13 @@ const DeleteStopModal = props => {
             instituteId: 1
         }
         }).then((response) => {
-            console.log(response.data);
             onDelete();
             // setTimeout(() => {
             //     window.location.reload();
             // }, 4000);
             axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/0/0/1/-1').then((response) => {
                         setStopResponse1(response.data.rows);
-                        console.log(response.data);
+                        // console.log(response.data);
                         }).catch((errorCatch) => {
                             console.log(errorCatch);
                         });

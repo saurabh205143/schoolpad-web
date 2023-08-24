@@ -39,7 +39,6 @@ const TransportStopMaster = ({orderHeading}) => {
         axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/0/0/1').then((response) => {
             setStopResponse(response.data);
             setCount(parseInt(response.data.data.totalRecords));
-            console.log(response.data);
         }).catch((errorCatch) => {
             console.log(errorCatch);
         });

@@ -31,7 +31,7 @@ const TableStopMaster = ({  viewList,  heading , EditOnclick,DeleteOnClick,searc
             axios.get(config.baseUrl + 'api/v1/transport/stops/1/1/1/' + PageSize + '/' + offset + '/' + currentPage+'/'+searchText).then((response) => {
                 setStopResponse(response.data);
                 setStopResponse1(response.data);
-                console.log(response.data);
+                // console.log(response.data);
                 setCount(parseInt(response.data.data.totalRecords));
             }).catch((errorCatch) => {
                 console.log(errorCatch);
@@ -41,7 +41,7 @@ const TableStopMaster = ({  viewList,  heading , EditOnclick,DeleteOnClick,searc
             axios.get(config.baseUrl + 'api/v1/transport/stops/1/1/1/' + PageSize + '/' + offset + '/' + currentPage +"/"+-1).then((response) => {
                 setStopResponse(response.data);
                 setStopResponse1(response.data);
-                console.log(response.data);
+                // console.log(response.data);
                 setCount(parseInt(response.data.data.totalRecords));
             }).catch((errorCatch) => {
                 console.log(errorCatch);

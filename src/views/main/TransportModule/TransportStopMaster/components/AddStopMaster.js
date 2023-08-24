@@ -40,8 +40,8 @@ const AddStopMaster = props => {
             setEditStopResponse(response.data);
             setStopName(response.data[0].stopName);
             setStopAbb(response.data[0].stopAbbr);
-            console.log(response.data);
-            console.log(editStopResponse.stopName);
+            // console.log(response.data);
+            // console.log(editStopResponse.stopName);
         }).catch((errorCatch) => {
             console.log(errorCatch);
         });
@@ -71,7 +71,7 @@ const AddStopMaster = props => {
                 instituteId: 1
             }).then((response) => {
                 setStopResponse(response.data);
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.data.hasOwnProperty('flag')) {
                     if(response.data['errTxt'][0].startsWith('stopName-')){
                         setStopNameError(response.data['errTxt'][0].split('-')[1]);
@@ -93,7 +93,7 @@ const AddStopMaster = props => {
                 // }, 4000);
                      axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/0/0/1/-1').then((response) => {
                         setStopResponse1(response.data);
-                        console.log(response.data);
+                        // console.log(response.data);
                         }).catch((errorCatch) => {
                             console.log(errorCatch);
                         });
@@ -106,14 +106,14 @@ const AddStopMaster = props => {
              * 
              * edit_stop Api
              */
-            console.log(stop_name);
+            // console.log(stop_name);
             axios.put(config.baseUrl + 'api-transport/transportStopApiManager/edit_stop', {
                 stopId: props.id,
                 stopName: stop_name,
                 stopAbbr: stop_Abb,
                 userId: "000"
             }).then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.data.hasOwnProperty('flag')) {
                     if(response.data['errTxt'][0].startsWith('stopName-')){
                         setStopNameError(response.data['errTxt'][0].split('-')[1]);
@@ -135,7 +135,7 @@ const AddStopMaster = props => {
                     // }, 4000);
                     axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/0/0/1/-1').then((response) => {
                         setStopResponse1(response.data);
-                        console.log(response.data);
+                        // console.log(response.data);
                         }).catch((errorCatch) => {
                             console.log(errorCatch);
                         });
