@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import SubHeader from '../../../../../components/ScreensHeader/SubHeader';
-import IssueItemStaffDetails from './IssueItemStaffDetails';
 import DefaultMappingScreen from '../../../TransportModule/StudentMapping/components/DefaultMappingScreen';
+import IssueItemStudentDetails from './IssueItemStudentDetails';
 
-const DefaultFilterIssueStaff = () => {
+const DefaultFilterIssueStudent = () => {
   const [showEmpolyeeRecords, setShowEmpolyeeRecords] = useState(false);
 
   return (
@@ -12,14 +12,14 @@ const DefaultFilterIssueStaff = () => {
         type='header-filters'
         inputLabel1='Receipt No.'
         inputPlaceholder1='Enter purchase order no.'
-        inputLabel2='Employee ID'
-        inputPlaceholder2='Enter employee id'
-        defaultHeaderLabel='Employee Name'
-        defaultHeaderPlaceholder='----Select employee name----'
+        inputLabel2='Student ID'
+        inputPlaceholder2='Enter student id'
+        defaultHeaderLabel='Student Name'
+        defaultHeaderPlaceholder='----Select student name----'
         showHeaderFilter={true}
         showSearchButtonRight={false}
-        showPrimaryButton={false}
         showHeaderFilterReturn={true}
+        showPrimaryButton={false}
         showGetRecordButton={true}
         showDefaultHeaderSelect={true}
         showDefaultScreenHeaderFilter={false}
@@ -30,12 +30,12 @@ const DefaultFilterIssueStaff = () => {
 
       {showEmpolyeeRecords ?
         <div>
-          <IssueItemStaffDetails/>
+          <IssueItemStudentDetails/>
         </div>
         :
         <DefaultMappingScreen
-          xtrasubHeading='Enter the Employee Details'
-          description='Enter the Name, ID, Role Name, etc. of the staff  to whom you want to issue  item(s).'
+          xtrasubHeading='Enter the Student Details'
+          description='Enter the Name, ID, Role Name, etc. of the student to whom you want to issue  item(s).'
           showDefaultScreenHeader={true}
         />}
     </>
@@ -43,4 +43,4 @@ const DefaultFilterIssueStaff = () => {
   )
 }
 
-export default DefaultFilterIssueStaff;
+export default DefaultFilterIssueStudent;
