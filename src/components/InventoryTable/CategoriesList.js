@@ -1,19 +1,28 @@
-import React , { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata, Tabledatatext } from '../Table/TableStyles';
 import { ModalBodyConatiner } from '../../views/main/TransportModule/TransportRoute/components/AddRouteStyles';
-import config from '../../config';
 import axios from 'axios';
+import config from '../../config';
 
-const CategoriesList = ({ onClick, storeid }) => {
-    const [stores, storelist] = useState([]);
-    const getCategoryURL = config.baseUrl + "api/v1/inventory/category";
-    axios.get(getCategoryURL
-    ).then((resp) => {
-        //   console.log({resp});
-        storelist(resp.data);
-      });
-    
-    // console.log( storeid );
+
+const CategoriesList = ({ onClick,storeid, setstoreid }) => {
+    const [Categorylist, setCategoryList] = useState('');
+    console.log({ storeid });
+    if (storeid) {
+        const baseURL = config.baseUrl;
+                const fetchCountstoreURL = baseURL +"api/v1/inventory/category";
+                axios.get(fetchCountstoreURL, {
+                params:
+                    { offset: 0, store_id:storeid}
+                }).then((resp) => {
+                    if (resp.details != '')
+                    {
+                        setCategoryList(resp.data);
+                    }
+                    
+                    setstoreid(0);
+                });
+    }
     return (
         <>
         <ModalBodyConatiner>
@@ -26,12 +35,12 @@ const CategoriesList = ({ onClick, storeid }) => {
                     </TableRow>
                 </TableHead>
                     <TableBody>
-                {stores.map((item,i) => {
+                    { Array.isArray(Categorylist)?Categorylist.map((item, i) => {
                     return (
                     <TableRow>
                         <Tabledata>
                             <Tabledatatext>
-                                1
+                               {++i}
                             </Tabledatatext>
                         </Tabledata>
                         <Tabledata>
@@ -45,8 +54,8 @@ const CategoriesList = ({ onClick, storeid }) => {
                             </Tabledatatext>
                         </Tabledata>
                         </TableRow>
-                        );
-          })}
+                    );
+          }): null}
                     {/* <TableRow>
                         <Tabledata>
                             <Tabledatatext>

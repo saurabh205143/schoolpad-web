@@ -21,7 +21,7 @@ import ToastModals from '../Toaster/ToastModals';
 
 let PageSize = 10;
 
-const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, setstoreid }) => {
+const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, setstoreid }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -29,9 +29,10 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, setstore
   const [showButton, setShowButton] = useState(false);
   const [stores, storelist] = useState([]);
   const [sno, setSno] = useState(0);
-  const [storeid,setStoreId] = useState('');
+  // const [storeid,setStoreId] = useState('');
   const[record,setRecord] = useState({});
-  
+  const [CategoryCount, setCategoryCount] = useState(0);
+  const [catstoreid, setcatstoreid] = useState(0);
   // console.log({ searchState });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
@@ -41,7 +42,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, setstore
     setShowModal(false);
   }
   const getDetailByStoreId = (storeid)=>
-  {
+  {    
     setstoreid(storeid);
   }
   // Successfull edited
@@ -65,8 +66,12 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, setstore
   };
   const deleteStoreAction = (storeid) => {
     // console.log({storeid});
-    setStoreId(storeid);
+    setstoreid(storeid);
   };
+  // useEffect(() => { 
+  //   // console.log( 'asdf');
+  //   getCurrentPageRecord(1);
+  // })
   // const getStoreidCategory = (storeid) => {
   //   // console.log({storeid});
   //   setStoreId(storeid);
@@ -84,9 +89,6 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, setstore
         storelist(resp.data);
       });
   }
-  useEffect(() => {
-    getCurrentPageRecord();
-  }, []);
   
   
   const currentTableData = useMemo(() => {
@@ -151,7 +153,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, setstore
                   <ActionsConatiner>
                     <ActionsList>
                       <Button
-                        buttonText='8 Categories'
+                        buttonText={"' "+item.categorycount+" Categories" }
                         className='link-button'
                         onClick={() => { onClick(); getDetailByStoreId(item.id); }}
                         //onClick={onClick}

@@ -74,6 +74,7 @@ const ManageStore = () => {
   useEffect(() => {
     searchData(searchinfo);
     totalRecordCount(searchinfo);
+
   }, [searchinfo]);
 
 // console.log({ searchData });
@@ -133,8 +134,9 @@ const ManageStore = () => {
       {/* Categories List */}
       <CategoriesListTable
         show={showcategoriesList}
-        handleClose={hideCategoriesListModal}
-        setstoreid={storeid}
+          handleClose={hideCategoriesListModal}
+          storeid={storeid}
+          setstoreid={setstoreid}
       />
     </Layout>
     </>
