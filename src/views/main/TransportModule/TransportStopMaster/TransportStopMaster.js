@@ -18,20 +18,26 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastModals from '../../../../components/Toaster/ToastModals';
 
+
+
 const TransportStopMaster = ({orderHeading}) => {
   const [showModal, setShowModal] = useState(false);
   const [showstudentList, setShowStudentList] = useState(null);
   const [showchangeHistory, setShowChangeHistory] = useState(false);
   const [showRouteOrderModal, setShowRouteOrderModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [getStopResponse1, setStopResponse1] = useState({ data: { column: [], rows: [],totalRecords: "0" } });
+  const [getStopResponse, setStopResponse] = useState({ data: { column: [], rows: [],totalRecords: "0" } });
 
   const [count, setCount] = useState(0);
+  const [searchText, setSearchText] = useState("");
     /**
      * 
      * Calling APi get Post
      */
     useEffect(() => {
-        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/15/0').then((response) => {
+        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/0/0/1').then((response) => {
+            setStopResponse(response.data);
             setCount(parseInt(response.data.data.totalRecords));
             console.log(response.data);
         }).catch((errorCatch) => {
@@ -66,14 +72,21 @@ const TransportStopMaster = ({orderHeading}) => {
   const showToastMessage = () => {
     hideModal();
     toast(
-      <ToastModals type='successful' message='Your have Added 1 stop successfully.' />
+      <ToastModals type='successful' message='You have successfully added  stop.' />
+    );
+  };
+
+  const showEditToastMessage = () => {
+    hideModal();
+    toast(
+      <ToastModals type='successful' message={'You have successfully updated  stop.'} />
     );
 };
 
 const showDeleteToastMessage = () => {
   hideDeleteModal();
   toast(
-    <ToastModals type='successful' message='Your have deleted 1 stop successfully.' />
+    <ToastModals type='successful' message='You have successfully deleted  stop.' />
   );
 };
 
@@ -81,13 +94,15 @@ const showDeleteToastMessage = () => {
     <Layout type='transport'>
       {/* <ItemsNotFound/> */}
       <SubHeader 
-      heading='Transport Stop Master' 
-      type='horizontal' 
-      buttonAdd='Add New Stop'
-      buttonOrders='Order Stop(s)'  
-      searchPlaceholder='Search by stop name etc...'
-      onClick={() => setId(!id)} 
-      buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
+        heading='Transport Stop Master'
+        type='horizontal'
+        buttonAdd='Add New Stop'
+        buttonOrders='Order Stop(s)'
+        searchPlaceholder='Search by stop name etc...'
+        onClick={() => setId(!id)}
+        buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
+        searchText={searchText}
+        setSearchText={setSearchText}
       />
 
       <ExportHeader
@@ -95,17 +110,21 @@ const showDeleteToastMessage = () => {
         smallHeding2={count}
         PrintIcon={PrintImage}
         Excelicon={ExcelImage}
+        // data={getStopResponse1.data}
+        data={searchText === "" ? getStopResponse.data : getStopResponse1.data}
       />
 
       <TableStopMaster
         heading='Student(s)'
         viewList={(showstudentList) => setShowStudentList(showstudentList)}
         EditOnclick={(id) => {setId(id);}} 
-        DeleteOnClick={(deleteId) => {setDeleteId(deleteId);}} 
+        DeleteOnClick={(deleteId) => { setDeleteId(deleteId); }} 
+        searchText={searchText}
+        setStopResponse1 = {setStopResponse1}
       />
 
       <ToastContainer
-       autoClose={4000} 
+       autoClose={1000} 
        position="bottom-center"
        hideProgressBar={true}
        className="toaster-container"
@@ -117,6 +136,8 @@ const showDeleteToastMessage = () => {
         handleClose={hideModal}
         id={id}
         saveAction={showToastMessage}
+        onEditToast={showEditToastMessage}
+        setStopResponse1 = {setStopResponse1}
       />
 
       {/* Student List */}
@@ -145,6 +166,7 @@ const showDeleteToastMessage = () => {
         handleClose={hideDeleteModal}
         id={deleteId}
         onDelete={showDeleteToastMessage}
+        setStopResponse1 = {setStopResponse1}
       />
     </Layout>
 

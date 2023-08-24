@@ -14,7 +14,7 @@ import Pagination from '../Pagination/Pagination';
 import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 
 
-const TableStopMaster = ({  viewList,  heading , EditOnclick,DeleteOnClick }) => {
+const TableStopMaster = ({  viewList,  heading , EditOnclick,DeleteOnClick,searchText,setStopResponse1 }) => {
     const [getStopResponse, setStopResponse] = useState({ data: { column: [], rows: [],totalRecords: "0" } });
     const [count, setCount] = useState(0);
     let PageSize = 15;
@@ -26,14 +26,28 @@ const TableStopMaster = ({  viewList,  heading , EditOnclick,DeleteOnClick }) =>
      */
     useEffect(() => {
         let offset = (currentPage - 1) * PageSize;
-        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/'+PageSize+'/'+offset).then((response) => {
-            setStopResponse(response.data);
-            console.log(response.data);
-            setCount(parseInt(response.data.data.totalRecords));
-        }).catch((errorCatch) => {
-            console.log(errorCatch);
-        });
-    }, [currentPage]);
+        console.log(searchText);
+        if (searchText.length > 0) {
+            axios.get(config.baseUrl + 'api/v1/transport/stops/1/1/1/' + PageSize + '/' + offset + '/' + currentPage+'/'+searchText).then((response) => {
+                setStopResponse(response.data);
+                setStopResponse1(response.data);
+                console.log(response.data);
+                setCount(parseInt(response.data.data.totalRecords));
+            }).catch((errorCatch) => {
+                console.log(errorCatch);
+            });
+        } else {
+            searchText = "";
+            axios.get(config.baseUrl + 'api/v1/transport/stops/1/1/1/' + PageSize + '/' + offset + '/' + currentPage +"/"+-1).then((response) => {
+                setStopResponse(response.data);
+                setStopResponse1(response.data);
+                console.log(response.data);
+                setCount(parseInt(response.data.data.totalRecords));
+            }).catch((errorCatch) => {
+                console.log(errorCatch);
+            });
+        }
+    }, [currentPage,searchText]);
     
     const [showModal, setShowDeleteModal] = useState(false);
 

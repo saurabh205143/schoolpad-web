@@ -124,7 +124,7 @@ const Input = (
         options,
         width,
         disabled,
-        
+        onKeyDown,
     }) => {
     if(type === 'select'){
         return(
@@ -158,14 +158,15 @@ const Input = (
                     <img src={leftIcon} alt="icon" className='leftIcon' />
                 }
                 <TextInput
-                    type={type}
-                    name={name}
-                    value={value}
-                    onChange={onChange}
-                    error={error}
-                    placeholder={placeholder}
-                    disabled={disabled}
-                    width={width}
+                        type={type}
+                        name={name}
+                        value={value}
+                        onChange={onChange}
+                        error={error}
+                        placeholder={placeholder}
+                        disabled={disabled}
+                        width={width}
+                        onKeyDown={onKeyDown}
                     
                 />
                 {rightIcon && 

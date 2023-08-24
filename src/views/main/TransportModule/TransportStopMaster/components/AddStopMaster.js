@@ -18,10 +18,11 @@ const options = [
 ];
 
 const AddStopMaster = props => {
-    const { show, handleClose,saveAction } = props;
+    const { show, handleClose,saveAction,onEditToast,toastMessage,setStopResponse1 } = props;
     const [stop_name, setStopName] = useState('');
     const [stop_Abb, setStopAbb] = useState('');
     const [stopResponse, setStopResponse] = useState([]);
+    const [editStopResponse, setEditStopResponse] = useState([]);
     const [stopNameError, setStopNameError] = useState('');
     const [stopAbbError, setStopAbbError] = useState('');
 
@@ -36,9 +37,11 @@ const AddStopMaster = props => {
             setStopAbb('');
             setStopNameError('');
             setStopAbbError('');
+            setEditStopResponse(response.data);
             setStopName(response.data[0].stopName);
             setStopAbb(response.data[0].stopAbbr);
             console.log(response.data);
+            console.log(editStopResponse.stopName);
         }).catch((errorCatch) => {
             console.log(errorCatch);
         });
@@ -51,7 +54,6 @@ const AddStopMaster = props => {
      */
 
     const submit = () => {
-
         /**
          * 
          * Calling APi get Post
@@ -70,11 +72,31 @@ const AddStopMaster = props => {
             }).then((response) => {
                 setStopResponse(response.data);
                 console.log(response.data);
+                if (response.data.hasOwnProperty('flag')) {
+                    if(response.data['errTxt'][0].startsWith('stopName-')){
+                        setStopNameError(response.data['errTxt'][0].split('-')[1]);
+                    }else  if(response.data['errTxt'][0].startsWith('stopAbbr-')){
+                        setStopAbbError(response.data['errTxt'][0].split('-')[1]);
+                    }
+                    if ((response.data['errTxt'][1].startsWith('stopAbbr-'))) {
+                        setStopAbbError(response.data['errTxt'][1].split('-')[1]);
+                    }
+                } else { 
+                    setStopNameError('');
+                    setStopAbbError('');
+                }
+
                 if (response.data.message) {
                     saveAction();
-                    setTimeout(() => {
-                    window.location.reload();
-                }, 4000);
+                //     setTimeout(() => {
+                //     window.location.reload();
+                // }, 4000);
+                     axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/0/0/1/-1').then((response) => {
+                        setStopResponse1(response.data);
+                        console.log(response.data);
+                        }).catch((errorCatch) => {
+                            console.log(errorCatch);
+                        });
                 }
             }).catch((errorCatch) => {
                 console.log(errorCatch);
@@ -84,19 +106,40 @@ const AddStopMaster = props => {
              * 
              * edit_stop Api
              */
-
+            console.log(stop_name);
             axios.put(config.baseUrl + 'api-transport/transportStopApiManager/edit_stop', {
                 stopId: props.id,
                 stopName: stop_name,
                 stopAbbr: stop_Abb,
                 userId: "000"
             }).then((response) => {
-                setStopResponse(response.data);
                 console.log(response.data);
-                saveAction();
-                setTimeout(() => {
-                window.location.reload();
-            }, 4000);
+                if (response.data.hasOwnProperty('flag')) {
+                    if(response.data['errTxt'][0].startsWith('stopName-')){
+                        setStopNameError(response.data['errTxt'][0].split('-')[1]);
+                    }else  if(response.data['errTxt'][0].startsWith('stopAbbr-')){
+                        setStopAbbError(response.data['errTxt'][0].split('-')[1]);
+                    }
+                    if ((response.data['errTxt'][1].startsWith('stopAbbr-'))) {
+                        setStopAbbError(response.data['errTxt'][1].split('-')[1]);
+                    }
+                } else { 
+                    setStopNameError('');
+                    setStopAbbError('');
+                }
+
+                if (response.data.message) {
+                    onEditToast(toastMessage);
+                    // setTimeout(() => {
+                    //     window.location.reload();
+                    // }, 4000);
+                    axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/0/0/1/-1').then((response) => {
+                        setStopResponse1(response.data);
+                        console.log(response.data);
+                        }).catch((errorCatch) => {
+                            console.log(errorCatch);
+                        });
+                }
             }).catch((errorCatch) => {
                 console.log(errorCatch);
             });
@@ -107,16 +150,16 @@ const AddStopMaster = props => {
          * Basic validation Check if stop name and stop Abb is not empty
          * 
          */
-            if (stop_name === '') {
-                setStopNameError('Stop Name cannot be left blank.');
-            } else {
-                setStopNameError('');
-            }
-            if (stop_Abb === '') {
-                setStopAbbError('Stop Abbr cannot be left blank.');
-            } else {
-                setStopAbbError('');
-            }
+            // if (stop_name === '') {
+            //     setStopNameError('Stop Name cannot be left blank.');
+            // } else {
+            //     setStopNameError('');
+            // }
+            // if (stop_Abb === '') {
+            //     setStopAbbError('Stop Abbr cannot be left blank.');
+            // } else {
+            //     setStopAbbError('');
+            // }
      }
     
     console.log(props.id);

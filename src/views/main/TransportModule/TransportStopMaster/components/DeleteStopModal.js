@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import config from '../../../../../config';
 import DeleteModal from '../../../../../components/Modal/DeleteModal';
 
 const DeleteStopModal = props => {
 
-    const { show, handleClose,onDelete } = props;
-    const [deleteStopResponse, setdeleteStopResponse] = useState([]);
+    const { show, handleClose,onDelete,setStopResponse1 } = props;
+    const [deleteStopResponse, setdeleteStopResponse] = useState('');
     console.log(props.id);
+    /**
+     * 
+     * get Delete Stop Names and Abbr
+     */
+     useEffect(() => {
+            axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getDeleteStop/'+props.id).then((response) => {
+                setdeleteStopResponse(response.data.rows[0]['stopName']);
+                console.log(deleteStopResponse);
+            }).catch((errorCatch) => {
+                console.log(errorCatch);
+            });
+     }, [props.id]);
+    
     /**
      * 
      * DeleteStop Api
@@ -25,14 +38,18 @@ const DeleteStopModal = props => {
             instituteId: 1
         }
         }).then((response) => {
-            setdeleteStopResponse(response.data);
             console.log(response.data);
             onDelete();
-            setTimeout(() => {
-                window.location.reload();
-            }, 4000);
-        }).catch((errorCatch) => {
-            
+            // setTimeout(() => {
+            //     window.location.reload();
+            // }, 4000);
+            axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/0/0/1/-1').then((response) => {
+                        setStopResponse1(response.data.rows);
+                        console.log(response.data);
+                        }).catch((errorCatch) => {
+                            console.log(errorCatch);
+                        });
+        }).catch((errorCatch) => {        
             console.log(errorCatch);
         });
     }
@@ -45,7 +62,7 @@ const DeleteStopModal = props => {
             cancelText='No, do not delete it'
             // onDelete={onDelete}
             onDelete={() => { deleteStop(props.id) }}
-            description='Test'
+            description={`You're about to delete the stop '${deleteStopResponse}'. Doing this means you will no longer be able to restore this stop. Are you sure you want to delete it?`}
         >
         </DeleteModal>
     );
