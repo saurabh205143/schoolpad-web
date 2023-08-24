@@ -1,9 +1,10 @@
 import React from 'react'
 import Layout from '../../../../../../components/Layouts/Layout';
 import SubHeader from '../../../../../../components/ScreensHeader/SubHeader';
-import DefaultFilterReturnStaff from './DefaultFilterReturnStaff';
+import DefaultFilterReturnStudent from './DefaultFilterReturnStudent';
 
-const ReturnItemSelectFilter = () => {
+
+const ReturnItemSelectFilterStudent = () => {
 
   return (
     <>
@@ -16,14 +17,14 @@ const ReturnItemSelectFilter = () => {
         showTextInput={false}
         showDateInput={false}
         showSelectInput1={true}
-        selectLabel1='Staff'
-        selectPlaceholder1='----Select staff----'
+        selectLabel1='Student'
+        selectPlaceholder1='----Select student----'
       />
-      <DefaultFilterReturnStaff/>
+      <DefaultFilterReturnStudent/>
       </Layout>
     </>
 
   )
 }
 
-export default ReturnItemSelectFilter;
+export default ReturnItemSelectFilterStudent;

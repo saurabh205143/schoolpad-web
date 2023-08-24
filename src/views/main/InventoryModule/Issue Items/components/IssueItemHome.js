@@ -27,7 +27,7 @@ const IssueItemHome = () => {
           <span>Please select either Staff or Student to issue item(s). </span>
         </IssueItemHeaderContainer>
         <IssueItemBox>
-          <a href="manageIssue/staff-select-filter">
+          <a href="/manageIssue/staff-select-filter">
           <IssueItemConatinerStaff isActive={isStaffActive} onClick={handleStaffClick}>
             <IssueInnerBox>
               <IssueInnerConatiner>
@@ -40,7 +40,7 @@ const IssueItemHome = () => {
             </IssueInnerBox>
           </IssueItemConatinerStaff>
           </a>
-          <a href="manageIssue/staff-select-filter">
+          <a href="/manageIssue/student-select-filter">
           <IssueItemConatinerStudent isActive={isStudentActive} onClick={handleStudentClick}>
             <IssueInnerBox>
               <IssueInnerConatiner>

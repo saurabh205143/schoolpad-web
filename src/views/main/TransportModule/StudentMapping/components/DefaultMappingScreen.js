@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DefaultContainer, DefaultDescriptionContainer, DefaultHeaderFilters, DefaultIconContainer, TitleContainer } from './DefaultStyles';
+import { DefaultContainer, DefaultDescriptionContainer, DefaultIconContainer, TitleContainer } from './DefaultStyles';
 
 // Assets
 import DefaultIcon from '../../../../../images/default-arrow.svg';

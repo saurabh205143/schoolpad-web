@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Layout from '../../../../../components/Layouts/Layout';
 import SubHeader from '../../../../../components/ScreensHeader/SubHeader';
-import DefaultHeaderFilter from '../../../TransportModule/StudentMapping/components/DefaultHeaderFilter';
+import DefaultFilterIssueStaff from './DefaultFilterIssueStaff';
 
 
 const IssueItemSelectFilter = () => {
@@ -21,7 +21,7 @@ const IssueItemSelectFilter = () => {
         selectPlaceholder1='----Select staff----'
       />
       
-      <DefaultHeaderFilter/>
+      <DefaultFilterIssueStaff/>
 
       </Layout>
     </>

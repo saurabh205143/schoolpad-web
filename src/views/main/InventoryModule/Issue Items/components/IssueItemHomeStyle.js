@@ -43,6 +43,12 @@ export const IssueItemConatinerStaff = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &:hover {
+      border-color: #0065FF;
+      background-color: #E9F2FF;
+      cursor: pointer; 
+    }
 `;
 
 export const IssueInnerBox = styled.div`
@@ -69,11 +75,13 @@ export const IssueInnerConatinerText = styled.div`
       font-style: normal;
       font-weight: 600;
       margin-bottom: 0px;
+      color: #000;
     }
     >span{
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
+      color:#000;
     }
 `;
 
@@ -86,6 +94,12 @@ export const IssueItemConatinerStudent = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &:hover {
+      border-color: #0065FF;
+      background-color: #E9F2FF;
+      cursor: pointer; 
+    }
 `;
 
 export const EmployeeDetailHeader = styled.div`
@@ -204,4 +218,18 @@ export const IssueItemFooter = styled.div`
 
 export const IssueItemFooterButtons = styled.div`
   margin: 18px 30px 30px;
+`;
+
+// Return Item Staff - Styled 
+
+export const ReturnEmployeeDetailBoxLeft = styled.div`
+    width: 700px;
+    height: 138px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 26px;
+`;
+
+export const ReturnEmpolyeeStaffModal = styled.div`
 `;

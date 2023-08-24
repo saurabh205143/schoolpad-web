@@ -1,16 +1,15 @@
 import React from 'react'
-import EmployeeIssueItemTable from '../../../Issue Items/components/EmployeeIssueItemTable';
 import { EmployeeContainer, EmployeeDetailBox,EmployeeDetailBoxLeftData, EmployeeDetailHeader, EmployeeDetailInnerData, EmployeeDetails, EmployeeProfile, EmpolyeeDetailsData, IssueItemTable, ReturnEmployeeDetailBoxLeft } from '../../../Issue Items/components/IssueItemHomeStyle';
 import EmployeeProfileImage from '../../../../../../images/employee-profile.svg';
-import EmployeeReturnItemTable from './EmployeeReturnItemTable';
+import StudentReturnItemTable from './StudentReturnItemTable';
 
-const ReturnItemStaffDetails = () => {
+const ReturnItemStudentDetails = () => {
 
   return (
     <>
       {/* Empolyee Details  */}
       <EmployeeDetailHeader>
-        <h6>Employee Details</h6>
+        <h6>Student Details</h6>
       </EmployeeDetailHeader>
       <EmployeeDetailBox>
         <EmployeeContainer>
@@ -23,27 +22,27 @@ const ReturnItemStaffDetails = () => {
                     <span>Amit Sharma</span>
                   </EmployeeDetailBoxLeftData>
                   <EmployeeDetailBoxLeftData>
-                    <h6>Designation</h6>
-                    <span>Lab Incharge</span>
+                    <h6>Mother Name</h6>
+                    <span>Amita Sharma</span>
                   </EmployeeDetailBoxLeftData>
                 </EmployeeDetailInnerData>
                 <EmployeeDetailInnerData>
                   <EmployeeDetailBoxLeftData>
-                    <h6>Employee ID</h6>
-                    <span>2874564673</span>
+                    <h6>Registration No.</h6>
+                    <span>2023V811121217</span>
                   </EmployeeDetailBoxLeftData>
                   <EmployeeDetailBoxLeftData>
-                    <h6>Department</h6>
-                    <span>Amit Chmistry</span>
+                    <h6>Father Name</h6>
+                    <span>Ramit Sharma</span>
                   </EmployeeDetailBoxLeftData>
                 </EmployeeDetailInnerData>
                 <EmployeeDetailInnerData>
                   <EmployeeDetailBoxLeftData>
-                    <h6>E-mail</h6>
-                    <span>amitsharma736@gmail.com</span>
+                    <h6>Class</h6>
+                    <span>V B</span>
                   </EmployeeDetailBoxLeftData>
                   <EmployeeDetailBoxLeftData>
-                    <h6>Phone Number</h6>
+                    <h6>Father's Phone Number</h6>
                     <span>+91 7365 2737 485</span>
                   </EmployeeDetailBoxLeftData>
                 </EmployeeDetailInnerData>
@@ -56,16 +55,16 @@ const ReturnItemStaffDetails = () => {
         </EmployeeContainer>
       </EmployeeDetailBox>
 
-      {/* Issue New Items - Table */}
+      {/* Return New Items - Table */}
       <EmployeeDetailHeader>
         <h6>Return Item(s)</h6>
       </EmployeeDetailHeader>
       <IssueItemTable>
-        <EmployeeReturnItemTable/>
+        <StudentReturnItemTable/>
       </IssueItemTable>
     </>
 
   )
 }
 
-export default ReturnItemStaffDetails;
+export default ReturnItemStudentDetails;
