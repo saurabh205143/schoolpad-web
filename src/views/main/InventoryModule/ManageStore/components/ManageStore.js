@@ -24,7 +24,9 @@ const ManageStore = () => {
   const [showcategoriesList, setShowCategoriesList] = useState(false);
   const [searchinfo, setSearchinfo] = useState('');
   const [totalRecord, settotalRecord] = useState(0);
-  const [record,setrecord]=useState({});
+  const [record, setrecord] = useState({});
+  const [storeid, setstoreid] = useState(0);
+
   const hideCategoriesListModal = () => {
     setShowCategoriesList(false);
   }
@@ -44,17 +46,17 @@ const ManageStore = () => {
     setShowMoveItemModal(false);
   }
   
-  const searchData = (offset,limit,value) => {
-    // setSearchinfo(value);
-    console.log({offset});
-    const fetchstoreURL = baseURL +"api/v1/inventory/store";
-    axios.get(fetchstoreURL, {
-      params:
-        { offset: 0, limit:10,search:value}
-    }).then((resp) => {
-      // console.log(resp);
-      setrecord(resp.data);
-    });
+  const searchData = (value) => {
+    setSearchinfo(value);
+    // console.log({offset});
+    // const fetchstoreURL = baseURL +"api/v1/inventory/store";
+    // axios.get(fetchstoreURL, {
+    //   params:
+    //     { offset: 0, limit:10,search:value}
+    // }).then((resp) => {
+    //   // console.log(resp);
+    //   setrecord(resp.data);
+    // });
         // console.log(value);
   }
 
@@ -102,6 +104,7 @@ const ManageStore = () => {
           searchinfo={record}
           searchState={searchinfo}
           searchData={searchData}
+          setstoreid={setstoreid}
       />
 
       {/* Toaster Container */}
@@ -131,6 +134,7 @@ const ManageStore = () => {
       <CategoriesListTable
         show={showcategoriesList}
         handleClose={hideCategoriesListModal}
+        setstoreid={storeid}
       />
     </Layout>
     </>

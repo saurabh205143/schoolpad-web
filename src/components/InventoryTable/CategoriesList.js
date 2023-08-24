@@ -1,9 +1,19 @@
-import React from 'react';
+import React , { useState } from 'react';
 import { TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata, Tabledatatext } from '../Table/TableStyles';
 import { ModalBodyConatiner } from '../../views/main/TransportModule/TransportRoute/components/AddRouteStyles';
+import config from '../../config';
+import axios from 'axios';
 
-const CategoriesList = ({ onClick }) => {
-
+const CategoriesList = ({ onClick, storeid }) => {
+    const [stores, storelist] = useState([]);
+    const getCategoryURL = config.baseUrl + "api/v1/inventory/category";
+    axios.get(getCategoryURL
+    ).then((resp) => {
+        //   console.log({resp});
+        storelist(resp.data);
+      });
+    
+    // console.log( storeid );
     return (
         <>
         <ModalBodyConatiner>
@@ -15,7 +25,9 @@ const CategoriesList = ({ onClick }) => {
                         <TableHeading>Category Code</TableHeading>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                    <TableBody>
+                {stores.map((item,i) => {
+                    return (
                     <TableRow>
                         <Tabledata>
                             <Tabledatatext>
@@ -24,16 +36,18 @@ const CategoriesList = ({ onClick }) => {
                         </Tabledata>
                         <Tabledata>
                             <Tabledatatext>
-                            Wooden
+                            {item.categoryName}
                             </Tabledatatext>
                         </Tabledata>
                         <Tabledata>
                             <Tabledatatext>
-                                K00256
+                                {item.categoryCode}
                             </Tabledatatext>
                         </Tabledata>
-                    </TableRow>
-                    <TableRow>
+                        </TableRow>
+                        );
+          })}
+                    {/* <TableRow>
                         <Tabledata>
                             <Tabledatatext>
                                 2
@@ -151,7 +165,7 @@ const CategoriesList = ({ onClick }) => {
                             MJH781
                             </Tabledatatext>
                         </Tabledata>
-                    </TableRow>
+                    </TableRow> */}
                 </TableBody>
             </TableContainer>
             </ModalBodyConatiner>

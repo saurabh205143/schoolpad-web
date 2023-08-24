@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect,setState } from 'react';
 import data from './data.json';
 import { ActionsConatiner, ActionsList, Container, TableActionHeading, TableBody, TableCheckbox, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
 import LinkButton from '../Buttons/LinkButton';
@@ -21,7 +21,7 @@ import ToastModals from '../Toaster/ToastModals';
 
 let PageSize = 10;
 
-const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, searchData }) => {
+const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, setstoreid }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -32,7 +32,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, searchDa
   const [storeid,setStoreId] = useState('');
   const[record,setRecord] = useState({});
   
-  console.log({ searchinfo });
+  // console.log({ searchState });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -42,10 +42,8 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, searchDa
   }
   const getDetailByStoreId = (storeid)=>
   {
-    setRecord(storeid);
-    //  console.log({storeid});
+    setstoreid(storeid);
   }
-  // console.log({ searchinfo });
   // Successfull edited
   const showToastMessage = () => {
     hideModal();
@@ -69,18 +67,22 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, searchDa
     // console.log({storeid});
     setStoreId(storeid);
   };
+  // const getStoreidCategory = (storeid) => {
+  //   // console.log({storeid});
+  //   setStoreId(storeid);
+
+  // };
   //+currentPage;/?offset=0&limit=10
   
   const offSet = (currentPage - 1) * PageSize;
   const getCurrentPageRecord = (page) => {
-    // const baseURL = config.baseUrl + "api/v1/inventory/store";
-    // // console.log({page});
-    //   axios.get(baseURL,{
-    //     params:
-    //       { offset: offSet, limit:PageSize,}
-    //   }).then((resp) => {
-    //     storelist(resp.data);
-    //   });
+    const baseURL = config.baseUrl + "api/v1/inventory/store";
+      axios.get(baseURL,{
+        params:
+          { offset: offSet, limit:PageSize,search:''}
+      }).then((resp) => {
+        storelist(resp.data);
+      });
   }
   useEffect(() => {
     getCurrentPageRecord();
@@ -131,7 +133,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, searchDa
           </TableRow>
         </TableHead>
         <TableBody>
-          {searchinfo.map((item,i) => {
+          {stores.map((item,i) => {
             return (
               <TableRow key={item.id}> {/* Added a unique key */}
                 <Tabledata>
@@ -151,7 +153,9 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, searchDa
                       <Button
                         buttonText='8 Categories'
                         className='link-button'
-                        onClick={onClick}
+                        onClick={() => { onClick(); getDetailByStoreId(item.id); }}
+                        //onClick={onClick}
+                        // selectedStoreId={console.log(item.d)}
                       />
                     </ActionsList>
                   </ActionsConatiner>
@@ -186,7 +190,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState, searchDa
         currentPage={currentPage}
         totalCount={totalRecord}
         pageSize={PageSize}
-        onPageChange={(page) => { setCurrentPage(page); getCurrentPageRecord(page); searchData(offSet, PageSize, searchState);}}
+        onPageChange={(page) => { setCurrentPage(page); getCurrentPageRecord(page);}}
       />
       {/* Toaster Container */}
       <ToastContainer
