@@ -241,6 +241,16 @@ const Navigation = ({type}) => {
 
     else if(type === 'inventory'){
         return (
+            <ModuleBoxes>
+            <ModuleBoxCol>
+                <ModuleBoxLeft>
+                    <img src={TransportIcon} />
+                </ModuleBoxLeft>
+                <ModuleBoxRight>
+                    <h4>Inventory</h4>
+                    <span>Inventory Options</span>
+                </ModuleBoxRight>
+            </ModuleBoxCol>
             <NavBar>
                 <NavBarItem
                     onClick={() => setShowDrop(showDrop === 3 ? null : 3)}
@@ -401,6 +411,7 @@ const Navigation = ({type}) => {
                     )}
                 </NavBarItem>
             </NavBar>
+            </ModuleBoxes>
         )}
 }
 

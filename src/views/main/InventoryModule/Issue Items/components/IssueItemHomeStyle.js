@@ -231,5 +231,68 @@ export const ReturnEmployeeDetailBoxLeft = styled.div`
     padding: 26px;
 `;
 
-export const ReturnEmpolyeeStaffModal = styled.div`
+// Issue Item Student - View History 
+
+export const StudentViewIssueHistory = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
 `;
+
+export const ViewHistoryConatinterLeft = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: centre;
+    >span{
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+    }
+`;
+
+
+export const ViewHistoryConatinterRight = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: centre;
+    >span{
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+    }
+`;
+
+export const StudentViewIssueHistoryBottom = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 20px;
+    >h6{
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+    }
+    >span{
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+    }
+`;
+
+export const StudentHistoryDataBottom = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    >span{
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+    }
+`;
+
+

@@ -105,11 +105,11 @@ const showDeleteToastMessage = () => {
       />
 
       <ToastContainer
-       autoClose={4000} 
-       position="bottom-center"
-       hideProgressBar={true}
-       className="toaster-container"
-       />
+        autoClose={4000} 
+        position="bottom-center"
+        hideProgressBar={true}
+        className="toaster-container"
+      />
 
       {/* Add Stop Master Modal */}
       <AddStopMaster

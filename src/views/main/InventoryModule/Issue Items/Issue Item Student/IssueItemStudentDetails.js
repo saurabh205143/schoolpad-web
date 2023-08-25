@@ -3,13 +3,15 @@ import EmployeeProfileImage from '../../../../../images/employee-profile.svg';
 import Button from '../../../../../components/Buttons/Button';
 import LinkButton from '../../../../../components/Buttons/LinkButton';
 import { EmployeeContainer, EmployeeDetailBox, EmployeeDetailBoxLeft, EmployeeDetailBoxLeftData, EmployeeDetailBoxRight, EmployeeDetailHeader, EmployeeDetailInnerData, EmployeeDetails, EmployeeProfile, EmpolyeeDetailsData, IssueItemFooter, IssueItemFooterButtons, IssueItemTable } from '../components/IssueItemHomeStyle';
+import StudentIssueItemTable from './StudentIssueItemTable';
+import StudentViewIssueItemHistory from './StudentViewIssueItemHistory';
 
 const IssueItemStudentDetails = () => {
 
-  const [showViewIssueItemHistory, setShowViewIssueItemHistory] = useState();
+  const [showStudentViewIssueItemHistory, setShowStudentViewIssueItemHistory] = useState();
 
-  const hideViewIssueItemHistoryModal = () => {
-    setShowViewIssueItemHistory(false);
+  const hideStudentViewIssueItemHistoryModal = () => {
+    setShowStudentViewIssueItemHistory(false);
   }
 
   return (
@@ -64,7 +66,7 @@ const IssueItemStudentDetails = () => {
             <span>Click on the link below to view the history of items issued to Amit Sharma.</span>
             <LinkButton
               linkText='View Issued Item'
-              onClick={() => setShowViewIssueItemHistory(!showViewIssueItemHistory)}
+              onClick={() => setShowStudentViewIssueItemHistory(!showStudentViewIssueItemHistory)}
             />
           </EmployeeDetailBoxRight>
         </EmployeeContainer>
@@ -75,7 +77,7 @@ const IssueItemStudentDetails = () => {
         <h6>Issue New Item(s)</h6>
       </EmployeeDetailHeader>
       <IssueItemTable>
-
+        <StudentIssueItemTable/>
       </IssueItemTable>
 
       {/* Issue New Items - Footer Buttons */}
@@ -92,11 +94,11 @@ const IssueItemStudentDetails = () => {
       </IssueItemFooterButtons>
       </IssueItemFooter>
 
-      {/* View Issue Item - History  */}
-      {/* <ViewIssueItemHistory
-            show={showViewIssueItemHistory}
-            handleClose={hideViewIssueItemHistoryModal}
-      /> */}
+      {/* Student View Issue Item - History  */}
+      <StudentViewIssueItemHistory
+          show={showStudentViewIssueItemHistory}
+          handleClose={hideStudentViewIssueItemHistoryModal}
+      />
     </>
 
   )
