@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Select from "react-dropdown-select";
+import { MultiSelect } from "react-multi-select-component";
 
 export const Container = styled.div`
   width:100%;
@@ -110,6 +111,47 @@ export const ErrorContainer = styled.span`
     line-height: 16px;
 `;
 
+export const MultiSelectInputLabel = styled.div`
+    >label {
+      font-weight: 600;
+      font-size: 12px;
+      color: #000000;
+    }
+`;
+
+export const MultiSelectContainer = styled.div`
+    > div{
+    >.dropdown-container {
+        width: 100%;
+        height: 36px;
+        display: flex;
+        flex: 1 0;
+        align-items: center;
+        min-width: 0;
+        padding: 0px 10px;
+        border-radius: 3px;
+        background: #ffffff;
+        border: 1px solid rgba(9, 30, 66, 0.141176);
+
+        &:hover {
+            background: ${({ theme }) => theme.inputHoverColor};
+        }
+
+        &:placeholder{
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            color: #172B4D;
+        }
+
+        &:focus-within{
+            box-shadow:none;
+            border:1px solid ${({ theme }) => theme. buttonPrimary};
+            outline:1px;
+        }
+    }
+`;
+
 const Input = (
     {
         label, 
@@ -124,8 +166,11 @@ const Input = (
         options,
         width,
         disabled,
-        
+        labelledBy,
     }) => {
+
+    const [selected, setSelected] = useState([]);
+
     if(type === 'select'){
         return(
             <Container>
@@ -145,7 +190,30 @@ const Input = (
                 </SelectContainer>
             </Container>
         );
-    } else {
+    } 
+
+    else if(type === 'multi-select'){
+        return(
+            <Container>
+                {label &&
+                    <Title>
+                        {label}
+                    </Title>
+                }
+                <MultiSelectContainer>
+                    <MultiSelect
+                            options={options}
+                            labelledBy={labelledBy}
+                            className='dropdown-container'
+                            value={selected}
+                            onChange={setSelected}
+                    />
+                </MultiSelectContainer>
+            </Container>
+        );
+    } 
+    
+    else {
         return (
             <Container >
                 {label &&

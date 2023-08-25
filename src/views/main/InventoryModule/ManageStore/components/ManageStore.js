@@ -110,7 +110,7 @@ const ManageStore = () => {
 
       {/* Toaster Container */}
       <ToastContainer
-        autoClose={4000} 
+        autoClose={1000} 
         position="bottom-center"
         hideProgressBar={true}
         className="toaster-container"

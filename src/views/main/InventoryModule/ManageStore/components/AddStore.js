@@ -123,7 +123,9 @@ const AddStore = props => {
             }
             else if(response.status === 201){
                 let errorMessage = response.data.details.error;
+                console.log(errorMessage);
                 let messageList = errorMessage.split('-');
+                console.log(messageList);
                 alert(messageList);
             }
             else{
@@ -226,6 +228,14 @@ const AddStore = props => {
                         // onChange={handleChange}
                         required={true}
                         error={errors.store_manager}
+                    />
+                </FieldContainer>
+                <FieldContainer>
+                    <Input
+                        type="multi-select"
+                        options={options}
+                        label='Stop Manager'
+                        labelledBy='----Select stop manager----'
                     />
                 </FieldContainer>
                 <CustomCheckbox
