@@ -201,8 +201,6 @@ const AddStore = props => {
                         name={'store_description'}
                         value={storeDesc}
                         onChange={(e)=>{ handleStoreDescriptionChange(e)}}
-                        // value={inputs.store_description}
-                        // onChange={handleChange}
                         required={true}
                         error={errors.store_description}
                     />
