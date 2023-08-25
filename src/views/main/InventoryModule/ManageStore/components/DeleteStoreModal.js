@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DeleteModal from '../../../../../components/Modal/DeleteModal';
 import axios from 'axios';
 import config from '../../../../../config';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ToastModals from '../../../../../components/Toaster/ToastModals';
+
 const DeleteRouteModal = props => {
 
     const { show, handleClose, storeid } = props;
-    console.log({storeid});
+    const [id, setId] = useState('');
+    const hideModal = () => {
+        setId(false);
+        }
+    const showToastMessage = () => {
+          hideModal();
+          toast(
+            <ToastModals type='successful' message='Your have successfully Removed the Store.' />
+          );
+      };
     const deleteStore = (id) => {
+        // console.log(storeid);
         console.log({ id });
         axios.put(config.baseUrl +"api/v1/inventory/archivestore", {
         
@@ -15,9 +29,10 @@ const DeleteRouteModal = props => {
             // _method: 'PUT'
           })
           .then(function (response) {
-            if(response.ok)
+            if(response.status===200)
             {
-                alert('all ok');
+                showToastMessage();
+                // alert(response.data.message);
             }
             else{
                 console.log(response);
@@ -36,7 +51,7 @@ const DeleteRouteModal = props => {
             modalHeading={'Delete Route'}
             submitText='Yes, delete it'
             cancelText='No, do not delete it'
-            saveAction={()=>deleteStore(storeid)}
+            onDelete={()=>deleteStore(storeid)}
         >
         </DeleteModal>
     );

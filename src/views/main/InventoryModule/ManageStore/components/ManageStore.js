@@ -49,14 +49,14 @@ const ManageStore = () => {
   const searchData = (value) => {
     setSearchinfo(value);
     // console.log({offset});
-    // const fetchstoreURL = baseURL +"api/v1/inventory/store";
-    // axios.get(fetchstoreURL, {
-    //   params:
-    //     { offset: 0, limit:10,search:value}
-    // }).then((resp) => {
-    //   // console.log(resp);
-    //   setrecord(resp.data);
-    // });
+    const fetchstoreURL = baseURL +"api/v1/inventory/store";
+    axios.get(fetchstoreURL, {
+      params:
+        { offset: 0, limit:100,search:value}
+    }).then((resp) => {
+      // console.log(resp);
+      setrecord(resp.data);
+    });
         // console.log(value);
   }
 

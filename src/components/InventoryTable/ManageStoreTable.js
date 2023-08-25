@@ -22,7 +22,7 @@ import ToastModals from '../Toaster/ToastModals';
 let PageSize = 10;
 
 const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, setstoreid }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
@@ -33,7 +33,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, 
   const[record,setRecord] = useState({});
   const [CategoryCount, setCategoryCount] = useState(0);
   const [catstoreid, setcatstoreid] = useState(0);
-  // console.log({ searchState });
+  console.log({ searchinfo });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -72,12 +72,14 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, 
   };
   const deleteStoreAction = (storeid) => {
     // console.log({storeid});
-    setstoreid(storeid);
+    // setstoreid(storeid);
+    setRecord(storeid);
   };
-  // useEffect(() => { 
-  //   // console.log( 'asdf');
-  //   getCurrentPageRecord(1);
-  // })
+  useEffect(() => { 
+    
+    // console.log( 'asdf');
+    // getCurrentPageRecord();
+  })
   // const getStoreidCategory = (storeid) => {
   //   // console.log({storeid});
   //   setStoreId(storeid);
@@ -87,10 +89,11 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, 
   
   const offSet = (currentPage - 1) * PageSize;
   const getCurrentPageRecord = (page) => {
+    console.log({offSet},{page});
     const baseURL = config.baseUrl + "api/v1/inventory/store";
       axios.get(baseURL,{
         params:
-          { offset: offSet, limit:PageSize,search:''}
+          { offset: 0, limit:100,search:''}
       }).then((resp) => {
         storelist(resp.data);
       });
@@ -141,7 +144,8 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, 
           </TableRow>
         </TableHead>
         <TableBody>
-          {stores.map((item,i) => {
+          {console.log({currentTableData})}
+          {currentTableData.map((item,i) => {
             return (
               <TableRow key={item.id}> {/* Added a unique key */}
                 <Tabledata>
@@ -150,7 +154,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, 
                     onChange={handleChange}
                   /> */}
                 </Tabledata>
-                <Tabledata>{++i}</Tabledata>
+                <Tabledata>{currentPage-1}{ ++i }</Tabledata>
                 <Tabledata>{item.storeName}</Tabledata>
                 <Tabledata>{item.storeDesc}</Tabledata>
                 <Tabledata>{item.storeCode}</Tabledata>
@@ -159,7 +163,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, 
                   <ActionsConatiner>
                     <ActionsList>
                       <Button
-                        buttonText={"' "+item.categorycount+" Categories" }
+                        buttonText={""+item.categorycount+" Categories" }
                         className='link-button'
                         onClick={() => { onClick(); getDetailByStoreId(item.id); }}
                         //onClick={onClick}
@@ -195,10 +199,10 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, 
       </TableContainer>
       <Pagination
         className="pagination-bar"
-        currentPage={currentPage}
+        // currentPage={currentPage}
         totalCount={totalRecord}
         pageSize={PageSize}
-        onPageChange={(page) => { setCurrentPage(page); getCurrentPageRecord(page);}}
+        onPageChange={(page) => { setCurrentPage(page); }}//getCurrentPageRecord(page);
       />
       {/* Toaster Container */}
       <ToastContainer
@@ -223,7 +227,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, 
       <DeleteStoreModal
         show={showDeleteModal}
         handleClose={hideDeleteModal}
-        storeid={storeid}
+        storeid={record}
         onDelete={showDeleteToastMessage}
       />
 
