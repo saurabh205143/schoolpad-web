@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect,setState } from 'react';
 import data from './data.json';
 import { ActionsConatiner, ActionsList, Container, TableActionHeading, TableBody, TableCheckbox, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
 import LinkButton from '../Buttons/LinkButton';
@@ -21,18 +21,19 @@ import ToastModals from '../Toaster/ToastModals';
 
 let PageSize = 10;
 
-const ManageStoreTable = ({ onClick,totalRecord }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, setstoreid }) => {
+  const [currentPage, setCurrentPage] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [stores, storelist] = useState([]);
   const [sno, setSno] = useState(0);
-  const [storeid,setStoreId] = useState('');
+  // const [storeid,setStoreId] = useState('');
   const[record,setRecord] = useState({});
-  
-  // console.log({ totalRecord });
+  const [CategoryCount, setCategoryCount] = useState(0);
+  const [catstoreid, setcatstoreid] = useState(0);
+  console.log({ searchinfo });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -40,12 +41,16 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
   const hideModal = () => {
     setShowModal(false);
   }
+  const getEditDetailByStoreId = (storedetail)=>
+  {    
+    // console.log(storeid);
+    setRecord(storedetail);
+  }
+
   const getDetailByStoreId = (storeid)=>
   {
-    setRecord(storeid);
-    //  console.log({storeid});
+    setstoreid(storeid);
   }
-  
   // Successfull edited
   const showToastMessage = () => {
     hideModal();
@@ -67,24 +72,32 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
   };
   const deleteStoreAction = (storeid) => {
     // console.log({storeid});
-    setStoreId(storeid);
+    // setstoreid(storeid);
+    setRecord(storeid);
   };
+  useEffect(() => { 
+    
+    // console.log( 'asdf');
+    // getCurrentPageRecord();
+  })
+  // const getStoreidCategory = (storeid) => {
+  //   // console.log({storeid});
+  //   setStoreId(storeid);
+
+  // };
   //+currentPage;/?offset=0&limit=10
   
   const offSet = (currentPage - 1) * PageSize;
   const getCurrentPageRecord = (page) => {
+    console.log({offSet},{page});
     const baseURL = config.baseUrl + "api/v1/inventory/store";
-    // console.log({page});
       axios.get(baseURL,{
         params:
-          { offset: offSet, limit:PageSize}
+          { offset: 0, limit:100,search:''}
       }).then((resp) => {
         storelist(resp.data);
       });
   }
-  useEffect(() => {
-    getCurrentPageRecord();
-  }, []);
   
   
   const currentTableData = useMemo(() => {
@@ -131,7 +144,8 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {stores.map((item,i) => {
+          {console.log({currentTableData})}
+          {currentTableData.map((item,i) => {
             return (
               <TableRow key={item.id}> {/* Added a unique key */}
                 <Tabledata>
@@ -140,7 +154,7 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
                     onChange={handleChange}
                   /> */}
                 </Tabledata>
-                <Tabledata>{++i}</Tabledata>
+                <Tabledata>{currentPage-1}{ ++i }</Tabledata>
                 <Tabledata>{item.storeName}</Tabledata>
                 <Tabledata>{item.storeDesc}</Tabledata>
                 <Tabledata>{item.storeCode}</Tabledata>
@@ -149,9 +163,11 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
                   <ActionsConatiner>
                     <ActionsList>
                       <Button
-                        buttonText='8 Categories'
+                        buttonText={""+item.categorycount+" Categories" }
                         className='link-button'
-                        onClick={onClick}
+                        onClick={() => { onClick(); getDetailByStoreId(item.id); }}
+                        //onClick={onClick}
+                        // selectedStoreId={console.log(item.d)}
                       />
                     </ActionsList>
                   </ActionsConatiner>
@@ -161,8 +177,8 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
                     <ActionsList>
                       <LinkButton
                         onlyIcon={EditIcon}
-                        tooltiptext='Edit'//{() => { func1(); func2();}}
-                        onClick={() => { setShowModal(!showModal); getDetailByStoreId(item);}}
+                        tooltiptext='Edit'
+                        onClick={() => { setShowModal(!showModal); getEditDetailByStoreId(item);}}
                         //onClick={() => setShowModal(!showModal,item.id)}
                       />
                     </ActionsList>
@@ -183,10 +199,10 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
       </TableContainer>
       <Pagination
         className="pagination-bar"
-        currentPage={currentPage}
+        // currentPage={currentPage}
         totalCount={totalRecord}
         pageSize={PageSize}
-        onPageChange={(page) => { setCurrentPage(page) ;getCurrentPageRecord(page)}}
+        onPageChange={(page) => { setCurrentPage(page); }}//getCurrentPageRecord(page);
       />
       {/* Toaster Container */}
       <ToastContainer
@@ -211,7 +227,7 @@ const ManageStoreTable = ({ onClick,totalRecord }) => {
       <DeleteStoreModal
         show={showDeleteModal}
         handleClose={hideDeleteModal}
-        storeid={storeid}
+        storeid={record}
         onDelete={showDeleteToastMessage}
       />
 

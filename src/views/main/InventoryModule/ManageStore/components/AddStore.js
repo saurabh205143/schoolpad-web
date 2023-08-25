@@ -25,7 +25,7 @@ const AddStore = props => {
         store_description: '',
         store_manager: '',
     });
-    console.log({ inputs });
+    // console.log({ inputs });
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 
@@ -99,40 +99,41 @@ const AddStore = props => {
     }
     
     const showToastMessage = () => {
-    hideModal();
-    toast(
+    //   hideModal();
+      toast(
         <ToastModals type='successful' message='Your have Added 1 stop successfully.' />
-    );
-    };
-//     const handleConfirmClicked = () => {
-//         axios.post(baseURL, {
-//             storeName: storeName,
-//             storeCode:storeCode,
-//             storeDesc:storeDesc,
-//             storeManager:storeManager,
-//             userId:214,
-//             sessionId:8
-//           })
-//           .then(function (response) {
-//             // console.log(response.status);
-//             if(response.status===200)
-//             {
-//                 showToastMessage();
-//                 alert(response.data.message);
-//             }
-//             else if(response.status === 201){
-//                 let errorMessage = response.data.details.error;
-//                 let messageList = errorMessage.split('-');
-//                 alert(messageList);
-//             }
-//             else{
-//                 alert(response.data.message);
-//             }
-//           })
-//           .catch(function (error) {
-//             console.log(error.message);
-//           });
-//   };
+      );
+  };
+  const baseURL = config.baseUrl +"api/v1/inventory/store";
+    const handleConfirmClicked = () => {
+        axios.post(baseURL, {
+            storeName: storeName,
+            storeCode:storeCode,
+            storeDesc:storeDesc,
+            storeManager:storeManager,
+            userId:214,
+            sessionId:8
+          })
+          .then(function (response) {
+            // console.log(response.status);
+            if(response.status===200)
+            {
+                showToastMessage();
+                alert(response.data.message);
+            }
+            else if(response.status === 201){
+                let errorMessage = response.data.details.error;
+                let messageList = errorMessage.split('-');
+                alert(messageList);
+            }
+            else{
+                alert(response.data.message);
+            }
+          })
+          .catch(function (error) {
+            console.log(error.message);
+          });
+  };
     // Inputs handle change
     const handleChange = (e) => {
         let i = { ...inputs };
@@ -162,8 +163,8 @@ const AddStore = props => {
             submitText='Save and Close'
             actionText={'Save and Continue'}
             cancelText='Cancel'
-            // saveAction={handleConfirmClicked}
-            saveAction={onSubmit}
+            saveAction={handleConfirmClicked}
+            // saveAction={onSubmit}
             loading={loading}
         >
         <form>            
@@ -171,18 +172,18 @@ const AddStore = props => {
                 <ModalBodyConatiner>
                 <FieldContainer>
                     <Input
-                                // type="text"
-                                // label={'Store Name*'}
-                                // placeholder={'Enter store name'}
-                                // name='store_name'
-                                // value={storeName}
-                                // onChange={(e) => { handleStoreNameChange(e) }}
-                        type="text"
-                        label={'Store Name*'}
-                        placeholder={'Enter store name'}
-                        name='store_name'
-                        value={inputs.store_name}
-                        onChange={handleChange}
+                    type="text"
+                    label={'Store Name*'}
+                    placeholder={'Enter store name'}
+                    name='store_name'
+                    value={storeName}
+                    onChange={(e) => { handleStoreNameChange(e) }}
+                        // type="text"
+                        // label={'Store Name*'}
+                        // placeholder={'Enter store name'}
+                        // name='store_name'
+                        // value={inputs.store_name}
+                        // onChange={handleChange}
                         required={true}
                         error={errors.store_name}
                     />
@@ -193,10 +194,10 @@ const AddStore = props => {
                         placeholder={'Enter store code'}
                         label={'Store Code*'}
                         name={'store_code'}
-                        // value={storeCode}
-                        // onChange={(e) => { handleStoreCodeChange(e) }}
-                        value={inputs.store_code}
-                        onChange={handleChange}
+                        value={storeCode}
+                        onChange={(e) => { handleStoreCodeChange(e) }}
+                        // value={inputs.store_code}
+                        // onChange={handleChange}
                         required={true}
                         error={errors.store_code}
                     />
@@ -207,10 +208,8 @@ const AddStore = props => {
                         placeholder={'Enter store description'}
                         label={'Store Description*'}
                         name={'store_description'}
-                        value={inputs.store_description}
-                        // onChange={(e)=>{ handleStoreDescriptionChange(e)}}
-                        // value={inputs.store_description}
-                        onChange={handleChange}
+                        value={storeDesc}
+                        onChange={(e)=>{ handleStoreDescriptionChange(e)}}
                         required={true}
                         error={errors.store_description}
                     />
@@ -221,10 +220,10 @@ const AddStore = props => {
                         placeholder={'Enter store manager'}
                         label={'Store Manager*'}
                         name={'store_manager'}
-                        // value={storeManager}
-                        // onChange={(e)=>{ handleStoreManagerChange(e)}}
-                        value={inputs.store_manager}
-                        onChange={handleChange}
+                        value={storeManager}
+                        onChange={(e)=>{ handleStoreManagerChange(e)}}
+                        // value={inputs.store_manager}
+                        // onChange={handleChange}
                         required={true}
                         error={errors.store_manager}
                     />

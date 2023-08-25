@@ -3,14 +3,17 @@ import CategoriesList from '../../../../../components/InventoryTable/CategoriesL
 import Modal from '../../../../../components/Modal/Modal';
 
 const CategoriesListTable= props => {
-    const {show,handleClose} = props;
+    const { show, handleClose,storeid,  setstoreid } = props;
+    console.log({ setstoreid });
     return (
         <Modal
             show={show}
             handleClose={handleClose}
             modalHeading={'Category List (08)'}
+            onload={handleClose}
+            
         >
-            <CategoriesList/>
+            <CategoriesList setstoreid={setstoreid} storeid={storeid}/>
         </Modal>
     );
 };
