@@ -17,7 +17,7 @@ const StudentListTable = props => {
         console.log(stopId);
         axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStudents/'+stopId+'/8/1/25').then((response) => {
             setCount(parseInt(response.data.data.totalRecords));
-            console.log(response.data);
+            // console.log(response.data);
         }).catch((errorCatch) => {
             console.log(errorCatch);
         });

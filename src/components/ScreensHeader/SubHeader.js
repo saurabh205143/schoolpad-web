@@ -13,7 +13,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import calendarIcon from '../../images/date-icon.svg';
 import CustomDateInput from '../DateInputField/DateInputField';
-
+import axios from 'axios';
+import config from '../../config';
 export const DropContianer = styled.div`
     position:absolute;
     right:10px;
@@ -70,7 +71,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2}) => {
+const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1,searchText,setSearchText, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -86,6 +87,22 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
     
     const dateLabel = 'Date';
     const datePlaceholder = 'MM/dd/yyyy';
+    const [getStopResponse, setStopResponse] = useState([]);
+    const handleSearchKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            // console.log('Search API called with:', searchText);
+    /**
+     * 
+     * Calling APi get Post
+     */
+        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getSearchStop/' + searchText).then((response) => {
+            setStopResponse(response.data)
+            console.log(getStopResponse);
+        }).catch((errorCatch) => {
+            console.log(errorCatch);
+        });     
+        }
+    }
     
     // Function to handle date selection
     const handleDateSelect = (date) => {
@@ -140,6 +157,8 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             leftIcon={SearchIcon}
                             placeholder={searchPlaceholder}
                             name='search'
+                            onChange={(event) => { setSearchText(event.target.value); }}
+                            onKeyDown={handleSearchKeyDown}
                         />
                     </ButtonContainer>  
                 
@@ -369,6 +388,8 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                                 leftIcon={SearchIcon}
                                 placeholder={searchPlaceholder}
                                 name='search'
+                                onChange={(event) => { setSearchText(event.target.value); }}
+                                onKeyDown={handleSearchKeyDown}
                             />
                         </ButtonContainer>    
                     }

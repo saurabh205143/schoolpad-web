@@ -18,7 +18,7 @@ const StudentList = ({onClick,heading,id}) => {
         console.log(stopId);
         axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStudents/'+stopId+'/8/1/25').then((response) => {
             setAllStudentResponse(response.data);
-            console.log(response.data);
+            // console.log(response.data);
         }).catch((errorCatch) => {
             console.log(errorCatch);
         });

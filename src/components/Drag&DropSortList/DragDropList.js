@@ -21,7 +21,7 @@ const DragDropList = ({orderHeading}) => {
 useEffect(() => {
         axios.get(config.baseUrl + 'api-transport/transportStopApiManager/showStopOrder').then((response) => {
             setRespone(response.data);
-            console.log(response.data);
+            // console.log(response.data);
             setVisibleStops(response.data.slice(0, loadedCount));
         }).catch((errorCatch) => {
             console.log(errorCatch);
@@ -44,6 +44,7 @@ useEffect(() => {
         if (desI) {
         list.splice(desI, 0, list.splice(srcI, 1)[0]);
         // List.saveList(list);
+          localStorage.setItem("theList", JSON.stringify(list));
         }
       }}>
         <ListContainer>
@@ -60,7 +61,7 @@ useEffect(() => {
                       if (el.scrollTop + el.clientHeight >= el.scrollHeight - 100 && loadedCount < response.length) {
                         setLoadedCount(prevLoadedCount => prevLoadedCount + 20);
                       }
-                    }); }} style={{ overflowY: 'auto', maxHeight: '400px' }} {...provided.droppableProps}>
+                    }); }} style={{ overflowY: 'auto', maxHeight: '300px' }} {...provided.droppableProps}>
                 {visibleStops.map((item, i) => (
                   <Draggable 
                   key={item.id} 
