@@ -7,7 +7,7 @@ import NavigationItems from './components/NavigationItems';
 import InactiveIcon from '../../images/inactive-icon.svg';
 import ActiveIcon from '../../images/activeIcon.svg';
 import TransportIcon from '../../images/transport-icon.svg';
-
+import InventoryIcon from '../../images/inventory-icon.svg';
 
 const getActiveModule = (url) => {
     let parts = url.split('/');
@@ -241,6 +241,16 @@ const Navigation = ({type}) => {
 
     else if(type === 'inventory'){
         return (
+            <ModuleBoxes>
+            <ModuleBoxCol>
+                <ModuleBoxLeft>
+                    <img src={InventoryIcon} />
+                </ModuleBoxLeft>
+                <ModuleBoxRight>
+                    <h4>Inventory</h4>
+                    <span>Inventory Options</span>
+                </ModuleBoxRight>
+            </ModuleBoxCol>
             <NavBar>
                 <NavBarItem
                     onClick={() => setShowDrop(showDrop === 3 ? null : 3)}
@@ -401,6 +411,7 @@ const Navigation = ({type}) => {
                     )}
                 </NavBarItem>
             </NavBar>
+            </ModuleBoxes>
         )}
 }
 
