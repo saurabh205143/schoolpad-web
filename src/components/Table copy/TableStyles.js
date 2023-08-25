@@ -79,6 +79,9 @@ export const ActionListStatus = styled.td`
         color: #216E4E;
         font-weight: 700;
         font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 `;
 
@@ -91,6 +94,9 @@ export const ActionListStatusItems = styled.td`
         color: #00B8D9;
         font-weight: 700;
         font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 `;
 
@@ -115,6 +121,8 @@ export const ActionListStatusPending = styled.td`
         color: #AE2A19;
         font-weight: 700;
         font-size: 12px;
+        display: flex;
+        align
     }
 `;
 

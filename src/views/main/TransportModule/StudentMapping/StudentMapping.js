@@ -77,7 +77,10 @@ const StudentMapping = () => {
           </FixedBottomContainer>
         </div>
         :
-        <DefaultMappingScreen /> 
+        <DefaultMappingScreen
+        xtrasubHeading='Select the type of Mapping'
+        description='Select a mapping type to filter out students and map them with their bus routes and stops and allocate bus fees accordingly.'
+        /> 
 }
     </Layout>
   )

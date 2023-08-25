@@ -93,14 +93,14 @@ export const RecordBox = styled.div`
     > div{
         > div{
             > .select-drop{
-                width:280px;
+                width:250px;
                 height:36px;
                 min-height:32px;
             }
         }
     }
     >.simple-input{
-        width:280px;
+        width:250px;
         height:36px;
     }
  }

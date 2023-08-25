@@ -1,6 +1,6 @@
-import React, {useMemo, useState} from 'react';
+import React, {useState} from 'react';
 import { ActionsConatiner, TableActionHeading, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata, Tabledatatext } from '../../Table/TableStyles';
-import TableStylesStatus, { ActionListStatus, ActionListStatusSorry, ActionsList } from '../../Table copy/TableStyles';
+import TableStylesStatus, { ActionsList } from '../../Table copy/TableStyles';
 import LinkButton from '../../Buttons/LinkButton';
 
 // Assets

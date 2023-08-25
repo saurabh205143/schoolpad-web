@@ -60,7 +60,7 @@ export const InputContainer = styled.div`
   }
 
   &.disabled-input{
-    width:280px;
+    // width:280px;
     background:${({ theme }) => theme.disableInput};
     border: 1px solid ${({ theme }) => theme.disabledBorder};
     border-radius: 3px; 

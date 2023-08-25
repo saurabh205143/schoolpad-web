@@ -25,6 +25,12 @@ import PurchaseOrders from './views/main/InventoryModule/PurchaseOrders/Purchase
 import AddPurchaseOrder from './views/main/InventoryModule/PurchaseOrders/components/AddPurchaseOrder';
 import ReceiveItems from './views/main/InventoryModule/ReceiveItems/ReceiveItems';
 import ApproveRejects from './views/main/InventoryModule/ReceiveItems/components/ApproveRejects/ApproveRejects';
+import IssueItemHome from './views/main/InventoryModule/Issue Items/components/IssueItemHome';
+import IssueItemSelectFilter from './views/main/InventoryModule/Issue Items/components/IssueItemSelectFilter';
+import ReturnStaffHome from './views/main/InventoryModule/Return Items/components/Return Staff/ReturnStaffHome';
+import ReturnItemSelectFilter from './views/main/InventoryModule/Return Items/components/Return Staff/ReturnItemSelectFilter';
+import ReturnItemSelectFilterStudent from './views/main/InventoryModule/Return Items/components/Return Student/ReturnItemSelectFilterStudent';
+import IssueItemSelectFilterStudent from './views/main/InventoryModule/Issue Items/Issue Item Student/IssueItemSelectFilterStudent';
 
 
 export const ThemeContext = React.createContext(null);
@@ -67,6 +73,12 @@ function App() {
             <Route path='/inventory/purchaseAdd' element={<AddPurchaseOrder/>}/>
             <Route path='/manageReceive' element={<ReceiveItems/>}/>
             <Route path='/manageReceive/approve-reject' element={<ApproveRejects/>}/>
+            <Route path='/manageIssue' element={<IssueItemHome/>}/>
+            <Route path='/manageIssue/staff-select-filter' element={<IssueItemSelectFilter/>}/>
+            <Route path='/manageIssue/student-select-filter' element={<IssueItemSelectFilterStudent/>}/>
+            <Route path='/manageReturn' element={<ReturnStaffHome/>}/>
+            <Route path='/manageReturn/staff-select-filter' element={<ReturnItemSelectFilter/>}/>
+            <Route path='/manageReturn/student-select-filter' element={<ReturnItemSelectFilterStudent/>}/>
             <Route path='/toasters' element={<Toasters/>}/>
           </Routes>
         </>
