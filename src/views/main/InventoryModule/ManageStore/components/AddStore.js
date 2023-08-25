@@ -198,7 +198,7 @@ const AddStore = props => {
                         placeholder={'Enter store description'}
                         label={'Store Description*'}
                         name={'store_description'}
-                        value={storeDesc}
+                        value={inputs.store_description}
                         // onChange={(e)=>{ handleStoreDescriptionChange(e)}}
                         // value={inputs.store_description}
                         onChange={handleChange}
