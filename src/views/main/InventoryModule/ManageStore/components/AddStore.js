@@ -8,6 +8,8 @@ import config from '../../../../../config';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastModals from '../../../../../components/Toaster/ToastModals';
+import MultiSelectDropdown from '../../../../../components/Inputs/MultiSelectDropdown';
+
 const AddStore = props => {
 
     const { show, handleClose,saveAction } = props;
@@ -26,6 +28,12 @@ const AddStore = props => {
     console.log({ inputs });
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
+
+    const options = [
+        { label: "Grapes", value: "grapes" },
+        { label: "Mango", value: "mango" },
+        { label: "Strawberry", value: "strawberry", disabled: false },
+    ];
 
     // Validate Inputs
     const validate = () => {
@@ -91,11 +99,11 @@ const AddStore = props => {
     }
     
     const showToastMessage = () => {
-      hideModal();
-      toast(
+    hideModal();
+    toast(
         <ToastModals type='successful' message='Your have Added 1 stop successfully.' />
-      );
-  };
+    );
+    };
 //     const handleConfirmClicked = () => {
 //         axios.post(baseURL, {
 //             storeName: storeName,
@@ -151,7 +159,8 @@ const AddStore = props => {
             show={show}
             handleClose={handleClose}
             modalHeading={'Add New Store'}
-            submitText='Confirm'
+            submitText='Save and Close'
+            actionText={'Save and Continue'}
             cancelText='Cancel'
             // saveAction={handleConfirmClicked}
             saveAction={onSubmit}
@@ -227,8 +236,6 @@ const AddStore = props => {
                 />
                 </ModalBodyConatiner>
                 </>
-                
-                
             </form>
             </Modal>       
     );
