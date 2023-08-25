@@ -41,8 +41,14 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, 
   const hideModal = () => {
     setShowModal(false);
   }
-  const getDetailByStoreId = (storeid)=>
+  const getEditDetailByStoreId = (storedetail)=>
   {    
+    // console.log(storeid);
+    setRecord(storedetail);
+  }
+
+  const getDetailByStoreId = (storeid)=>
+  {
     setstoreid(storeid);
   }
   // Successfull edited
@@ -167,8 +173,8 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchState,storeid, 
                     <ActionsList>
                       <LinkButton
                         onlyIcon={EditIcon}
-                        tooltiptext='Edit'//{() => { func1(); func2();}}
-                        onClick={() => { setShowModal(!showModal); getDetailByStoreId(item);}}
+                        tooltiptext='Edit'
+                        onClick={() => { setShowModal(!showModal); getEditDetailByStoreId(item);}}
                         //onClick={() => setShowModal(!showModal,item.id)}
                       />
                     </ActionsList>

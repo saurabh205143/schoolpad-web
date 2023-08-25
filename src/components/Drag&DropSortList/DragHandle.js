@@ -1,4 +1,4 @@
-import { DragIconWrapper } from "../Drag&DropSortList/dragDropStyles";
+import { DragIconWrapper } from "./dragDropStyles";
 import { ReactComponent as DragHandleIcon } from "../../images/drag.svg";
 import React from "react";
 
