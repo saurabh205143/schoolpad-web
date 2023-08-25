@@ -7,7 +7,7 @@ import NavigationItems from './components/NavigationItems';
 import InactiveIcon from '../../images/inactive-icon.svg';
 import ActiveIcon from '../../images/activeIcon.svg';
 import TransportIcon from '../../images/transport-icon.svg';
-
+import InventoryIcon from '../../images/inventory-icon.svg';
 
 const getActiveModule = (url) => {
     let parts = url.split('/');
@@ -244,7 +244,7 @@ const Navigation = ({type}) => {
             <ModuleBoxes>
             <ModuleBoxCol>
                 <ModuleBoxLeft>
-                    <img src={TransportIcon} />
+                    <img src={InventoryIcon} />
                 </ModuleBoxLeft>
                 <ModuleBoxRight>
                     <h4>Inventory</h4>
