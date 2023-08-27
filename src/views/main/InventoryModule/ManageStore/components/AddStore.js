@@ -5,25 +5,18 @@ import { FieldContainer, ModalBodyConatiner } from '../../../TransportModule/Tra
 import CustomCheckbox from '../../../../../components/Checkbox/CustomCheckbox';
 import axios from 'axios';
 import config from '../../../../../config';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ToastModals from '../../../../../components/Toaster/ToastModals';
+
 const AddStore = props => {
 
     const { show, handleClose,saveAction } = props;
     const [isChecked, setIsChecked] = useState(true);
-    const [storeName, setstoreName] = useState('');
-    const [storeCode, setstoreCode] = useState('');
-    const [storeDesc, setstoreDesc] = useState('');
-    const [storeManager, setstoreManager] = useState('');
-    const [id, setId] = useState('');
     const [inputs, setInputs] = useState({
         store_name: '',
         store_code: '',
         store_description: '',
         store_manager: '',
     });
-    // console.log({ inputs });
+
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 
@@ -73,59 +66,7 @@ const AddStore = props => {
     const handleChangechecked = () => {
         setIsChecked(!isChecked);
     };
-    const handleStoreNameChange = (e) => {
-        setstoreName(e.target.value);
-    };
-    const handleStoreCodeChange = (e) => {
-        setstoreCode(e.target.value);
-    }
-    const handleStoreDescriptionChange = (e) => {
-        setstoreDesc(e.target.value);
-    }
-    const handleStoreManagerChange = (e) => {
-        setstoreManager(e.target.value);
-    }
 
-    const hideModal = () => {
-    setId(false);
-    }
-    
-    const showToastMessage = () => {
-    //   hideModal();
-      toast(
-        <ToastModals type='successful' message='Your have Added 1 stop successfully.' />
-      );
-  };
-  const baseURL = config.baseUrl +"api/v1/inventory/store";
-    const handleConfirmClicked = () => {
-        axios.post(baseURL, {
-            storeName: storeName,
-            storeCode:storeCode,
-            storeDesc:storeDesc,
-            storeManager:storeManager,
-            userId:214,
-            sessionId:8
-          })
-          .then(function (response) {
-            // console.log(response.status);
-            if(response.status===200)
-            {
-                showToastMessage();
-                alert(response.data.message);
-            }
-            else if(response.status === 201){
-                let errorMessage = response.data.details.error;
-                let messageList = errorMessage.split('-');
-                alert(messageList);
-            }
-            else{
-                alert(response.data.message);
-            }
-          })
-          .catch(function (error) {
-            console.log(error.message);
-          });
-  };
     // Inputs handle change
     const handleChange = (e) => {
         let i = { ...inputs };
@@ -135,15 +76,50 @@ const AddStore = props => {
 
     // OnSubmit Validate 
     const onSubmit = () => {
+        let e = {};
         if (!validate()) {
             return;
         }
+        // console.log({inputs});
         setLoading(true);
-        setTimeout(() => {
-            window.location.reload();
-        }, 2000);
-        setLoading(false);
-        saveAction();
+        const baseURL = config.baseUrl +"api/v1/inventory/store";
+        axios.post(baseURL, {
+            storeName: inputs.store_name,
+            storeCode:inputs.store_code,
+            storeDesc:inputs.store_description,
+            storeManager:inputs.store_name,
+            userId:214,
+            sessionId:8
+          })
+          .then(function (response) {
+            if(response.data.code == '002')
+            {
+                e['store_code'] = response.data.message;
+                setErrors(e);
+            }
+            else if(response.data.code == '001')
+            {
+                e['store_name'] = response.data.message;
+                setErrors(e);
+            }
+            else
+            {
+                // saveAction();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+                setLoading(false);
+                saveAction();
+            }
+            
+          })
+          .catch(function (error) {});
+        // setLoading(true);
+        // setTimeout(() => {
+        //     window.location.reload();
+        // }, 2000);
+        // setLoading(false);
+        // saveAction();
         
     }
 
@@ -154,27 +130,20 @@ const AddStore = props => {
             modalHeading={'Add New Store'}
             submitText='Confirm'
             cancelText='Cancel'
-            saveAction={handleConfirmClicked}
-            // saveAction={onSubmit}
+            saveAction={onSubmit}
             loading={loading}
         >
-        <form>            
+            <form>
                 <>
                 <ModalBodyConatiner>
                 <FieldContainer>
                     <Input
-                    type="text"
-                    label={'Store Name*'}
-                    placeholder={'Enter store name'}
-                    name='store_name'
-                    value={storeName}
-                    onChange={(e) => { handleStoreNameChange(e) }}
-                        // type="text"
-                        // label={'Store Name*'}
-                        // placeholder={'Enter store name'}
-                        // name='store_name'
-                        // value={inputs.store_name}
-                        // onChange={handleChange}
+                        type="text"
+                        label={'Store Name*'}
+                        placeholder={'Enter store name'}
+                        name='store_name'
+                        value={inputs.store_name}
+                        onChange={handleChange}
                         required={true}
                         error={errors.store_name}
                     />
@@ -185,10 +154,8 @@ const AddStore = props => {
                         placeholder={'Enter store code'}
                         label={'Store Code*'}
                         name={'store_code'}
-                        value={storeCode}
-                        onChange={(e) => { handleStoreCodeChange(e) }}
-                        // value={inputs.store_code}
-                        // onChange={handleChange}
+                        value={inputs.store_code}
+                        onChange={handleChange}
                         required={true}
                         error={errors.store_code}
                     />
@@ -199,8 +166,8 @@ const AddStore = props => {
                         placeholder={'Enter store description'}
                         label={'Store Description*'}
                         name={'store_description'}
-                        value={storeDesc}
-                        onChange={(e)=>{ handleStoreDescriptionChange(e)}}
+                        value={inputs.store_description}
+                        onChange={handleChange}
                         required={true}
                         error={errors.store_description}
                     />
@@ -211,10 +178,8 @@ const AddStore = props => {
                         placeholder={'Enter store manager'}
                         label={'Store Manager*'}
                         name={'store_manager'}
-                        value={storeManager}
-                        onChange={(e)=>{ handleStoreManagerChange(e)}}
-                        // value={inputs.store_manager}
-                        // onChange={handleChange}
+                        value={inputs.store_manager}
+                        onChange={handleChange}
                         required={true}
                         error={errors.store_manager}
                     />
@@ -226,10 +191,8 @@ const AddStore = props => {
                 />
                 </ModalBodyConatiner>
                 </>
-                
-                
             </form>
-            </Modal>       
+        </Modal>
     );
 };
 

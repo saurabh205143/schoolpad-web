@@ -46,18 +46,19 @@ const ManageStore = () => {
     setShowMoveItemModal(false);
   }
   
-  const searchData = (value) => {
-    setSearchinfo(value);
-    // console.log({offset});
+  const searchData = (offset,limit,value) => {
+    console.log({limit});
+    // offset = (offset != '' || offset == undefined) ? offset:0;
+    // limit = (limit!='')?limit:10;
+    // offset = offset * limit;
+    
     const fetchstoreURL = baseURL +"api/v1/inventory/store";
     axios.get(fetchstoreURL, {
       params:
-        { offset: 0, limit:100,search:value}
+        { offset: offset, limit:limit,search:value}
     }).then((resp) => {
-      // console.log(resp);
       setrecord(resp.data);
     });
-        // console.log(value);
   }
 
   const totalRecordCount = (value) => { 
@@ -72,7 +73,7 @@ const ManageStore = () => {
   }
   // console.log({totalRecord});
   useEffect(() => {
-    searchData(searchinfo);
+    searchData(0,10,searchinfo);
     totalRecordCount(searchinfo);
 
   }, [searchinfo]);
