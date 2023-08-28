@@ -184,11 +184,11 @@ const AddStore = props => {
                         error={errors.store_manager}
                     />
                 </FieldContainer>
-                <CustomCheckbox
+                {/* <CustomCheckbox
                     checkboxtext='Make this store primary'
                     isChecked={isChecked}
                     onChange={handleChangechecked}
-                />
+                /> */}
                 </ModalBodyConatiner>
                 </>
             </form>

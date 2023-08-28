@@ -72,7 +72,7 @@ const EditStore = props => {
             show={show}
             handleClose={handleClose}
             modalHeading={'Edit New Store'}
-            submitText='Confirm'
+            submitText='Update'
             cancelText='Cancel'
             saveAction={handleConfirmClickedEdit}
         >

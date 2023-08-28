@@ -3,6 +3,7 @@ import Layout from '../../../../../components/Layouts/Layout';
 import SubHeader from '../../../../../components/ScreensHeader/SubHeader';
 import ExportHeader from '../../../../../components/ScreensHeader/ExportHeader';
 import axios from 'axios';
+import * as XLSX from 'xlsx';
 import config from '../../../../../config';
 //Assets
 import PrintImage from '../../../../../images/print-icon.svg';
@@ -47,10 +48,10 @@ const ManageStore = () => {
   }
   
   const searchData = (offset,limit,value) => {
-    console.log({limit});
+    // console.log({limit});
     // offset = (offset != '' || offset == undefined) ? offset:0;
-    // limit = (limit!='')?limit:10;
-    // offset = offset * limit;
+    limit = (limit!='')?limit:10;
+    offset = offset * limit;
     
     const fetchstoreURL = baseURL +"api/v1/inventory/store";
     axios.get(fetchstoreURL, {
@@ -59,6 +60,43 @@ const ManageStore = () => {
     }).then((resp) => {
       setrecord(resp.data);
     });
+  }
+
+  const exportStore = () => {
+    // exportData();
+    searchData(0, '', searchinfo);
+    const getData = record.map(row => {
+      const rowData = {};
+      rowData['Store Name'] = row.storeName;
+      rowData['Store Manager'] = row.storeManager;
+      rowData['Store Code'] = row.storeCode;
+      rowData['Store Categories Count'] = (row.categorycount == 0)?'-':row.categorycount;
+      rowData['Store Code'] = row.storeCode;
+      rowData['Store Description'] = row.storeDesc;
+      return rowData;
+    });
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(getData);
+    const columnWidths = [
+    { wpx: 100 },
+    { wpx: 200 }, 
+    { wpx: 150 }, 
+    ];
+
+    ws['!cols'] = columnWidths;
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    const blob = new Blob([XLSX.write(wb, { bookType: 'xlsx', type: 'buffer' })], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+    const url = URL.createObjectURL(blob);
+    let currentDate = new Date().toJSON();
+    const excelFileName = 'store_list_export_' + currentDate;
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = excelFileName+'.xlsx';
+    link.click();
+
+    URL.revokeObjectURL(url);
   }
 
   const totalRecordCount = (value) => { 
@@ -73,7 +111,8 @@ const ManageStore = () => {
   }
   // console.log({totalRecord});
   useEffect(() => {
-    searchData(0,10,searchinfo);
+    searchData(0, 10, searchinfo);
+    // exportData(searchinfo);
     totalRecordCount(searchinfo);
 
   }, [searchinfo]);
@@ -98,6 +137,7 @@ const ManageStore = () => {
           smallHeding2={ "( " + totalRecord+" Records )"}
           PrintIcon={PrintImage}
           Excelicon={ExcelImage}
+          onClick={() => exportStore()}
       />
       
       <ManageStoreTable
