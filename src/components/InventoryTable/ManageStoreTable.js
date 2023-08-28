@@ -26,14 +26,8 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
-  // const [showButton, setShowButton] = useState(false);
-  // const [stores, storelist] = useState([]);
-  // const [sno, setSno] = useState(0);
-  // const [storeid,setStoreId] = useState('');
-  const[record,setRecord] = useState({});
-  // const [CategoryCount, setCategoryCount] = useState(0);
-  // const [catstoreid, setcatstoreid] = useState(0);
-  console.log({ searchinfo });
+  const [record, setRecord] = useState({});
+  const [offSet, setoffSet] = useState(0);
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -73,13 +67,18 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
   const deleteStoreAction = (storeid) => {
     setRecord(storeid);
   };
-  // useEffect(() => { 
-  //   // getCurrentPageRecord();
-  //   console.log({searchinfo});
-  // },[]);
+  useEffect(() => { 
+    getCurrentPage();
+    // console.log({searchinfo});
+  },[]);
   
-  const offSet = (currentPage - 1) * PageSize;
-  const getCurrentPageRecord =async(page) => {
+  
+  const getCurrentPage = (page) => {
+    
+    const counter = (page - 1) * PageSize;
+    console.log({ counter });
+    setoffSet(counter);
+  // console.log({ page });
     // console.log({offSet},{page});
     // const baseURL = config.baseUrl + "api/v1/inventory/store";
     //   axios.get(baseURL,{
@@ -99,6 +98,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
   }, [currentPage]);
   
   const column = Object.keys(data[0]);
+  
   const ThData = () => {
     return (
       <>
@@ -136,7 +136,9 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
           </TableRow>
         </TableHead>
         <TableBody>
-          {Array.isArray(searchinfo)?searchinfo.map((item,i) => {
+          {Array.isArray(searchinfo) ? searchinfo.map((item, i) => {
+            console.log(offSet);
+            // let cntr = offSet;
             return (
               <TableRow key={item.id}> {/* Added a unique key */}
                 <Tabledata>
@@ -193,7 +195,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
         // currentPage={currentPage}
         totalCount={totalRecord}
         pageSize={PageSize}
-        onPageChange={(page) => { searchData(page-1,PageSize); }}//getCurrentPageRecord(page);
+        onPageChange={(page) => { searchData(page - 1, PageSize); getCurrentPage(page); }}//getCurrentPageRecord(page);
       />
       {/* Toaster Container */}
       <ToastContainer

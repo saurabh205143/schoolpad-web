@@ -5,7 +5,7 @@ import Headings from '../Headings/Headings';
 // Assets
 import Button from '../Buttons/Button';
 
-const ExportHeader = ({ smallHeading, smallHeding2, Excelicon, PrintIcon, deleteStoreText, isChecked,onClick }) => {
+const ExportHeader = ({ smallHeading, smallHeding2, Excelicon, PrintIcon, deleteStoreText, isChecked,onClick,onPreview }) => {
     return (
         <ExportContainer>
             <ContainerLeft>
@@ -42,6 +42,7 @@ const ExportHeader = ({ smallHeading, smallHeding2, Excelicon, PrintIcon, delete
                             onlyIcon={PrintIcon}
                             className={'only-icon-button'}
                             tooltiptext='Print'
+                            onClick={onPreview}
                         />
                     </ButtonContainer>
                     </>

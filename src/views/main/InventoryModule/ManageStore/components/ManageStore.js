@@ -109,6 +109,14 @@ const ManageStore = () => {
     });
 
   }
+
+  // preview for print
+
+  const previewRecord = () => {
+    // console.log('preview');
+    // newPageUrl = '/storepreview';
+    window.open("/storepreview?params="+searchinfo, "_blank")
+  }
   // console.log({totalRecord});
   useEffect(() => {
     searchData(0, 10, searchinfo);
@@ -136,6 +144,7 @@ const ManageStore = () => {
           smallHeading='All Stores'
           smallHeding2={ "( " + totalRecord+" Records )"}
           PrintIcon={PrintImage}
+          onPreview={() => previewRecord()}
           Excelicon={ExcelImage}
           onClick={() => exportStore()}
       />

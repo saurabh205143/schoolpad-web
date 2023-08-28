@@ -31,7 +31,8 @@ import ReturnStaffHome from './views/main/InventoryModule/Return Items/component
 import ReturnItemSelectFilter from './views/main/InventoryModule/Return Items/components/Return Staff/ReturnItemSelectFilter';
 import ReturnItemSelectFilterStudent from './views/main/InventoryModule/Return Items/components/Return Student/ReturnItemSelectFilterStudent';
 import IssueItemSelectFilterStudent from './views/main/InventoryModule/Issue Items/Issue Item Student/IssueItemSelectFilterStudent';
-
+import PreviewManageStore from './components/InventoryTable/PreviewStoreTable';
+//src\components\InventoryTable\PreviewStoreTable.js
 export const ThemeContext = React.createContext(null);
 
 function App() {
@@ -78,7 +79,8 @@ function App() {
             <Route path='/manageReturn' element={<ReturnStaffHome/>}/>
             <Route path='/manageReturn/staff-select-filter' element={<ReturnItemSelectFilter/>}/>
             <Route path='/manageReturn/student-select-filter' element={<ReturnItemSelectFilterStudent/>}/>
-            <Route path='/toasters' element={<Toasters/>}/>
+            <Route path='/toasters' element={<Toasters />} />
+            <Route path='/storepreview' element={<PreviewManageStore/>}/>
           </Routes>
         </>
       </ThemeProvider>
