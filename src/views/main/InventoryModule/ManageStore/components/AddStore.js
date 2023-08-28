@@ -8,7 +8,6 @@ import config from '../../../../../config';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastModals from '../../../../../components/Toaster/ToastModals';
-import MultiSelectDropdown from '../../../../../components/Inputs/MultiSelectDropdown';
 
 const AddStore = props => {
 
@@ -30,6 +29,12 @@ const AddStore = props => {
     const [loading, setLoading] = useState(false);
 
     const options = [
+        { label: "Grapes", value: "grapes" },
+        { label: "Mango", value: "mango" },
+        { label: "Strawberry", value: "strawberry", disabled: false },
+    ];
+
+    const option1 = [
         { label: "Grapes", value: "grapes" },
         { label: "Mango", value: "mango" },
         { label: "Strawberry", value: "strawberry", disabled: false },
@@ -235,9 +240,10 @@ const AddStore = props => {
                         type="multi-select"
                         options={options}
                         label='Stop Manager'
-                        labelledBy='----Select stop manager----'
+                        placeholder='----Select stop manager----'
                     />
                 </FieldContainer>
+
                 <CustomCheckbox
                     checkboxtext='Make this store primary'
                     isChecked={isChecked}

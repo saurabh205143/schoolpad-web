@@ -133,6 +133,35 @@ export const MultiSelectContainer = styled.div`
         background: #ffffff;
         border: 1px solid rgba(9, 30, 66, 0.141176);
 
+        >.dropdown-heading .dropdown-heading-value {
+            >span{
+                font-size: 14px;
+                color:${({ theme }) => theme.inputPlaceholderColor};
+                font-weight: 400;
+            }
+        }
+
+        >.dropdown-heading {
+            padding: 0px;
+        }
+
+        >.dropdown-content .search {
+            font-size: 14px;
+            color:${({ theme }) => theme.inputPlaceholderColor};
+            font-weight: 400;
+        }
+
+        >.dropdown-content .options {
+            font-size: 14px;
+            color:${({ theme }) => theme.inputPlaceholderColor};
+            font-weight: 400;
+        }
+
+        .item-renderer {
+            display: flex;
+            align-items: center !important;
+        }
+
         &:hover {
             background: ${({ theme }) => theme.inputHoverColor};
         }
@@ -140,7 +169,7 @@ export const MultiSelectContainer = styled.div`
         &:placeholder{
             font-style: normal;
             font-weight: 400;
-            font-size: 14px;
+            font-size: 12px;
             color: #172B4D;
         }
 
@@ -170,6 +199,13 @@ const Input = (
     }) => {
 
     const [selected, setSelected] = useState([]);
+
+    const customStrings = {
+        selectSomeItems: "----Select stop manager----", // Change the placeholder text here
+        allItemsAreSelected: "All fruits are selected",
+        removeAllItems: "Remove all fruits",
+        search: "Search",
+      };
 
     if(type === 'select'){
         return(
@@ -203,10 +239,11 @@ const Input = (
                 <MultiSelectContainer>
                     <MultiSelect
                             options={options}
-                            labelledBy={labelledBy}
                             className='dropdown-container'
                             value={selected}
-                            onChange={setSelected}
+                            onChange={setSelected}  
+                            labelledBy="SelectZZZ"
+                            overrideStrings={customStrings}
                     />
                 </MultiSelectContainer>
             </Container>

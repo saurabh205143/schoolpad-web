@@ -23,7 +23,7 @@ const MultiSelectDropdown = ({options, label}) => {
         options={options}
         value={selected}
         onChange={setSelected}
-        labelledBy='Select'
+        labelledBy='----Select stop manager----'
         className='dropdown-container'
       />
 
