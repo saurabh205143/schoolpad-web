@@ -55,22 +55,14 @@ const ExportHeader = ({ smallHeading, smallHeding2, Excelicon, PrintIcon, delete
             {printComponent}
              <style>
           {`
-            body {
-              font-family: Arial, sans-serif;
-            }
-            table {
-              border-collapse: collapse;
-              width: 100%;
-              margin: 20px 0;
-            }
-            th, td {
-              border: 1px solid #dddddd;
-              text-align: left;
-              padding: 8px;
-            }
             th {
               background-color: #f2f2f2;
             }
+            .pageBreak {
+            display: block;
+            page-break-before: always;
+          }
+            table, tr, td {font - family: arial;}
           `}
         </style>
 
