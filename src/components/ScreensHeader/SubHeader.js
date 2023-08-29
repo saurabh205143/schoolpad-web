@@ -87,22 +87,6 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
     
     const dateLabel = 'Date';
     const datePlaceholder = 'MM/dd/yyyy';
-    const [getStopResponse, setStopResponse] = useState([]);
-    const handleSearchKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            // console.log('Search API called with:', searchText);
-    /**
-     * 
-     * Calling APi get Post
-     */
-        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getSearchStop/' + searchText).then((response) => {
-            setStopResponse(response.data)
-            console.log(getStopResponse);
-        }).catch((errorCatch) => {
-            console.log(errorCatch);
-        });     
-        }
-    }
     
     // Function to handle date selection
     const handleDateSelect = (date) => {
@@ -158,7 +142,6 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                             placeholder={searchPlaceholder}
                             name='search'
                             onChange={(event) => { setSearchText(event.target.value); }}
-                            onKeyDown={handleSearchKeyDown}
                         />
                     </ButtonContainer>  
                 
@@ -389,7 +372,6 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                                 placeholder={searchPlaceholder}
                                 name='search'
                                 onChange={(event) => { setSearchText(event.target.value); }}
-                                onKeyDown={handleSearchKeyDown}
                             />
                         </ButtonContainer>    
                     }
