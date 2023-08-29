@@ -137,7 +137,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
         </TableHead>
         <TableBody>
           {Array.isArray(searchinfo) ? searchinfo.map((item, i) => {
-            console.log(offSet);
+            // console.log(offSet);
             // let cntr = offSet;
             return (
               <TableRow key={item.id}> {/* Added a unique key */}
@@ -179,7 +179,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
                       <LinkButton
                         onlyIcon={DeleteIcon}
                         tooltiptext='Delete'
-                        onClick={() => {setShowDeleteModal(!showDeleteModal);deleteStoreAction(item.id)} }
+                        onClick={() => {setShowDeleteModal(!showDeleteModal);deleteStoreAction(item)} }
                         //onClick={() => setShowDeleteModal(!showDeleteModal)} 
                       />
                     </ActionsList>
