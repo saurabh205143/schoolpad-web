@@ -5,6 +5,9 @@ import { FieldContainer, ModalBodyConatiner } from '../../../TransportModule/Tra
 import CustomCheckbox from '../../../../../components/Checkbox/CustomCheckbox';
 import axios from 'axios';
 import config from '../../../../../config';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ToastModals from '../../../../../components/Toaster/ToastModals';
 
 const AddStore = props => {
 
@@ -19,6 +22,18 @@ const AddStore = props => {
 
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
+
+    const options = [
+        { label: "Grapes", value: "grapes" },
+        { label: "Mango", value: "mango" },
+        { label: "Strawberry", value: "strawberry", disabled: false },
+    ];
+
+    const option1 = [
+        { label: "Grapes", value: "grapes" },
+        { label: "Mango", value: "mango" },
+        { label: "Strawberry", value: "strawberry", disabled: false },
+    ];
 
     // Validate Inputs
     const validate = () => {
@@ -67,6 +82,48 @@ const AddStore = props => {
         setIsChecked(!isChecked);
     };
 
+    const hideModal = () => {
+    setId(false);
+    }
+    
+    const showToastMessage = () => {
+    //   hideModal();
+      toast(
+        <ToastModals type='successful' message='Your have Added 1 stop successfully.' />
+      );
+  };
+  const baseURL = config.baseUrl +"api/v1/inventory/store";
+    const handleConfirmClicked = () => {
+        axios.post(baseURL, {
+            storeName: storeName,
+            storeCode:storeCode,
+            storeDesc:storeDesc,
+            storeManager:storeManager,
+            userId:214,
+            sessionId:8
+          })
+          .then(function (response) {
+            // console.log(response.status);
+            if(response.status===200)
+            {
+                showToastMessage();
+                alert(response.data.message);
+            }
+            else if(response.status === 201){
+                let errorMessage = response.data.details.error;
+                console.log(errorMessage);
+                let messageList = errorMessage.split('-');
+                console.log(messageList);
+                alert(messageList);
+            }
+            else{
+                alert(response.data.message);
+            }
+          })
+          .catch(function (error) {
+            console.log(error.message);
+          });
+  };
     // Inputs handle change
     const handleChange = (e) => {
         let i = { ...inputs };
@@ -128,7 +185,8 @@ const AddStore = props => {
             show={show}
             handleClose={handleClose}
             modalHeading={'Add New Store'}
-            submitText='Confirm'
+            submitText='Save and Close'
+            actionText={'Save and Continue'}
             cancelText='Cancel'
             saveAction={onSubmit}
             loading={loading}

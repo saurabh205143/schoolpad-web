@@ -3,7 +3,7 @@
  * Function Define Base-Url
  */
 const config = {
-  baseUrl:"http://localhost/Schoolpad/"
+  baseUrl:"http://localhost/SchoolPadCombined/"
 };
 
 export default config;
