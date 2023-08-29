@@ -25,20 +25,8 @@ const AddStore = props => {
     const [loading, setLoading] = useState(false);
     const [selectedValue, setSelectedValue] = useState([]);
     const options = vendorList;
-    // console.log({ vendorList });
-    // const options = [
-        
-    //     { label: "Grapes", value: "grapes" },
-    //     { label: "Mango", value: "mango" },
-    //     { label: "Strawberry", value: "strawberry", disabled: false },
-    // ];
-
-    // const option1 = [
-    //     { label: "Grapes", value: "grapes" },
-    //     { label: "Mango", value: "mango" },
-    //     { label: "Strawberry", value: "strawberry", disabled: false },
-    // ];
-
+    
+    console.log(props);
     // Validate Inputs
     const validate = () => {
         let fields = [
@@ -215,7 +203,6 @@ const AddStore = props => {
                         type="multi-select"
                         options={options}
                         label='Stop Manager'
-                        onChange={handleChangeManager}
                         placeholder='----Select store manager----'
                     />
                 </FieldContainer>

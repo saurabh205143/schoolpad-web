@@ -112,28 +112,11 @@ const ManageStore = () => {
   }
 
    const storemanagerList = () => {
-        const fetchvendorURL = baseURL +"api/v1/inventory/vendor";
-        axios.get(fetchvendorURL
-        // , {
-        //     params:
-        //         { offset: offset, limit:limit,search:value}
-        // }
-        )
+        const fetchvendorURL = baseURL +"api/v1/inventory/vendorlist";
+        axios.get(fetchvendorURL)
         .then((resp) => {
           var dta = resp.data;
-          // setvendorList(resp.data);
-          const desiredNumberOfObjects = dta.length;
-        let markers = [];
-
-          for (let i = 0; i < desiredNumberOfObjects; i++) {
-            // markers['value'] = dta[i].id;
-            markers.push({
-                label: dta[i].vendorName,
-                value: dta[i].id,
-            });
-          }
-          console.log({ markers });
-        // setrecord(resp.data);
+          setvendorList(resp.data);
         });
         
     };
@@ -141,8 +124,6 @@ const ManageStore = () => {
   // preview for print
 
   const previewRecord = () => {
-    // console.log('preview');
-    // newPageUrl = '/storepreview';
     window.open("/storepreview?params="+searchinfo, "_blank")
   }
   // console.log({totalRecord});
