@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
+import SelectInput from '../../../../../components/Inputs/Select';
 
 const options = [
     {
@@ -69,13 +70,11 @@ const AddRoutes = props => {
             <form onSubmit={handleSubmit}>
                 <ModalBodyConatiner>
                 <FieldContainer>
-                    <Input
-                        type='select'
+                    <SelectInput
+                        label='Staff Memmbers'
+                        placeholder='---- Select staff member ----'
                         options={options}
-                        label={'Staff Memmbers'}
-                        placeholder={'---- Select staff member ----'}
-                        name='staff_member'
-                    />
+                     />
                 </FieldContainer>
                 <FieldContainer>
                     <Input
