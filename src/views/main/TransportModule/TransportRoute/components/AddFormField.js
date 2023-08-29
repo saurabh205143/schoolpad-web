@@ -76,7 +76,7 @@ const AddFormField = props => {
                                             label='Field Type'
                                             placeholder='---- Select field type ----'
                                         />
-                                    </FieldContainer>
+                                    </FieldContainer> 
                                     <FieldContainer>
                                         <Input
                                             type="text"

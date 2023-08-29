@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from '../../../../../components/Modal/Modal';
-import DragDropList from '../../../../../components/Drag&DropSortList/DragDropList';
+import DragDropListForRoute from '../../../../../components/Drag&DropSortList/DragDropListForRoute';
 
 const RouteOrders = props => {
     const {show,handleClose,orderHeading} = props;
@@ -13,7 +13,8 @@ const RouteOrders = props => {
             submitText='Save'
             cancelText='Cancel'
         >
-        <DragDropList orderHeading={orderHeading}/>
+            <DragDropListForRoute orderHeading={orderHeading} />
+        
         </Modal>
     );
 };
