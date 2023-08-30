@@ -11,15 +11,15 @@ import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute
 import Pagination from '../../Pagination/Pagination';
 import CustomCheckbox from '../../Checkbox/CustomCheckbox';
 
-let PageSize = 14;
+let PageSize = 10;
 
-const ManageCategoriesTable = ({ onClick,record,totalRecord }) => {
+const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
   const [Count, setCount] = useState(0);
-  console.log({ totalRecord });
+  console.log({ categoryList });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -39,6 +39,11 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord }) => {
   }, [currentPage]);
 
   // get table column
+  // setCurrentPage = () => {
+  //   const cPage = (page == undefined) ? 1 : page;
+  //   const counter = (cPage - 1) * PageSize;
+  //   setCount(counter);
+  // }
   
   const column = Object.keys(data[0]);
   const ThData = () => {
@@ -113,7 +118,7 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord }) => {
         currentPage={currentPage}
         totalCount={totalRecord}
         pageSize={PageSize}
-        onPageChange={page => setCurrentPage(page)}
+        onPageChange={(page) => {categoryList(page - 1, PageSize); setCurrentPage(page) }}
       />
 
       {/* Edit Categories Modal */}

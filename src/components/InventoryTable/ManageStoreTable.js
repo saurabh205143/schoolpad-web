@@ -78,19 +78,8 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
     
     const cPage = (page == undefined) ? 1 : page;
     const counter = (cPage - 1) * PageSize;
-    // let cntr = isNaN(offSet)?0:offSet;
-    // console.log({ counter });
     setCount(counter);
-  // console.log({ page });
-    // console.log({offSet},{page});
-    // const baseURL = config.baseUrl + "api/v1/inventory/store";
-    //   axios.get(baseURL,{
-    //     params:
-    //       { offset: 0, limit:10,search:''}
-    //   }).then((resp) => {
-    //     console.log({resp});
-    //     storelist(resp.data);
-    //   });
+
   }
   
   

@@ -201,10 +201,6 @@ const Input = (
     }) => {
 
     const [selected, setSelected] = useState([]);
-   
-
-
-    console.log({selval});
     const customStrings = {
         selectSomeItems: "----Select stop manager----", // Change the placeholder text here
         allItemsAreSelected: "All fruits are selected",
