@@ -13,12 +13,13 @@ import CustomCheckbox from '../../Checkbox/CustomCheckbox';
 
 let PageSize = 14;
 
-const ManageCategoriesTable = ({ onClick }) => {
+const ManageCategoriesTable = ({ onClick,record,totalRecord }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
-
+  const [Count, setCount] = useState(0);
+  console.log({ totalRecord });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -34,7 +35,7 @@ const ManageCategoriesTable = ({ onClick }) => {
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return data.slice(firstPageIndex, lastPageIndex);
+    return Array.isArray(record)?record.slice(firstPageIndex, lastPageIndex):0;
   }, [currentPage]);
 
   // get table column
@@ -43,14 +44,14 @@ const ManageCategoriesTable = ({ onClick }) => {
   const ThData = () => {
     return (
       <>
-        <TableHeading>
+        {/* <TableHeading>
           <CustomCheckbox
             isChecked={isChecked}
             onChange={handleChange}
           />
-        </TableHeading>
-        {column.map((data) => (
-          <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
+        </TableHeading> */}
+        {column.map((record) => (
+          <TableHeading key={record}>{record.split(/(?=[A-Z])/).join(" ")}</TableHeading>
         ))}
       </>
     );
@@ -70,19 +71,20 @@ const ManageCategoriesTable = ({ onClick }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {currentTableData.map(item => {
+          {Array.isArray(record) ? record.map((item, i) => {
+            const rowNumber = i + Count + 1;
             return (
               <TableRow>
-                <Tabledata>
+                {/* <Tabledata>
                   <CustomCheckbox
                     isChecked={isChecked}
                     onChange={handleChange}
                   />
-                </Tabledata>
-                <Tabledata>{item.SNo}</Tabledata>
-                <Tabledata>{item.CategoryName}</Tabledata>
-                <Tabledata>{item.CategoryCode}</Tabledata>
-                <Tabledata>{item.StoreName}</Tabledata>
+                </Tabledata> */}
+                <Tabledata>{rowNumber}</Tabledata>
+                <Tabledata>{item.categoryName}</Tabledata>
+                <Tabledata>{item.categoryCode}</Tabledata>
+                <Tabledata>{item.storeName}</Tabledata>
                 <Tabledata>
                   <ActionsConatiner>
                     <ActionsList>
@@ -103,13 +105,13 @@ const ManageCategoriesTable = ({ onClick }) => {
                 </Tabledata>
               </TableRow>
             );
-          })}
+          }):null}
         </TableBody>
       </TableContainer>
       <Pagination
         className="pagination-bar"
         currentPage={currentPage}
-        totalCount={data.length}
+        totalCount={totalRecord}
         pageSize={PageSize}
         onPageChange={page => setCurrentPage(page)}
       />
