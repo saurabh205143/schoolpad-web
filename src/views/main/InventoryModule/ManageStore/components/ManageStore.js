@@ -166,6 +166,7 @@ const ManageStore = () => {
           searchState={searchinfo}
           searchData={searchData}
           setstoreid={setstoreid}
+          vendorList={vendorList}
       />
 
       {/* Toaster Container */}

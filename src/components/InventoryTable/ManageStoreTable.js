@@ -21,13 +21,14 @@ import ToastModals from '../Toaster/ToastModals';
 
 let PageSize = 10;
 
-const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, setstoreid }) => {
+const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList, setstoreid }) => {
   const [currentPage, setCurrentPage] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [record, setRecord] = useState({});
   const [offSet, setoffSet] = useState(0);
+  const [Count, setCount] = useState(0);
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -72,12 +73,14 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
     // console.log({searchinfo});
   },[]);
   
-  
+  // let cntr = isNaN(offSet)?0:offSet;
   const getCurrentPage = (page) => {
     
-    const counter = (page - 1) * PageSize;
-    console.log({ counter });
-    setoffSet(counter);
+    const cPage = (page == undefined) ? 1 : page;
+    const counter = (cPage - 1) * PageSize;
+    // let cntr = isNaN(offSet)?0:offSet;
+    // console.log({ counter });
+    setCount(counter);
   // console.log({ page });
     // console.log({offSet},{page});
     // const baseURL = config.baseUrl + "api/v1/inventory/store";
@@ -136,9 +139,10 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
           </TableRow>
         </TableHead>
         <TableBody>
+          
           {Array.isArray(searchinfo) ? searchinfo.map((item, i) => {
-            // console.log(offSet);
-            // let cntr = offSet;
+           const rowNumber = i + Count + 1;
+            
             return (
               <TableRow key={item.id}> {/* Added a unique key */}
                 <Tabledata>
@@ -147,7 +151,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
                     onChange={handleChange}
                   /> */}
                 </Tabledata>
-                <Tabledata>{ ++i }</Tabledata>
+                <Tabledata>{ rowNumber }</Tabledata>
                 <Tabledata>{item.storeName}</Tabledata>
                 <Tabledata>{item.storeDesc}</Tabledata>
                 <Tabledata>{item.storeCode}</Tabledata>
@@ -171,7 +175,8 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
                       <LinkButton
                         onlyIcon={EditIcon}
                         tooltiptext='Edit'
-                        onClick={() => { setShowModal(!showModal); getEditDetailByStoreId(item);}}
+                        onClick={() => { setShowModal(!showModal); getEditDetailByStoreId(item); }}
+                        
                         //onClick={() => setShowModal(!showModal,item.id)}
                       />
                     </ActionsList>
@@ -214,6 +219,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,storeid, s
         show={showModal}
         handleClose={hideModal}
         record={record}
+        vendorList={vendorList}
         saveAction={showToastMessage}
       />
       {/* Delete Modal */}

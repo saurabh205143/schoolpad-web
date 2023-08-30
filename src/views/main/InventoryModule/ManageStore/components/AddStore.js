@@ -13,7 +13,7 @@ const AddStore = props => {
 
     const { show, handleClose,saveAction,vendorList } = props;
     const [isChecked, setIsChecked] = useState(true);
-    // const [vendorList, setvendorList] = useState(true);
+    const [StoreManager, setStoremanager] = useState([]);
     const [inputs, setInputs] = useState({
         store_name: '',
         store_code: '',
@@ -26,7 +26,7 @@ const AddStore = props => {
     const [selectedValue, setSelectedValue] = useState([]);
     const options = vendorList;
     
-    console.log(props);
+//  console.log('red', StoreManager);
     // Validate Inputs
     const validate = () => {
         let fields = [
@@ -81,52 +81,53 @@ const AddStore = props => {
         setInputs(i);
     };
 
-    //change on multiselect
-    const handleChangeManager = (e) =>
-    {
-        console.log('Store Manager');
-    }
-
+    
     // OnSubmit Validate 
     const onSubmit = () => {
         let e = {};
-        if (!validate()) {
-            return;
+        var nonIndexedObject = [];
+        for (var i = 0; i < StoreManager.length; i++) {
+            nonIndexedObject[i] = StoreManager[i].value;
         }
-        console.log({inputs});
+        var storeManagerList = nonIndexedObject.join(", ");
+        // if (!validate()) {
+        //     return;
+        // }
+        
+        // console.log({inputs});
         // setLoading(true);
-        // const baseURL = config.baseUrl +"api/v1/inventory/store";
-        // axios.post(baseURL, {
-        //     storeName: inputs.store_name,
-        //     storeCode:inputs.store_code,
-        //     storeDesc:inputs.store_description,
-        //     storeManager:inputs.store_name,
-        //     userId:214,
-        //     sessionId:8
-        //   })
-        //   .then(function (response) {
-        //     if(response.data.code == '002')
-        //     {
-        //         e['store_code'] = response.data.message;
-        //         setErrors(e);
-        //     }
-        //     else if(response.data.code == '001')
-        //     {
-        //         e['store_name'] = response.data.message;
-        //         setErrors(e);
-        //     }
-        //     else
-        //     {
-        //         // saveAction();
-        //         setTimeout(() => {
-        //             window.location.reload();
-        //         }, 2000);
-        //         setLoading(false);
-        //         saveAction();
-        //     }
+        const baseURL = config.baseUrl +"api/v1/inventory/store";
+        axios.post(baseURL, {
+            storeName: inputs.store_name,
+            storeCode:inputs.store_code,
+            storeDesc:inputs.store_description,
+            storeManager:storeManagerList,
+            userId:214,
+            sessionId:8
+          })
+          .then(function (response) {
+            if(response.data.code == '002')
+            {
+                e['store_code'] = response.data.message;
+                setErrors(e);
+            }
+            else if(response.data.code == '001')
+            {
+                e['store_name'] = response.data.message;
+                setErrors(e);
+            }
+            else
+            {
+                // saveAction();
+                // setTimeout(() => {
+                //     window.location.reload();
+                // }, 2000);
+                // setLoading(false);
+                saveAction();
+            }
             
-        //   })
-        //   .catch(function (error) {});
+          })
+          .catch(function (error) {});
         // setLoading(true);
         // setTimeout(() => {
         //     window.location.reload();
@@ -202,16 +203,18 @@ const AddStore = props => {
                     <Input
                         type="multi-select"
                         options={options}
-                        label='Stop Manager'
+                        name={'store_manager'}
+                        label='Store Manager'
+                        Storemanager = {setStoremanager}   
                         placeholder='----Select store manager----'
                     />
                 </FieldContainer>
 
-                <CustomCheckbox
+                {/* <CustomCheckbox
                     checkboxtext='Make this store primary'
                     isChecked={isChecked}
                     onChange={handleChangechecked}
-                /> 
+                />  */}
                 </ModalBodyConatiner>
                 </>
             </form>
