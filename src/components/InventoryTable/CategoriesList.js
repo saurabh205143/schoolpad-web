@@ -7,7 +7,7 @@ import config from '../../config';
 
 const CategoriesList = ({ onClick,storeid, setstoreid }) => {
     const [Categorylist, setCategoryList] = useState('');
-    console.log({ storeid });
+    // console.log({ storeid });
     if (storeid) {
         const baseURL = config.baseUrl;
                 const fetchCountstoreURL = baseURL +"api/v1/inventory/category";

@@ -48,7 +48,7 @@ const Modal = props => {
                             <Button
                                 buttonText={actionText}
                                 className={'primary'}
-                                onClick={saveAction}
+                                // onClick={saveAction}
                             />
                         }
                     </FooterButtonContainer>

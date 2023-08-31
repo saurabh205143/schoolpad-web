@@ -11,19 +11,8 @@ import Button from '../../../../../components/Buttons/Button';
 import SelectInput from '../../../../../components/Inputs/Select';
 
 const AddCategories = props => {
-
-    const options = [
-        {
-            value: 1,
-            label: "Primary Store"
-        },
-        {
-            value: 2,
-            label: "Secondary Store"
-        }
-    ];
-
-    const { show, handleClose } = props;
+    const { show, handleClose, Storelist } = props;
+    const options = Storelist;
     const [formValues, setFormValues] = useState(
         [
             {
@@ -68,6 +57,7 @@ const AddCategories = props => {
                 <FieldContainer>
                     <SelectInput
                         label='Select Store'
+                        options={options}
                         placeholder='---- Select store ----'
                     />
                 </FieldContainer>
