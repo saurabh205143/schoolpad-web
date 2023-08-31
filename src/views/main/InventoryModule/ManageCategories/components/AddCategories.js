@@ -13,9 +13,6 @@ import SelectInput from '../../../../../components/Inputs/Select';
 const AddCategories = props => {
     const { show, handleClose, Storelist } = props;
     const options = Storelist;
-
-    
-    console.log({ Storelist });
     const [formValues, setFormValues] = useState(
         [
             {

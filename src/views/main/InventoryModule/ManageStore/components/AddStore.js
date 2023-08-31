@@ -90,9 +90,9 @@ const AddStore = props => {
             nonIndexedObject[i] = StoreManager[i].value;
         }
         var storeManagerList = nonIndexedObject.join(", ");
-        // if (!validate()) {
-        //     return;
-        // }
+        if (!validate()) {
+            return;
+        }
         
         // console.log({inputs});
         // setLoading(true);
