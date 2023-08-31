@@ -12,6 +12,7 @@ import PickupDropTime from './components/PickupDropTime';
 import RouteOrders from './components/RouteOrders';
 import AddFormField from './components/AddFormField';
 import DeleteRouteModal from './components/DeleteRouteModal/DeleteRouteModal';
+import AddGpsLinkModal from './components/AddGpsLinkModal';
 
 const TransportRoute = ({orderHeading,}) => {
 
@@ -19,6 +20,7 @@ const TransportRoute = ({orderHeading,}) => {
   const [showpickedTime, setShowPickedTime] = useState(false);
   const [showRouteOrderModal, setShowRouteOrderModal] = useState(false);
   const [showFormFieldModal, setShowFormFieldModal ] = useState(false);
+  const [showdeleteModal, setShowDeleteModal] = useState(false);
 
   const hidePickedTimeModal = () => {
     setShowPickedTime(false);
@@ -42,6 +44,11 @@ const TransportRoute = ({orderHeading,}) => {
 
   const [id, setId] = useState(null);
   const [deleteId,setDeleteId] = useState(null);
+  const [showGpsLink, setShowGpsLink] = useState(null);
+
+  const hideGpsModal = () => {
+    setShowGpsLink(false);
+  }
 
   return (
     <Layout type='transport'>
@@ -67,8 +74,9 @@ const TransportRoute = ({orderHeading,}) => {
       />
       <TableNew
         onClick={() => setShowPickedTime(!showpickedTime)}
-        EditOnclick={(id) => {setId(id);}} 
-        DeleteOnClick={(deleteId) => { setDeleteId(deleteId); }} 
+        EditOnclick={(id) => {setId(!id);}} 
+        DeleteOnClick={(deleteId) => { setDeleteId(!deleteId); }} 
+        GpsLink ={(showGpsLink) => {setShowGpsLink(!showGpsLink)}}
       />
 
       {/* Add Route Modal */}
@@ -84,6 +92,13 @@ const TransportRoute = ({orderHeading,}) => {
         handleClose={hideDeleteModal}
         id={deleteId}
       />
+
+      {/* Add GPS Modal */}
+      <AddGpsLinkModal
+        show={showGpsLink}
+        handleClose={hideGpsModal}
+        id={showGpsLink}
+       />
       {/* Route Order Modal */}
       <RouteOrders
         show={showRouteOrderModal}

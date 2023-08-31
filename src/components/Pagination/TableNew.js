@@ -15,18 +15,8 @@ import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/co
 
 let PageSize = 14;
 
-const TableNew = ({ onClick,EditOnclick,DeleteOnClick }) => {
+const TableNew = ({ onClick,EditOnclick,DeleteOnClick,GpsLink }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [showModal, setShowModal] = useState(false);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-
-  const hideDeleteModal = () => {
-    setShowDeleteModal(false);
-  }
-
-  const hideModal = () => {
-    setShowModal(false);
-  }
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
@@ -52,14 +42,10 @@ const TableNew = ({ onClick,EditOnclick,DeleteOnClick }) => {
           <TableRow>
             {ThData()}
             <TableHeading>
-            <TableActionHeadings>
                   Set Time
-              </TableActionHeadings>
               </TableHeading>
             <TableHeading>
-              <TableActionHeadings>
                   Actions
-              </TableActionHeadings>
               </TableHeading>
           </TableRow>
         </TableHead>
@@ -89,14 +75,14 @@ const TableNew = ({ onClick,EditOnclick,DeleteOnClick }) => {
                       <LinkButton
                         onlyIcon={EditIcon}
                         tooltiptext='Edit'
-                        onClick={() => { EditOnclick(data['SNo'])}}
+                        onClick={() => {EditOnclick(data['SNo'])}}
                       />
                     </ActionsList>
                     <ActionsList>
                       <LinkButton
                         onlyIcon={DeleteIcon}
                         tooltiptext='Delete'
-                        onClick={() => { DeleteOnClick(data['SNo'])}}
+                        onClick={() => {DeleteOnClick(data['SNo'])}}
                       />
                     </ActionsList>
                     <ActionsList>
@@ -116,6 +102,7 @@ const TableNew = ({ onClick,EditOnclick,DeleteOnClick }) => {
                         <Button
                               buttonText='Add GPS Link'
                               className='link-button' 
+                              onClick={()=> {GpsLink(data['SNo'])}}
                       /></Dropdown.Item>
                       </DropdownButton>
                     </ActionsList>
