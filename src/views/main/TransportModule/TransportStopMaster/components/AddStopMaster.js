@@ -71,16 +71,10 @@ const AddStopMaster = props => {
                 instituteId: 1
             }).then((response) => {
                 setStopResponse(response.data);
-                // console.log(response.data);
-                if (response.data.hasOwnProperty('flag')) {
-                    if(response.data['errTxt'][0].startsWith('stopName-')){
-                        setStopNameError(response.data['errTxt'][0].split('-')[1]);
-                    }else  if(response.data['errTxt'][0].startsWith('stopAbbr-')){
-                        setStopAbbError(response.data['errTxt'][0].split('-')[1]);
-                    }
-                    if ((response.data['errTxt'][1].startsWith('stopAbbr-'))) {
-                        setStopAbbError(response.data['errTxt'][1].split('-')[1]);
-                    }
+                console.log(response.data);
+                if (response.data.hasOwnProperty('validation')) {
+                    setStopNameError(response.data['validation'].stopName);
+                    setStopAbbError(response.data['validation'].stopAbbr);
                 } else { 
                     setStopNameError('');
                     setStopAbbError('');
@@ -114,15 +108,9 @@ const AddStopMaster = props => {
                 userId: "000"
             }).then((response) => {
                 // console.log(response.data);
-                if (response.data.hasOwnProperty('flag')) {
-                    if(response.data['errTxt'][0].startsWith('stopName-')){
-                        setStopNameError(response.data['errTxt'][0].split('-')[1]);
-                    }else  if(response.data['errTxt'][0].startsWith('stopAbbr-')){
-                        setStopAbbError(response.data['errTxt'][0].split('-')[1]);
-                    }
-                    if ((response.data['errTxt'][1].startsWith('stopAbbr-'))) {
-                        setStopAbbError(response.data['errTxt'][1].split('-')[1]);
-                    }
+                if (response.data.hasOwnProperty('validation')) {
+                    setStopNameError(response.data['validation'].stopName);
+                    setStopAbbError(response.data['validation'].stopAbbr);
                 } else { 
                     setStopNameError('');
                     setStopAbbError('');
