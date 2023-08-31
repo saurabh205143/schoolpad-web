@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
+import { ErrorContainer } from './Input';
 
 export const SelectInputLabel = styled.div`
     >label {
@@ -15,8 +16,8 @@ const options = [
   { value: 'strawberry', label: 'Strawberry' },
 ];
 
-const SelectInput = ({label, placeholder}) => { 
-  const [selectedOption, setSelectedOption] = useState(null);
+const SelectInput = ({label, placeholder,onChange,name,error,value}) => { 
+  
 
   // Custom styles for the Select component
   const selectStyles = {
@@ -46,13 +47,18 @@ const SelectInput = ({label, placeholder}) => {
       <label>{label}</label>
       </SelectInputLabel>
       <Select
-        value={selectedOption}
-        onChange={setSelectedOption}
+        value={value}
+        onChange={onChange}
         options={options}
         styles={selectStyles} 
         placeholder={placeholder}
         className='select-input'
+        name={name}
+        error={error}
       />
+      {error &&
+      <ErrorContainer>{error}</ErrorContainer>
+      }
     </div>
   );
 };
