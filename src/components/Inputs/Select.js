@@ -11,12 +11,12 @@ export const SelectInputLabel = styled.div`
     }
 `;
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-];
+// const options = [
+//   { value: 'chocolate', label: 'Chocolate' },
+//   { value: 'strawberry', label: 'Strawberry' },
+// ];
 
-const SelectInput = ({label, placeholder,onChange,name,error,value}) => { 
+const SelectInput = ({label, placeholder,onChange,name,error,value,options}) => { 
   
 
   // Custom styles for the Select component

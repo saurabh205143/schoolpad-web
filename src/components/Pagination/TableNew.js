@@ -15,7 +15,7 @@ import DeleteRouteModal from '../../views/main/TransportModule/TransportRoute/co
 
 let PageSize = 14;
 
-const TableNew = ({ onClick }) => {
+const TableNew = ({ onClick,EditOnclick,DeleteOnClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -89,14 +89,14 @@ const TableNew = ({ onClick }) => {
                       <LinkButton
                         onlyIcon={EditIcon}
                         tooltiptext='Edit'
-                        onClick={() => setShowModal(!showModal)}
+                        onClick={() => { EditOnclick(data['SNo'])}}
                       />
                     </ActionsList>
                     <ActionsList>
                       <LinkButton
                         onlyIcon={DeleteIcon}
                         tooltiptext='Delete'
-                        onClick={() => setShowDeleteModal(!showModal)} 
+                        onClick={() => { DeleteOnClick(data['SNo'])}}
                       />
                     </ActionsList>
                     <ActionsList>
@@ -134,17 +134,7 @@ const TableNew = ({ onClick }) => {
         onPageChange={page => setCurrentPage(page)}
       />
 
-      {/* Edit Route Modal */}
-      <AddRoutes
-        show={showModal}
-        handleClose={hideModal}
-      />
-
-      {/* Delete Modal */}
-      <DeleteRouteModal
-        show={showDeleteModal}
-        handleClose={hideDeleteModal}
-      />
+     
     </>
   );
 }

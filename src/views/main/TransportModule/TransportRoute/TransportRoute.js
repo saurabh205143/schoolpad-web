@@ -11,8 +11,9 @@ import TableNew from '../../../../components/Pagination/TableNew';
 import PickupDropTime from './components/PickupDropTime';
 import RouteOrders from './components/RouteOrders';
 import AddFormField from './components/AddFormField';
+import DeleteRouteModal from './components/DeleteRouteModal/DeleteRouteModal';
 
-const TransportRoute = ({orderHeading}) => {
+const TransportRoute = ({orderHeading,}) => {
 
   const [showModal, setShowModal] = useState(false);
   const [showpickedTime, setShowPickedTime] = useState(false);
@@ -27,6 +28,10 @@ const TransportRoute = ({orderHeading}) => {
     setId(false);
   }
 
+  const hideDeleteModal = () => {
+    setDeleteId(false);
+  }
+
   const hideRouteOrderModal = () => {
     setShowRouteOrderModal(false);
   }
@@ -36,6 +41,7 @@ const TransportRoute = ({orderHeading}) => {
   }
 
   const [id, setId] = useState(null);
+  const [deleteId,setDeleteId] = useState(null);
 
   return (
     <Layout type='transport'>
@@ -61,6 +67,8 @@ const TransportRoute = ({orderHeading}) => {
       />
       <TableNew
         onClick={() => setShowPickedTime(!showpickedTime)}
+        EditOnclick={(id) => {setId(id);}} 
+        DeleteOnClick={(deleteId) => { setDeleteId(deleteId); }} 
       />
 
       {/* Add Route Modal */}
@@ -69,7 +77,13 @@ const TransportRoute = ({orderHeading}) => {
         handleClose={hideModal}
         id={id}
       />
-
+      
+      {/* Delete Modal */}
+      <DeleteRouteModal
+        show={deleteId}
+        handleClose={hideDeleteModal}
+        id={deleteId}
+      />
       {/* Route Order Modal */}
       <RouteOrders
         show={showRouteOrderModal}
@@ -88,6 +102,8 @@ const TransportRoute = ({orderHeading}) => {
         show={showpickedTime}
         handleClose={hidePickedTimeModal}
       />
+      
+     
     </Layout>
   )
 }

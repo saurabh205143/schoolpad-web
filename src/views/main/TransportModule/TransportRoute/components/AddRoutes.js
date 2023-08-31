@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer, FieldLeftContainer1, FieldRightContainer, FieldRightContainer1, ModalBodyConatiner, RemoveContianer } from './AddRouteStyles';
@@ -22,73 +22,23 @@ const options = [
 ];
 
 const AddRoutes = props => {
+    console.log(props.id);
 
     const { show, handleClose } = props;
     const [formValues, setFormValues] = useState(
-            [{
-                staff_members: "",
+        [
+            {
+                staff_member: "",
                 route_name: "",
                 stops: "",
                 set_order: "",
-                vehicle_number: "",              
-            }]
-    );
-    console.log(formValues);
-    const [errors, setErrors] = useState({});
-    const [loading, setLoading] = useState(false);
-
-    // Validate Inputs
-    const validate = () => {
-        let fields = [
-            {
-                label: 'Staff Memmbers',
-                key: 'staff_members',
-                required: true,
-            },
-            {
-                label: 'Route Name',
-                key: 'route_name',
-                required: true,
-            },
-            {
-                label: 'Stops',
-                key: 'stops',
-                required: true,
-            },
-            {
-                label: 'Set Order',
-                key: 'set_order',
-                required: true,
-            },
-            {
-                label: 'Vehicle Number',
-                key: 'vehicle_number',
-                required: true,
-            },
-        ];
-
-        let e = {};
-        fields.forEach((field) => {
-            if (
-                field.required &&
-                (formValues[field.key] === undefined ||
-                    formValues[field.key] === null ||
-                    formValues[field.key] === '')
-            ) {
-                e[field.key] = `Please enter ${field.label} `;
-                return;
+                vehicle_number: "",
+                vehicle_capacity: "",
+                bus_help: "",
             }
-        });
-        
-        setErrors(e);
-        return Object.keys(e).length === 0;
-    };
-// Inputs handle change
-const onhandleChange = (e) => {
-    let i = { ...formValues };
-    i[e.target.name] = e.target.value;
-    setFormValues(i);
-};
+        ]
+    )
+
     let handleChange = (i, e) => {
         let newFormValues = [...formValues];
         newFormValues[i][e.target.name] = e.target.value;
@@ -104,13 +54,9 @@ const onhandleChange = (e) => {
         newFormValues.splice(i, 1);
         setFormValues(newFormValues)
     }
-    
+
     let handleSubmit = (event) => {
         event.preventDefault();
-        if (!validate()) {
-            return;
-        }
-        setLoading(true);
         alert(JSON.stringify(formValues));
     }
 
@@ -121,8 +67,6 @@ const onhandleChange = (e) => {
             modalHeading={'Add New Route'}
             submitText='Confirm'
             cancelText='Cancel'
-            saveAction={handleSubmit}
-            loading={loading}
         >
             <form onSubmit={handleSubmit}>
                 <ModalBodyConatiner>
@@ -131,12 +75,6 @@ const onhandleChange = (e) => {
                         label='Staff Memmbers'
                         placeholder='---- Select staff member ----'
                         options={options}
-                        value={formValues.staff_members}
-                        name="staff_members"
-                        selectedKey={formValues.staff_members}
-                        onChange={({value}) => setFormValues(value)}
-                         error={errors.staff_members}
-                        required={true}
                      />
                 </FieldContainer>
                 <FieldContainer>
@@ -145,17 +83,12 @@ const onhandleChange = (e) => {
                         placeholder={'Route name'}
                         label={'Route Name'}
                         name={'route_name'}
-                        value={formValues.route_name}
-                        onChange={onhandleChange}
-                        error={errors.route_name}
-                        required={true}
-                        
                     />
                 </FieldContainer>
                 {formValues.map((element, index) => (
                     <FieldDivider>
                         <FieldLeftContainer1>
-                            <Input
+                            <SelectInput
                                 type='select'
                                 options={options}
                                 label={'Stops'}
@@ -189,12 +122,12 @@ const onhandleChange = (e) => {
                     </FieldDivider>
                 ))}
                 {/* Add More field button */}
-                {/* <AddMoreField>
+                <AddMoreField>
                     <Link onClick={() => addFormFields()}>
                         <img src={AddMoreIcon} alt="Icon" />
                         <span>Add Another Stop</span>
                     </Link>
-                </AddMoreField> */}
+                </AddMoreField>
                 <FieldDivider>
                     <FieldLeftContainer>
                         <Input
@@ -202,10 +135,6 @@ const onhandleChange = (e) => {
                             name={'vehicle_number'}
                             label={'Vehicle Number'}
                             placeholder={'Vehicle number'}
-                            value={formValues.vehicle_number}
-                        onChange={onhandleChange}
-                        error={errors.vehicle_number}
-                        required={true}
                         />
                     </FieldLeftContainer>
                     <FieldRightContainer>
