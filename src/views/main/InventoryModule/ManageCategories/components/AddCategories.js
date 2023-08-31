@@ -81,6 +81,7 @@ const AddCategories = props => {
                                 placeholder={'Enter category name'}
                                 name='stops'
                                 onChange={e => handleChange(index, e)}
+                                required={true}
                             />
                         </FieldLeftContainer1>
                         <FieldRightContainerItem>
@@ -90,6 +91,7 @@ const AddCategories = props => {
                                 label={'Category Code'}
                                 name={'set_order'}
                                 onChange={e => handleChange(index, e)}
+                                required={true}
                             />
                         </FieldRightContainerItem>
                         {
@@ -99,6 +101,7 @@ const AddCategories = props => {
                                         className={'only-icon-button'}
                                         onlyIcon={RemoveIcon}
                                         onClick={() => removeFormFields(index)}
+                                        required={true}
                                     />
                                 </RemoveContianer>
                                 : null

@@ -34,15 +34,19 @@ const ManageItems = () => {
           onClick={() =>  setShowModal(!showModal)}
           searchPlaceholder='Search by item name, purchase cost, etc...'
           formField={() => setShowFormFieldModal(!showFormFieldModal)}
-          inputLabel1='Select Store'
-          inputPlaceholder1='Select Store'
-          inputLabel2='Select Category'
-          inputPlaceholder2='Select Category'
-          inputLabel3='Item Name'
-          inputPlaceholder3='Enter item name'
+          inputLabel1='Item Name'
+          inputPlaceholder1='Enter item name'
+          defaultHeaderLabel2='Select Store'
+          defaultHeaderPlaceholder2='----Select Store----'
+          defaultHeaderLabel='Select Category'
+          defaultHeaderPlaceholder='----Select Category----'
           showGetRecordButton ={true}
           showPrimaryButton ={true}
           showSearchButtonRight={true}
+          showDefaultHeaderSelect={true}
+          showDefaultHeaderSelect2={true}
+          showDefaultHeaderSelect1={false}
+          showHeaderFilterReturn={true}
       />
       <ExportHeader
           smallHeading='All Items'

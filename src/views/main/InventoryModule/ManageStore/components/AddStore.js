@@ -34,11 +34,7 @@ const AddStore = props => {
         { label: "Strawberry", value: "strawberry", disabled: false },
     ];
 
-    const option1 = [
-        { label: "Grapes", value: "grapes" },
-        { label: "Mango", value: "mango" },
-        { label: "Strawberry", value: "strawberry", disabled: false },
-    ];
+    const selectSomeItemsText = "----Select stop manager----";
 
     // Validate Inputs
     const validate = () => {
@@ -240,7 +236,7 @@ const AddStore = props => {
                         type="multi-select"
                         options={options}
                         label='Stop Manager'
-                        placeholder='----Select stop manager----'
+                        selectSomeItemsText={selectSomeItemsText} 
                     />
                 </FieldContainer>
 

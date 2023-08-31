@@ -24,8 +24,12 @@ const AddItems = props => {
         }
     ];
 
+    const selectSomeItemsText = "----Select category----";
+
+    const width = "550px";
+
     const { show, handleClose } = props;
-    const [formValues, setFormValues] = useState(
+    const [formValuesEmail, setFormValuesEmail] = useState(
         [
             {
                 staff_member: "",
@@ -39,21 +43,39 @@ const AddItems = props => {
         ]
     )
 
-    let handleChange = (i, e) => {
-        let newFormValues = [...formValues];
-        newFormValues[i][e.target.name] = e.target.value;
-        setFormValues(newFormValues);
+    const [formValuesItem, setFormValuesItem] = useState(
+        [
+            {
+                staff_member: "",
+                route_name: "",
+                stops: "",
+                set_order: "",
+                vehicle_number: "",
+                vehicle_capacity: "",
+                bus_help: "",
+            }
+        ]
+    )
+
+    let handleChange = (index, field, e) => {
+        let newFormValues = [...formValuesEmail];
+        newFormValues[index][field] = e.target.value;
+        setFormValuesEmail(newFormValues);
+    };
+
+    let addEmailFields = () => {
+        setFormValuesEmail([...formValuesEmail, { stops: "", set_order: "" }])
     }
 
-    let addFormFields = () => {
-        setFormValues([...formValues, { stops: "", set_order: "" }])
+    let addItemFields = () => {
+        setFormValuesItem([...formValuesEmail, { stops: "", set_order: "" }])
     }
 
 
     let removeFormFields = (i) => {
-        let newFormValues = [...formValues];
+        let newFormValues = [...formValuesEmail];
         newFormValues.splice(i, 1);
-        setFormValues(newFormValues)
+        setFormValuesEmail(newFormValues)
     }
 
     return (
@@ -66,7 +88,6 @@ const AddItems = props => {
         >
             <form>
                 <>
-
                     <FieldContainerBottom>
                         <FieldContainerBox>
                             <FieldContainer>
@@ -74,9 +95,12 @@ const AddItems = props => {
                                     label='Select Store'
                                     placeholder='---- Select store ----'
                                 />
-                                <SelectInput
-                                    label='Select Categories'
-                                    placeholder='---- Select categories ----'
+                                <Input
+                                    width="550px"
+                                    type="multi-select"
+                                    options={options}
+                                    label='Select Category'
+                                    selectSomeItemsText={selectSomeItemsText} 
                                 />
                                 <Input
                                     type="text"
@@ -85,7 +109,7 @@ const AddItems = props => {
                                     placeholder={'Enter if item count falls below'}
                                     name='store_name'
                                 />
-                                {formValues.map((element, index) => (
+                                {formValuesEmail.map((element, index) => (
                                     <FieldDivider>
                                         <FieldLeftContainer1>
                                             <Input
@@ -94,7 +118,7 @@ const AddItems = props => {
                                                 options={options}
                                                 placeholder={'Enter email address'}
                                                 name='store_name'
-                                                onChange={e => handleChange(index, e)}
+                                                onChange={(e) => handleChange(index, 'email', e)}
                                             />
                                         </FieldLeftContainer1>
                                         {
@@ -113,7 +137,7 @@ const AddItems = props => {
                             </FieldContainer>
                             {/* Add More field button */}
                             <AddMoreField style={{ marginBottom: '14px' }}>
-                                <Link onClick={() => addFormFields()}>
+                                <Link onClick={() => addEmailFields()}>
                                     <img src={AddMoreIcon} alt="Icon" />
                                     <span>Add Another Email</span>
                                 </Link>
@@ -124,7 +148,7 @@ const AddItems = props => {
 
                 <>
                     <FieldDividerBottom>
-                        {formValues.map((element, index) => (
+                        {formValuesItem.map((element, index) => (
                             <>
                                 <FieldDividerHeading>
                                     <span>Add Item Details Below</span>
@@ -137,7 +161,7 @@ const AddItems = props => {
                                             label={'Name'}
                                             placeholder={'Enter name of the item'}
                                             name='stops'
-                                            onChange={e => handleChange(index, e)}
+                                            onChange={(e) => handleChange(index, 'name', e)}
                                         />
                                     </FieldLeftContainer1>
                                     <FieldRightContainerItem>
@@ -146,7 +170,7 @@ const AddItems = props => {
                                             placeholder={'Enter purchase cost'}
                                             label={'Purchase Cost'}
                                             name={'set_order'}
-                                            onChange={e => handleChange(index, e)}
+                                            onChange={(e) => handleChange(index, 'purchase_cost', e)}
                                         />
                                     </FieldRightContainerItem>
                                     {
@@ -163,7 +187,7 @@ const AddItems = props => {
                                 </FieldDivider>
                             </>
                         ))}
-                        {formValues.map((element, index) => (
+                        {formValuesItem.map((element, index) => (
                             <>
                                 <FieldDivider>
                                     <FieldLeftContainer1>
@@ -192,7 +216,7 @@ const AddItems = props => {
                                 </FieldDivider>
                                 {/* Add More field button */}
                                 <AddMoreField style={{ marginBottom: '14px' }}>
-                                    <Link onClick={() => addFormFields()}>
+                                    <Link onClick={() => addItemFields()}>
                                         <img src={AddMoreIcon} alt="Icon" />
                                         <span>Add Another Item</span>
                                     </Link>

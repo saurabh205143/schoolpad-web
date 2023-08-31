@@ -284,7 +284,7 @@ const Navigation = ({type}) => {
                 >
                     <NavigationItems
                         url='/manageItems'
-                        tabname="Add Items"
+                        tabname="Manage Items"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
                         containsDrop="false"

@@ -70,7 +70,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn}) => {
+const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1,showDefaultHeaderSelect2,defaultHeaderLabel2,defaultHeaderPlaceholder2}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -450,11 +450,23 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                             />
                         </RecordBox>
                         }
+                        {showDefaultHeaderSelect2 &&
+                        <RecordBox>
+                            <Input
+                                type='multi-select'
+                                label={defaultHeaderLabel2}
+                                placeholder={defaultHeaderPlaceholder2}
+                                options={options1}
+                                onChange={() => {
+                                }}
+                            />
+                        </RecordBox>
+                        }
                         {showDefaultHeaderSelect &&
                         <RecordBox>
                             <Input
                                 width='250px'
-                                type='select'
+                                type='multi-select'
                                 label={defaultHeaderLabel}
                                 placeholder={defaultHeaderPlaceholder}
                                 options={options1}
@@ -463,6 +475,7 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                             />
                         </RecordBox>
                         }
+                        {showDefaultHeaderSelect1 &&
                         <RecordBox>
                             <Input
                                 width='250px'
@@ -476,6 +489,7 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                                 }}
                             />
                         </RecordBox>
+                        }
                         {showReceiveHeaderFilter &&
                         <RecordBox>
                             <Input

@@ -113,16 +113,15 @@ export const ErrorContainer = styled.span`
 
 export const MultiSelectInputLabel = styled.div`
     >label {
-      font-weight: 600;
-      font-size: 12px;
-      color: #000000;
+        font-weight: 600;
+        font-size: 12px;
+        color: #000000;
     }
 `;
 
 export const MultiSelectContainer = styled.div`
     > div{
     >.dropdown-container {
-        width: 100%;
         height: 36px;
         display: flex;
         flex: 1 0;
@@ -145,10 +144,21 @@ export const MultiSelectContainer = styled.div`
             padding: 0px;
         }
 
+        >.dropdown-content{
+            right: -2px;
+        }
+
+        >.dropdown-content .panel-content {
+            border-radius: 3px;
+        }
+
         >.dropdown-content .search {
             font-size: 14px;
             color:${({ theme }) => theme.inputPlaceholderColor};
             font-weight: 400;
+            &:active {
+            background: none;
+            }
         }
 
         >.dropdown-content .options {
@@ -161,6 +171,7 @@ export const MultiSelectContainer = styled.div`
             display: flex;
             align-items: center !important;
         }
+        
 
         &:hover {
             background: ${({ theme }) => theme.inputHoverColor};
@@ -195,17 +206,20 @@ const Input = (
         options,
         width,
         disabled,
-        labelledBy,
+        selectSomeItemsText,
+        select,
     }) => {
 
     const [selected, setSelected] = useState([]);
+    // const containerStyle = { width: width || '100%' }; 
 
     const customStrings = {
-        selectSomeItems: "----Select stop manager----", // Change the placeholder text here
-        allItemsAreSelected: "All fruits are selected",
-        removeAllItems: "Remove all fruits",
+        selectSomeItems: selectSomeItemsText,
+        allItemsAreSelected: "All items are selected",
+        removeAllItems: "Remove all items",
         search: "Search",
-      };
+    };
+    
 
     if(type === 'select'){
         return(
@@ -236,14 +250,15 @@ const Input = (
                         {label}
                     </Title>
                 }
-                <MultiSelectContainer>
+                <MultiSelectContainer className="custom-multi-select-container">
                     <MultiSelect
                             options={options}
                             className='dropdown-container'
                             value={selected}
                             onChange={setSelected}  
-                            labelledBy="SelectZZZ"
+                            labelledBy="Select"
                             overrideStrings={customStrings}
+                            width={width}
                     />
                 </MultiSelectContainer>
             </Container>
