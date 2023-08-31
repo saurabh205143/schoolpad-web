@@ -13,6 +13,7 @@ import RouteOrders from './components/RouteOrders';
 import AddFormField from './components/AddFormField';
 import DeleteRouteModal from './components/DeleteRouteModal/DeleteRouteModal';
 import AddGpsLinkModal from './components/AddGpsLinkModal';
+import TransportSettingModal from './components/TransportSettingModal';
 
 const TransportRoute = ({orderHeading,}) => {
 
@@ -45,6 +46,11 @@ const TransportRoute = ({orderHeading,}) => {
   const [id, setId] = useState(null);
   const [deleteId,setDeleteId] = useState(null);
   const [showGpsLink, setShowGpsLink] = useState(null);
+  const [showSettingModal, setShowSettingModal] = useState(false);
+
+  const hideSettingModal = () => {
+    setShowSettingModal(false);
+  }
 
   const hideGpsModal = () => {
     setShowGpsLink(false);
@@ -65,6 +71,7 @@ const TransportRoute = ({orderHeading,}) => {
         buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
         onClick={() => setId(!id)} 
         formField={() => setShowFormFieldModal(!showFormFieldModal)}
+        formMaintenanceClick={() => setShowSettingModal(!showSettingModal)}
       />
       <ExportHeader
         smallHeading='All Routes'
@@ -99,6 +106,13 @@ const TransportRoute = ({orderHeading,}) => {
         handleClose={hideGpsModal}
         id={showGpsLink}
        />
+
+      {/* Transport Settings Modal */}
+      <TransportSettingModal
+        show={showSettingModal}
+        handleClose={hideSettingModal}
+      />
+
       {/* Route Order Modal */}
       <RouteOrders
         show={showRouteOrderModal}
