@@ -27,11 +27,13 @@ export const Container = styled.div`
       border-top: none !important;
       >.multiselect-drop-down{
         >.css-ik6y5r{
-          >.css-1pdhdl9{
+          >div{
             >.css-1qprcsu-option{
               background-color:transparent;
-              font-weight:300;
+              font-weight:400 !important;
               padding:4px 10px;
+              color:#172B4D;
+              font-size:14px;
             }
           }
         }
