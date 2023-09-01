@@ -8,6 +8,8 @@ import config from '../../../../../config';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastModals from '../../../../../components/Toaster/ToastModals';
+import MultiSelectDropDown from '../../../../../components/Inputs/MultiSelectDropDown';
+
 
 const AddStore = props => {
 
@@ -200,14 +202,8 @@ const AddStore = props => {
                     />
                 </FieldContainer> */}
                 <FieldContainer>
-                    <Input
-                        type="multi-select"
-                        options={options}
-                        name={'store_manager'}
-                        label='Store Manager'
-                        Storemanager = {setStoremanager}   
-                        placeholder='----Select store manager----'
-                        selectSomeItemsText={selectSomeItemsText}
+                    <MultiSelectDropDown
+                    label='Stop Manager'
                     />
                 </FieldContainer>
 

@@ -10,6 +10,7 @@ import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import SelectInput from '../../../../../components/Inputs/Select';
+import MultiSelectDropDown from '../../../../../components/Inputs/MultiSelectDropDown';
 
 const AddItems = props => {
 
@@ -95,12 +96,8 @@ const AddItems = props => {
                                     label='Select Store'
                                     placeholder='---- Select store ----'
                                 />
-                                <Input
-                                    width="550px"
-                                    type="multi-select"
-                                    options={options}
-                                    label='Select Category'
-                                    selectSomeItemsText={selectSomeItemsText} 
+                                <MultiSelectDropDown
+                                label='Select Category'
                                 />
                                 <Input
                                     type="text"

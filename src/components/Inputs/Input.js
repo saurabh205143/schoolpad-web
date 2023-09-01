@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Select from "react-dropdown-select";
-import { MultiSelect } from "react-multi-select-component";
 
 export const Container = styled.div`
   width:100%;
@@ -119,78 +118,78 @@ export const MultiSelectInputLabel = styled.div`
     }
 `;
 
-export const MultiSelectContainer = styled.div`
-    > div{
-    >.dropdown-container {
-        height: 36px;
-        display: flex;
-        flex: 1 0;
-        align-items: center;
-        min-width: 0;
-        padding: 0px 10px;
-        border-radius: 3px;
-        background: #ffffff;
-        border: 1px solid rgba(9, 30, 66, 0.141176);
+// export const MultiSelectContainer = styled.div`
+//     > div{
+//     >.dropdown-container {
+//         height: 36px;
+//         display: flex;
+//         flex: 1 0;
+//         align-items: center;
+//         min-width: 0;
+//         padding: 0px 10px;
+//         border-radius: 3px;
+//         background: #ffffff;
+//         border: 1px solid rgba(9, 30, 66, 0.141176);
 
-        >.dropdown-heading .dropdown-heading-value {
-            >span{
-                font-size: 14px;
-                color:${({ theme }) => theme.inputPlaceholderColor};
-                font-weight: 400;
-            }
-        }
+//         >.dropdown-heading .dropdown-heading-value {
+//             >span{
+//                 font-size: 14px;
+//                 color:${({ theme }) => theme.inputPlaceholderColor};
+//                 font-weight: 400;
+//             }
+//         }
 
-        >.dropdown-heading {
-            padding: 0px;
-        }
+//         >.dropdown-heading {
+//             padding: 0px;
+//         }
 
-        >.dropdown-content{
-            right: -2px;
-        }
+//         >.dropdown-content{
+//             right: -2px;
+//         }
 
-        >.dropdown-content .panel-content {
-            border-radius: 3px;
-        }
+//         >.dropdown-content .panel-content {
+//             border-radius: 3px;
+//         }
 
-        >.dropdown-content .search {
-            font-size: 14px;
-            color:${({ theme }) => theme.inputPlaceholderColor};
-            font-weight: 400;
-            &:active {
-            background: none;
-            }
-        }
+//         >.dropdown-content .search {
+//             font-size: 14px;
+//             color:${({ theme }) => theme.inputPlaceholderColor};
+//             font-weight: 400;
+//             &:active {
+//             background: none;
+//             }
+//         }
 
-        >.dropdown-content .options {
-            font-size: 14px;
-            color:${({ theme }) => theme.inputPlaceholderColor};
-            font-weight: 400;
-        }
+//         >.dropdown-content .options {
+//             font-size: 14px;
+//             color:${({ theme }) => theme.inputPlaceholderColor};
+//             font-weight: 400;
+//         }
 
-        .item-renderer {
-            display: flex;
-            align-items: center !important;
-        }
+//         .item-renderer {
+//             display: flex;
+//             align-items: center !important;
+//         }
         
 
-        &:hover {
-            background: ${({ theme }) => theme.inputHoverColor};
-        }
+//         &:hover {
+//             background: ${({ theme }) => theme.inputHoverColor};
+//         }
 
-        &:placeholder{
-            font-style: normal;
-            font-weight: 400;
-            font-size: 12px;
-            color: #172B4D;
-        }
+//         &:placeholder{
+//             font-style: normal;
+//             font-weight: 400;
+//             font-size: 12px;
+//             color: #172B4D;
+//         }
 
-        &:focus-within{
-            box-shadow:none;
-            border:1px solid ${({ theme }) => theme. buttonPrimary};
-            outline:1px;
-        }
-    }
-`;
+//         &:focus-within{
+//             box-shadow:none;
+//             border:1px solid ${({ theme }) => theme. buttonPrimary};
+//             outline:1px;
+//         }
+//     }
+// `;
 
 const Input = (
     {
@@ -241,29 +240,29 @@ const Input = (
         );
     } 
 
-    else if(type === 'multi-select'){
-        return(
-            <Container>
-                {label &&
-                    <Title>
-                        {label}
-                    </Title>
-                }
-                <MultiSelectContainer className="custom-multi-select-container">
-                    <MultiSelect
-                            options={options}
-                            className='dropdown-container'
-                            value={selected}
-                            onChange={(e) => { setSelected(e); Storemanager(e)}} 
-                            selval={selected} 
-                            labelledBy="Select"
-                            overrideStrings={customStrings}
-                            width={width}
-                    />
-                </MultiSelectContainer>
-            </Container>
-        );
-    } 
+    // else if(type === 'multi-select'){
+    //     return(
+    //         <Container>
+    //             {label &&
+    //                 <Title>
+    //                     {label}
+    //                 </Title>
+    //             }
+    //             <MultiSelectContainer className="custom-multi-select-container">
+    //                 <MultiSelect
+    //                         options={options}
+    //                         className='dropdown-container'
+    //                         value={selected}
+    //                         onChange={(e) => { setSelected(e); Storemanager(e)}} 
+    //                         selval={selected} 
+    //                         labelledBy="Select"
+    //                         overrideStrings={customStrings}
+    //                         width={width}
+    //                 />
+    //             </MultiSelectContainer>
+    //         </Container>
+    //     );
+    // } 
     
     else {
         return (
@@ -286,7 +285,6 @@ const Input = (
                     placeholder={placeholder}
                     disabled={disabled}
                     width={width}
-                    
                 />
                 {rightIcon && 
                     <img src={rightIcon} alt="icon" className='rightIcon' />

@@ -20,7 +20,7 @@ export const NavBarItem = styled.li`
     border-bottom:2px solid ${({theme}) => theme.whiteColor};
     >span{
         color:${({theme}) => theme.whiteColor};
-        font-weight:900;
+        font-weight:600;
     }
 }
 >.more-drop{

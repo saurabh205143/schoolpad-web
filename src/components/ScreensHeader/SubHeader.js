@@ -13,6 +13,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import calendarIcon from '../../images/date-icon.svg';
 import CustomDateInput from '../DateInputField/DateInputField';
+import MultiSelectDropDown, { Container1 } from '../Inputs/MultiSelectDropDown';
 
 export const DropContianer = styled.div`
     position:absolute;
@@ -452,26 +453,19 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                         }
                         {showDefaultHeaderSelect2 &&
                         <RecordBox>
-                            <Input
-                                type='multi-select'
-                                label={defaultHeaderLabel2}
-                                placeholder={defaultHeaderPlaceholder2}
-                                options={options1}
-                                onChange={() => {
-                                }}
+                            <MultiSelectDropDown
+                            width='250px'
+                            label={defaultHeaderLabel2}
+                            placeholder={defaultHeaderPlaceholder2}
                             />
                         </RecordBox>
                         }
                         {showDefaultHeaderSelect &&
                         <RecordBox>
-                            <Input
-                                width='250px'
-                                type='multi-select'
-                                label={defaultHeaderLabel}
-                                placeholder={defaultHeaderPlaceholder}
-                                options={options1}
-                                onChange={() => {
-                                }}
+                            <MultiSelectDropDown
+                            width='250px'
+                            label={defaultHeaderLabel}
+                            placeholder={defaultHeaderPlaceholder}
                             />
                         </RecordBox>
                         }
