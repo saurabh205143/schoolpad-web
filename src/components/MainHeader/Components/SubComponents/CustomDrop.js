@@ -56,7 +56,7 @@ export const ItemIcon = styled.img`
 margin-right:10px;
 `;
 
-const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, buttonManageMaintenance, formMaintenanceClick}) => {
+const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, buttonManageMaintenance, formMaintenanceClick,historyButtonText,historyOnClick}) => {
 
   if (type === 'setting') {
     return (
@@ -115,7 +115,13 @@ const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, bu
           </DropList>
           <DropList>
             <DropItems>
-              <ItemText>Change History</ItemText>
+              <ItemText>
+                <Button
+                      buttonText={historyButtonText}
+                      className='link-button'
+                      onClick={historyOnClick}
+                />
+              </ItemText>
             </DropItems>
           </DropList>
         </DropBox>

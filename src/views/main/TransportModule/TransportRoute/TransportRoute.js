@@ -14,6 +14,7 @@ import AddFormField from './components/AddFormField';
 import DeleteRouteModal from './components/DeleteRouteModal/DeleteRouteModal';
 import AddGpsLinkModal from './components/AddGpsLinkModal';
 import TransportSettingModal from './components/TransportSettingModal';
+import ChangeRouteHistory from './components/ChangeRouteHistory';
 
 const TransportRoute = ({orderHeading,}) => {
 
@@ -47,6 +48,11 @@ const TransportRoute = ({orderHeading,}) => {
   const [deleteId,setDeleteId] = useState(null);
   const [showGpsLink, setShowGpsLink] = useState(null);
   const [showSettingModal, setShowSettingModal] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
+
+  const hideHistoryModal = () => {
+    setShowHistory(false);
+  }
 
   const hideSettingModal = () => {
     setShowSettingModal(false);
@@ -72,6 +78,8 @@ const TransportRoute = ({orderHeading,}) => {
         onClick={() => setId(!id)} 
         formField={() => setShowFormFieldModal(!showFormFieldModal)}
         formMaintenanceClick={() => setShowSettingModal(!showSettingModal)}
+        historyButtonText="Change History"
+        historyOnClick={() => setShowHistory(!showHistory)}
       />
       <ExportHeader
         smallHeading='All Routes'
@@ -111,6 +119,12 @@ const TransportRoute = ({orderHeading,}) => {
       <TransportSettingModal
         show={showSettingModal}
         handleClose={hideSettingModal}
+      />
+
+      {/* Change History Modal */}
+      <ChangeRouteHistory
+        show={showHistory}
+        handleClose={hideHistoryModal}
       />
 
       {/* Route Order Modal */}

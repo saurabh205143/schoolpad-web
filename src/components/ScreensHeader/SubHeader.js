@@ -71,7 +71,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1,searchText,setSearchText, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2}) => {
+const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders,historyOnClick,historyButtonText, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1,searchText,setSearchText, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -183,6 +183,8 @@ const SubHeader = ({ onClick, type, heading, getRecords, buttonAdd, buttonOrders
                                     formMaintenanceClick={formMaintenanceClick}
                                     buttonManageText={buttonManageText}
                                     buttonManageMaintenance={buttonManageMaintenance}
+                                    historyButtonText={historyButtonText}
+                                    historyOnClick={historyOnClick}
                                     />
                                 </DropContianer>
                             }
