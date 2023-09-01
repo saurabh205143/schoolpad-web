@@ -8,21 +8,22 @@ import config from '../../../../../config';
 
 const EditStore = props => {
 
-    const { show, handleClose } = props;
+    const { show, handleClose,vendorList } = props;
     const [isChecked, setIsChecked] = useState(true);
     const [storeName, setstoreName] = useState('');
     const [storeCode, setstoreCode] = useState('');
     const [storeDesc, setstoreDesc] = useState('');
-    const [storeManager, setstoreManager] = useState('');
+    const [StoreManager, setStoremanager] = useState([]);
     const { confirm, handleConfirm,record } = props;
     // const baseURL = "http://localhost/schoolpad/Inventory-api/StoreApiManager/addStore";
     const baseURL = config.baseUrl +"api/v1/inventory/store";
     // console.log({baseURL});
+    const options = vendorList;
     useEffect(() => {
         setstoreName(record.storeName);
         setstoreCode(record.storeCode);
         setstoreDesc(record.storeDesc);
-        setstoreManager(record.managerName);
+        // setstoreManager(record.managerName);
       }, [record]);
     // 
     const handleChange = () => {
@@ -37,16 +38,20 @@ const EditStore = props => {
     const handleStoreDescriptionChange = (e) => {
         setstoreDesc(e.target.value);
     }
-    const handleStoreManagerChange = (e) => {
-        setstoreManager(e.target.value);
-    }
+    // const handleStoreManagerChange = (e) => {
+    //     setstoreManager(e.target.value);
+    // }
     const handleConfirmClickedEdit = () => {
-        // console.log(record.id);
+        var nonIndexedObject = [];
+        for (var i = 0; i < StoreManager.length; i++) {
+            nonIndexedObject[i] = StoreManager[i].value;
+        }
+        var storeManagerList = nonIndexedObject.join(", ");
         axios.put(baseURL, {
             storeName: storeName,
             storeCode:storeCode,
             storeDesc:storeDesc,
-            storeManager:storeManager,
+            storeManager:storeManagerList,
             userId:214,
             sessionId:8,
             id:record.id,
@@ -72,7 +77,7 @@ const EditStore = props => {
             show={show}
             handleClose={handleClose}
             modalHeading={'Edit New Store'}
-            submitText='Confirm'
+            submitText='Update'
             cancelText='Cancel'
             saveAction={handleConfirmClickedEdit}
         >
@@ -110,7 +115,7 @@ const EditStore = props => {
                         onChange={(e)=>{ handleStoreDescriptionChange(e)}}
                     />
                 </FieldContainer>
-                <FieldContainer>
+                {/* <FieldContainer>
                     <Input
                         type="text"
                         placeholder={'Enter store manager'}
@@ -118,6 +123,16 @@ const EditStore = props => {
                         name={'store_manager'}
                         value={storeManager}
                         onChange={(e)=>{ handleStoreManagerChange(e)}}
+                    />
+                </FieldContainer> */}
+                <FieldContainer>
+                    <Input
+                        type="multi-select"
+                        options={options}
+                        name={'store_manager'}
+                        label='Store Manager'
+                        Storemanager = {setStoremanager}   
+                        placeholder='----Select store manager----'
                     />
                 </FieldContainer>
                 <CustomCheckbox

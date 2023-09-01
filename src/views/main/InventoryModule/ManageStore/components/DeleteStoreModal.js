@@ -8,8 +8,11 @@ import ToastModals from '../../../../../components/Toaster/ToastModals';
 
 const DeleteRouteModal = props => {
 
-    const { show, handleClose, storeid } = props;
-    const [id, setId] = useState('');
+  const { show, handleClose, storeid } = props;
+  // console.log({ storeid });
+  const [id, setId] = useState('');
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
     const hideModal = () => {
         setId(false);
         }
@@ -31,7 +34,12 @@ const DeleteRouteModal = props => {
           .then(function (response) {
             if(response.status===200)
             {
-                showToastMessage();
+              showToastMessage();
+              setLoading(true);
+              setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+                setLoading(false);
                 // alert(response.data.message);
             }
             else{
@@ -48,10 +56,11 @@ const DeleteRouteModal = props => {
         <DeleteModal
             show={show}
             handleClose={handleClose}
-            modalHeading={'Delete Route'}
+            modalHeading={'Delete Store '}
+            description={ 'You are going to delete '+ storeid.storeName +' store'}
             submitText='Yes, delete it'
             cancelText='No, do not delete it'
-            onDelete={()=>deleteStore(storeid)}
+            onDelete={()=>deleteStore(storeid.id)}
         >
         </DeleteModal>
     );

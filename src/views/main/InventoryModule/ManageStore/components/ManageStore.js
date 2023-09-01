@@ -3,6 +3,7 @@ import Layout from '../../../../../components/Layouts/Layout';
 import SubHeader from '../../../../../components/ScreensHeader/SubHeader';
 import ExportHeader from '../../../../../components/ScreensHeader/ExportHeader';
 import axios from 'axios';
+import * as XLSX from 'xlsx';
 import config from '../../../../../config';
 //Assets
 import PrintImage from '../../../../../images/print-icon.svg';
@@ -26,7 +27,7 @@ const ManageStore = () => {
   const [totalRecord, settotalRecord] = useState(0);
   const [record, setrecord] = useState({});
   const [storeid, setstoreid] = useState(0);
-
+  const [vendorList, setvendorList] = useState({});
   const hideCategoriesListModal = () => {
     setShowCategoriesList(false);
   }
@@ -46,18 +47,57 @@ const ManageStore = () => {
     setShowMoveItemModal(false);
   }
   
-  const searchData = (value) => {
-    setSearchinfo(value);
-    // console.log({offset});
+  const searchData = (offset,limit,value) => {
+    // console.log({limit});
+    // offset = (offset != '' || offset == undefined) ? offset:0;
+    limit = (limit!='')?limit:10;
+    offset = offset * limit;
+    
     const fetchstoreURL = baseURL +"api/v1/inventory/store";
     axios.get(fetchstoreURL, {
       params:
-        { offset: 0, limit:100,search:value}
+        { offset: offset, limit:limit,search:value}
     }).then((resp) => {
-      // console.log(resp);
+      // console.log({resp})
       setrecord(resp.data);
     });
-        // console.log(value);
+  }
+
+  const exportStore = () => {
+    // exportData();
+    searchData(0, '', searchinfo);
+    const getData = record.map(row => {
+      const rowData = {};
+      rowData['Store Name'] = row.storeName;
+      rowData['Store Manager'] = row.storeManager;
+      rowData['Store Code'] = row.storeCode;
+      rowData['Store Categories Count'] = (row.categorycount == 0)?'-':row.categorycount;
+      rowData['Store Code'] = row.storeCode;
+      rowData['Store Description'] = row.storeDesc;
+      return rowData;
+    });
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(getData);
+    const columnWidths = [
+    { wpx: 100 },
+    { wpx: 200 }, 
+    { wpx: 150 }, 
+    ];
+
+    ws['!cols'] = columnWidths;
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    const blob = new Blob([XLSX.write(wb, { bookType: 'xlsx', type: 'buffer' })], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+    const url = URL.createObjectURL(blob);
+    let currentDate = new Date().toJSON();
+    const excelFileName = 'store_list_export_' + currentDate;
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = excelFileName+'.xlsx';
+    link.click();
+
+    URL.revokeObjectURL(url);
   }
 
   const totalRecordCount = (value) => { 
@@ -70,9 +110,27 @@ const ManageStore = () => {
     });
 
   }
+
+   const storemanagerList = () => {
+        const fetchvendorURL = baseURL +"api/v1/inventory/vendorlist";
+        axios.get(fetchvendorURL)
+        .then((resp) => {
+          var dta = resp.data;
+          setvendorList(resp.data);
+        });
+        
+    };
+
+  // preview for print
+
+  const previewRecord = () => {
+    window.open("/storepreview?params="+searchinfo, "_blank")
+  }
   // console.log({totalRecord});
   useEffect(() => {
-    searchData(searchinfo);
+    searchData(0, 10, searchinfo);
+    storemanagerList();
+    // exportData(searchinfo);
     totalRecordCount(searchinfo);
 
   }, [searchinfo]);
@@ -96,7 +154,9 @@ const ManageStore = () => {
           smallHeading='All Stores'
           smallHeding2={ "( " + totalRecord+" Records )"}
           PrintIcon={PrintImage}
+          onPreview={() => previewRecord()}
           Excelicon={ExcelImage}
+          onClick={() => exportStore()}
       />
       
       <ManageStoreTable
@@ -106,6 +166,7 @@ const ManageStore = () => {
           searchState={searchinfo}
           searchData={searchData}
           setstoreid={setstoreid}
+          vendorList={vendorList}
       />
 
       {/* Toaster Container */}
@@ -123,6 +184,7 @@ const ManageStore = () => {
           show={showModal}
           handleClose={hideModal}
           saveAction={showToastMessage}
+          vendorList={vendorList}
       />
 
       {/* Move Items Modal */}

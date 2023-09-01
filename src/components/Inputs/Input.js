@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Select from "react-dropdown-select";
 import { MultiSelect } from "react-multi-select-component";
@@ -208,11 +208,10 @@ const Input = (
         disabled,
         selectSomeItemsText,
         select,
+        Storemanager
     }) => {
 
     const [selected, setSelected] = useState([]);
-    // const containerStyle = { width: width || '100%' }; 
-
     const customStrings = {
         selectSomeItems: selectSomeItemsText,
         allItemsAreSelected: "All items are selected",
@@ -255,7 +254,8 @@ const Input = (
                             options={options}
                             className='dropdown-container'
                             value={selected}
-                            onChange={setSelected}  
+                            onChange={(e) => { setSelected(e); Storemanager(e)}} 
+                            selval={selected} 
                             labelledBy="Select"
                             overrideStrings={customStrings}
                             width={width}

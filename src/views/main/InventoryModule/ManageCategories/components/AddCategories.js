@@ -11,43 +11,83 @@ import Button from '../../../../../components/Buttons/Button';
 import SelectInput from '../../../../../components/Inputs/Select';
 
 const AddCategories = props => {
-
-    const options = [
-        {
-            value: 1,
-            label: "Primary Store"
-        },
-        {
-            value: 2,
-            label: "Secondary Store"
-        }
-    ];
-
-    const { show, handleClose } = props;
+    const { show, handleClose, Storelist,saveAction } = props;
+    const options = Storelist;
     const [formValues, setFormValues] = useState(
         [
             {
-                staff_member: "",
-                route_name: "",
-                stops: "",
-                set_order: "",
-                vehicle_number: "",
-                vehicle_capacity: "",
-                bus_help: "",
+                select_store:'',
+                category_name: '',
+                category_code: '',
             }
         ]
     )
 
-    let handleChange = (i, e) => {
-        let newFormValues = [...formValues];
-        newFormValues[i][e.target.name] = e.target.value;
-        setFormValues(newFormValues);
+    const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
+
+    // Validate Inputs
+    const validate = () => {
+        let fields = [
+            {
+                label: 'Select Store',
+                key: 'select_store',
+                required: true,
+            },
+            {
+                label: 'Category Name',
+                key: 'category_name',
+                required: true,
+            },
+            {
+                label: 'Category Code',
+                key: 'category_code',
+                required: true,
+            },
+            
+        ];
+
+        let e = {};
+        fields.forEach((field) => {
+            if (
+                field.required &&
+                (formValues[field.key] === undefined ||
+                    formValues[field.key] === null ||
+                    formValues[field.key] === '')
+            ) {
+                e[field.key] = `Please enter ${field.label} `;
+                return;
+            }
+        });
+
+        setErrors(e);
+        return Object.keys(e).length === 0;
+    }
+
+     // Inputs handle change
+    const handleChange = (e) => {
+        let i = { ...formValues };
+        i[e.target.name] = e.target.value;
+        setFormValues(i);
+    };
+
+    // OnSubmit Validate 
+    const onSubmit = () => {
+        if (!validate()) {
+            return;
+        }
+        setLoading(true);
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+        setLoading(false);
+        saveAction();
+        
     }
 
     let addFormFields = () => {
-        setFormValues([...formValues, { stops: "", set_order: "" }])
+        setFormValues([...formValues, {select_store:"", category_name: "", category_code:"" }])
     }
-
 
     let removeFormFields = (i) => {
         let newFormValues = [...formValues];
@@ -60,15 +100,22 @@ const AddCategories = props => {
             show={show}
             handleClose={handleClose}
             modalHeading={'Add New Category'}
-            submitText='Confirm'
+            submitText='Save and Close'
+            actionText={'Save and Continue'}
             cancelText='Cancel'
+            saveAction={onSubmit}
+            loading={loading}
         >
             <form>
                 <ModalBodyConatiner>
                 <FieldContainer>
                     <SelectInput
                         label='Select Store'
+                        options={options}
                         placeholder='---- Select store ----'
+                        name={'select_store'}
+                        required={true}
+                        error={errors.select_store}
                     />
                 </FieldContainer>
                 {formValues.map((element, index) => (
@@ -76,12 +123,12 @@ const AddCategories = props => {
                         <FieldLeftContainer1>
                             <Input
                                 type="text"
-                                options={options}
                                 label={'Category Name'}
                                 placeholder={'Enter category name'}
-                                name='stops'
+                                name={'category_name'}
                                 onChange={e => handleChange(index, e)}
                                 required={true}
+                                error={errors.category_name}
                             />
                         </FieldLeftContainer1>
                         <FieldRightContainerItem>
@@ -89,9 +136,10 @@ const AddCategories = props => {
                                 type="text"
                                 placeholder={'Enter category code'}
                                 label={'Category Code'}
-                                name={'set_order'}
+                                name={'category_code'}
                                 onChange={e => handleChange(index, e)}
                                 required={true}
+                                error={errors.category_code}
                             />
                         </FieldRightContainerItem>
                         {

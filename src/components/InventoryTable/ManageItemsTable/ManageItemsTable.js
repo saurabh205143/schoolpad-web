@@ -9,10 +9,12 @@ import DeleteIcon from '../../../images/delete-icon.svg';
 import Button from '../../Buttons/Button';
 import AddItems from '../../../views/main/InventoryModule/ManageItems/components/AddItems';
 import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
+import CategoriesList from '../CategoriesList';
 
 const ManageItemsTable = ({ onClick }) => {
     const [showModal, setShowModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [showcategoryList, setShowCategoryList]= useState();
 
     const hideDeleteModal = () => {
         setShowDeleteModal(false);
@@ -20,6 +22,10 @@ const ManageItemsTable = ({ onClick }) => {
     
     const hideModal = () => {
         setShowModal(false);
+    }
+
+    const hideCategoryListModal = () => {
+        setShowCategoryList(false);
     }
 
     return (
@@ -65,8 +71,7 @@ const ManageItemsTable = ({ onClick }) => {
                                     <Button
                                         buttonText='8 Categories'
                                         className='link-button'
-                                        onClick={onClick}
-                                        borderBottom='1px solid #0000'
+                                        onClick={() => setShowCategoryList(!showcategoryList)}
                                     />
                                 </ActionsList>
                             </ActionsConatiner>
@@ -138,14 +143,14 @@ const ManageItemsTable = ({ onClick }) => {
                                     <LinkButton
                                         onlyIcon={EditIcon}
                                         tooltiptext='Edit'
-                                    // onClick={() => setShowModal(!showModal)}
+                                        onClick={() => setShowModal(!showModal)}
                                     />
                                 </ActionsList>
                                 <ActionsList>
                                     <LinkButton
                                         onlyIcon={DeleteIcon}
                                         tooltiptext='Delete'
-                                    // onClick={() => setShowDeleteModal(!showModal)}
+                                        onClick={() => setShowDeleteModal(!showModal)}
                                     />
                                 </ActionsList>
                             </ActionsConatiner>
@@ -190,14 +195,14 @@ const ManageItemsTable = ({ onClick }) => {
                                     <LinkButton
                                         onlyIcon={EditIcon}
                                         tooltiptext='Edit'
-                                    // onClick={() => setShowModal(!showModal)}
+                                        onClick={() => setShowModal(!showModal)}
                                     />
                                 </ActionsList>
                                 <ActionsList>
                                     <LinkButton
                                         onlyIcon={DeleteIcon}
                                         tooltiptext='Delete'
-                                    // onClick={() => setShowDeleteModal(!showModal)}
+                                        onClick={() => setShowDeleteModal(!showModal)}
                                     />
                                 </ActionsList>
                             </ActionsConatiner>
@@ -293,14 +298,14 @@ const ManageItemsTable = ({ onClick }) => {
                                     <LinkButton
                                         onlyIcon={EditIcon}
                                         tooltiptext='Edit'
-                                    // onClick={() => setShowModal(!showModal)}
+                                        onClick={() => setShowModal(!showModal)}
                                     />
                                 </ActionsList>
                                 <ActionsList>
                                     <LinkButton
                                         onlyIcon={DeleteIcon}
                                         tooltiptext='Delete'
-                                    // onClick={() => setShowDeleteModal(!showModal)}
+                                        onClick={() => setShowDeleteModal(!showModal)}
                                     />
                                 </ActionsList>
                             </ActionsConatiner>
@@ -345,14 +350,14 @@ const ManageItemsTable = ({ onClick }) => {
                                     <LinkButton
                                         onlyIcon={EditIcon}
                                         tooltiptext='Edit'
-                                    // onClick={() => setShowModal(!showModal)}
+                                        onClick={() => setShowModal(!showModal)}
                                     />
                                 </ActionsList>
                                 <ActionsList>
                                     <LinkButton
                                         onlyIcon={DeleteIcon}
                                         tooltiptext='Delete'
-                                    // onClick={() => setShowDeleteModal(!showModal)}
+                                        onClick={() => setShowDeleteModal(!showModal)}
                                     />
                                 </ActionsList>
                             </ActionsConatiner>
@@ -397,14 +402,14 @@ const ManageItemsTable = ({ onClick }) => {
                                     <LinkButton
                                         onlyIcon={EditIcon}
                                         tooltiptext='Edit'
-                                    // onClick={() => setShowModal(!showModal)}
+                                        onClick={() => setShowModal(!showModal)}
                                     />
                                 </ActionsList>
                                 <ActionsList>
                                     <LinkButton
                                         onlyIcon={DeleteIcon}
                                         tooltiptext='Delete'
-                                    // onClick={() => setShowDeleteModal(!showModal)}
+                                        onClick={() => setShowDeleteModal(!showModal)}
                                     />
                                 </ActionsList>
                             </ActionsConatiner>
@@ -501,14 +506,14 @@ const ManageItemsTable = ({ onClick }) => {
                                     <LinkButton
                                         onlyIcon={EditIcon}
                                         tooltiptext='Edit'
-                                    // onClick={() => setShowModal(!showModal)}
+                                        onClick={() => setShowModal(!showModal)}
                                     />
                                 </ActionsList>
                                 <ActionsList>
                                     <LinkButton
                                         onlyIcon={DeleteIcon}
                                         tooltiptext='Delete'
-                                    // onClick={() => setShowDeleteModal(!showModal)}
+                                        onClick={() => setShowDeleteModal(!showModal)}
                                     />
                                 </ActionsList>
                             </ActionsConatiner>
@@ -585,7 +590,7 @@ const ManageItemsTable = ({ onClick }) => {
                                     <Button
                                         buttonText='1 Categories'
                                         className='link-button'
-                                        onClick={onClick}
+                                        onClick={() => setShowCategoryList(!showcategoryList)}
                                     />
                                 </ActionsList>
                             </ActionsConatiner>
@@ -605,14 +610,14 @@ const ManageItemsTable = ({ onClick }) => {
                                     <LinkButton
                                         onlyIcon={EditIcon}
                                         tooltiptext='Edit'
-                                    // onClick={() => setShowModal(!showModal)}
+                                        onClick={() => setShowModal(!showModal)}
                                     />
                                 </ActionsList>
                                 <ActionsList>
                                     <LinkButton
                                         onlyIcon={DeleteIcon}
                                         tooltiptext='Delete'
-                                    // onClick={() => setShowDeleteModal(!showModal)}
+                                        onClick={() => setShowDeleteModal(!showModal)}
                                     />
                                 </ActionsList>
                             </ActionsConatiner>
@@ -657,14 +662,14 @@ const ManageItemsTable = ({ onClick }) => {
                                     <LinkButton
                                         onlyIcon={EditIcon}
                                         tooltiptext='Edit'
-                                    // onClick={() => setShowModal(!showModal)}
+                                        onClick={() => setShowModal(!showModal)}
                                     />
                                 </ActionsList>
                                 <ActionsList>
                                     <LinkButton
                                         onlyIcon={DeleteIcon}
                                         tooltiptext='Delete'
-                                    // onClick={() => setShowDeleteModal(!showModal)}
+                                        onClick={() => setShowDeleteModal(!showModal)}
                                     />
                                 </ActionsList>
                             </ActionsConatiner>
@@ -672,6 +677,7 @@ const ManageItemsTable = ({ onClick }) => {
                     </TableRow>
                 </TableBody>
             </TableContainer>
+
 
             {/* Edit Items Modal */}
             <AddItems
