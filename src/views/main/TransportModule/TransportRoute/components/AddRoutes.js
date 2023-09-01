@@ -118,7 +118,7 @@ const AddRoutes = props => {
                                 label={'Order'}
                                 name={'set_order'}
                                 value={formValues.set_order }
-                                onChange={(e,item) => handleChange(index, e)}
+                                onChange={(e,item) => handleChange(e,item)}
                             />
                         </FieldRightContainer1>
                         {
