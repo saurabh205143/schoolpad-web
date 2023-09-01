@@ -47,9 +47,9 @@ const AddRoutes = props => {
         ]
     )
 
-    let handleChange = (i, e) => {
+    let handleChange = (e) => {
         let newFormValues = [...formValues];
-        newFormValues[i][e.target.name] = e.target.value;
+        newFormValues[e.target.name] = e.target.value;
         setFormValues(newFormValues);
     }
 
@@ -100,8 +100,15 @@ const AddRoutes = props => {
                                 label={'Stops'}
                                 placeholder={'---- Select stops ----'}
                                 name='stops'
-                                value={element.stops || ""}
-                                onChange={e => handleChange(index, e)}
+                                value={formValues.stops }
+                                onChange={(e, item) => {
+                                    handleChange({
+                                        target: {
+                                            value: item.key,
+                                            name: 'stops',
+                                        },
+                                    });
+                                }}
                             />
                         </FieldLeftContainer1>
                         <FieldRightContainer1>
@@ -110,8 +117,8 @@ const AddRoutes = props => {
                                 placeholder={'Set order'}
                                 label={'Order'}
                                 name={'set_order'}
-                                value={element.set_order || ""}
-                                onChange={e => handleChange(index, e)}
+                                value={formValues.set_order }
+                                onChange={(e,item) => handleChange(index, e)}
                             />
                         </FieldRightContainer1>
                         {
