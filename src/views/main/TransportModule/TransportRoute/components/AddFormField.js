@@ -32,19 +32,15 @@ const AddFormField = props => {
     const [formValues, setFormValues] = useState(
         [
             {
-                staff_member: "",
-                route_name: "",
-                stops: "",
-                set_order: "",
-                vehicle_number: "",
-                vehicle_capacity: "",
-                bus_help: "",
+                
+                field_name: "",
+                options: "",
             }
         ]
     )
 
     let addFormFields = () => {
-        setFormValues([...formValues, { stops: "", set_order: "" }])
+        setFormValues([...formValues, { options: "" }])
     }
 
     let removeFormFields = (i) => {
@@ -92,8 +88,8 @@ const AddFormField = props => {
                                                     type='text'
                                                     label={'Option 1'}
                                                     placeholder={'Enter option'}
-                                                    name='Option 1'
-                                                    value={element.stops || ""}
+                                                    name='options'
+                                                    value={formValues.options }
                                                 />
                                             </FieldLeftContainer1>
                                             {

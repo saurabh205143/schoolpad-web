@@ -18,9 +18,7 @@ const PreviousCustomField = (props) => {
             <TableHeading>S No.</TableHeading>
             <TableHeading>Field Name</TableHeading>
             <TableHeading>Field Type</TableHeading>
-            <TableHeading>
-              <TableHeadingModalAction>Actions</TableHeadingModalAction>
-              </TableHeading>
+            <TableHeading>Actions</TableHeading>
           </TableRow>
         </TableHead>
         <TableBody>
