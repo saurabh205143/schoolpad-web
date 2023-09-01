@@ -9,6 +9,7 @@ import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
 import SelectInput from '../../../../../components/Inputs/Select';
+import MultiSelectDropDown from '../../../../../components/Inputs/MultiSelectDropDown';
 
 const options = [
     {
@@ -20,6 +21,13 @@ const options = [
         label: "Ervin Howell"
     }
 ];
+
+const options1 = [
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+    { value: 'option3', label: 'Option 3' },
+    // Add more options as needed
+  ];
 
 const AddRoutes = props => {
     console.log(props.id);
@@ -71,10 +79,8 @@ const AddRoutes = props => {
             <form onSubmit={handleSubmit}>
                 <ModalBodyConatiner>
                 <FieldContainer>
-                    <SelectInput
+                    <MultiSelectDropDown
                         label='Staff Memmbers'
-                        placeholder='---- Select staff member ----'
-                        options={options}
                      />
                 </FieldContainer>
                 <FieldContainer>

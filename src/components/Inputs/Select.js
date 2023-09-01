@@ -55,6 +55,7 @@ const SelectInput = ({label, placeholder,onChange,name,error,value,options}) => 
         className='select-input'
         name={name}
         error={error}
+        checkbox={true}
       />
       {error &&
       <ErrorContainer>{error}</ErrorContainer>
