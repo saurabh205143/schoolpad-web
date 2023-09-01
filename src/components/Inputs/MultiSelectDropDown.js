@@ -35,6 +35,13 @@ export const Container = styled.div`
               color:#172B4D;
               font-size:14px;
             }
+            >div{
+              background-color:transparent;
+              font-weight:400 !important;
+              padding:4px 10px;
+              color:#172B4D;
+              font-size:14px;
+            }
           }
         }
       }
