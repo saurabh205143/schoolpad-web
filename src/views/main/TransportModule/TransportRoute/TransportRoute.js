@@ -52,6 +52,7 @@ const TransportRoute = ({orderHeading}) => {
         buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
         onClick={() => setId(!id)} 
         formField={() => setShowFormFieldModal(!showFormFieldModal)}
+        showChangeHistoryButton={true}
       />
       <ExportHeader
         smallHeading='All Routes'

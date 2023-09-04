@@ -1,24 +1,30 @@
 import React, { useState, useMemo } from 'react';
 import data from './data.json';
-import { ActionsConatiner, ActionsList, TableActionHeading, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../Table/TableStyles';
+import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../Table/TableStyles';
 import LinkButton from '../../Buttons/LinkButton';
 
 // Assets
 import EditIcon from '../../../images/edit-icon.svg';
 import DeleteIcon from '../../../images/delete-icon.svg';
-import AddCategories from '../../../views/main/InventoryModule/ManageCategories/components/AddCategories';
 import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../../Pagination/Pagination';
+import Button from '../../Buttons/Button';
+import TableStylesStatus from '../../Table copy/TableStyles';
+import AddItems from '../../../views/main/InventoryModule/ManageItems/components/AddItems';
+import CategoriesListTable from '../../../views/main/InventoryModule/ManageStore/components/CategoriesListTable';
 
-let PageSize = 0;
+let PageSize = 3;
 
-const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
+const ManageItemTable = ({ onClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [isChecked, setIsChecked] = useState(true);
-  const [Count, setCount] = useState(0);
-  console.log({ categoryList });
+  const [showCategoryListModal, setShowCategoryListModal] = useState(false);
+
+  const hideCategoryListModal = () => {
+    setShowCategoryListModal(false);
+  }
+
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -27,39 +33,20 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
     setShowModal(false);
   }
 
-  const handleChange = () => {
-    setIsChecked(!isChecked);
-};
-
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return Array.isArray(record)?record.slice(firstPageIndex, lastPageIndex):0;
+    return data.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
 
   // get table column
-  // setCurrentPage = () => {
-  //   const cPage = (page == undefined) ? 1 : page;
-  //   const counter = (cPage - 1) * PageSize;
-  //   setCount(counter);
-  // }
   
   const column = Object.keys(data[0]);
   const ThData = () => {
-    return (
-      <>
-        {/* <TableHeading>
-          <CustomCheckbox
-            isChecked={isChecked}
-            onChange={handleChange}
-          />
-        </TableHeading> */}
-        {column.map((record) => (
-          <TableHeading key={record}>{record.split(/(?=[A-Z])/).join(" ")}</TableHeading>
-        ))}
-      </>
-    );
-  };
+      return column.map((data) => {
+          return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
+      })
+  }
 
   return (
     <>
@@ -67,28 +54,38 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
         <TableHead>
           <TableRow>
             {ThData()}
-            <TableHeading>
-              <TableActionHeading>
-                    Actions
-              </TableActionHeading>
-              </TableHeading>
+            <TableHeading>Categories</TableHeading>
+            <TableHeading>Type</TableHeading>
+            <TableHeading>Actions</TableHeading>
           </TableRow>
         </TableHead>
         <TableBody>
-          {Array.isArray(record) ? record.map((item, i) => {
-            const rowNumber = i + Count + 1;
+          {currentTableData.map(item => {
             return (
               <TableRow>
-                {/* <Tabledata>
-                  <CustomCheckbox
-                    isChecked={isChecked}
-                    onChange={handleChange}
-                  />
-                </Tabledata> */}
-                <Tabledata>{rowNumber}</Tabledata>
-                <Tabledata>{item.categoryName}</Tabledata>
-                <Tabledata>{item.categoryCode}</Tabledata>
-                <Tabledata>{item.storeName}</Tabledata>
+                <Tabledata>{item.SNo}</Tabledata>
+                <Tabledata>{item.ItemName}</Tabledata>
+                <Tabledata>{item.PurchaseCost}</Tabledata>
+                <Tabledata>{item.Units}</Tabledata>
+                <Tabledata>{item.StoreName}</Tabledata>
+                <Tabledata>
+                  <ActionsConatiner>
+                    <ActionsList>
+                      <Button
+                        buttonText='8 Categories'
+                        className='link-button'
+                        onClick={() => setShowCategoryListModal(!showCategoryListModal)}
+                      />
+                    </ActionsList>
+                  </ActionsConatiner>
+                  </Tabledata>
+                <Tabledata> 
+                  <TableStylesStatus
+                  type='item-type-consumable'
+                  statusType='CONSUMABLE'
+                  >
+                  </TableStylesStatus>
+                  </Tabledata>
                 <Tabledata>
                   <ActionsConatiner>
                     <ActionsList>
@@ -109,19 +106,25 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
                 </Tabledata>
               </TableRow>
             );
-          }):null}
+          })}
         </TableBody>
       </TableContainer>
       <Pagination
         className="pagination-bar"
         currentPage={currentPage}
-        totalCount={totalRecord}
+        totalCount={data.length}
         pageSize={PageSize}
-        onPageChange={(page) => {categoryList(page - 1, PageSize); setCurrentPage(page) }}
+        onPageChange={page => setCurrentPage(page)}
       />
 
+      {/* Category List Table */}
+        <CategoriesListTable
+          show={showCategoryListModal}
+          handleClose={hideCategoryListModal}
+        />
+
       {/* Edit Categories Modal */}
-        <AddCategories
+        <AddItems
             show={showModal}
             handleClose={hideModal}
         />
@@ -134,4 +137,4 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
   );
 }
 
-export default ManageCategoriesTable;
+export default ManageItemTable;

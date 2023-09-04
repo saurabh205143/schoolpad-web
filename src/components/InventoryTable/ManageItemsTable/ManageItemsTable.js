@@ -678,7 +678,6 @@ const ManageItemsTable = ({ onClick }) => {
                 </TableBody>
             </TableContainer>
 
-
             {/* Edit Items Modal */}
             <AddItems
             show={showModal}

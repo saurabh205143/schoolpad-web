@@ -4,9 +4,6 @@ import { styled } from 'styled-components';
 
 
 // Assets
-import LogoutIcon from '../../../../images/logout.svg';
-import InfoIcon from '../../../../images/inbox-icon.svg';
-import AddRoutes from '../../../../views/main/TransportModule/TransportRoute/components/AddRoutes';
 import Button from '../../../Buttons/Button';
 
 export const DropContainer = styled.div`
@@ -56,7 +53,7 @@ export const ItemIcon = styled.img`
 margin-right:10px;
 `;
 
-const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, buttonManageMaintenance, formMaintenanceClick}) => {
+const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, buttonManageMaintenance, formMaintenanceClick,buttonChangeHistory }) => {
 
   if (type === 'setting') {
     return (
@@ -115,7 +112,13 @@ const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, bu
           </DropList>
           <DropList>
             <DropItems>
-              <ItemText>Change History</ItemText>
+              <ItemText>
+                <Button
+                    buttonText={buttonChangeHistory}
+                    className='link-button'
+                    onClick={formMaintenanceClick}
+              />
+              </ItemText>
             </DropItems>
           </DropList>
         </DropBox>

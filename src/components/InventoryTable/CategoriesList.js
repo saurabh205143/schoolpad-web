@@ -40,7 +40,7 @@ const CategoriesList = ({ onClick,storeid, setstoreid }) => {
                     <TableRow>
                         <Tabledata>
                             <Tabledatatext>
-                               {++i}
+                            {++i}
                             </Tabledatatext>
                         </Tabledata>
                         <Tabledata>
@@ -55,7 +55,7 @@ const CategoriesList = ({ onClick,storeid, setstoreid }) => {
                         </Tabledata>
                         </TableRow>
                     );
-          }): null}
+        }): null}
                     {/* <TableRow>
                         <Tabledata>
                             <Tabledatatext>

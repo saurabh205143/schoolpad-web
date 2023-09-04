@@ -6,9 +6,9 @@ import ExportHeader from '../../../../components/ScreensHeader/ExportHeader';
 //Assets
 import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
-import ManageItemsTable from '../../../../components/InventoryTable/ManageItemsTable/ManageItemsTable';
 import AddItems from './components/AddItems';
 import AddFormField from '../../TransportModule/TransportRoute/components/AddFormField';
+import ManageItemTable from '../../../../components/InventoryTable/ManageItemsTable/ManageItemTable';
 
 const ManageItems = () => {
 
@@ -40,6 +40,7 @@ const ManageItems = () => {
           defaultHeaderPlaceholder2='----Select Store----'
           defaultHeaderLabel='Select Category'
           defaultHeaderPlaceholder='----Select Category----'
+          buttonChangeHistory='Change History'
           showGetRecordButton ={true}
           showPrimaryButton ={true}
           showSearchButtonRight={true}
@@ -47,6 +48,7 @@ const ManageItems = () => {
           showDefaultHeaderSelect2={true}
           showDefaultHeaderSelect1={false}
           showHeaderFilterReturn={true}
+          showChangeHistoryButton={true}
       />
       <ExportHeader
           smallHeading='All Items'
@@ -55,7 +57,7 @@ const ManageItems = () => {
           Excelicon={ExcelImage}
       />
       
-      <ManageItemsTable/>
+      <ManageItemTable/>
 
       {/* Add Items Modal */}
       <AddItems

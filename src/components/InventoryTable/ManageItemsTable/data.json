@@ -1,20 +1,31 @@
 [
   {
     "SNo":1,
-    "CategoryName": "Store Roomzzzz 1",
-    "CategoryCode": "K00256",
+    "ItemName": "Paper A4",
+    "PurchaseCost":"₹300",
+    "Units" : "Pieces",
     "StoreName" : "Awards/Gifts Room"
   },
   {
     "SNo":2,
-    "CategoryName": "Store Room 2",
-    "CategoryCode": "P00065",
-    "StoreName" : "Electronics Room"
+    "ItemName": " Face Mask",
+    "PurchaseCost":"₹800",
+    "Units" : "Pieces",
+    "StoreName" : "Awards/Gifts Room"
   },
   {
     "SNo":3,
-    "CategoryName": "Store Room 3",
-    "CategoryCode": "K00256",
-    "StoreName" : "Computer Store Room"
+    "ItemName": "Gloves",
+    "PurchaseCost":"₹900",
+    "Units" : "Pieces",
+    "StoreName" : "Awards/Gifts Room"
+  },
+  {
+    "SNo":4,
+    "ItemName": "Table Duster",
+    "PurchaseCost":"₹900",
+    "Units" : "Pieces",
+    "StoreName" : "Awards/Gifts Room"
   }
+
 ]
