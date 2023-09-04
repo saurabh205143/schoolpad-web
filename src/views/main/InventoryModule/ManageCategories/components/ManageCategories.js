@@ -13,6 +13,7 @@ import ManageCategoriesTable from '../../../../../components/InventoryTable/Mana
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastModals from '../../../../../components/Toaster/ToastModals';
+import EditCategories from './EditCategories';
 
 
 const baseURL = config.baseUrl;
@@ -62,6 +63,8 @@ const ManageCategories = () => {
     });
   }
 
+  
+
   useEffect(() => {
     categoryList(0, PageSize, searchinfo);
     totalRecordCount(searchinfo);
@@ -100,7 +103,8 @@ const ManageCategories = () => {
           show={showModal}
           Storelist={Storelist}
           handleClose={hideModal}
-      />
+        />
+      
       
     </Layout>
     </>

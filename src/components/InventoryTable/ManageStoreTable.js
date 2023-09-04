@@ -76,6 +76,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
   // let cntr = isNaN(offSet)?0:offSet;
   const getCurrentPage = (page) => {
     
+    console.log({page});
     const cPage = (page == undefined) ? 1 : page;
     const counter = (cPage - 1) * PageSize;
     setCount(counter);
