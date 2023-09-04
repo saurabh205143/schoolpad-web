@@ -53,7 +53,7 @@ export const ItemIcon = styled.img`
 margin-right:10px;
 `;
 
-const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, buttonManageMaintenance, formMaintenanceClick,buttonChangeHistory }) => {
+const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, buttonManageMaintenance, formMaintenanceClick,buttonChangeHistory, buttonFormFieldText}) => {
 
   if (type === 'setting') {
     return (
@@ -79,17 +79,20 @@ const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, bu
     return (
       <DropContainer>
         <DropBox>
-          <DropList>
-            <DropItems>
-              <ItemText>
-                <Button
-                    buttonText='Add Form Field'
+        {buttonFormFieldText && (
+            <DropList>
+              <DropItems>
+                <ItemText>
+                  <Button
+                    buttonText={buttonFormFieldText}
                     className='link-button'
                     onClick={formFiledClick}
-              />
-              </ItemText>
-            </DropItems>
-          </DropList>
+                  />
+                </ItemText>
+              </DropItems>
+            </DropList>
+          )}
+          {buttonManageText && (
           <DropList>
             <DropItems>
               <ItemText>
@@ -100,6 +103,8 @@ const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, bu
               /></ItemText>
             </DropItems>
           </DropList>
+          )}
+        {buttonManageMaintenance && (
           <DropList>
             <DropItems>
               <ItemText>
@@ -110,6 +115,8 @@ const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, bu
               /></ItemText>
             </DropItems>
           </DropList>
+          )}
+          {buttonChangeHistory && (
           <DropList>
             <DropItems>
               <ItemText>
@@ -121,6 +128,7 @@ const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, bu
               </ItemText>
             </DropItems>
           </DropList>
+        )}
         </DropBox>
       </DropContainer>
     );
@@ -145,7 +153,6 @@ const CustomDrop = ({ type, formFiledClick,formManageClick, buttonManageText, bu
       </DropContainer>
     );
   }
-  
 }
 
 

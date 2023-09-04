@@ -49,10 +49,10 @@ export const Container = styled.div`
   }
 `;
 
-
-
 const MultiSelectDropDown = ({label, width}) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [validationError, setValidationError] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setSelectedOptions([{ label: "All", value: "*" }, ...options]);
@@ -66,7 +66,23 @@ const MultiSelectDropDown = ({label, width}) => {
     }
   }
 
+  function validateSelection(value) {
+    // You can add your validation logic here
+    // For example, require at least 2 options to be selected
+    if (value.length < 2) {
+      setValidationError("Please select at least 2 options.");
+      return false;
+    }
+    setValidationError(""); // Clear any previous error messages
+    return true;
+  }
+
+
   function onChange(value, event) {
+    const isValid = validateSelection(value);
+    if (isValid) {
+      setSelectedOptions(value);
+    }
     if (event.action === "select-option" && event.option.value === "*") {
       this.setState(this.options);
     } else if (
@@ -88,7 +104,6 @@ const MultiSelectDropDown = ({label, width}) => {
       {label &&
         <Title>
           {label}
-          
         </Title>
       }
     <ReactMultiSelectCheckboxes
@@ -100,7 +115,9 @@ const MultiSelectDropDown = ({label, width}) => {
       setState={setSelectedOptions}
       className='multiselect-drop-down'
     />
-    
+        {error && validationError && (
+        <div style={{ color: "red" }}>{validationError}</div>
+      )}
     </Container>
   );
 };

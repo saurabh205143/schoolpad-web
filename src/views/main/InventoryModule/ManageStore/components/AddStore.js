@@ -204,6 +204,8 @@ const AddStore = props => {
                 <FieldContainer>
                     <MultiSelectDropDown
                     label='Stop Manager'
+                    error={true}
+                    validationError={true}
                     />
                 </FieldContainer>
 

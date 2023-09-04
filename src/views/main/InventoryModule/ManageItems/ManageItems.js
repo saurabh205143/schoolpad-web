@@ -40,7 +40,8 @@ const ManageItems = () => {
           defaultHeaderPlaceholder2='----Select Store----'
           defaultHeaderLabel='Select Category'
           defaultHeaderPlaceholder='----Select Category----'
-          buttonChangeHistory='Change History'
+          buttonFormFieldText='Add Form Field'
+          buttonChangeHistory={false}
           showGetRecordButton ={true}
           showPrimaryButton ={true}
           showSearchButtonRight={true}
@@ -48,7 +49,7 @@ const ManageItems = () => {
           showDefaultHeaderSelect2={true}
           showDefaultHeaderSelect1={false}
           showHeaderFilterReturn={true}
-          showChangeHistoryButton={true}
+          showAssociateDrop={true}
       />
       <ExportHeader
           smallHeading='All Items'

@@ -70,7 +70,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1,showDefaultHeaderSelect2,defaultHeaderLabel2,defaultHeaderPlaceholder2,buttonChangeHistory}) => {
+const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1,showDefaultHeaderSelect2,defaultHeaderLabel2,defaultHeaderPlaceholder2,buttonChangeHistory,buttonFormFieldText}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -413,9 +413,12 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                                 {showAssociateDrop &&
                                     <DropContianer ref={ref}>
                                         <CustomDrop 
-                                        type='associatedoptions' 
-                                        formFiledClick={formField}
-                                        buttonChangeHistory={buttonChangeHistory}
+                                            type='associatedoptions' 
+                                            formFiledClick={formField}
+                                            buttonManageText={buttonManageText}
+                                            buttonFormFieldText={buttonFormFieldText}
+                                            buttonManageMaintenance={buttonManageMaintenance}
+                                            buttonChangeHistory={buttonChangeHistory}
                                         />
                                     </DropContianer>
                                 }
