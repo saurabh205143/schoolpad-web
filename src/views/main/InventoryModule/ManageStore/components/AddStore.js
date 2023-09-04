@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { FieldContainer, ModalBodyConatiner } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
-import CustomCheckbox from '../../../../../components/Checkbox/CustomCheckbox';
 import axios from 'axios';
 import config from '../../../../../config';
 import { ToastContainer, toast } from 'react-toastify';
@@ -21,6 +20,7 @@ const AddStore = props => {
         store_code: '',
         store_description: '',
         store_manager: '',
+        stop_manager:'',
     });
 
     const [errors, setErrors] = useState({});
@@ -204,8 +204,7 @@ const AddStore = props => {
                 <FieldContainer>
                     <MultiSelectDropDown
                     label='Stop Manager'
-                    error={true}
-                    validationError={true}
+                    error={errors.stop_manager}
                     />
                 </FieldContainer>
 

@@ -112,13 +112,13 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
           }):null}
         </TableBody>
       </TableContainer>
-      <Pagination
+      {/* <Pagination
         className="pagination-bar"
         currentPage={currentPage}
         totalCount={totalRecord}
         pageSize={PageSize}
         onPageChange={(page) => {categoryList(page - 1, PageSize); setCurrentPage(page) }}
-      />
+      /> */}
 
       {/* Edit Categories Modal */}
         <AddCategories

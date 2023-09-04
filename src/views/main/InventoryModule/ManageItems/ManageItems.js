@@ -41,7 +41,6 @@ const ManageItems = () => {
           defaultHeaderLabel='Select Category'
           defaultHeaderPlaceholder='----Select Category----'
           buttonFormFieldText='Add Form Field'
-          buttonChangeHistory={false}
           showGetRecordButton ={true}
           showPrimaryButton ={true}
           showSearchButtonRight={true}
