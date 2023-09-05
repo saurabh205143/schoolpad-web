@@ -2,6 +2,8 @@ import React, { useState, useMemo } from 'react';
 import data from './data.json';
 import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../Table/TableStyles';
 import LinkButton from '../../Buttons/LinkButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 // Assets
 import EditIcon from '../../../images/edit-icon.svg';
@@ -10,6 +12,7 @@ import AddCategories from '../../../views/main/InventoryModule/ManageCategories/
 import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../../Pagination/Pagination';
 import TableStylesStatus from '../../Table copy/TableStyles';
+import Button from '../../Buttons/Button';
 
 let PageSize = 2;
 
@@ -80,6 +83,22 @@ const PurchaseOrdersTable = ({ onClick }) => {
                                                 tooltiptext='Delete'
                                                 onClick={() => setShowDeleteModal(!showModal)}
                                             />
+                                        </ActionsList>
+                                        <ActionsList>
+                                            <DropdownButton id="dropdown-basic-button" title="More" className='more-options'>
+                                                <Dropdown.Item href="#/action-1">
+                                                    <Button
+                                                        buttonText='Attach File'
+                                                        className='link-button'
+
+                                                    /></Dropdown.Item>
+                                                <Dropdown.Item href="#/action-2">
+                                                    <Button
+                                                        buttonText='Print PO'
+                                                        className='link-button'
+                                                    />
+                                                </Dropdown.Item>
+                                            </DropdownButton>
                                         </ActionsList>
                                     </ActionsConatiner>
                                 </Tabledata>

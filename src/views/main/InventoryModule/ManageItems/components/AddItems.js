@@ -29,17 +29,12 @@ const AddItems = props => {
 
     const width = "550px";
 
-    const { show, handleClose } = props;
+    const { show, handleClose,saveAction } = props;
     const [formValuesEmail, setFormValuesEmail] = useState(
         [
             {
-                staff_member: "",
-                route_name: "",
-                stops: "",
-                set_order: "",
-                vehicle_number: "",
-                vehicle_capacity: "",
-                bus_help: "",
+                alert_count: "",
+                alert_email: "",
             }
         ]
     )
@@ -47,16 +42,80 @@ const AddItems = props => {
     const [formValuesItem, setFormValuesItem] = useState(
         [
             {
-                staff_member: "",
-                route_name: "",
-                stops: "",
-                set_order: "",
-                vehicle_number: "",
-                vehicle_capacity: "",
-                bus_help: "",
+                name_item: "",
+                purchase_cost: "",
             }
         ]
     )
+
+    const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
+
+    // Validate Inputs
+    const validate = () => {
+        let fields = [
+            {
+                label: 'Alert Me If Item Count Falls Below',
+                key: 'alert_count',
+                required: true,
+            },
+            {
+                label: 'Add Email IDs For Alert',
+                key: 'alert_email',
+                required: true,
+            },
+            {
+                label: 'Name',
+                key: 'name_item',
+                required: true,
+            },
+            {
+                label: 'Purchase Cost',
+                key: 'purchase_cost',
+                required: true,
+            },
+        ];
+
+        let e = {};
+        fields.forEach((field) => {
+            if (
+                field.required &&
+                (formValuesEmail[field.key] === undefined ||
+                    formValuesEmail[field.key] === null ||
+                    formValuesEmail[field.key] === '')
+            ) {
+                e[field.key] = `Please enter ${field.label} `;
+                return;
+            }
+            else if (
+                field.required &&
+                (formValuesItem[field.key] === undefined ||
+                    formValuesItem[field.key] === null ||
+                    formValuesItem[field.key] === '')
+            ) {
+                e[field.key] = `Please enter ${field.label} `;
+                return;
+            }
+        });
+
+        setErrors(e);
+        return Object.keys(e).length === 0;
+    }
+
+      // OnSubmit Validate 
+        const onSubmit = () => {
+        let e = {};
+        if (!validate()) {
+            return;
+        }
+        setLoading(true);
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+        setLoading(false);
+        saveAction();
+        
+    }
 
     let handleChange = (index, field, e) => {
         let newFormValues = [...formValuesEmail];
@@ -65,13 +124,12 @@ const AddItems = props => {
     };
 
     let addEmailFields = () => {
-        setFormValuesEmail([...formValuesEmail, { stops: "", set_order: "" }])
+        setFormValuesEmail([...formValuesEmail, { alert_count: "", alert_email: ""}])
     }
 
     let addItemFields = () => {
-        setFormValuesItem([...formValuesEmail, { stops: "", set_order: "" }])
+        setFormValuesItem([...formValuesItem, { name_item: "" }])
     }
-
 
     let removeFormFields = (i) => {
         let newFormValues = [...formValuesEmail];
@@ -84,8 +142,11 @@ const AddItems = props => {
             show={show}
             handleClose={handleClose}
             modalHeading={'Add New Items'}
-            submitText='Confirm'
+            submitText='Save and Close'
+            actionText={'Save and Continue'}
             cancelText='Cancel'
+            saveAction={onSubmit}
+            loading={loading}
         >
             <form>
                 <>
@@ -98,13 +159,17 @@ const AddItems = props => {
                                 />
                                 <MultiSelectDropDown
                                 label='Select Category'
+                                error={true}
                                 />
                                 <Input
                                     type="text"
                                     label={'Alert Me If Item Count Falls Below'}
                                     options={options}
                                     placeholder={'Enter if item count falls below'}
-                                    name='store_name'
+                                    name='alert_count'
+                                    required={true}
+                                    error={errors.alert_count}
+                                    value={formValuesEmail.alert_count}
                                 />
                                 {formValuesEmail.map((element, index) => (
                                     <FieldDivider>
@@ -114,8 +179,11 @@ const AddItems = props => {
                                                 label={'Add Email IDs For Alert'}
                                                 options={options}
                                                 placeholder={'Enter email address'}
-                                                name='store_name'
                                                 onChange={(e) => handleChange(index, 'email', e)}
+                                                name='alert_email'
+                                                required={true}
+                                                error={errors.alert_email}
+                                                value={formValuesEmail.alert_email}
                                             />
                                         </FieldLeftContainer1>
                                         {
@@ -157,8 +225,11 @@ const AddItems = props => {
                                             options={options}
                                             label={'Name'}
                                             placeholder={'Enter name of the item'}
-                                            name='stops'
                                             onChange={(e) => handleChange(index, 'name', e)}
+                                            name='name_item'
+                                            required={true}
+                                            error={errors.name_item}
+                                            value={formValuesItem.name_item}
                                         />
                                     </FieldLeftContainer1>
                                     <FieldRightContainerItem>
@@ -166,8 +237,11 @@ const AddItems = props => {
                                             type="text"
                                             placeholder={'Enter purchase cost'}
                                             label={'Purchase Cost'}
-                                            name={'set_order'}
+                                            name='purchase_cost'
                                             onChange={(e) => handleChange(index, 'purchase_cost', e)}
+                                            required={true}
+                                            error={errors.purchase_cost}
+                                            value={formValuesItem.purchase_cost}
                                         />
                                     </FieldRightContainerItem>
                                     {

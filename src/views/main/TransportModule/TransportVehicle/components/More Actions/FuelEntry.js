@@ -6,9 +6,9 @@ import Modal from '../../../../../../components/Modal/Modal';
 import Input from '../../../../../../components/Inputs/Input';
 import { AddFormFieldInnerTab, AddFormFieldTab, AddFormFieldTabText, DateInputContainer, FieldContainer, FieldDivider, FieldLeftContainer1, FieldRightContainerItem, ModalBodyConatiner } from '../../../TransportRoute/components/AddRouteStyles';
 import SelectInput from '../../../../../../components/Inputs/Select';
-import CustomDateInput from '../../../../../../components/DateInputField/DateInputField';
 import ExistingFuelEntry from './ExistingFuelEntry';
 import UploadDragDrop from '../../../../../../components/UploadDragDropFile/UploadDragDrop';
+import DateInput from '../../../../../../components/DateInputField/DateInput';
 
 const options = [
   {
@@ -71,8 +71,8 @@ const FuelEntry = props => {
                     <FieldDivider>
                       <FieldLeftContainer1>
                       <DateInputContainer>
-                        <CustomDateInput
-                        width='100%'
+                        <DateInput
+                          width='100%'
                         />
                     </DateInputContainer>
                       </FieldLeftContainer1>

@@ -7,12 +7,12 @@ import Modal from '../../../../../../components/Modal/Modal';
 import Input from '../../../../../../components/Inputs/Input';
 import { AddFormFieldInnerTab, AddFormFieldTab, AddFormFieldTabText, AddMoreField, DateInputContainer, FieldDivider, FieldLeftContainer1, FieldRightContainerItem, ModalBodyConatiner, RemoveContianer } from '../../../TransportRoute/components/AddRouteStyles';
 import SelectInput from '../../../../../../components/Inputs/Select';
-import CustomDateInput from '../../../../../../components/DateInputField/DateInputField';
 import ExistingFuelEntry from './ExistingFuelEntry';
 import Button from '../../../../../../components/Buttons/Button';
 import AddMoreIcon from '../../../../../../images/add-more-icon.svg';
 import RemoveIcon from '../../../../../../images/delete-icon.svg';
 import UploadDragDrop from '../../../../../../components/UploadDragDropFile/UploadDragDrop';
+import DateInput from '../../../../../../components/DateInputField/DateInput';
 
 const options = [
   {
@@ -75,7 +75,7 @@ const MaintenanceEntry = props => {
                     <FieldDivider>
                       <FieldLeftContainer1>
                       <DateInputContainer>
-                        <CustomDateInput
+                        <DateInput
                         width='100%'
                         />
                     </DateInputContainer>

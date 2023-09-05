@@ -91,18 +91,13 @@ const ReceiveItemTable = ({ onClick }) => {
                                             <DropdownButton id="dropdown-basic-button" title="More" className='more-options'>
                                                 <Dropdown.Item href="#/action-1">
                                                     <Button
-                                                        buttonText='Student List'
+                                                        buttonText='Attach File'
                                                         className='link-button'
 
                                                     /></Dropdown.Item>
                                                 <Dropdown.Item href="#/action-2">
                                                     <Button
-                                                        buttonText='Print Student'
-                                                        className='link-button'
-                                                    /></Dropdown.Item>
-                                                <Dropdown.Item href="#/action-3">
-                                                    <Button
-                                                        buttonText='Add GPS Link'
+                                                        buttonText='Print GRN'
                                                         className='link-button'
                                                     /></Dropdown.Item>
                                             </DropdownButton>

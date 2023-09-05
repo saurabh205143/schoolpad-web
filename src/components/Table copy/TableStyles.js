@@ -134,7 +134,7 @@ export const ActionListStatusLink = styled.td`
     >a {
         color: #0C66E4;
         font-weight: 600;
-        font-size: 12px;
+        font-size: 14px;
         cursor: pointer;
         text-decoration: none;
     }

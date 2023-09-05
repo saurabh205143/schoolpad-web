@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback  } from 'react'
-import { ButtonContainer, Container, ContainerLeft, ContainerRight, DescriptionText, GetRecordsContainer,HeaderFilterHeadings,RecordBox, VerticalContainer } from './subHeaderStyles';
+import { ButtonContainer, Container, ContainerLeft, ContainerRight, DateInputField, DescriptionText, GetRecordsContainer,HeaderFilterHeadings,RecordBox, VerticalContainer } from './subHeaderStyles';
 import Headings from '../Headings/Headings';
 import Button from '../Buttons/Button';
 
@@ -11,8 +11,10 @@ import { styled } from 'styled-components';
 import CustomDrop from '../MainHeader/Components/SubComponents/CustomDrop';
 import 'react-datepicker/dist/react-datepicker.css';
 import calendarIcon from '../../images/date-icon.svg';
-import CustomDateInput from '../DateInputField/DateInputField';
 import MultiSelectDropDown, { Container1 } from '../Inputs/MultiSelectDropDown';
+import LinkButton from '../Buttons/LinkButton';
+import DateInput from '../DateInputField/DateInput';
+
 
 export const DropContianer = styled.div`
     position:absolute;
@@ -70,7 +72,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1,showDefaultHeaderSelect2,defaultHeaderLabel2,defaultHeaderPlaceholder2,buttonChangeHistory,buttonFormFieldText}) => {
+const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterFrom, showHeaderFilterTo, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1,showDefaultHeaderSelect2,defaultHeaderLabel2,defaultHeaderPlaceholder2,buttonChangeHistory,buttonFormFieldText,showLinkButton, linkText}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -224,9 +226,7 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                 }
                 {showDateInputField && 
                     <RecordBox>
-                        <CustomDateInput
-                        width='280px'
-                        />
+                    
                     </RecordBox>
                 }
                 {showSelectInput1 && 
@@ -390,6 +390,16 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                             />
                         </ButtonContainer>
                     }
+                    {showLinkButton && 
+                        <ButtonContainer>
+                            <LinkButton
+                                backgroundColor='#0C66E4'
+                                padding='0px 12px'
+                                linkText={linkText}
+                                to='/inventory/purchaseAdd'
+                            />
+                        </ButtonContainer>
+                    }
                         {buttonOrders &&
                             <ButtonContainer>
                                 <Button
@@ -429,18 +439,20 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                 <HeaderFilterHeadings>
                 <VerticalContainer>
                     <GetRecordsContainer>
-                    {showHeaderFilterDate &&
+                    {showHeaderFilterFrom &&
                     <RecordBox>
-                            <CustomDateInput
-                            width='280px'
-                            />
-                        </RecordBox>
+                        <DateInput
+                        width='250px'
+                        dateLabelField='From'
+                        />
+                    </RecordBox>
                     }
-                        {showHeaderFilter &&
+                    {showHeaderFilterTo &&
                         <RecordBox>
-                            <CustomDateInput
+                        <DateInput
                             width='250px'
-                            />
+                            dateLabelField='To'
+                        />
                         </RecordBox>
                         }
                         {showHeaderFilterReturn &&

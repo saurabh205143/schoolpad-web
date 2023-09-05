@@ -4,25 +4,39 @@ import { Link } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 
 export const LinkClassic = styled(Link)`
-    color:${({ theme }) => theme. buttonPrimary};
+    width: auto;
+    height:${({ theme }) => theme.buttonHeight};
+    color: ${(props) => props.color || '#ffffff'};
+    background-color: ${(props) => props.backgroundColor || 'none'};
+    border-radius:${({ theme }) => theme.buttonRadius};
     font-size: ${({ theme }) => theme.smallFont};
     font-weight:${({ theme }) => theme.fontWeightBold};
     font-family: 'Source Sans Pro',sans-serif;
-    text-align:center;
-    text-decoration:none;
-    letter-spacing:0px;
-    padding:${({theme}) => theme.padding};
+    padding:${(props) => props.padding || 'none'};
+    cursor: pointer;
+    transition: all 0.6s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     > .only-icon{
-        width:18px;
+        width:22px;
+    }
+    &:hover{
+        background-color: ${(props) => props.backgroundColor || 'none'};
+        color: ${(props) => props.color || '#ffffff'};
     }
 `;
 
-const LinkButton = ({ to, linkText, onlyIcon, tooltiptext, onClick, backgroundColor}) => {
+const LinkButton = ({ to,linkText, onlyIcon, tooltiptext, onClick, backgroundColor, color, padding, height}) => {
     return (
         <LinkClassic 
             to={to} 
             onClick={onClick}
             backgroundColor={backgroundColor}
+            color={color}
+            height={height}
+            padding={padding}
             >
             {linkText}
             {onlyIcon &&

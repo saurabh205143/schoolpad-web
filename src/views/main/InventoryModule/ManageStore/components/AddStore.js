@@ -83,7 +83,6 @@ const AddStore = props => {
         setInputs(i);
     };
 
-    
     // OnSubmit Validate 
     const onSubmit = () => {
         let e = {};
