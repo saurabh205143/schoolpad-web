@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer, FieldLeftContainer1, FieldRightContainer, FieldRightContainer1, ModalBodyConatiner, RemoveContianer } from './AddRouteStyles';
@@ -36,25 +36,49 @@ const AddRoutes = props => {
     const [formValues, setFormValues] = useState(
         [
             {
-                staff_member: "",
-                route_name: "",
-                stops: "",
-                set_order: "",
+                stops:'',
+                set_order:'',
+                
+            }
+        ]
+    );
+    const [inputs, setInputs] = useState({
+        route_name: "",
                 vehicle_number: "",
                 vehicle_capacity: "",
                 bus_help: "",
-            }
-        ]
-    )
+    });
+    // multiselect validation
+    const [selectedOptions, setSelectedOptions] = useState([]);
+    const [validationError, setValidationError] = useState('');
 
-    let handleChange = (e) => {
+    const handleSelectChange = (newSelectedOptions) =>{
+        setSelectedOptions(newSelectedOptions);
+        
+        setValidationError('');
+
+    }
+
+    let handleChange = (i,e) => {
         let newFormValues = [...formValues];
-        newFormValues[e.target.name] = e.target.value;
+        newFormValues[i][e.target?.name] = e.target?.value;
         setFormValues(newFormValues);
+        console.log({formValues});
+        
+    }
+    // Inputs handle change
+    const handleChangeInputs = (e) => {
+        let i = { ...inputs };
+        i[e.target.name] = e.target.value;
+        setInputs(i);
+        console.log(i);
+    };
+    const handleSetChange = () => {
+
     }
 
     let addFormFields = () => {
-        setFormValues([...formValues, { stops: "", set_order: "" }])
+        setFormValues([...formValues, { stops:'', set_order:'' }])
     }
 
     let removeFormFields = (i) => {
@@ -63,9 +87,21 @@ const AddRoutes = props => {
         setFormValues(newFormValues)
     }
 
+    // useEffect(()=>{
+       
+    // console.log(formValues);
+    // },[formValues]);
+
     let handleSubmit = (event) => {
         event.preventDefault();
+         // Perform validations
+        if(selectedOptions.length === 0){
+            setValidationError('Please select option');
+        } else {
+            setValidationError('failed');
+        }
         alert(JSON.stringify(formValues));
+        alert(JSON.stringify(inputs));
     }
 
     return (
@@ -75,12 +111,16 @@ const AddRoutes = props => {
             modalHeading={'Add New Route'}
             submitText='Confirm'
             cancelText='Cancel'
+            saveAction={handleSubmit}
         >
             <form onSubmit={handleSubmit}>
                 <ModalBodyConatiner>
                 <FieldContainer>
                     <MultiSelectDropDown
                         label='Staff Memmbers'
+                        onChange={handleSelectChange}
+                        selected={selectedOptions}
+                        error={validationError}
                      />
                 </FieldContainer>
                 <FieldContainer>
@@ -89,6 +129,9 @@ const AddRoutes = props => {
                         placeholder={'Route name'}
                         label={'Route Name'}
                         name={'route_name'}
+                        value={inputs.route_name}
+                        onChange={handleChangeInputs}
+
                     />
                 </FieldContainer>
                 {formValues.map((element, index) => (
@@ -96,19 +139,18 @@ const AddRoutes = props => {
                         <FieldLeftContainer1>
                             <SelectInput
                                 type='select'
-                                options={options}
+                                options={options1}
                                 label={'Stops'}
                                 placeholder={'---- Select stops ----'}
                                 name='stops'
-                                value={formValues.stops }
-                                onChange={(e, item) => {
-                                    handleChange({
-                                        target: {
-                                            value: item.key,
-                                            name: 'stops',
-                                        },
-                                    });
-                                }}
+                                value={formValues.stops  }
+                                selectedKey={formValues.stops}
+                                onChange={(e,item) => handleChange(index,{
+                                    target:{
+                                        value:e.value,
+                                        name:'stops'
+                                    }
+                                })}
                             />
                         </FieldLeftContainer1>
                         <FieldRightContainer1>
@@ -117,8 +159,8 @@ const AddRoutes = props => {
                                 placeholder={'Set order'}
                                 label={'Order'}
                                 name={'set_order'}
-                                value={formValues.set_order }
-                                onChange={(e,item) => handleChange(e,item)}
+                                value={element.set_order }
+                                onChange={e => handleChange(index,e)}
                             />
                         </FieldRightContainer1>
                         {
@@ -148,6 +190,8 @@ const AddRoutes = props => {
                             name={'vehicle_number'}
                             label={'Vehicle Number'}
                             placeholder={'Vehicle number'}
+                            value={inputs.vehicle_number}
+                            onChange={handleChangeInputs}
                         />
                     </FieldLeftContainer>
                     <FieldRightContainer>
@@ -158,6 +202,7 @@ const AddRoutes = props => {
                             name={'vehicle_capacity'}
                             value='25'
                             disabled={true}
+                            onChange={handleChangeInputs}
                         />
                     </FieldRightContainer>
                 </FieldDivider>
@@ -167,6 +212,8 @@ const AddRoutes = props => {
                         placeholder={'Helpline number'}
                         label={'Bus Help'}
                         name={'bus_help'}
+                        value={inputs.bus_help}
+                        onChange={handleChangeInputs}
                     />
                 </FieldContainer>
                 </ModalBodyConatiner>

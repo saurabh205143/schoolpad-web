@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactMultiSelectCheckboxes from "react-multiselect-checkboxes";
 
 import options from "./data";
-import {  Title } from "./Input";
+import {  ErrorContainer, Title } from "./Input";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -49,7 +49,7 @@ export const Container = styled.div`
   }
 `;
 
-const MultiSelectDropDown = ({label}) => {
+const MultiSelectDropDown = ({label,error,selected}) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   useEffect(() => {
@@ -94,10 +94,15 @@ const MultiSelectDropDown = ({label}) => {
         getDropdownButtonLabel={getDropdownButtonLabel}
       value={selectedOptions}
       onChange={onChange}
+      selected={selected}
       setState={setSelectedOptions}
       className='multiselect-drop-down'
     />
-    
+    {error &&
+      <ErrorContainer>
+        {error}
+      </ErrorContainer>
+    }
     </Container>
   );
 };
