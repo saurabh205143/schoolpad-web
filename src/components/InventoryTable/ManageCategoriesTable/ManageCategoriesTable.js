@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import data from './data.json';
 import { ActionsConatiner, ActionsList, TableActionHeading, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../Table/TableStyles';
 import LinkButton from '../../Buttons/LinkButton';
@@ -9,8 +9,9 @@ import DeleteIcon from '../../../images/delete-icon.svg';
 import AddCategories from '../../../views/main/InventoryModule/ManageCategories/components/AddCategories';
 import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../../Pagination/Pagination';
+import EditCategories from '../../../views/main/InventoryModule/ManageCategories/components/EditCategories';
 
-let PageSize = 0;
+let PageSize = 10;
 
 const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +19,8 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
   const [Count, setCount] = useState(0);
-  console.log({ categoryList });
+  const [singlerecord, setSinglerecord] =  useState({});
+  console.log({ totalRecord });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -30,19 +32,28 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
   const handleChange = () => {
     setIsChecked(!isChecked);
 };
+  // set record for each row
+  const setCatdetail = (detail) => {
+    // console.log({ detail });
+    setSinglerecord(detail);
+  }
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return Array.isArray(record)?record.slice(firstPageIndex, lastPageIndex):0;
   }, [currentPage]);
+ useEffect(() => { 
+    getCurrentPage();
+    // console.log({searchinfo});
+  },[]);
+  const getCurrentPage = (page) => {
+    
+    const cPage = (page == undefined) ? 1 : page;
+    const counter = (cPage - 1) * PageSize;
+    setCount(counter);
 
-  // get table column
-  // setCurrentPage = () => {
-  //   const cPage = (page == undefined) ? 1 : page;
-  //   const counter = (cPage - 1) * PageSize;
-  //   setCount(counter);
-  // }
+  }
   
   const column = Object.keys(data[0]);
   const ThData = () => {
@@ -79,12 +90,6 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
             const rowNumber = i + Count + 1;
             return (
               <TableRow>
-                {/* <Tabledata>
-                  <CustomCheckbox
-                    isChecked={isChecked}
-                    onChange={handleChange}
-                  />
-                </Tabledata> */}
                 <Tabledata>{rowNumber}</Tabledata>
                 <Tabledata>{item.categoryName}</Tabledata>
                 <Tabledata>{item.categoryCode}</Tabledata>
@@ -95,7 +100,7 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
                       <LinkButton
                         onlyIcon={EditIcon}
                         tooltiptext='Edit'
-                        onClick={() => setShowModal(!showModal)}
+                        onClick={() => { setShowModal(!showModal); setCatdetail(item); }}
                       />
                     </ActionsList>
                     <ActionsList>
@@ -115,16 +120,28 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
       {/* <Pagination
         className="pagination-bar"
         currentPage={currentPage}
+        // totalCount={Array.isArray(totalRecord)?totalRecord:0}
+        pageSize={PageSize}
+        onPageChange={(page) => {categoryList(page - 1, PageSize); getCurrentPage (page) }}
+      /> */}
+      <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
         totalCount={totalRecord}
         pageSize={PageSize}
-        onPageChange={(page) => {categoryList(page - 1, PageSize); setCurrentPage(page) }}
-      /> */}
+        onPageChange={(page) => {categoryList(page - 1, PageSize); getCurrentPage (page) }}
+      />
 
-      {/* Edit Categories Modal */}
+      {/* Add Categories Modal */}
         <AddCategories
             show={showModal}
             handleClose={hideModal}
-        />
+      />
+      <EditCategories
+        show={showModal}
+        handleClose={hideModal}
+        singlerecord={singlerecord}
+      />
 
       <DeleteRouteModal
         show={showDeleteModal}

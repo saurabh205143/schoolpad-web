@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
 
@@ -15,9 +15,9 @@ export const SelectInputLabel = styled.div`
 //   { value: 'strawberry', label: 'Strawberry' },
 // ];
 
-const SelectInput = ({label, placeholder, options}) => { 
+const SelectInput = ({label, placeholder, options, SelectedValue}) => { 
   const [selectedOption, setSelectedOption] = useState(null);
-
+  // console.log({ selectedOption });
   // Custom styles for the Select component
   const selectStyles = {
     control: (provided, state) => ({
@@ -47,7 +47,7 @@ const SelectInput = ({label, placeholder, options}) => {
       </SelectInputLabel>
       <Select
         value={selectedOption}
-        onChange={setSelectedOption}
+        onChange={(e) => { setSelectedOption(e); SelectedValue(e.value)}} 
         options={options}
         styles={selectStyles} 
         placeholder={placeholder}

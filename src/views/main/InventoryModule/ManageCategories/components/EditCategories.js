@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
@@ -10,10 +10,20 @@ import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import SelectInput from '../../../../../components/Inputs/Select';
-
-const AddCategories = props => {
-    const { show, handleClose, Storelist,saveAction } = props;
-    const options = Storelist;
+const baseURL = config.baseUrl +"api/v1/inventory/category";
+const EditCategories = props => {
+    
+    const [categoryname, setCategoryName] = useState('');
+    const [categorycode, setCategoryCode] = useState('');
+    const [storelist, setStorelist] = useState([]);
+    const { show, handleClose, saveAction, singlerecord } = props;
+    useEffect(() => {
+        setCategoryName(singlerecord.categoryName);
+        setCategoryCode(singlerecord.categoryCode);
+        getstoreList();
+      }, [singlerecord]);
+    // console.log(singlerecord);
+    
     const [formValues, setFormValues] = useState(
         [
             {
@@ -27,6 +37,16 @@ const AddCategories = props => {
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const [SelectedValue, setSelectValue] = useState([]);
+    
+
+    //---------------------
+    const handlesetCategoryNameChange = (e) => {
+        setCategoryName(e.target.value);
+    };
+    const handlesetCategoryCodeChange = (e) => {
+        setCategoryCode(e.target.value);
+    };
+    const options = storelist;
     // Validate Inputs
     const validate = () => {
         let fields = [
@@ -65,11 +85,19 @@ const AddCategories = props => {
         return Object.keys(e).length === 0;
     }
 
-    // Inputs handle change
-        const handleChange = (index, event) => {
+    const getstoreList = () => {
+    const fetchstorelistURL = config.baseUrl + +"api/v1/inventory/storelist";
+    axios.get(fetchstorelistURL).then((resp) => {
+      // console.log({ resp });
+      setStorelist(resp.data);
+    });
+  }
+
+     // Inputs handle change
+    const handleChange = (event) => {
         const { name, value } = event.target;
         let updatedFormValues = [...formValues];
-        updatedFormValues[index][name] = value;
+        // updatedFormValues[index][name] = value;
         setFormValues(updatedFormValues);
     };
 
@@ -82,9 +110,9 @@ const AddCategories = props => {
         setLoading(true);
         for (let i = 0; i < formValues.length; i++) { 
             const baseURL = config.baseUrl +"api/v1/inventory/category";
-            axios.post(baseURL, {
-                categoryName: formValues[i].category_name,
-                categoryCode: formValues[i].category_code,
+            axios.put(baseURL, {
+                categoryName: formValues[i].categoryname,
+                categoryCode: formValues[i].categorycode,
                 storeId: SelectedValue,
             })
                 .then(function (response) {
@@ -132,7 +160,7 @@ const AddCategories = props => {
         <Modal
             show={show}
             handleClose={handleClose}
-            modalHeading={'Add New Category'}
+            modalHeading={'Edit Category'}
             submitText='Save and Close'
             actionText={'Save and Continue'}
             cancelText='Cancel'
@@ -140,7 +168,7 @@ const AddCategories = props => {
             loading={loading}
         >
             <form>
-                <ModalBodyConatiner>
+                <ModalBodyConatiner style={{marginBottom: '0px'}}>
                 <FieldContainer>
                     <SelectInput
                         label='Select Store'
@@ -152,7 +180,7 @@ const AddCategories = props => {
                         error={errors.select_store}
                     />
                 </FieldContainer>
-                {formValues.map((element, index) => (
+                {/* {formValues.map((element, index) => ( */}
                 <FieldDivider>
                         <FieldLeftContainer1>
                             <Input
@@ -160,9 +188,9 @@ const AddCategories = props => {
                                 label={'Category Name'}
                                 placeholder={'Enter category name'}
                                 name={'category_name'}
-                                value={formValues.category_name}
-                                onChange={(e) => handleChange(index, e)}
+                                onChange={(e) => handlesetCategoryNameChange(e)}
                                 required={true}
+                                value={categoryname}
                                 error={errors.category_name}
                             />
                         </FieldLeftContainer1>
@@ -172,13 +200,13 @@ const AddCategories = props => {
                                 placeholder={'Enter category code'}
                                 label={'Category Code'}
                                 name={'category_code'}
-                                value={formValues.category_code}
-                                onChange={(e) => handleChange(index, e)}
+                                onChange={(e) => handlesetCategoryCodeChange(e)}
                                 required={true}
+                                value={categorycode}
                                 error={errors.category_code}
                             />
                         </FieldRightContainerItem>
-                        {
+                        {/* {
                             index ?
                                 <RemoveContianer>
                                     <Button
@@ -189,20 +217,20 @@ const AddCategories = props => {
                                     />
                                 </RemoveContianer>
                                 : null
-                        }
+                        } */}
                     </FieldDivider>
-                    ))}
+                    {/* ))} */}
                 {/* Add More field button */}
-                <AddMoreField style={{marginBottom: '14px'}}>
+                {/* <AddMoreField style={{marginBottom: '14px'}}>
                     <Link onClick={() => addFormFields()}>
                         <img src={AddMoreIcon} alt="Icon" />
                         <span>Add Another Category</span>
                     </Link>
-                </AddMoreField>
+                </AddMoreField> */}
                 </ModalBodyConatiner>
             </form>
         </Modal>
     );
 };
 
-export default AddCategories;
+export default EditCategories;
