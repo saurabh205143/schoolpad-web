@@ -6,10 +6,10 @@ import { DateContainer, DateInputField, DateInputLabel } from '../ScreensHeader/
 //Assets
 import calendarIcon from '../../images/date-icon.svg';
 
-  const CustomDateInput = ({ width }) => {
+  const DateInput = ({ width , dateLabelField}) => {
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const dateLabel = 'Date';
+  const formattedDateLabel = dateLabelField || 'Date';
   const datePlaceholder = 'MM/dd/yyyy';
   const options = []; 
 
@@ -55,7 +55,7 @@ import calendarIcon from '../../images/date-icon.svg';
     <>
       <DateContainer>
         <DateInputLabel>
-          <label htmlFor="datePicker">{dateLabel}</label>
+          <label htmlFor="datePicker">{formattedDateLabel}</label>
         </DateInputLabel>
         {/* Use the DatePicker component */}
         <DateInputField>
@@ -72,4 +72,4 @@ import calendarIcon from '../../images/date-icon.svg';
   );
 };
 
-export default CustomDateInput ;
+export default DateInput;

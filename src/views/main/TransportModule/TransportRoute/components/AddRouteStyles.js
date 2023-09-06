@@ -67,7 +67,7 @@ export const FieldDividerHeadingBottom = styled.div`
 export const FieldDivider = styled.div`
     width:100%;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:flex-start;
 `;
 

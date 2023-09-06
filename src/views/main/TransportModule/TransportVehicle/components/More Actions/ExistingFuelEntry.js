@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 // Assets
 import EditIcon from '../../../../../../images/edit-icon.svg';
 import DeleteIcon from '../../../../../../images/delete-icon.svg';

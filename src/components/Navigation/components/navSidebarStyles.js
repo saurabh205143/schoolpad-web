@@ -4,7 +4,7 @@ export const ModuleBoxes = styled.div`
 `;
 
 export const ModuleBoxCol = styled.div`
-    padding:17px 12px;
+    padding:13px 12px;
     display:flex;
     align-items:center;
     justify-content:flex-start;
@@ -49,6 +49,9 @@ export const NavBarItem = styled.li`
     // border-bottom:1px solid #C1C7D0;
     &.active {
         >a{
+            background-color: #E9F2FF;
+            border-radius: 3px;
+            padding: 8px;
             >span{
                 color:${({ theme }) => theme. buttonPrimary};
                 font-weight: 600;
@@ -64,7 +67,6 @@ export const NavBarItem = styled.li`
         >.sidebar-drop{
             li.active{
                 a{
-                    background: #E9F2FF;
                     border-radius: 3px;
                     height:40px;
                     display:flex;
@@ -83,6 +85,7 @@ export const NavBarItem = styled.li`
         display:flex;
         align-items:center;
         width:100%;
+        padding:8px;
         >.active-icons{
             display:none;
         }

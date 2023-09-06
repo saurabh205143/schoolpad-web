@@ -28,7 +28,7 @@ const ReceiveItems = () => {
           inputPlaceholder4='Enter vendors'
           showHeaderFilter={true}
           showSearchButtonRight={true}
-          showPrimaryButton={true}
+          showPrimaryButton={false}
           showReceiveHeaderFilter={true}
           showReceiveHeaderFilter1={true}
           showGetRecordButton={true}

@@ -65,8 +65,8 @@ const AddCategories = props => {
         return Object.keys(e).length === 0;
     }
 
-     // Inputs handle change
-    const handleChange = (index, event) => {
+    // Inputs handle change
+        const handleChange = (index, event) => {
         const { name, value } = event.target;
         let updatedFormValues = [...formValues];
         updatedFormValues[index][name] = value;
@@ -160,8 +160,8 @@ const AddCategories = props => {
                                 label={'Category Name'}
                                 placeholder={'Enter category name'}
                                 name={'category_name'}
-                                onChange={(e) => handleChange(index, e)}
                                 value={formValues.category_name}
+                                onChange={(e) => handleChange(index, e)}
                                 required={true}
                                 error={errors.category_name}
                             />
@@ -172,8 +172,8 @@ const AddCategories = props => {
                                 placeholder={'Enter category code'}
                                 label={'Category Code'}
                                 name={'category_code'}
-                                onChange={(e) => handleChange(index, e)}
                                 value={formValues.category_code}
+                                onChange={(e) => handleChange(index, e)}
                                 required={true}
                                 error={errors.category_code}
                             />

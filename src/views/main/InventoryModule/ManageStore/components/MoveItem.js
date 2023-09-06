@@ -9,8 +9,8 @@ import Select from 'react-select';
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
-import DateInputField from '../../../../../components/DateInputField/DateInputField';
-import CustomDateInput from '../../../../../components/DateInputField/DateInputField';
+import DateInputField from '../../../../../components/DateInputField/DateInput';
+import CustomDateInput from '../../../../../components/DateInputField/DateInput';
 import SelectInput, { SelectInputContainer } from '../../../../../components/Inputs/Select';
 
 const options = [

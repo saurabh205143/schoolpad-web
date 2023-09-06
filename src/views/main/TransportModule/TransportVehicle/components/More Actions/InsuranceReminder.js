@@ -6,7 +6,6 @@ import Modal from '../../../../../../components/Modal/Modal';
 import Input from '../../../../../../components/Inputs/Input';
 import { AddFormFieldInnerTab, AddFormFieldTab, AddFormFieldTabText, DateInputContainer, FieldDivider, FieldLeftContainer1, FieldRightContainerItem, ModalBodyConatiner } from '../../../TransportRoute/components/AddRouteStyles';
 import SelectInput from '../../../../../../components/Inputs/Select';
-import CustomDateInput from '../../../../../../components/DateInputField/DateInputField';
 import ExistingFuelEntry from './ExistingFuelEntry';
 
 const options = [

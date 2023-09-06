@@ -29,9 +29,11 @@ export const NavBarItem = styled.li`
         border-radius:3px;
         display:flex;
         align-items:center;
-        color:${({theme}) => theme.whiteColor};
+        background: ${({ theme }) => theme.whiteColor};
+        color: ${({ theme }) => theme.buttonPrimary};
         font-size:14px;
         font-weight:600;
+        background
         @media screen and (max-width: 1240px) {
             font-size:12px;
             height:28px;
