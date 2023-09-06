@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import data from './data.json';
 import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../Table/TableStyles';
 import LinkButton from '../../Buttons/LinkButton';
@@ -6,23 +6,36 @@ import LinkButton from '../../Buttons/LinkButton';
 // Assets
 import EditIcon from '../../../images/edit-icon.svg';
 import DeleteIcon from '../../../images/delete-icon.svg';
-import AddCategories from '../../../views/main/InventoryModule/ManageCategories/components/AddCategories';
 import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../../Pagination/Pagination';
+import AddVendor from '../../../views/main/InventoryModule/ManageVendors/components/AddVendor';
+import EditVendor from '../../../views/main/InventoryModule/ManageVendors/components/EditVendor';
+import DeleteVendor from '../../../views/main/InventoryModule/ManageVendors/components/DeleteVendor';
 
-let PageSize = 14;
+let PageSize = 10;
 
-const ManageVendorsTable = ({ onClick }) => {
+const ManageVendorsTable = ({ onClick, record,totalRecord,vendorList,showDeleteToastMessage }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-
+  const [Count, setCount] = useState(0);
+  const [singlerecord, setsinglerecord] = useState(0);
+  // console.log({ record });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
 
   const hideModal = () => {
     setShowModal(false);
+  }
+
+  const setVendorDetail = (detail) => {
+    setsinglerecord(detail);
+  }
+
+  const setVendorDelete = (detail) => {
+    let vendrDet = { 'vetid': detail.id, 'vendorname': detail.vendorName }
+    setsinglerecord(vendrDet);
   }
 
   const currentTableData = useMemo(() => {
@@ -32,10 +45,21 @@ const ManageVendorsTable = ({ onClick }) => {
   }, [currentPage]);
 
   // get table column
-  
-  const column = Object.keys(data[0]);
+
+  useEffect(() => { 
+    getCurrentPage();
+    // console.log({searchinfo});
+  },[]);
+  const getCurrentPage = (page) => {
+    
+    const cPage = (page == undefined) ? 1 : page;
+    const counter = (cPage - 1) * PageSize;
+    setCount(counter);
+
+  }
+  const col = ['SNo','Vendor Name', 'Vendor Code','Store Name','Address', 'Region', 'ContactNo.', 'Gst No.'];
   const ThData = () => {
-      return column.map((data) => {
+      return col.map((data) => {
           return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
       })
   }
@@ -50,56 +74,61 @@ const ManageVendorsTable = ({ onClick }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {currentTableData.map(item => {
+          {Array.isArray(record)?record.map((item, i) => {
+            const rowNumber = i + Count + 1;
             return (
               <TableRow>
-                <Tabledata>{item.SNo}</Tabledata>
-                <Tabledata>{item.StoreName}</Tabledata>
-                <Tabledata>{item.StoreCode}</Tabledata>
-                <Tabledata>{item.Address}</Tabledata>
-                <Tabledata>{item.Region}</Tabledata>
-                <Tabledata>{item.ConatctNo}</Tabledata>
-                <Tabledata>{item.GstNo}</Tabledata>
+                <Tabledata>{rowNumber}</Tabledata>
+                <Tabledata>{item.vendorName}</Tabledata>
+                <Tabledata>{item.vendorCode}</Tabledata>
+                <Tabledata>{item.storeName}</Tabledata>
+                <Tabledata>{item.address}</Tabledata>
+                <Tabledata>{item.region}</Tabledata>
+                <Tabledata>{item.contactNo}</Tabledata>
+                <Tabledata>{item.tinNo}</Tabledata>
                 <Tabledata>
                   <ActionsConatiner>
                     <ActionsList>
                       <LinkButton
                         onlyIcon={EditIcon}
                         tooltiptext='Edit'
-                        onClick={() => setShowModal(!showModal)}
+                        onClick={() => { setShowModal(!showModal); setVendorDetail(item); }}
                       />
                     </ActionsList>
                     <ActionsList>
                       <LinkButton
                         onlyIcon={DeleteIcon}
                         tooltiptext='Delete'
-                        onClick={() => setShowDeleteModal(!showModal)} 
+                        onClick={() => { setShowDeleteModal(!showModal); setVendorDelete(item); }} 
                       />
                     </ActionsList>
                   </ActionsConatiner>
                 </Tabledata>
               </TableRow>
             );
-          })}
+          }):null}
         </TableBody>
       </TableContainer>
       <Pagination
         className="pagination-bar"
         currentPage={currentPage}
-        totalCount={data.length}
+        totalCount={(totalRecord == 0 || totalRecord == '') ? 0:totalRecord}
         pageSize={PageSize}
-        onPageChange={page => setCurrentPage(page)}
+        onPageChange={(page) => { vendorList(page - 1, PageSize); getCurrentPage(page); }}
       />
 
-      {/* Edit Categories Modal */}
-        <AddCategories
-            show={showModal}
-            handleClose={hideModal}
-        />
+      {/* Edit Vendor Modal */}
+        <EditVendor
+        show={showModal}
+        handleClose={hideModal}
+        singlerecord={singlerecord}
+      />
 
-      <DeleteRouteModal
+      <DeleteVendor
         show={showDeleteModal}
         handleClose={hideDeleteModal}
+        singlerecord={singlerecord}
+        setVendorDelete={setVendorDelete}
       />
     </>
   );

@@ -12,7 +12,7 @@ import MultiSelectDropDown from '../../../../../components/Inputs/MultiSelectDro
 
 const AddStore = props => {
 
-    const { show, handleClose,saveAction,vendorList } = props;
+    const { show, handleClose,saveAction,vendorList,showToastMessage } = props;
     const [isChecked, setIsChecked] = useState(true);
     const [StoreManager, setStoremanager] = useState([]);
     const [inputs, setInputs] = useState({

@@ -1,14 +1,21 @@
-import React,{ useState} from 'react';
+import React,{ useState, useEffect} from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import LeftIcon from '../../../../../images/phone-icon.svg';
 import { FieldContainer, ModalBodyConatiner } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 import axios from 'axios';
 import config from '../../../../../config';
-const AddVendor = props => {
-    const { show, handleClose, showToastMessage } = props;
-     const [errors, setErrors] = useState({});
+const EditVendor = props => {
+    const { show, handleClose, showToastMessage, singlerecord } = props;
+    const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
+    const [vendorname, setvendorname] = useState('');
+    const [vendorcode, setvendorcode] = useState('');
+    const [vendorcontact, setvendorcontact] = useState('');
+    const [vendorgstno, setvendorgstno] = useState('');
+    const [vendorregion, setvendorregion] = useState('');
+    const [vendoraddress, setvendoraddress] = useState('');
+    console.log({singlerecord})
     const [inputs, setInputs] = useState({
         vendor_name: '',
         vendor_code: '',
@@ -87,23 +94,49 @@ const AddVendor = props => {
         setInputs(i);
     };
 
+    const handleVendorNameChange = (e) => { 
+        setvendorname(e.target.value);
+    }
+
+    const handleVendorCodeChange = (e) => { 
+        setvendorcode(e.target.value);
+    }
+    const handleVendorContactChange = (e) => { 
+        setvendorcontact(e.target.value);
+    }
+
+    const handleGstnoChange = (e) => { 
+        setvendorgstno(e.target.value);
+    }
+
+    useEffect(() => {
+        setvendorname(singlerecord.vendorName);
+        setvendorcode(singlerecord.vendorCode);
+        setvendorcontact(singlerecord.contactNo);
+        setvendorgstno(singlerecord.tinNo);
+        setvendorregion(singlerecord.region);
+        setvendoraddress(singlerecord.address);
+    },[singlerecord])
+
+
 
      // OnSubmit Validate 
     const onSubmit = () => { 
         let e = {};
-        if (!validate()) {
-            return;
-        }
-        setLoading(true);
+        // if (!validate()) {
+        //     return;
+        // }
+        // setLoading(true);
         const baseURL = config.baseUrl +"api/v1/inventory/vendor";
-        axios.post(baseURL, {
-            vendorName: inputs.vendor_name,
-            vendorCode:inputs.vendor_code,
-            contactNo: inputs.vendor_contactno,
-            tinNo: inputs.vendor_gstno,
-            address: inputs.vendor_address,
-            region:inputs.vendor_region,
-            userId:214
+        axios.put(baseURL, {
+            vendorName: vendorname,
+            vendorCode:vendorcode,
+            contactNo: vendorcontact,
+            tinNo: vendorgstno,
+            address: vendoraddress,
+            region:vendorregion,
+            userId: 214,
+            id:singlerecord.id
         })
             .then(function (response) {
             if(response.data.code == '400')
@@ -113,8 +146,8 @@ const AddVendor = props => {
             }
             else
             {
-                setLoading(false);
-                showToastMessage();
+                // setLoading(false);
+                // showToastMessage();
                 setTimeout(() => {
                     window.location.reload();
                 }, 2000);
@@ -122,14 +155,14 @@ const AddVendor = props => {
             
           })
           .catch(function (error) {});
-        setErrors(e);
+        // setErrors(e);
     }
 
     return (
         <Modal
             show={show}
             handleClose={handleClose}
-            modalHeading={'Add New Vendor'}
+            modalHeading={'Edit '+vendorname+' Vendor'}
             submitText='Confirm'
             cancelText='Cancel'
             saveAction={onSubmit}
@@ -146,8 +179,8 @@ const AddVendor = props => {
                         label={'Vendor Name*'}
                         placeholder={'Enter vendor name'}
                         name='vendor_name'
-                        value={inputs.vendor_name}
-                        onChange={handleChange}
+                        value={vendorname}
+                        onChange={handleVendorNameChange}
                         required={true}
                         error={errors.vendor_name}
                     />
@@ -158,8 +191,8 @@ const AddVendor = props => {
                     placeholder={'Enter vendor code'}
                     label={'Vendor Code*'}
                     name={'vendor_code'}
-                    value={inputs.vendor_code}
-                    onChange={handleChange}
+                    value={vendorcode}
+                    onChange={handleVendorCodeChange}
                     required={true}
                     error={errors.vendor_code}
                 />
@@ -171,8 +204,8 @@ const AddVendor = props => {
                     label={'Contact No.*'}
                     name={'vendor_contactno'}
                     leftIcon={LeftIcon}
-                    value={inputs.vendor_contactno}
-                    onChange={handleChange}
+                    value={vendorcontact}
+                    onChange={handleVendorContactChange}
                     required={true}
                     error={errors.vendor_contactno}
                     
@@ -184,8 +217,8 @@ const AddVendor = props => {
                     placeholder={'Enter gst no'}
                     label={'GST No.*'}
                     name={'vendor_gstno'}
-                    value={inputs.vendor_gstno}
-                    onChange={handleChange}
+                    value={vendorgstno}
+                    onChange={handleGstnoChange}
                     required={true}
                     error={errors.vendor_gstno}
                 />
@@ -196,7 +229,7 @@ const AddVendor = props => {
                     placeholder={'Enter region'}
                     label={'Region*'}
                     name={'vendor_region'}
-                    value={inputs.vendor_region}
+                    value={vendorregion}
                     onChange={handleChange}
                     required={true}
                     error={errors.vendor_region}
@@ -208,7 +241,7 @@ const AddVendor = props => {
                     placeholder={'Enter vendor address'}
                     label={'Address'}
                     name={'vendor_address'}
-                    value={inputs.vendor_address}
+                    value={vendoraddress}
                     onChange={handleChange}
                     required={true}
                     error={errors.vendor_address}
@@ -219,4 +252,4 @@ const AddVendor = props => {
     );
 };
 
-export default AddVendor;
+export default EditVendor;

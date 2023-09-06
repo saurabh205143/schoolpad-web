@@ -7,20 +7,20 @@ import LinkButton from '../../Buttons/LinkButton';
 import EditIcon from '../../../images/edit-icon.svg';
 import DeleteIcon from '../../../images/delete-icon.svg';
 import AddCategories from '../../../views/main/InventoryModule/ManageCategories/components/AddCategories';
-import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../../Pagination/Pagination';
 import EditCategories from '../../../views/main/InventoryModule/ManageCategories/components/EditCategories';
+import DeleteCategoryModal from '../../../views/main/InventoryModule/ManageCategories/components/DeleteCategoryModal';
 
 let PageSize = 10;
 
-const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
+const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList,Storelist }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
   const [Count, setCount] = useState(0);
   const [singlerecord, setSinglerecord] =  useState({});
-  console.log({ totalRecord });
+  // console.log({ Storelist });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -34,8 +34,13 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
 };
   // set record for each row
   const setCatdetail = (detail) => {
-    // console.log({ detail });
     setSinglerecord(detail);
+  }
+
+  // set id record for each row
+  const setCatidDelete = (detail) => {
+    let catArr = { 'catid': detail.id, 'catname': detail.categoryName }
+    setSinglerecord(catArr);
   }
 
   const currentTableData = useMemo(() => {
@@ -43,10 +48,10 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
     const lastPageIndex = firstPageIndex + PageSize;
     return Array.isArray(record)?record.slice(firstPageIndex, lastPageIndex):0;
   }, [currentPage]);
- useEffect(() => { 
-    getCurrentPage();
-    // console.log({searchinfo});
-  },[]);
+  useEffect(() => { 
+      getCurrentPage();
+      // console.log({searchinfo});
+    },[]);
   const getCurrentPage = (page) => {
     
     const cPage = (page == undefined) ? 1 : page;
@@ -107,7 +112,7 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
                       <LinkButton
                         onlyIcon={DeleteIcon}
                         tooltiptext='Delete'
-                        onClick={() => setShowDeleteModal(!showModal)} 
+                        onClick={() => { setShowDeleteModal(!showModal); setCatidDelete(item); }} 
                       />
                     </ActionsList>
                   </ActionsConatiner>
@@ -141,11 +146,12 @@ const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList }) => {
         show={showModal}
         handleClose={hideModal}
         singlerecord={singlerecord}
+        Storelist={Storelist}
       />
-
-      <DeleteRouteModal
+      <DeleteCategoryModal
         show={showDeleteModal}
         handleClose={hideDeleteModal}
+        singlerecord={singlerecord}
       />
     </>
   );

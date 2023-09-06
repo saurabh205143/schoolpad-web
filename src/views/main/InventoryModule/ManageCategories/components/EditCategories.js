@@ -15,14 +15,16 @@ const EditCategories = props => {
     
     const [categoryname, setCategoryName] = useState('');
     const [categorycode, setCategoryCode] = useState('');
+    const [storename, setstorename] = useState('');
     const [storelist, setStorelist] = useState([]);
-    const { show, handleClose, saveAction, singlerecord } = props;
+    const { show, handleClose, saveAction, singlerecord, Storelist } = props;
     useEffect(() => {
         setCategoryName(singlerecord.categoryName);
         setCategoryCode(singlerecord.categoryCode);
-        getstoreList();
+        setstorename(singlerecord.storeName);
+        // getstoreList();
       }, [singlerecord]);
-    // console.log(singlerecord);
+    // console.log({singlerecord});
     
     const [formValues, setFormValues] = useState(
         [
@@ -46,7 +48,7 @@ const EditCategories = props => {
     const handlesetCategoryCodeChange = (e) => {
         setCategoryCode(e.target.value);
     };
-    const options = storelist;
+    const options = Storelist;
     // Validate Inputs
     const validate = () => {
         let fields = [
@@ -85,13 +87,13 @@ const EditCategories = props => {
         return Object.keys(e).length === 0;
     }
 
-    const getstoreList = () => {
-    const fetchstorelistURL = config.baseUrl + +"api/v1/inventory/storelist";
-    axios.get(fetchstorelistURL).then((resp) => {
-      // console.log({ resp });
-      setStorelist(resp.data);
-    });
-  }
+//     const getstoreList = () => {
+//     const fetchstorelistURL = config.baseUrl + +"api/v1/inventory/storelist";
+//     axios.get(fetchstorelistURL).then((resp) => {
+//       // console.log({ resp });
+//       setStorelist(resp.data);
+//     });
+//   }
 
      // Inputs handle change
     const handleChange = (event) => {
@@ -111,22 +113,23 @@ const EditCategories = props => {
         for (let i = 0; i < formValues.length; i++) { 
             const baseURL = config.baseUrl +"api/v1/inventory/category";
             axios.put(baseURL, {
-                categoryName: formValues[i].categoryname,
-                categoryCode: formValues[i].categorycode,
+                categoryName: categoryname,
+                categoryCode: categorycode,
                 storeId: SelectedValue,
             })
                 .then(function (response) {
                     if (response.data.code == '002') {
                         e['category_name'] = response.data.message;
                         setErrors(e);
-                        setLoading(false);
+                        // setLoading(false);
                     }
                     else if (response.data.code == '001') {
                         e['category_code'] = response.data.message;
                         setErrors(e);
-                        setLoading(false);
+                        // setLoading(false);
                     }
                     else { 
+                        console.log({ response });
                         setTimeout(() => {
                             window.location.reload();
                         }, 2000);
@@ -177,6 +180,7 @@ const EditCategories = props => {
                         name={'select_store'}
                         required={true}
                         SelectedValue={setSelectValue}
+                        setSelectedvalue={storename}
                         error={errors.select_store}
                     />
                 </FieldContainer>
