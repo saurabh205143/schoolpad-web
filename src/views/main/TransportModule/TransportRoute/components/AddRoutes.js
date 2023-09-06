@@ -46,7 +46,6 @@ const AddRoutes = props => {
         route_name: "",
                 vehicle_number: "",
                 vehicle_capacity: "",
-                bus_help: "",
     });
     // multiselect validation
     const [selectedOptions, setSelectedOptions] = useState([]);
@@ -73,9 +72,6 @@ const AddRoutes = props => {
         setInputs(i);
         console.log(i);
     };
-    const handleSetChange = () => {
-
-    }
 
     let addFormFields = () => {
         setFormValues([...formValues, { stops:'', set_order:'' }])
@@ -206,16 +202,6 @@ const AddRoutes = props => {
                         />
                     </FieldRightContainer>
                 </FieldDivider>
-                <FieldContainer>
-                    <Input
-                        type="text"
-                        placeholder={'Helpline number'}
-                        label={'Bus Help'}
-                        name={'bus_help'}
-                        value={inputs.bus_help}
-                        onChange={handleChangeInputs}
-                    />
-                </FieldContainer>
                 </ModalBodyConatiner>
             </form>
         </Modal>

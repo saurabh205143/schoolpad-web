@@ -29,6 +29,11 @@ const AddFormField = props => {
 
     const { show, handleClose } = props;
 
+    const previousCustomTab = (tab,id) => {
+        console.log(id,tab);
+        // initTabKey(id,tab);
+    }
+
     const [formValues, setFormValues] = useState(
         [
             {
@@ -63,7 +68,7 @@ const AddFormField = props => {
             <AddFormFieldTab>
                 <AddFormFieldTabText>
                     <AddFormFieldInnerTab>
-                        <Tabs className='form-field-tab' activeKey={tabKey} onSelect={(e) => initTabKey(e)}>
+                        <Tabs className='form-field-tab' activeKey={tabKey} onSelect={(e) => {console.log(e);initTabKey(e)}}>
                             <Tab className='form-field-tab-name' eventKey="one" title="Add New Form Field">
                                 <p><form>
                                     <ModalBodyConatiner>
@@ -81,7 +86,7 @@ const AddFormField = props => {
                                             name={'field_name'}
                                         />
                                     </FieldContainer>
-                                    {formValues.map((element, index) => (
+                                    {/* {formValues.map((element, index) => (
                                         <FieldDivider>
                                             <FieldLeftContainer1>
                                                 <Input
@@ -104,20 +109,20 @@ const AddFormField = props => {
                                                     : null
                                             }
                                         </FieldDivider>
-                                    ))}
+                                    ))} */}
                                     {/* Add More field button */}
-                                    <AddMoreField>
+                                    {/* <AddMoreField>
                                         <Link onClick={() => addFormFields()}>
                                             <img src={AddMoreIcon} alt="Icon" />
                                             <span>Add Another Option</span>
                                         </Link>
-                                    </AddMoreField>
+                                    </AddMoreField> */}
                                     </ModalBodyConatiner>
                                 </form></p>
                             </Tab>
                             <Tab eventKey="two" title="Previous Custom Fields">
                                 <p>
-                                <PreviousCustomField/>
+                                <PreviousCustomField initTabKey={initTabKey}/>
                                 </p>
                                 
                             </Tab>
