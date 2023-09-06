@@ -10,6 +10,7 @@ import Button from '../../../../../components/Buttons/Button';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
 import SelectInput from '../../../../../components/Inputs/Select';
 import MultiSelectDropDown from '../../../../../components/Inputs/MultiSelectDropDown';
+import multiOptions from '../../../../../components/Inputs/data';
 
 const options = [
     {
@@ -51,9 +52,38 @@ const AddRoutes = props => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [validationError, setValidationError] = useState('');
 
+    useEffect(() => {
+        setSelectedOptions([{ label: "All", value: "*" }, ...multiOptions]);
+      }, []);
+    
+      function getDropdownButtonLabel({ placeholderButtonLabel, value }) {
+        if (value && value.some((o) => o.value === "*")) {
+          return `${placeholderButtonLabel}: All`;
+        } else {
+          return `${placeholderButtonLabel}: ${value.length} selected`;
+        }
+      }
+    
+      function onChange(value, event) {
+        if (event.action === "select-option" && event.option.value === "*") {
+          this.setState(this.options);
+        } else if (
+          event.action === "deselect-option" &&
+          event.option.value === "*"
+        ) {
+          this.setState([]);
+        } else if (event.action === "deselect-option") {
+          this.setState(value.filter((o) => o.value !== "*"));
+        } else if (value.length === this.options.length - 1) {
+          this.setState(this.options);
+        } else {
+          this.setState(value);
+        }
+      }
+
     const handleSelectChange = (newSelectedOptions) =>{
         setSelectedOptions(newSelectedOptions);
-        
+        console.log(newSelectedOptions);
         setValidationError('');
 
     }
@@ -92,12 +122,13 @@ const AddRoutes = props => {
         event.preventDefault();
          // Perform validations
         if(selectedOptions.length === 0){
-            setValidationError('Please select option');
+            setValidationError('Please select staff members');
         } else {
-            setValidationError('failed');
+            setValidationError('');
         }
         alert(JSON.stringify(formValues));
         alert(JSON.stringify(inputs));
+        alert(JSON.stringify(selectedOptions.length));
     }
 
     return (
@@ -114,8 +145,13 @@ const AddRoutes = props => {
                 <FieldContainer>
                     <MultiSelectDropDown
                         label='Staff Memmbers'
-                        onChange={handleSelectChange}
+                        options={[{ label: "All", value: "*" }, ...multiOptions]}
+                        placeholderButtonLabel='Select staff members'
+                            getDropdownButtonLabel={getDropdownButtonLabel}
+                        value={selectedOptions}
+                        onChange={onChange}
                         selected={selectedOptions}
+                        setState={setSelectedOptions}
                         error={validationError}
                      />
                 </FieldContainer>

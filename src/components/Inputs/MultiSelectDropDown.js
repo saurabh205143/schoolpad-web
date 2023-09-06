@@ -49,37 +49,7 @@ export const Container = styled.div`
   }
 `;
 
-const MultiSelectDropDown = ({label,error,selected}) => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
-
-  useEffect(() => {
-    setSelectedOptions([{ label: "All", value: "*" }, ...options]);
-  }, []);
-
-  function getDropdownButtonLabel({ placeholderButtonLabel, value }) {
-    if (value && value.some((o) => o.value === "*")) {
-      return `${placeholderButtonLabel}: All`;
-    } else {
-      return `${placeholderButtonLabel}: ${value.length} selected`;
-    }
-  }
-
-  function onChange(value, event) {
-    if (event.action === "select-option" && event.option.value === "*") {
-      this.setState(this.options);
-    } else if (
-      event.action === "deselect-option" &&
-      event.option.value === "*"
-    ) {
-      this.setState([]);
-    } else if (event.action === "deselect-option") {
-      this.setState(value.filter((o) => o.value !== "*"));
-    } else if (value.length === this.options.length - 1) {
-      this.setState(this.options);
-    } else {
-      this.setState(value);
-    }
-  }
+const MultiSelectDropDown = ({label,error,selected,options,placeholderButtonLabel,getDropdownButtonLabel,value,onChange,setState}) => {
 
   return (
     <Container>
@@ -89,13 +59,13 @@ const MultiSelectDropDown = ({label,error,selected}) => {
         </Title>
       }
     <ReactMultiSelectCheckboxes
-      options={[{ label: "All", value: "*" }, ...options]}
-      placeholderButtonLabel='Select staff members'
+      options={options}
+      placeholderButtonLabel={placeholderButtonLabel}
         getDropdownButtonLabel={getDropdownButtonLabel}
-      value={selectedOptions}
+      value={value}
       onChange={onChange}
       selected={selected}
-      setState={setSelectedOptions}
+      setState={setState}
       className='multiselect-drop-down'
     />
     {error &&
