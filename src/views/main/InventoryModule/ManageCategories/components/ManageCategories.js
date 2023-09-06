@@ -63,14 +63,27 @@ const ManageCategories = () => {
     });
   }
 
+  // toaster s
+const showToastMessage = () => {
+    hideModal();
+    toast(
+      <ToastModals type='successful' message='Your have Added Vendor successfully.' />
+    );
+};
+
+// const showDeleteToastMessage = () => {
+//   hideDeleteModal();
+//   toast(
+//     <ToastModals type='successful' message='Your have deleted Vendor successfully.' />
+//   );
+// };
+
   
 
   useEffect(() => {
     categoryList(0, PageSize, searchinfo);
     totalRecordCount(searchinfo);
     getstoreList();
-    // exportData(searchinfo);
-    // totalRecordCount(searchinfo);
 
   }, [searchinfo]);
 
@@ -96,6 +109,7 @@ const ManageCategories = () => {
           record={record}
           totalRecord={totalRecord}
           categoryList={categoryList}
+          Storelist={Storelist}
         />
 
       {/* Add Categories Modal */}
@@ -103,6 +117,7 @@ const ManageCategories = () => {
           show={showModal}
           Storelist={Storelist}
           handleClose={hideModal}
+          showToastMessage={showToastMessage}
         />
       
       
