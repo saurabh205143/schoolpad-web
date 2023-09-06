@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 
 // Assets
 import CustomCheckbox from '../../../../../components/Checkbox/CustomCheckbox';
-import { AddMoreField } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import { AddMoreField, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import { AddMoreIssueItem } from './IssueItemHomeStyle';
+import Button from '../../../../../components/Buttons/Button';
+import RemoveIcon from '../../../../../images/delete-icon.svg';
 
 const options = [
     {
@@ -128,6 +130,7 @@ const EmployeeIssueItemTable = (props) => {
                             />
                         </Tabledata>
                     </TableRow>
+                    {formValues.map((element, index) => (
                     <TableRow>
                         <Tabledata>2</Tabledata>
                         <Tabledata>
@@ -183,17 +186,30 @@ const EmployeeIssueItemTable = (props) => {
                                 onChange={handleChange}
                             />
                         </Tabledata>
+                        {
+                            index ?
+                                <RemoveContianer>
+                                    <Button
+                                        className={'only-icon-button'}
+                                        onlyIcon={RemoveIcon}
+                                        onClick={() => removeFormFields(index)}
+                                        required={true}
+                                    />
+                                </RemoveContianer>
+                                : null
+                        }
                     </TableRow>
+                    ))}
                 </TableBody>
                 {/* Add More field button */}
                 <AddMoreIssueItem>
-                  <AddMoreField>
-                  <Link onClick={() => addFormFields()}>
+                    <AddMoreField>
+                    <Link onClick={() => addFormFields()}>
                     <img src={AddMoreIcon} alt="Icon" />
                     <span>Add Another Item</span>
-                  </Link>
-                  </AddMoreField>
-                  </AddMoreIssueItem>
+                    </Link>
+                    </AddMoreField>
+                    </AddMoreIssueItem>
             </TableContainer>
     );
 }

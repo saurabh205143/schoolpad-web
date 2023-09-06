@@ -58,10 +58,12 @@ export const Tabledata = styled.td`
 `;
 
 export const ActionsConatiner = styled.ul`
-    display:inline;
+    display:flex;
     margin:0;
     padding:0;
     list-style:none;
+    align-items: flex-start;
+    justify-content: flex-start;
 
 `;
 

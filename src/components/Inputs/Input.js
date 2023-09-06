@@ -44,7 +44,7 @@ export const Title = styled.label`
 `;
 
 export const InputContainer = styled.div`
-  width:100%;
+  width:${(props) => props.width || '100%'};
   height:36px;
   display: flex;
   flex: 1 0;
@@ -272,7 +272,7 @@ const Input = (
                         {label}
                     </Title>
                 }
-            <InputContainer hasError={error} className={disabled ? 'disabled-input':'simple-input'}>
+            <InputContainer hasError={error} width={width} className={disabled ? 'disabled-input':'simple-input'}>
                 {leftIcon && 
                     <img src={leftIcon} alt="icon" className='leftIcon' />
                 }

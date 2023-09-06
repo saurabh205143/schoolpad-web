@@ -10,21 +10,23 @@ const DefaultFilterIssueStaff = () => {
     <>
       <SubHeader 
         type='header-filters'
-        inputLabel1='Receipt No.'
-        inputPlaceholder1='Enter purchase order no.'
-        inputLabel2='Employee ID'
-        inputPlaceholder2='Enter employee id'
-        defaultHeaderLabel='Employee Name'
-        defaultHeaderPlaceholder='----Select employee name----'
+        textLabel='Receipt No.'
+        textPlaceholder='Enter receipt no.'
+        inputLabel1='Employee ID'
+        inputPlaceholder1='Enter employee id'
         showHeaderFilter={true}
         showSearchButtonRight={false}
         showPrimaryButton={false}
         showHeaderFilterReturn={true}
         showGetRecordButton={true}
-        showDefaultHeaderSelect={true}
         showDefaultScreenHeaderFilter={false}
         showDefaultScreenHeaderFilters={false}
-        selectPlaceholder1='----Select staff----'
+        showTextInput={true}
+        showHeaderFilterDate={true}
+        widthDateFrom='250px'
+        showSelectInputHeader={true}
+        selectLabel1='Employee Name'
+        selectPlaceholder1='----Select employee name----'
         getRecords={() => setShowEmpolyeeRecords(!showEmpolyeeRecords)}
       />
 

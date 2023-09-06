@@ -30,6 +30,8 @@ const PurchaseOrders = () => {
           showHeaderFilterReturn={true}
           showDefaultHeaderSelect1={true}
           showGetRecordButton ={true}
+          widthDateFrom='250px'
+          widthDateTo='250px'
       />
       <ExportHeader
           smallHeading='All Purchase Orders'

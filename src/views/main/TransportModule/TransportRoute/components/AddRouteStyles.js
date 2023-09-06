@@ -121,7 +121,6 @@ export const AddMoreField = styled.div`
         justify-content:flex-start;
         text-decoration:none;
         margin-top: -6px;
-        // width:120px;
         >span{
             font-weight: ${({ theme }) => theme.fontWeightSemiBold};
             font-size: ${({ theme }) => theme.smallFont};
@@ -132,12 +131,12 @@ export const AddMoreField = styled.div`
 
 export const RemoveContianer = styled.div`
     width: auto;
-    padding-left: 16px;
+    // padding-left: 16px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top:12px;
+    margin:12px 20px;
     >button{
         >img{
             width:20px;

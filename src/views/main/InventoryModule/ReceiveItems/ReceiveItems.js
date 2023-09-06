@@ -18,20 +18,20 @@ const ReceiveItems = () => {
           type='header-filters' 
           buttonAdd='none' 
           searchPlaceholder='Search by purchase order no, department etc...'
-          inputLabel1='GRN No.'
-          inputLabel2='Status'
-          inputLabel3='Item Name'
-          inputLabel4='Vendors'
-          inputPlaceholder1='Enter grn no.'
-          inputPlaceholder2='Enter status'
-          inputPlaceholder3='Enter item name'
-          inputPlaceholder4='Enter vendors'
-          showHeaderFilter={true}
-          showSearchButtonRight={true}
+          inputLabel5='GRN No.'
+          inputLabel6='Status'
+          inputLabel7='Item Name'
+          inputLabel8='Vendors'
+          inputPlaceholder5='Enter grn no.'
+          inputPlaceholder6='Enter status'
+          inputPlaceholder7='Enter item name'
+          inputPlaceholder8='Enter vendors'
           showPrimaryButton={false}
-          showReceiveHeaderFilter={true}
-          showReceiveHeaderFilter1={true}
-          showGetRecordButton={true}
+          showHeaderFilterFrom={true}
+          showHeaderFilterTo={true}
+          showHeaderFilterRecordBoxNew={true}
+          showGetRecordButton ={true}
+          showSearchButtonRight={true}
       />
       <ExportHeader
           smallHeading='All Purchase Orders'

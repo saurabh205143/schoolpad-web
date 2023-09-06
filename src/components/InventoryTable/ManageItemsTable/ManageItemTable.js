@@ -79,12 +79,15 @@ const ManageItemTable = ({ onClick }) => {
                     </ActionsList>
                   </ActionsConatiner>
                   </Tabledata>
-                <Tabledata> 
-                  <TableStylesStatus
-                  type='item-type-consumable'
-                  statusType='CONSUMABLE'
-                  >
-                  </TableStylesStatus>
+                          <Tabledata>
+                  <ActionsConatiner>
+                    <ActionsList>
+                      <TableStylesStatus
+                        type='pending'
+                        statusType='PENDING'
+                      />
+                    </ActionsList>
+                  </ActionsConatiner>
                   </Tabledata>
                 <Tabledata>
                   <ActionsConatiner>

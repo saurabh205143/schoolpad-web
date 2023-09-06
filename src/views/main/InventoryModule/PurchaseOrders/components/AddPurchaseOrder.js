@@ -31,6 +31,7 @@ const AddPurchaseOrder = () => {
           textPlaceholder1='Enter remark here'
           selectLabel1='Department'
           selectPlaceholder1='----Select department----'
+          widthDateFrom='250px'
       />
 
       {/* Add Purchase Table*/}

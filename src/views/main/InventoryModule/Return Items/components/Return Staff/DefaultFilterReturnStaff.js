@@ -10,19 +10,18 @@ const DefaultFilterReturnStaff = () => {
     <>
       <SubHeader 
         type='header-filters'
-        inputLabel2='Employee ID'
-        inputPlaceholder2='Enter employee id'
-        defaultHeaderLabel='Employee Name'
-        defaultHeaderPlaceholder='----Select employee name----'
-        showHeaderFilter={false}
+        inputLabel1='Employee ID'
+        inputPlaceholder1='Enter employee id'
+        showHeaderFilter={true}
         showSearchButtonRight={false}
         showPrimaryButton={false}
+        showHeaderFilterReturn={true}
         showGetRecordButton={true}
-        showDefaultHeaderSelect={true}
         showDefaultScreenHeaderFilter={false}
         showDefaultScreenHeaderFilters={false}
-        showHeaderFilterReturn={false}
-        selectPlaceholder1='----Select staff----'
+        showSelectInputHeader={true}
+        selectLabel1='Employee Name'
+        selectPlaceholder1='----Select employee name----'
         getRecords={() => setShowEmpolyeeRecords(!showEmpolyeeRecords)}
       />
 

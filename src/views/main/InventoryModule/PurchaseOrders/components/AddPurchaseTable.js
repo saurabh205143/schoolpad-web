@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
-import { AddMoreField } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
-
+import { AddMoreField, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import Button from '../../../../../components/Buttons/Button';
+import RemoveIcon from '../../../../../images/delete-icon.svg';
 
 const options = [
     {
@@ -51,6 +52,7 @@ const AddPurchaseTable = (props) => {
         alert(JSON.stringify(formValues));
     }
     return (
+        <>
             <TableContainer>
                 <TableHead>
                     <TableRow>
@@ -136,6 +138,7 @@ const AddPurchaseTable = (props) => {
                             />
                         </Tabledata>
                     </TableRow>
+                    {formValues.map((element, index) => (
                     <TableRow>
                         <Tabledata>2</Tabledata>
                         <Tabledata>
@@ -204,17 +207,30 @@ const AddPurchaseTable = (props) => {
                                 options={options}
                             />
                         </Tabledata>
+                        {
+                            index ?
+                                <RemoveContianer>
+                                    <Button
+                                        className={'only-icon-button'}
+                                        onlyIcon={RemoveIcon}
+                                        onClick={() => removeFormFields(index)}
+                                        required={true}
+                                    />
+                                </RemoveContianer>
+                                : null
+                        }
                     </TableRow>
+                    ))}
                 </TableBody>
-
-                {/* Add More field button */}
-               {/* <AddMoreField>
-              <Link onClick={() => addFormFields()}>
-                <img src={AddMoreIcon} alt="Icon" />
-                <span>Add Another Item</span>
-              </Link>
-          </AddMoreField> */}
             </TableContainer>
+                {/* Add More field button */}
+                    <AddMoreField style={{padding: '17px'}}>
+                        <Link onClick={() => addFormFields()}>
+                            <img src={AddMoreIcon} alt="Icon" />
+                            <span>Add Another Item</span>
+                            </Link>
+                    </AddMoreField>
+        </>
     );
 }
 

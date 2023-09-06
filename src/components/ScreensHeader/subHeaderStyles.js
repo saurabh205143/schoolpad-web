@@ -106,6 +106,19 @@ export const RecordBox = styled.div`
  }
 `;
 
+export const RecordBoxNew = styled.div`
+ margin-right:10px;
+ > div{
+    margin-bottom:0px;
+    > div{
+        >.select-drop-record-new {
+        width:100px;
+        }
+        }
+    }
+ }
+`;
+
 export const DateContainer = styled.div`
     margin-right: 0px;
 `;

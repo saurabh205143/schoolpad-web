@@ -112,7 +112,7 @@ export const Tabledata = styled.td`
         >div{
             >div{
                 >.select-drop{
-                    height:36px;
+                    height:32px;
                     min-height:32px;
                 }
             }

@@ -66,6 +66,7 @@ const IssueItemStudentDetails = () => {
             <span>Click on the link below to view the history of items issued to Amit Sharma.</span>
             <LinkButton
               linkText='View Issued Item'
+              color='#0C66E4'
               onClick={() => setShowStudentViewIssueItemHistory(!showStudentViewIssueItemHistory)}
             />
           </EmployeeDetailBoxRight>

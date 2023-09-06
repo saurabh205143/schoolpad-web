@@ -7,7 +7,7 @@ import { FooterButtonContainer } from '../../../../../../components/Modal/ModalS
 import ApproveRejectTable from './ApproveRejectTable';
 
 export const FixedBottomContainer = styled.div`
-  width:100%;
+  width:82%;
   position:fixed;
   bottom:0;
   border-top: 1px solid #C1C7D0;
@@ -35,21 +35,21 @@ const ApproveRejects = () => {
           heading='Approve/Reject GRN'
           type='vertical'
           headerDescription='Please select the type of data on which you want to add mapping below. You can choose class wise, route wise, admission number wise etc'
-          showTextInput={true}
           showDateInputField={true}
-          showSelectInput1={true}
-          textLabel='Remarks'
-          textPlaceholder='Enter remarks'
-          selectLabel1='Department'
-          selectPlaceholder1='---- Select department ----'
           disabled={true}
           showDisabledInput={true}
+          selectLabel4='Select Department'
+          selectPlaceholder4='----Select Department----'
           textLabelDisabled='Purchase Order No.'
           textPlaceholderDisabled='PO-0123'
           textLabelDisabled1='Store'
           textPlaceholderDisabled1='Information Technology'
           textLabelDisabled2='Category'
           textPlaceholderDisabled2='Stationery Stores'
+          inputLabel8='Remarks'
+          inputPlaceholder8='Enter remarks here'
+          showHeaderFilterRecordBoxNew={true}
+          showSelectRecordBoxNew={true}
         />
 
         {/* Approve/RejectGRN - Table*/}

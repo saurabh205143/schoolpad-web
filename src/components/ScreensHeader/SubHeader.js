@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback  } from 'react'
-import { ButtonContainer, Container, ContainerLeft, ContainerRight, DateInputField, DescriptionText, GetRecordsContainer,HeaderFilterHeadings,RecordBox, VerticalContainer } from './subHeaderStyles';
+import { ButtonContainer, Container, ContainerLeft, ContainerRight, DateInputField, DescriptionText, GetRecordsContainer,HeaderFilterHeadings,RecordBox, RecordBoxNew, VerticalContainer } from './subHeaderStyles';
 import Headings from '../Headings/Headings';
 import Button from '../Buttons/Button';
 
@@ -72,7 +72,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterFrom, showHeaderFilterTo, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1,showDefaultHeaderSelect2,defaultHeaderLabel2,defaultHeaderPlaceholder2,buttonChangeHistory,buttonFormFieldText,showLinkButton, linkText}) => {
+const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, widthLabel2, widthLabel3, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4,showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3,  selectLabel4, selectPlaceholder4, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled ,textLabelDisabled1, textPlaceholderDisabled1,textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showHeaderFilterFrom, showHeaderFilterTo, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1,showDefaultHeaderSelect2,defaultHeaderLabel2,defaultHeaderPlaceholder2,buttonChangeHistory,buttonFormFieldText,showLinkButton, linkText, widthDateFrom, widthDateTo, widthSelect, showHeaderFilterRecordBoxNew,inputLabel5,inputPlaceholder5, inputLabel6, inputPlaceholder6, inputLabel7, inputPlaceholder7, inputLabel8, inputPlaceholder8, showSelectRecordBoxNew, showSelectInputHeader}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -224,15 +224,30 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                         />
                     </RecordBox>
                 }
+                {showTextInput && 
+                    <RecordBox>
+                        <Input
+                            type='text'
+                            label={textLabel}
+                            placeholder={textPlaceholder}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
+                    </RecordBox>
+                }
                 {showDateInputField && 
                     <RecordBox>
-                    
+                    <DateInput
+                        width={widthDateFrom}
+                    />
                     </RecordBox>
                 }
                 {showSelectInput1 && 
                     <RecordBox>
                         <Input
-                            width='280px'
+                            width={widthSelect}
                             type='select'
                             label={selectLabel1}
                             placeholder={selectPlaceholder1}
@@ -243,6 +258,22 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                             }}
                         />
                     </RecordBox>
+                }
+                {showSelectRecordBoxNew && 
+                    <RecordBoxNew>
+                        <Input
+                            className='select-drop-record-new'
+                            width={widthSelect}
+                            type='select'
+                            label={selectLabel4}
+                            placeholder={selectPlaceholder4}
+                            options={options}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
+                    </RecordBoxNew>
                 }
                 {showDisabledInput && 
                     <RecordBox>
@@ -298,19 +329,6 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                         />
                     </RecordBox>
                 }
-                {showTextInput && 
-                    <RecordBox>
-                        <Input
-                            type='text'
-                            label={textLabel}
-                            placeholder={textPlaceholder}
-                            onChange={(e) => {
-                                console.log(e[0].label)
-                                setShowDependentDrop(e[0].label)
-                            }}
-                        />
-                    </RecordBox>
-                }
                 {showTextInput1 && 
                     <RecordBox>
                         <Input
@@ -323,6 +341,15 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                             }}
                         />
                     </RecordBox>
+                }
+                {showHeaderFilterRecordBoxNew && 
+                        <RecordBoxNew>
+                            <Input
+                                label={inputLabel8}
+                                type='text'
+                                placeholder={inputPlaceholder8}
+                            />
+                        </RecordBoxNew>
                 }
                     {showDependentDrop === "Class Wise" &&
                         <RecordBox>
@@ -439,10 +466,31 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                 <HeaderFilterHeadings>
                 <VerticalContainer>
                     <GetRecordsContainer>
+                    {showTextInput && 
+                    <RecordBox>
+                        <Input
+                            type='text'
+                            label={textLabel}
+                            placeholder={textPlaceholder}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
+                    </RecordBox>
+                    }
+                {showHeaderFilterDate &&
+                    <RecordBox>
+                        <DateInput
+                        width={widthDateFrom}
+                        dateLabelField='Issue Date'
+                        />
+                    </RecordBox>
+                    }
                     {showHeaderFilterFrom &&
                     <RecordBox>
                         <DateInput
-                        width='250px'
+                        width={widthDateFrom}
                         dateLabelField='From'
                         />
                     </RecordBox>
@@ -450,15 +498,29 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                     {showHeaderFilterTo &&
                         <RecordBox>
                         <DateInput
-                            width='250px'
+                            width={widthDateTo}
                             dateLabelField='To'
+                        />
+                        </RecordBox>
+                        }
+                        {showSelectInputHeader && 
+                        <RecordBox>
+                        <Input
+                            width={widthSelect}
+                            type='select'
+                            label={selectLabel1}
+                            placeholder={selectPlaceholder1}
+                            options={options}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
                         />
                         </RecordBox>
                         }
                         {showHeaderFilterReturn &&
                         <RecordBox>
                             <Input
-                                width='280px'
                                 label={inputLabel1}
                                 type='text'
                                 placeholder={inputPlaceholder1}
@@ -491,7 +553,7 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                         {showDefaultHeaderSelect1 &&
                         <RecordBox>
                             <Input
-                                width='250px'
+                                width={widthLabel2}
                                 label={inputLabel2}
                                 type='text'
                                 placeholder={inputPlaceholder2}
@@ -506,6 +568,7 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                         {showReceiveHeaderFilter &&
                         <RecordBox>
                             <Input
+                                width={widthLabel3}
                                 label={inputLabel3}
                                 type='text'
                                 placeholder={inputPlaceholder3}
@@ -519,6 +582,57 @@ const SubHeader = ({ searchState,searchStateonClick, onClick,type, heading, getR
                                 type='text'
                                 placeholder={inputPlaceholder4}
                             />
+                        </RecordBox>
+                        }
+                        {showHeaderFilterRecordBoxNew && 
+                        <RecordBoxNew>
+                            <Input
+                                label={inputLabel5}
+                                type='text'
+                                placeholder={inputPlaceholder5}
+                            />
+                        </RecordBoxNew>
+                        }
+                        {showHeaderFilterRecordBoxNew && 
+                        <RecordBoxNew>
+                            <Input
+                                label={inputLabel6}
+                                type='text'
+                                placeholder={inputPlaceholder6}
+                            />
+                        </RecordBoxNew>
+                        }
+                        {showHeaderFilterRecordBoxNew && 
+                        <RecordBoxNew>
+                            <Input
+                                label={inputLabel7}
+                                type='text'
+                                placeholder={inputPlaceholder7}
+                            />
+                        </RecordBoxNew>
+                        }
+                        {showHeaderFilterRecordBoxNew && 
+                        <RecordBoxNew>
+                            <Input
+                                label={inputLabel8}
+                                type='text'
+                                placeholder={inputPlaceholder8}
+                            />
+                        </RecordBoxNew>
+                        }
+                        {showSelectInput1 && 
+                        <RecordBox>
+                        <Input
+                            width={widthSelect}
+                            type='select'
+                            label={selectLabel1}
+                            placeholder={selectPlaceholder1}
+                            options={options}
+                            onChange={(e) => {
+                                console.log(e[0].label)
+                                setShowDependentDrop(e[0].label)
+                            }}
+                        />
                         </RecordBox>
                         }
                         {showDependentDrop === "Store 1" &&

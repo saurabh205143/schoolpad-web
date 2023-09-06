@@ -11,18 +11,18 @@ const DefaultFilterReturnStudent = () => {
     <>
       <SubHeader 
         type='header-filters'
-        inputLabel2='Student ID'
-        inputPlaceholder2='Enter student id'
-        defaultHeaderLabel='Student Name'
-        defaultHeaderPlaceholder='----Select student name----'
-        showHeaderFilter={false}
+        inputLabel1='Student ID'
+        inputPlaceholder1='Enter student id'
+        showHeaderFilter={true}
         showSearchButtonRight={false}
         showPrimaryButton={false}
+        showHeaderFilterReturn={true}
         showGetRecordButton={true}
-        showDefaultHeaderSelect={true}
         showDefaultScreenHeaderFilter={false}
         showDefaultScreenHeaderFilters={false}
-        showHeaderFilterReturn={false}
+        showSelectInputHeader={true}
+        selectLabel1='Student Name'
+        selectPlaceholder1='----Select student name----'
         getRecords={() => setShowEmpolyeeRecords(!showEmpolyeeRecords)}
       />
 

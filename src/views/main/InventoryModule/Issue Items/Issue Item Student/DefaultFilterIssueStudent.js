@@ -10,21 +10,23 @@ const DefaultFilterIssueStudent = () => {
     <>
       <SubHeader 
         type='header-filters'
-        inputLabel1='Receipt No.'
-        inputPlaceholder1='Enter purchase order no.'
-        inputLabel2='Student ID'
-        inputPlaceholder2='Enter student id'
-        defaultHeaderLabel='Student Name'
-        defaultHeaderPlaceholder='----Select student name----'
+        textLabel='Receipt No.'
+        textPlaceholder='Enter receipt no.'
+        inputLabel1='Student ID'
+        inputPlaceholder1='Enter student id'
         showHeaderFilter={true}
         showSearchButtonRight={false}
-        showHeaderFilterReturn={true}
         showPrimaryButton={false}
+        showHeaderFilterReturn={true}
         showGetRecordButton={true}
-        showDefaultHeaderSelect={true}
         showDefaultScreenHeaderFilter={false}
         showDefaultScreenHeaderFilters={false}
-        selectPlaceholder1='----Select staff----'
+        showTextInput={true}
+        showHeaderFilterDate={true}
+        widthDateFrom='250px'
+        showSelectInputHeader={true}
+        selectLabel1='Student Name'
+        selectPlaceholder1='----Select student name----'
         getRecords={() => setShowEmpolyeeRecords(!showEmpolyeeRecords)}
       />
 

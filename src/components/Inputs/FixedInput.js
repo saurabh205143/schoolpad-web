@@ -97,7 +97,7 @@ export const FixedInput = ({
                 value={value}
                 placeholder={placeholder}
             />
-                  <PlaceholderFixed width={width}>{fixedtext}</PlaceholderFixed>
+            <PlaceholderFixed width={width}>{fixedtext}</PlaceholderFixed>
         </GroupContainer>
         {successMsg ? (
             <p style={{ color: 'green' }}>{successMsg}</p>
