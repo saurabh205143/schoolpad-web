@@ -97,9 +97,6 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
     const handleInputChange = useCallback(event => {
         searchState(event.target.value);
     }, [searchState]);
-    // const searchinfo = (info) => {
-    //     setSearchinfo(info);
-    // }
     // Custom input component with the calendar image inside
     const CustomDatePickerInput = ({ value, onClick }) => (
         <div style={{ position: 'relative' }}>
@@ -404,6 +401,7 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
                                     leftIcon={SearchIcon}
                                     placeholder={searchPlaceholder}
                                     name='search'
+                                onChange={e => handleInputChange(e)}
                                 />
                             </ButtonContainer>
                         }

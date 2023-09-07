@@ -108,6 +108,12 @@ const EditVendor = props => {
     const handleGstnoChange = (e) => { 
         setvendorgstno(e.target.value);
     }
+    const handleRegionChange = (e) => { 
+        setvendorregion(e.target.value);
+    }
+    const handleAddressChange = (e) => { 
+        setvendoraddress(e.target.value);
+    }
 
     useEffect(() => {
         setvendorname(singlerecord.vendorName);
@@ -230,7 +236,7 @@ const EditVendor = props => {
                     label={'Region*'}
                     name={'vendor_region'}
                     value={vendorregion}
-                    onChange={handleChange}
+                    onChange={handleRegionChange}
                     required={true}
                     error={errors.vendor_region}
                 />
@@ -242,7 +248,7 @@ const EditVendor = props => {
                     label={'Address'}
                     name={'vendor_address'}
                     value={vendoraddress}
-                    onChange={handleChange}
+                    onChange={handleAddressChange}
                     required={true}
                     error={errors.vendor_address}
                 />

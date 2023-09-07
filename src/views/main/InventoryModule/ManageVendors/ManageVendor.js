@@ -84,6 +84,45 @@ const previewRecord = () => {
     window.open("/vendorpreview?params="+searchinfo, "_blank")
   }
 
+
+  const exportStore = () => {
+    // exportData();
+    vendorList(0, '', searchinfo);
+    const getData = record.map(row => {
+      const rowData = {};
+      rowData['Vendor Name'] = row.vendorName;
+      rowData['Vendor Code'] = row.vendorCode;
+      rowData['Store Name'] = row.storeName;
+      rowData['Region'] = row.region;
+      rowData['Address'] = row.address;
+      rowData['ContactNo.'] = row.contactNo;
+      rowData['GST No.'] = row.tinNo;
+      return rowData;
+    });
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(getData);
+    const columnWidths = [
+    { wpx: 100 },
+    { wpx: 200 }, 
+    { wpx: 150 }, 
+    ];
+
+    ws['!cols'] = columnWidths;
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    const blob = new Blob([XLSX.write(wb, { bookType: 'xlsx', type: 'buffer' })], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+    const url = URL.createObjectURL(blob);
+    let currentDate = new Date().toJSON();
+    const excelFileName = 'vendor_list_export_' + currentDate;
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = excelFileName+'.xlsx';
+    link.click();
+
+    URL.revokeObjectURL(url);
+  }
+
   useEffect(() => {
     vendorList(0, PageSize, searchinfo);
     totalRecordCount(searchinfo);
@@ -107,7 +146,9 @@ const previewRecord = () => {
           smallHeading='All Vendors'
           smallHeding2={'(' + totalRecord + ' Records)'}
           PrintIcon={PrintImage}
-          Excelicon={ExcelImage}
+          onPreview={() => previewRecord()}
+          Excelicon={ExcelImage}          
+          onClick={() => exportStore()}
       />
       
         <ManageVendorTable

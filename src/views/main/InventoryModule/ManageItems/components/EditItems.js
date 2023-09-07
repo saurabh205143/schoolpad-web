@@ -106,32 +106,32 @@ const AddItems = props => {
         return Object.keys(e).length === 0;
     }
 
-    // OnSubmit Validate 
-    const onSubmit = () => {
+      // OnSubmit Validate 
+        const onSubmit = () => {
         let e = {};
         // if (!validate()) {
         //     return;
         //     }
-            console.log( formValuesEmail[0].name);
-            const addproduct = config.baseUrl +"api/v1/inventory/products";
-            axios.post(addproduct, {
-                itemName: formValuesEmail[0].name,
-                rtncns: typeselectedValue,
-                threshHold:thresholdcount,
-                unitPr:formValuesEmail[0].purchase_cost,
-                mrp:formValuesEmail[0].purchase_cost,
-                userId:214,
-                categoryId:"2",
-                storeId:SelectedValue,
-                unitId:5,
-                threshholdEmail: formValuesEmail[0].email
-            })
-                .then(function (response) { 
-                setTimeout(() => {
-                            window.location.reload();
-                        }, 2000);
-            })
-            .catch(function (error) { console.log({ error }); });
+            // console.log( formValuesEmail[0].name);
+            // const addproduct = config.baseUrl +"api/v1/inventory/products";
+            // axios.post(addproduct, {
+            //     itemName: formValuesEmail[0].name,
+            //     rtncns: typeselectedValue,
+            //     threshHold:thresholdcount,
+            //     unitPr:formValuesEmail[0].purchase_cost,
+            //     mrp:formValuesEmail[0].purchase_cost,
+            //     userId:214,
+            //     categoryId:"2",
+            //     storeId:SelectedValue,
+            //     unitId:5,
+            //     threshholdEmail: formValuesEmail[0].email
+            // })
+            //     .then(function (response) { 
+            //     setTimeout(() => {
+            //                 window.location.reload();
+            //             }, 2000);
+            // })
+            // .catch(function (error) { console.log({ error }); });
         // setLoading(true);
         // setTimeout(() => {
         //     window.location.reload();
@@ -148,7 +148,7 @@ const AddItems = props => {
     };
 
     let addEmailFields = () => {
-        setFormValuesEmail([...formValuesEmail, { alert_count: "", alert_email: "" }])
+        setFormValuesEmail([...formValuesEmail, { alert_count: "", alert_email: ""}])
     }
 
     let addItemFields = () => {
@@ -181,7 +181,7 @@ const AddItems = props => {
         <Modal
             show={show}
             handleClose={handleClose}
-            modalHeading={'Add New Items'}
+            modalHeading={'Edit New Items'}
             submitText='Save and Close'
             actionText={'Save and Continue'}
             cancelText='Cancel'
@@ -254,6 +254,7 @@ const AddItems = props => {
                         </FieldContainerBox>
                     </FieldContainerBottom>
                 </>
+
                 <>
                     <FieldDividerBottom>
                             <>
@@ -323,8 +324,7 @@ const AddItems = props => {
                                                 <Button
                                                     className={'only-icon-button'}
                                                     onlyIcon={RemoveIcon}
-                                                    onClick={() => removeFormFieldsItem(index)}
-                                                    required={true}
+                                                    onClick={() => removeFormFields(index)}
                                                 />
                                             </RemoveContianer>
                                             : null
