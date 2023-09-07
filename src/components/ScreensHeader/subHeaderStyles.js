@@ -136,3 +136,7 @@ export const DateInputField = styled.div`
         color: #000000;
     }
 `;
+
+export const TabHeaderFilterHeading = styled.div`
+    padding: 16px;
+`;

@@ -1,0 +1,14 @@
+[
+  {
+    "SNo":1,
+    "ItemName": "A4 Paper",
+    "UnitPrice": "350",
+    "Store": "Stationery",
+    "Category" : "Paper",
+    "TotalItems": "9",
+    "Unit": "Packs",
+    "TotalPC": "3,150",
+    "ItemsLeft": "7"
+  }
+
+]

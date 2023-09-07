@@ -67,8 +67,8 @@ export const FieldDividerHeadingBottom = styled.div`
 export const FieldDivider = styled.div`
     width:100%;
     display:flex;
-    align-items:flex-start;
-    justify-content:flex-start;
+    align-items:center;
+    justify-content:center;
 `;
 
 export const FieldDividerBottom = styled.div`
@@ -162,6 +162,29 @@ export const AddFormFieldInnerTab = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 20px;
+        border-bottom: none;
+        border-radius: 0px;
+        > li {
+            > button{
+                border:none;
+                color: #44546F;
+                border-bottom: 2px solid #091E4224;
+            }
+            >.nav-link.active{
+                color: #0C66E4;
+                border-bottom: 2px solid  #0C66E4;
+            }
+        }
+    }
+`
+
+export const TabHeaderFilter = styled.div`
+    .form-field-tab {
+        padding-left: 0px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
         margin-bottom: 20px;
         border-bottom: none;
         border-radius: 0px;

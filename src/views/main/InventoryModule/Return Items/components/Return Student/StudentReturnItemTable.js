@@ -40,7 +40,8 @@ const StudentReturnItemTable = () => {
                     <Tabledata>1</Tabledata>
                     <Tabledata>100</Tabledata>
                     <Tabledata>
-                        <TableStylesStatus type='item-type-returnable'
+                        <TableStylesStatus 
+                            type='item-type-returnable'
                             statusType='PAID'
                         >
                         </TableStylesStatus>

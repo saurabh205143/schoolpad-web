@@ -20,7 +20,6 @@ import ManageStore from './views/main/InventoryModule/ManageStore/components/Man
 import Toasters from './components/Toaster/Toasters';
 import ManageCategories from './views/main/InventoryModule/ManageCategories/components/ManageCategories';
 import ManageItems from './views/main/InventoryModule/ManageItems/ManageItems';
-import ManageVendors from './views/main/InventoryModule/ManageVendors/ManageVendors';
 import PurchaseOrders from './views/main/InventoryModule/PurchaseOrders/PurchaseOrders';
 import AddPurchaseOrder from './views/main/InventoryModule/PurchaseOrders/components/AddPurchaseOrder';
 import ReceiveItems from './views/main/InventoryModule/ReceiveItems/ReceiveItems';
@@ -32,7 +31,10 @@ import ReturnItemSelectFilter from './views/main/InventoryModule/Return Items/co
 import ReturnItemSelectFilterStudent from './views/main/InventoryModule/Return Items/components/Return Student/ReturnItemSelectFilterStudent';
 import IssueItemSelectFilterStudent from './views/main/InventoryModule/Issue Items/Issue Item Student/IssueItemSelectFilterStudent';
 import PreviewManageStore from './components/InventoryTable/PreviewStoreTable';
-import PreviewVendorTable from './components/InventoryTable/ManageVendorsTable/PreviewVendorTable';
+import ManageVendor from './views/main/InventoryModule/ManageVendors/ManageVendor';
+import PreviousTableVendor from './components/InventoryTable/ManageVendorsTable/PreviousTableVendor';
+import ItemReport from './views/main/InventoryModule/Item Report/ItemReport';
+
 
 //src\components\InventoryTable\PreviewStoreTable.js
 export const ThemeContext = React.createContext(null);
@@ -70,7 +72,7 @@ function App() {
             <Route path='/manageStore' element={<ManageStore/>}/>
             <Route path='/manageCategories' element={<ManageCategories/>}/>
             <Route path='/manageItems' element={<ManageItems/>}/>
-            <Route path='/manageVendors' element={<ManageVendors/>}/>
+            <Route path='/manageVendors' element={<ManageVendor/>}/>
             <Route path='/managePurchase' element={<PurchaseOrders/>}/>
             <Route path='/inventory/purchaseAdd' element={<AddPurchaseOrder/>}/>
             <Route path='/manageReceive' element={<ReceiveItems/>}/>
@@ -81,9 +83,10 @@ function App() {
             <Route path='/manageReturn' element={<ReturnStaffHome/>}/>
             <Route path='/manageReturn/staff-select-filter' element={<ReturnItemSelectFilter/>}/>
             <Route path='/manageReturn/student-select-filter' element={<ReturnItemSelectFilterStudent/>}/>
+            <Route path='/manageItemReport' element={<ItemReport/>}/>
             <Route path='/toasters' element={<Toasters />} />
             <Route path='/storepreview' element={<PreviewManageStore />} />
-            <Route path ='/vendorpreview' element = {<PreviewVendorTable />} />
+            <Route path='/vendorpreview' element={<PreviousTableVendor/>}/>
           </Routes>
         </>
       </ThemeProvider>

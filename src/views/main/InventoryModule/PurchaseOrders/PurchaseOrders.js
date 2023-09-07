@@ -42,9 +42,6 @@ const PurchaseOrders = () => {
       
       <PurchaseOrdersTable/>
 
-      {/* Add Purchase Page */}
-
-
     </Layout>
     </>
 

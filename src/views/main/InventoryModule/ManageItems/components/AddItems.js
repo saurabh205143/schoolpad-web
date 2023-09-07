@@ -29,7 +29,7 @@ const AddItems = props => {
 
     const width = "550px";
 
-    const { show, handleClose,saveAction } = props;
+    const { show, handleClose, saveAction } = props;
     const [formValuesEmail, setFormValuesEmail] = useState(
         [
             {
@@ -102,8 +102,8 @@ const AddItems = props => {
         return Object.keys(e).length === 0;
     }
 
-      // OnSubmit Validate 
-        const onSubmit = () => {
+    // OnSubmit Validate 
+    const onSubmit = () => {
         let e = {};
         if (!validate()) {
             return;
@@ -114,7 +114,7 @@ const AddItems = props => {
         }, 2000);
         setLoading(false);
         saveAction();
-        
+
     }
 
     let handleChange = (index, field, e) => {
@@ -124,7 +124,7 @@ const AddItems = props => {
     };
 
     let addEmailFields = () => {
-        setFormValuesEmail([...formValuesEmail, { alert_count: "", alert_email: ""}])
+        setFormValuesEmail([...formValuesEmail, { alert_count: "", alert_email: "" }])
     }
 
     let addItemFields = () => {
@@ -136,6 +136,13 @@ const AddItems = props => {
         newFormValues.splice(i, 1);
         setFormValuesEmail(newFormValues)
     }
+
+    let removeFormFieldsItem = (i) => {
+        let newFormValues = [...formValuesItem];
+        newFormValues.splice(i, 1);
+        setFormValuesItem(newFormValues)
+    }
+
 
     return (
         <Modal
@@ -158,8 +165,8 @@ const AddItems = props => {
                                     placeholder='---- Select store ----'
                                 />
                                 <MultiSelectDropDown
-                                label='Select Category'
-                                error={true}
+                                    label='Select Category'
+                                    error={true}
                                 />
                                 <Input
                                     type="text"
@@ -210,14 +217,15 @@ const AddItems = props => {
                         </FieldContainerBox>
                     </FieldContainerBottom>
                 </>
-
                 <>
                     <FieldDividerBottom>
+                        <>
+                            <FieldDividerHeading>
+                                <span>Add Item Details Below</span>
+                            </FieldDividerHeading>
+                        </>
                         {formValuesItem.map((element, index) => (
                             <>
-                                <FieldDividerHeading>
-                                    <span>Add Item Details Below</span>
-                                </FieldDividerHeading>
                                 <FieldDivider>
                                     <FieldLeftContainer1>
                                         <Input
@@ -250,16 +258,12 @@ const AddItems = props => {
                                                 <Button
                                                     className={'only-icon-button'}
                                                     onlyIcon={RemoveIcon}
-                                                    onClick={() => removeFormFields(index)}
+                                                    onClick={() => removeFormFieldsItem(index)}
                                                 />
                                             </RemoveContianer>
                                             : null
                                     }
                                 </FieldDivider>
-                            </>
-                        ))}
-                        {formValuesItem.map((element, index) => (
-                            <>
                                 <FieldDivider>
                                     <FieldLeftContainer1>
                                         <SelectInput
@@ -273,27 +277,28 @@ const AddItems = props => {
                                             placeholder='---- Select rtn/cns ----'
                                         />
                                     </FieldRightContainerItem>
-                                    {
+                                    {/* {
                                         index ?
                                             <RemoveContianer>
                                                 <Button
                                                     className={'only-icon-button'}
                                                     onlyIcon={RemoveIcon}
-                                                    onClick={() => removeFormFields(index)}
+                                                    onClick={() => removeFormFieldsItem(index)}
+                                                    required={true}
                                                 />
                                             </RemoveContianer>
                                             : null
-                                    }
+                                    } */}
                                 </FieldDivider>
-                                {/* Add More field button */}
-                                <AddMoreField style={{ marginBottom: '14px' }}>
-                                    <Link onClick={() => addItemFields()}>
-                                        <img src={AddMoreIcon} alt="Icon" />
-                                        <span>Add Another Item</span>
-                                    </Link>
-                                </AddMoreField>
                             </>
                         ))}
+                        {/* Add More field button */}
+                        <AddMoreField style={{ marginBottom: '14px' }}>
+                            <Link onClick={() => addItemFields()}>
+                                <img src={AddMoreIcon} alt="Icon" />
+                                <span>Add Another Item</span>
+                            </Link>
+                        </AddMoreField>
                     </FieldDividerBottom>
                 </>
             </form>

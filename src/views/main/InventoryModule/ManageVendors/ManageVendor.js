@@ -6,7 +6,6 @@ import ExportHeader from '../../../../components/ScreensHeader/ExportHeader';
 //Assets
 import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
-import ManageVendorsTable from '../../../../components/InventoryTable/ManageVendorsTable/ManageVendorsTable';
 import AddVendor from './components/AddVendor';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
@@ -14,11 +13,12 @@ import config from '../../../../config';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastModals from '../../../../components/Toaster/ToastModals';
+import ManageVendorTable from '../../../../components/InventoryTable/ManageVendorsTable/ManageVendorTable';
 
 const baseURL = config.baseUrl;
 let PageSize = 10;
 
-const ManageVendors = () => {
+const ManageVendor = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [record, setrecord] = useState({});
@@ -110,7 +110,7 @@ const previewRecord = () => {
           Excelicon={ExcelImage}
       />
       
-        <ManageVendorsTable
+        <ManageVendorTable
           record={record}
           totalRecord={totalRecord}
           vendorList={vendorList}
@@ -128,4 +128,4 @@ const previewRecord = () => {
   )
 }
 
-export default ManageVendors;
+export default ManageVendor;

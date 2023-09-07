@@ -1,13 +1,12 @@
 import React, { useState, useMemo, useEffect,setState } from 'react';
 import data from './data.json';
-import { ActionsConatiner, ActionsList, Container, TableActionHeading, TableBody, TableCheckbox, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../Table/TableStyles';
-import LinkButton from '../Buttons/LinkButton';
 import axios from 'axios';
-import config from '../../config';
+import config from '../../../config';
 import { useLocation } from "react-router-dom";
+import { TableActionHeading, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../Table/TableStyles';
 const baseURL = config.baseUrl;
 
-const PreviewVendorTable = () => {
+const PreviousTableVendor = () => {
   const column = Object.keys(data[0]);
   const { language } = useLocation();
   const [record, setrecord] = useState('');
@@ -88,4 +87,4 @@ const PreviewVendorTable = () => {
 
 }
 
-export default PreviewVendorTable;
+export default PreviousTableVendor;

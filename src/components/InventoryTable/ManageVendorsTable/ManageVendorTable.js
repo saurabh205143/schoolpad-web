@@ -14,7 +14,7 @@ import DeleteVendor from '../../../views/main/InventoryModule/ManageVendors/comp
 
 let PageSize = 10;
 
-const ManageVendorsTable = ({ onClick, record,totalRecord,vendorList,showDeleteToastMessage }) => {
+const ManageVendorTable = ({ onClick, record,totalRecord,vendorList,showDeleteToastMessage }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -134,4 +134,4 @@ const ManageVendorsTable = ({ onClick, record,totalRecord,vendorList,showDeleteT
   );
 }
 
-export default ManageVendorsTable;
+export default ManageVendorTable;
