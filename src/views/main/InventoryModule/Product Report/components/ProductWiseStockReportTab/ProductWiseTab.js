@@ -1,61 +1,52 @@
 import React, {useState} from 'react'
 
-
 //Assets
 import PrintImage from '../../../../../../images/print-icon.svg';
 import ExcelImage from '../../../../../../images/excel-icon.svg';
-import Layout from '../../../../../../components/Layouts/Layout';
 import SubHeader from '../../../../../../components/ScreensHeader/SubHeader';
 import ExportHeader from '../../../../../../components/ScreensHeader/ExportHeader';
 import DefaultMappingScreen from '../../../../TransportModule/StudentMapping/components/DefaultMappingScreen';
+import ProductWiseTable from './ProductWiseTable';
 
-
-const MovementReport = () => {
+const ProductWiseTab = () => {
 
   const [showReportRecords, setShowReportRecords] = useState(false);
   return(
     <>
-    <Layout type='inventory'>
         <SubHeader
-          heading='none'
-          type='header-filters' 
-          buttonAdd='none' 
-          inputLabel1='Stock Report'
-          inputPlaceholder1='Enter employee id'
-          showHeaderFilter={true}
-          showPrimaryButton={false}
-          showHeaderFilterReturn={true}
+          type='tab-header-filter' 
+          selectLabelTab='Select Store'
+          selectPlaceholderTab='----Select store----'
+          multiselectLabel='Select Category'
+          multiselectPlaceholder='----Select category----'
+          multiselectLabel1='Select Product'
+          multiselectPlaceholder1='----Select product----'
+          buttonOption={true}
+          showTabSelectInput={true}
+          showMultiSelectTab1={true}
+          showMultiSelectTab2={true}
           showGetRecordButton={true}
-          showDefaultScreenHeaderFilter={false}
-          showDefaultScreenHeaderFilters={false}
-          showSelectInputHeader={true}
-          selectLabel1='Store'
-          selectPlaceholder1='----Select store----'
           getRecords={() => setShowReportRecords(!showReportRecords)}
-          showSearchButtonRight={false}
-          showTabHeaderFilters={true}
         />
 
       {showReportRecords ?
         <div>
           <ExportHeader
-            smallHeading='List of Items'
+            smallHeading='List of Products'
             smallHeding2='(07 Records)'
             PrintIcon={PrintImage}
             Excelicon={ExcelImage}
         />
-        
+        <ProductWiseTable/>
         </div>
         :
         <DefaultMappingScreen
           xtrasubHeading='Select the Report Filters'
-          description='Select the store from which and the store to which the item was moved. You can also select the dates between which movement happened.'
+          description='Select the Store, Category, Item(s) Name, etc. to view stock report.'
           showDefaultScreenHeader={true}
         />}
-    </Layout>
     </>
-
   )
 }
 
-export default MovementReport;
+export default ProductWiseTab;

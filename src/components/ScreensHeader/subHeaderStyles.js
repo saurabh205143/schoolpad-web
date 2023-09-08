@@ -138,5 +138,15 @@ export const DateInputField = styled.div`
 `;
 
 export const TabHeaderFilterHeading = styled.div`
-    padding: 16px;
+    padding: 16px 0px 0px 16px;
 `;
+
+export const TabFilterContainer = styled.div`
+    width:100%;
+    display:flex;
+    flex-flow: wrap;
+    align-items:flex-end;
+    padding: 0px 0px 16px 16px;
+`;
+
+

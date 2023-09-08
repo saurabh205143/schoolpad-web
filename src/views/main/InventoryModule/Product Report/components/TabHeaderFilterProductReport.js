@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Tab, Tabs } from 'react-bootstrap'
 import { AddFormFieldTab, AddFormFieldTabText, TabHeaderFilter } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import StockReport from './StockReport';
+import MovementReport from './MovementReportTab/MovementReport';
+import ProductWiseTab from './ProductWiseStockReportTab/ProductWiseTab';
 
-
-const TabHeaderFilterItemReport = props => {
+const TabHeaderFilterProductReport = props => {
 
   const [tabKey, initTabKey] = useState('one')
 
@@ -14,13 +16,13 @@ const TabHeaderFilterItemReport = props => {
           <TabHeaderFilter>
             <Tabs className='form-field-tab' activeKey={tabKey} onSelect={(e) => initTabKey(e)}>
               <Tab className='form-field-tab-name' eventKey="one" title="Stock Report">
-                
+                <StockReport/>
               </Tab>
               <Tab eventKey="two" title="Movement Report">
-                
+                <MovementReport/>
               </Tab>
-              <Tab eventKey="two" title="Item Wise Stock Report">
-                
+              <Tab eventKey="three" title="Product Wise Stock Report">
+                <ProductWiseTab/>
               </Tab>
             </Tabs>
           </TabHeaderFilter>
@@ -30,4 +32,4 @@ const TabHeaderFilterItemReport = props => {
   );
 };
 
-export default TabHeaderFilterItemReport;
+export default TabHeaderFilterProductReport;

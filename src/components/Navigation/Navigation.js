@@ -46,7 +46,7 @@ const Navigation = ({type}) => {
                 return 9;    
             case '/manageReturn':
                     return 9;  
-            case '/manageItemReport':
+            case '/manageProductReport':
                 return 10;           
             case '/inventory/issueReports':
                 return 11;
@@ -284,7 +284,7 @@ const Navigation = ({type}) => {
                 >
                     <NavigationItems
                         url='/manageItems'
-                        tabname="Manage Items"
+                        tabname="Manage Products"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
                         containsDrop="false"
@@ -365,8 +365,8 @@ const Navigation = ({type}) => {
                     className={getClassNames('nav-item', showDrop === 10)}
                 >
                     <NavigationItems
-                        url='/manageItemReport'
-                        tabname="Item Report"
+                        url='/manageProductReport'
+                        tabname="Product Report"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
                         containsDrop="true"

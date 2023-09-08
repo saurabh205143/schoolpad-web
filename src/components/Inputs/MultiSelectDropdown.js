@@ -49,6 +49,12 @@ export const Container = styled.div`
   }
 `;
 
+export const RecordBoxMulti = styled.div`
+    width=200px;
+}
+`;
+
+
 const MultiSelectDropDown = ({label, width}) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [error, setError] = useState("");
