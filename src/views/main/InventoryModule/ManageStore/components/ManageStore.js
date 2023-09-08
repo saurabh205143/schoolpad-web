@@ -48,8 +48,6 @@ const ManageStore = () => {
   }
   
   const searchData = (offset,limit,value) => {
-    // console.log({limit});
-    // offset = (offset != '' || offset == undefined) ? offset:0;
     limit = (limit!='')?limit:10;
     offset = offset * limit;
     

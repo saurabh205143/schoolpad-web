@@ -7,11 +7,11 @@ import { TableActionHeading, TableBody, TableContainer, TableHead, TableHeading,
 const baseURL = config.baseUrl;
 
 const PreviousTableVendor = () => {
-  const column = Object.keys(data[0]);
+  const col = ['SNo','Vendor Name', 'Vendor Code','Store Name','Address', 'Region', 'ContactNo.', 'Gst No.'];//Object.keys(data[0]);
   const { language } = useLocation();
   const [record, setrecord] = useState('');
 
-  const fetchstoreURL = baseURL +"api/v1/inventory/store";
+  const fetchstoreURL = baseURL +"api/v1/inventory/vendor";
   useEffect(() => {    
     let search = window.location.search;
     let params = new URLSearchParams(search);
@@ -34,7 +34,7 @@ const PreviousTableVendor = () => {
             />
           </TableCheckbox> */}
         </TableHeading>
-        {column.map((data) => (
+        {col.map((data) => (
           <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
         ))}
       </>
@@ -47,9 +47,9 @@ const PreviousTableVendor = () => {
           <TableRow>
             {ThData()}
             <TableHeading>
-              <TableActionHeading>
+              {/* <TableActionHeading>
                   Categories
-              </TableActionHeading>
+              </TableActionHeading> */}
               </TableHeading>
             {/* <TableHeading>
               <TableActionHeading>
@@ -69,11 +69,13 @@ const PreviousTableVendor = () => {
                   /> */}
                 </Tabledata>
                 <Tabledata>{ ++i }</Tabledata>
+                <Tabledata>{item.vendorName}</Tabledata>
+                <Tabledata>{item.vendorCode}</Tabledata>
                 <Tabledata>{item.storeName}</Tabledata>
-                <Tabledata>{item.storeDesc}</Tabledata>
-                <Tabledata>{item.storeCode}</Tabledata>
-                <Tabledata>{item.storeManager}</Tabledata>
-                <Tabledata>{""+(item.categorycount != 0)?item.categorycount+" Categories":'-' }</Tabledata>
+                <Tabledata>{item.address}</Tabledata>
+                <Tabledata>{item.region}</Tabledata>
+                <Tabledata>{item.contactNo}</Tabledata>
+                <Tabledata>{item.tinNo}</Tabledata>
               </TableRow>
             );
           }):null}
