@@ -32,8 +32,11 @@ import ReturnItemSelectFilterStudent from './views/main/InventoryModule/Return I
 import IssueItemSelectFilterStudent from './views/main/InventoryModule/Issue Items/Issue Item Student/IssueItemSelectFilterStudent';
 import PreviewManageStore from './components/InventoryTable/PreviewStoreTable';
 import ManageVendor from './views/main/InventoryModule/ManageVendors/ManageVendor';
-import PreviousTableVendor from './components/InventoryTable/ManageVendorsTable/PreviousTableVendor';
 import ProductReport from './views/main/InventoryModule/Product Report/ProductReport';
+import VendorPreview from './views/main/InventoryModule/ManageVendors/VendorPreview';
+import ItemPreview from './components/InventoryTable/ManageItemsTable/PreviewItemTable';
+import ItemReport from './components/InventoryTable/ManageVendorsTable/VendorPreview';
+
 
 //src\components\InventoryTable\PreviewStoreTable.js
 export const ThemeContext = React.createContext(null);
@@ -85,7 +88,8 @@ function App() {
             <Route path='/manageProductReport' element={<ProductReport/>}/>
             <Route path='/toasters' element={<Toasters />} />
             <Route path='/storepreview' element={<PreviewManageStore />} />
-            <Route path='/vendorpreview' element={<PreviousTableVendor/>}/>
+            <Route path='/vendorpreview' element={<VendorPreview />} />
+            <Route path='/itemlistpreview' element={<ItemPreview />} />
           </Routes>
         </>
       </ThemeProvider>

@@ -194,9 +194,9 @@ const ManageStore = () => {
       {/* Categories List */}
       <CategoriesListTable
         show={showcategoriesList}
-          handleClose={hideCategoriesListModal}
-          storeid={storeid}
-          setstoreid={setstoreid}
+        handleClose={hideCategoriesListModal}
+        storeid={storeid}
+        setstoreid={setstoreid}
       />
     </Layout>
     </>

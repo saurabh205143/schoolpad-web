@@ -17,7 +17,14 @@ export const SelectInputLabel = styled.div`
 
 const SelectInput = ({label, placeholder, options, SelectedValue , setSelectedvalue}) => { 
   const [selectedOption, setSelectedOption] = useState(null);
-  // console.log({ setSelectedvalue });
+
+
+  useEffect(() => {
+    // let selopt = { label:"Uniform",value:"4" }
+    setSelectedOption(setSelectedvalue);
+  });
+
+  console.log({ selectedOption });
   // Custom styles for the Select component
   const selectStyles = {
     control: (provided, state) => ({
@@ -39,6 +46,7 @@ const SelectInput = ({label, placeholder, options, SelectedValue , setSelectedva
       fontSize: '14px', 
     }),
   };
+  //
 
   return (
     <div>
@@ -51,6 +59,7 @@ const SelectInput = ({label, placeholder, options, SelectedValue , setSelectedva
         options={options}
         styles={selectStyles} 
         placeholder={placeholder}
+        defaultValue={selectedOption}
         className='select-input'
       />
     </div>

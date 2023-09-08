@@ -30,7 +30,7 @@ const AddItems = props => {
 
     const width = "550px";
 
-    const { show, handleClose, saveAction, storelist, categorylist } = props;
+    const { show, handleClose, saveAction, storelist, categorylist,unitlist } = props;
     console.log({ storelist });
     const [formValuesEmail, setFormValuesEmail] = useState(
         [
@@ -53,7 +53,9 @@ const AddItems = props => {
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const [SelectedValue, setSelectValue] = useState([]);
-    const [typeselectedValue, setTypeSelectValue] = useState([]);
+    const [typeselectedValue, setTypeSelectValue] = useState('');
+    const [unitselectedValue, setUnitSelectValue] = useState('');
+    const [CategoryValue, setCategoryValue] = useState([]);
     const [thresholdcount, setthresholdcount] = useState([]);
     // Validate Inputs
     const validate = () => {
@@ -121,7 +123,7 @@ const AddItems = props => {
                 unitPr:formValuesEmail[0].purchase_cost,
                 mrp:formValuesEmail[0].purchase_cost,
                 userId:214,
-                categoryId:"2",
+                categoryId:CategoryValue,
                 storeId:SelectedValue,
                 unitId:5,
                 threshholdEmail: formValuesEmail[0].email
@@ -199,12 +201,18 @@ const AddItems = props => {
                                     options={storelist}
                                     SelectedValue={setSelectValue}
                                 />
-                                <MultiSelectDropDown
+                                <SelectInput
+                                    label='Select Category'
+                                    placeholder='---- Select Category ----'
+                                    options={categorylist}
+                                    SelectedValue={setCategoryValue}
+                                />
+                                {/* <MultiSelectDropDown
                                 label='Select Category'
                                 error={true}
-                                    options={categorylist}
-                                    placeholderButtonLabel={'Select Category'}
-                                />
+                                options={categorylist}
+                                placeholderButtonLabel={'Select Category'}
+                                /> */}
                                 <Input
                                     type="text"
                                     label={'Alert Me If Item Count Falls Below'}
@@ -303,12 +311,14 @@ const AddItems = props => {
                                     }
                                 </FieldDivider>
                                 <FieldDivider>
-                                    {/* <FieldLeftContainer1>
-                                        <SelectInput
-                                            label='Select Store'
-                                            placeholder='---- Select store ----'
+                                    <FieldRightContainerItem>
+                                    <SelectInput
+                                        label='Select Unit'
+                                        placeholder='--Select Unit--'
+                                        options={unitlist}
+                                        SelectedValue={setUnitSelectValue}
                                         />
-                                    </FieldLeftContainer1> */}
+                                        </FieldRightContainerItem>
                                     <FieldRightContainerItem>
                                         <SelectInput
                                             label='Rtn/Cns'

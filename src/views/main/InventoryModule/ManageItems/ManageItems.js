@@ -22,6 +22,7 @@ const ManageItems = () => {
   const [totalRecord, settotalRecord] = useState(0);
   const [storelist, setStorelist] = useState([]);
   const [categorylist, setcategorylist] = useState([]);
+  const [unitlist, setunitlist] = useState([]);
 // console.log({storelist})
   const hideModal = () => {
     setShowModal(false);
@@ -82,12 +83,65 @@ const getcategoryList = () => {
       setcategorylist(resp.data);
     });
   }
+  //setunitlist
+  const getunitList = () => {
+  const fetchunitlistURL = baseURL +"api/v1/inventory/unitlist";
+    axios.get(fetchunitlistURL).then((resp) => {
+      // console.log({ resp });
+      setunitlist(resp.data);
+    });
+  }
+  //
+  // preview for print
+
+  const previewRecord = () => {
+    window.open("/itemlistpreview?params="+searchinfo, "_blank")
+  }
+
+  //EXPORT EXCEL
+  const exportProducts = () => {
+    // exportData();
+    itemList(0, '', searchinfo);
+    const getData = record.map(row => {
+      const rowData = {};
+      rowData['Item Name'] = row.itemName;
+      rowData['Purchase Cost'] = row.mrp;
+      rowData['Units'] = row.unit;
+      rowData['Store Name'] = row.storeName;
+      rowData['Category'] = row.categoryName;
+      rowData['Type'] = (row.rtncns==1)?'CONSUMABLE':'RETURNABLE';
+      return rowData;
+    });
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(getData);
+    const columnWidths = [
+    { wpx: 100 },
+    { wpx: 200 }, 
+    { wpx: 150 }, 
+    ];
+
+    ws['!cols'] = columnWidths;
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    const blob = new Blob([XLSX.write(wb, { bookType: 'xlsx', type: 'buffer' })], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+    const url = URL.createObjectURL(blob);
+    let currentDate = new Date().toJSON();
+    const excelFileName = 'Products_list_export_' + currentDate;
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = excelFileName+'.xlsx';
+    link.click();
+
+    URL.revokeObjectURL(url);
+  }
 
  useEffect(() => {
     itemList(0, PageSize, searchinfo);
     totalRecordCount(searchinfo);
    getstoreList();
    getcategoryList();
+   getunitList();
 
   }, [searchinfo]);
 
@@ -123,14 +177,18 @@ const getcategoryList = () => {
           smallHeading='All Items'
           smallHeding2={'('+totalRecord+' Records)'}
           PrintIcon={PrintImage}
+          onPreview={() => previewRecord()}
           Excelicon={ExcelImage}
+          onClick={() => exportProducts()}
       />
       
         <ManageItemTable
           record={record}
           totalRecord={totalRecord}
           itemList={itemList}
-          
+          storelist={storelist}
+          categorylist={categorylist}
+          unitlist={unitlist}
         />
 
       {/* Add Items Modal */}
@@ -139,6 +197,7 @@ const getcategoryList = () => {
         handleClose={hideModal}
         storelist={storelist}
         categorylist={categorylist}
+        unitlist={unitlist}
       />
 
       {/* Associated Options - Add Form Field */}
