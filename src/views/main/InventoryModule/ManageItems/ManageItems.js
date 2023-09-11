@@ -11,6 +11,8 @@ import ExcelImage from '../../../../images/excel-icon.svg';
 import AddItems from './components/AddItems';
 import AddFormField from '../../TransportModule/TransportRoute/components/AddFormField';
 import ManageItemTable from '../../../../components/InventoryTable/ManageItemsTable/ManageItemTable';
+
+
 const baseURL = config.baseUrl;
 let PageSize = 10;
 const ManageItems = () => {
@@ -149,9 +151,9 @@ const getcategoryList = () => {
     <>
     <Layout type='inventory'>
       <SubHeader
-          heading='Manage Items'
+          heading='Manage Products'
           type='header-filters' 
-          buttonAdd='Add New Items' 
+          buttonAdd='Add New Product' 
           buttonOption='Associated Options'
           onClick={() =>  setShowModal(!showModal)}
           searchPlaceholder='Search by item name, purchase cost, etc...'
@@ -162,7 +164,7 @@ const getcategoryList = () => {
           defaultHeaderPlaceholder2='----Select Store----'
           defaultHeaderLabel='Select Category'
           defaultHeaderPlaceholder='----Select Category----'
-          buttonFormFieldText='Add Form Field'
+          buttonFormFieldText='Custom Manage Field'
           showGetRecordButton ={true}
           showPrimaryButton ={true}
           showSearchButtonRight={true}

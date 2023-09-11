@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
@@ -11,8 +11,7 @@ import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import SelectInput from '../../../../../components/Inputs/Select';
-import MultiSelectDropDown from '../../../../../components/Inputs/MultiSelectDropDown';
-import { useEffect } from 'react';
+import MultiSelect from '../../../../../components/Inputs/MultiSelect';
 
 const EditItems = props => {
 
@@ -212,7 +211,7 @@ const EditItems = props => {
         <Modal
             show={show}
             handleClose={handleClose}
-            modalHeading={'Edit New Items'}
+            modalHeading={'Edit New Product'}
             submitText='Save and Close'
             // actionText={'Save and Continue'}
             cancelText='Cancel'
@@ -231,9 +230,9 @@ const EditItems = props => {
                                     SelectedValue={setSelectValue}
                                     setSelectedvalue={storename}
                                 />
-                                <SelectInput
+                                <MultiSelect
                                     label='Select Category'
-                                    placeholder='--Select Category--'
+                                    error={true}
                                     options={categorylist}
                                     SelectedValue={setCategoryValue}
                                     setSelectedvalue={categoryname}

@@ -66,7 +66,7 @@ const options = [allOption].concat(option);
   useEffect(() => {
     setSelectedOptions([{ label: "All", value: "*" }, ...options]);
   }, []);
-
+  
   function getDropdownButtonLabel({ placeholderButtonLabel, value }) {
     if (value && value.some((o) => o.value === "*")) {
       return `${placeholderButtonLabel}: All`;
@@ -74,17 +74,13 @@ const options = [allOption].concat(option);
       return `${placeholderButtonLabel}: ${value.length} selected`;
     }
   }
-
+  
   function validateSelection(value) {
-    // You can add your validation logic here
-    // For example, require at least 2 options to be selected
-    if (value.length < 2) {
-      setError("Please select at least 2 options.");
-      return false;
-    }
+    // Remove the condition, always clear the error
     setError(""); // Clear any previous error messages
-    return true;
+    return true; // Validation always succeeds
   }
+  
 
   function onChange(value, event) {
     const isValid = validateSelection(value);
@@ -131,4 +127,4 @@ const options = [allOption].concat(option);
   );
 };
 
-export default MultiSelectDropDown;
+export default MultiSelectDropdown;

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
-import { ButtonContainer, Container, ContainerLeft, ContainerRight, DescriptionText, GetRecordsContainer, GetRecordsTabHeaderFilter, HeaderFilterHeadings, RecordBox, RecordBoxNew, TabFilterContainer, TabHeaderFilter, TabHeaderFilterHeading, VerticalContainer } from './subHeaderStyles';
+import { ButtonContainer, Container, ContainerLeft, ContainerRight, DescriptionText, GetRecordsContainer, GetRecordsTabHeaderFilter, HeaderFilterHeadings, RecordBox, RecordBoxMulti, RecordBoxNew, TabFilterContainer, TabHeaderFilter, TabHeaderFilterHeading, VerticalContainer } from './subHeaderStyles';
 import Headings from '../Headings/Headings';
 import Button from '../Buttons/Button';
 
@@ -12,11 +12,11 @@ import { styled } from 'styled-components';
 import CustomDrop from '../MainHeader/Components/SubComponents/CustomDrop';
 import 'react-datepicker/dist/react-datepicker.css';
 import calendarIcon from '../../images/date-icon.svg';
-import MultiSelectDropDown, { Container1 } from '../Inputs/MultiSelectDropDown';
 import LinkButton from '../Buttons/LinkButton';
 import DateInput from '../DateInputField/DateInput';
 import TabHeaderFilterItemReport from '../../views/main/InventoryModule/Product Report/components/TabHeaderFilterProductReport';
 import CustomFilter from '../../views/main/InventoryModule/Product Report/CustomFilter';
+import MultiSelect from '../Inputs/MultiSelect';
 
 export const DropContianer = styled.div`
     position:absolute;
@@ -545,8 +545,8 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
                             }
                             {showDefaultHeaderSelect2 &&
                                 <RecordBox>
-                                    <MultiSelectDropDown
-                                        width='250px'
+                                    <MultiSelect
+                                        width="250px"
                                         label={defaultHeaderLabel2}
                                         placeholder={defaultHeaderPlaceholder2}
                                     />
@@ -554,8 +554,8 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
                             }
                             {showDefaultHeaderSelect &&
                                 <RecordBox>
-                                    <MultiSelectDropDown
-                                        width='250px'
+                                    <MultiSelect
+                                        width="250px"
                                         label={defaultHeaderLabel}
                                         placeholder={defaultHeaderPlaceholder}
                                     />
@@ -717,7 +717,7 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
                     }
                     {showMultiSelectTab1 &&
                         <RecordBoxNew>
-                            <MultiSelectDropDown
+                            <MultiSelect
                                 width='250px'
                                 label={multiselectLabel}
                                 placeholder={multiselectPlaceholder}
@@ -726,7 +726,7 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
                     }
                     {showMultiSelectTab2 &&
                         <RecordBoxNew>
-                            <MultiSelectDropDown
+                            <MultiSelect
                                 width='250px'
                                 label={multiselectLabel1}
                                 placeholder={multiselectPlaceholder1}
