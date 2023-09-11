@@ -28,6 +28,7 @@ const ManageStore = () => {
   const [record, setrecord] = useState({});
   const [storeid, setstoreid] = useState(0);
   const [vendorList, setvendorList] = useState({});
+  // console.log({ storeid });
   const hideCategoriesListModal = () => {
     setShowCategoriesList(false);
   }

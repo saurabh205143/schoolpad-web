@@ -12,7 +12,7 @@ import MultiSelectDropDown from '../../../../../components/Inputs/MultiSelectDro
 
 const AddStore = props => {
 
-    const { show, handleClose,saveAction,vendorList,showToastMessage } = props;
+    const { show, handleClose,saveAction,vendorList,showToastMessage,selectedOptions } = props;
     const [isChecked, setIsChecked] = useState(true);
     const [StoreManager, setStoremanager] = useState([]);
     const [inputs, setInputs] = useState({
@@ -28,7 +28,7 @@ const AddStore = props => {
     const [selectedValue, setSelectedValue] = useState([]);
     const options = vendorList;
     const selectSomeItemsText = "----Select stop manager----";
-//  console.log('red', StoreManager);
+ console.log('red', selectedValue);
     // Validate Inputs
     const validate = () => {
         let fields = [
@@ -204,6 +204,8 @@ const AddStore = props => {
                     <MultiSelectDropDown
                     label='Stop Manager'
                     error={errors.stop_manager}
+                    options={options}
+                    setMultiSelect={setSelectedValue}
                     />
                 </FieldContainer>
 

@@ -24,7 +24,7 @@ const SelectInput = ({label, placeholder, options, SelectedValue , setSelectedva
     setSelectedOption(setSelectedvalue);
   });
 
-  console.log({ selectedOption });
+  // console.log({ selectedOption });
   // Custom styles for the Select component
   const selectStyles = {
     control: (provided, state) => ({
