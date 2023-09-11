@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { FieldContainer, ModalBodyConatiner } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
@@ -7,8 +7,8 @@ import config from '../../../../../config';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastModals from '../../../../../components/Toaster/ToastModals';
-import MultiSelectDropDown from '../../../../../components/Inputs/MultiSelectDropDown';
-
+import MultiSelect from '../../../../../components/Inputs/MultiSelect';
+import multiOptions from '../../../../../components/Inputs/data';
 
 const AddStore = props => {
 
@@ -28,7 +28,43 @@ const AddStore = props => {
     const [selectedValue, setSelectedValue] = useState([]);
     const options = vendorList;
     const selectSomeItemsText = "----Select stop manager----";
+    
 //  console.log('red', StoreManager);
+
+    // Multiselect validation
+    const [selectedOptions, setSelectedOptions] = useState([]);
+    const [validationError, setValidationError] = useState('');
+    const [errorsMultiSelect, setErrorMultiSelect] = useState("");
+
+    useEffect(() => {
+        setSelectedOptions([{ label: "All", value: "*" }, ...multiOptions]);
+    }, []);
+
+    function getDropdownButtonLabel({ placeholderButtonLabel, value }) {
+        if (value && value.some((o) => o.value === "*")) {
+            return `${placeholderButtonLabel}: All`;
+        } else {
+            return `${placeholderButtonLabel}: ${value.length} selected`;
+        }
+    }
+
+    function onChange(value, event) {
+        if (event.action === "select-option" && event.option.value === "*") {
+            this.setState(this.options);
+        } else if (
+            event.action === "deselect-option" &&
+            event.option.value === "*"
+        ) {
+            this.setState([]);
+        } else if (event.action === "deselect-option") {
+            this.setState(value.filter((o) => o.value !== "*"));
+        } else if (value.length === this.options.length - 1) {
+            this.setState(this.options);
+        } else {
+            this.setState(value);
+        }
+    }
+
     // Validate Inputs
     const validate = () => {
         let fields = [
@@ -86,6 +122,13 @@ const AddStore = props => {
     // OnSubmit Validate 
     const onSubmit = () => {
         let e = {};
+        if (selectedOptions.length === 0)
+        {
+            setErrorMultiSelect("Please select stop manager");
+        }
+        else {
+            setErrorMultiSelect("");
+        }
         var nonIndexedObject = [];
         for (var i = 0; i < StoreManager.length; i++) {
             nonIndexedObject[i] = StoreManager[i].value;
@@ -201,10 +244,17 @@ const AddStore = props => {
                     />
                 </FieldContainer> */}
                 <FieldContainer>
-                    <MultiSelectDropDown
+                <MultiSelect
                     label='Stop Manager'
-                    error={errors.stop_manager}
-                    />
+                    options={[{ label: "All", value: "*" }, ...multiOptions]}
+                    placeholderButtonLabel='----Select stop manager----'
+                    getDropdownButtonLabel={getDropdownButtonLabel}
+                    value={selectedOptions}
+                    onChange={onChange}
+                    selected={selectedOptions}
+                    setState={setSelectedOptions}
+                    error={errorsMultiSelect}
+                />
                 </FieldContainer>
 
                 {/* <CustomCheckbox

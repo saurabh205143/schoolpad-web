@@ -11,7 +11,8 @@ import AddMoreIcon from '../../../../../images/add-more-icon.svg';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
 import Button from '../../../../../components/Buttons/Button';
 import SelectInput from '../../../../../components/Inputs/Select';
-import MultiSelectDropDown from '../../../../../components/Inputs/MultiSelectDropDown';
+import MultiSelect from '../../../../../components/Inputs/MultiSelect';
+
 
 const AddItems = props => {
 
@@ -181,7 +182,7 @@ const AddItems = props => {
         <Modal
             show={show}
             handleClose={handleClose}
-            modalHeading={'Edit New Items'}
+            modalHeading={'Edit New Product'}
             submitText='Save and Close'
             actionText={'Save and Continue'}
             cancelText='Cancel'
@@ -199,9 +200,9 @@ const AddItems = props => {
                                     options={storelist}
                                     SelectedValue={setSelectValue}
                                 />
-                                <MultiSelectDropDown
-                                label='Select Category'
-                                error={true}
+                                <MultiSelect
+                                    label='Select Category'
+                                    error={true}
                                     options={categorylist}
                                     placeholderButtonLabel={'Select Category'}
                                 />
