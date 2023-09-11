@@ -5,7 +5,8 @@ import { FieldContainer, ModalBodyConatiner } from '../../../TransportModule/Tra
 import CustomCheckbox from '../../../../../components/Checkbox/CustomCheckbox';
 import axios from 'axios';
 import config from '../../../../../config';
-
+import MultiSelect from '../../../../../components/Inputs/MultiSelect';
+import multiOptions from '../../../../../components/Inputs/data';
 const EditStore = props => {
 
     const { show, handleClose,vendorList } = props;
@@ -14,19 +15,65 @@ const EditStore = props => {
     const [storeCode, setstoreCode] = useState('');
     const [storeDesc, setstoreDesc] = useState('');
     const [StoreManager, setStoremanager] = useState([]);
+    const [selectedValue, setSelectedValue] = useState([]);
     const { confirm, handleConfirm,record } = props;
     // const baseURL = "http://localhost/schoolpad/Inventory-api/StoreApiManager/addStore";
     const baseURL = config.baseUrl +"api/v1/inventory/store";
     // console.log({baseURL});
-    const options = vendorList;
+    // const options = vendorList;
+    const allOption = { label: "All", value: "*" };
+    const options = [allOption].concat(vendorList);
+    const selectSomeItemsText = "----Select stop manager----";
+    
+//  console.log('red', StoreManager);
+
+    // Multiselect validation
+    const [selectedOptions, setSelectedOptions] = useState([]);
+    const [validationError, setValidationError] = useState('');
+    const [errorsMultiSelect, setErrorMultiSelect] = useState("");
+
+    useEffect(() => {
+        // setSelectedOptions([{ label: "All", value: "*" }, ...options]);
+    }, []);
+
+    function getDropdownButtonLabel({ placeholderButtonLabel, value }) {
+        if (value && value.some((o) => o.value === "*")) {
+            return `${placeholderButtonLabel}: All`;
+        } else {
+            return `${placeholderButtonLabel}: ${value.length} selected`;
+        }
+    }
+
+    function onChange(value, event) {
+        if (event.action === "select-option" && event.option.value === "*") {
+            this.setState(this.options);
+        } else if (
+            event.action === "deselect-option" &&
+            event.option.value === "*"
+        ) {
+            this.setState([]);
+        } else if (event.action === "deselect-option") {
+            this.setState(value.filter((o) => o.value !== "*"));
+        } else if (value.length === this.options.length - 1) {
+            this.setState(this.options);
+        } else {
+            this.setState(value);
+        }
+    }
+
     useEffect(() => {
         setstoreName(record.storeName);
         setstoreCode(record.storeCode);
         setstoreDesc(record.storeDesc);
         console.log(record.storeManager);
         let storeMnge = record.storeManager;
-        console.log(storeMnge.split(','));
-        // let categoryselopt = { label: singlerecord.categoryName, value: singlerecord.categoryId }
+        
+        // const regex = new RegExp(',', 'g');
+        // const foundMatches = storeMnge.includes(',');
+        // // // text.match(foundMatches);
+        // // // 
+        // console.log({foundMatches});
+        // let categoryselopt = { label: 'Cambridge', value: }
         // setstoreManager(record.managerName);
       }, [record]);
     // 
@@ -130,13 +177,18 @@ const EditStore = props => {
                     />
                 </FieldContainer> */}
                 <FieldContainer>
-                    <Input
-                        type="multi-select"
-                        options={options}
-                        name={'store_manager'}
-                        label='Store Manager'
-                        Storemanager = {setStoremanager}   
-                        placeholder='----Select store manager----'
+                    <MultiSelect
+                        label='Stop Manager'
+                        options={[ ...options]}
+                        placeholderButtonLabel='----Select stop manager----'
+                        getDropdownButtonLabel={getDropdownButtonLabel}
+                        value={selectedOptions}
+                        onChange={onChange}
+                        selected={selectedOptions}
+                        setState={setSelectedOptions}
+                        error={errorsMultiSelect}
+                        // option={options}
+                        setMultiSelect={setSelectedValue}
                     />
                 </FieldContainer>
                 <CustomCheckbox
