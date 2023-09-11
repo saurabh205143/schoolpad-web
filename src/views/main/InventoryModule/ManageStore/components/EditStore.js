@@ -23,6 +23,10 @@ const EditStore = props => {
         setstoreName(record.storeName);
         setstoreCode(record.storeCode);
         setstoreDesc(record.storeDesc);
+        console.log(record.storeManager);
+        let storeMnge = record.storeManager;
+        console.log(storeMnge.split(','));
+        // let categoryselopt = { label: singlerecord.categoryName, value: singlerecord.categoryId }
         // setstoreManager(record.managerName);
       }, [record]);
     // 

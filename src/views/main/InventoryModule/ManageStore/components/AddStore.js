@@ -28,7 +28,7 @@ const AddStore = props => {
     const [selectedValue, setSelectedValue] = useState([]);
     const options = vendorList;
     const selectSomeItemsText = "----Select stop manager----";
- console.log('red', selectedValue);
+//  console.log('red', selectedValue);
     // Validate Inputs
     const validate = () => {
         let fields = [
@@ -84,19 +84,22 @@ const AddStore = props => {
     };
 
     // OnSubmit Validate 
-    const onSubmit = () => {
+    const onSubmit = (action) => {
+        console.log({ action });
         let e = {};
         var nonIndexedObject = [];
-        for (var i = 0; i < StoreManager.length; i++) {
-            nonIndexedObject[i] = StoreManager[i].value;
+        for (var i = 0; i < selectedValue.length; i++) {
+            nonIndexedObject[i] = selectedValue[i].value;
         }
         var storeManagerList = nonIndexedObject.join(", ");
-        if (!validate()) {
-            return;
-        }
+        // console.log({storeManagerList});
+        //  saveAction();
+        // if (!validate()) {
+        //     return;
+        // }
         
         // console.log({inputs});
-        // setLoading(true);
+        setLoading(true);
         const baseURL = config.baseUrl +"api/v1/inventory/store";
         axios.post(baseURL, {
             storeName: inputs.store_name,
@@ -120,10 +123,15 @@ const AddStore = props => {
             else
             {
                 // saveAction();
-                // setTimeout(() => {
-                //     window.location.reload();
-                // }, 2000);
-                // setLoading(false);
+                if (action != '1')
+                {
+                    setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+                    
+                }
+                
+                setLoading(false);
                 saveAction();
             }
             
@@ -144,9 +152,11 @@ const AddStore = props => {
             handleClose={handleClose}
             modalHeading={'Add New Store'}
             submitText='Save and Close'
-            actionText={'Save and Continue'}
-            cancelText='Cancel'
             saveAction={onSubmit}
+            actionText={'Save and Continue'}
+            clickAction={()=>onSubmit('1')}
+            cancelText='Cancel'
+            
             loading={loading}
         >
             <form>
@@ -204,7 +214,7 @@ const AddStore = props => {
                     <MultiSelectDropDown
                     label='Stop Manager'
                     error={errors.stop_manager}
-                    options={options}
+                    option={options}
                     setMultiSelect={setSelectedValue}
                     />
                 </FieldContainer>
