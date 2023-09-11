@@ -14,9 +14,14 @@ const SelectInputLabel = styled.div`
     }
 `;
 
-const SelectInput = ({label,selectedKey, placeholder,onChange,name,error,value,options}) => { 
-  
+// const options = [
+//   { value: 'chocolate', label: 'Chocolate' },
+//   { value: 'strawberry', label: 'Strawberry' },
+// ];
 
+const SelectInput = ({label, placeholder, options, SelectedValue , setSelectedvalue,value, error, onChange, selectedKey}) => { 
+  const [selectedOption, setSelectedOption] = useState(null);
+  // console.log({ setSelectedvalue });
   // Custom styles for the Select component
   const selectStyles = {
     control: (provided, state) => ({
@@ -37,6 +42,7 @@ const SelectInput = ({label,selectedKey, placeholder,onChange,name,error,value,o
       fontSize: '14px', 
     }),
   };
+  //
 
   return (
     <div>
@@ -49,8 +55,8 @@ const SelectInput = ({label,selectedKey, placeholder,onChange,name,error,value,o
         options={options}
         styles={selectStyles}
         placeholder={placeholder}
+        defaultValue={selectedOption}
         className='select-input'
-        name={name}
         error={error}
         checkbox={true}
         selectedKey={selectedKey}

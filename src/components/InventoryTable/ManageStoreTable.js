@@ -42,9 +42,10 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
     setRecord(storedetail);
   }
 
-  const getDetailByStoreId = (storeid)=>
+  const getDetailByStoreId = (store)=>
   {
-    setstoreid(storeid);
+    let categoryDetailArr = {'id': store.id,'categorycount':store.categorycount}
+    setstoreid(categoryDetailArr);
   }
   // Successfull edited
   const showToastMessage = () => {
@@ -149,13 +150,14 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
                 <Tabledata>
                   <ActionsConatiner>
                     <ActionsList>
+                      {(item.categorycount != 0 )?
                       <Button
                         buttonText={""+item.categorycount+" Categories" }
                         className='link-button'
-                        onClick={() => { onClick(); getDetailByStoreId(item.id); }}
+                        onClick={() => { onClick(); getDetailByStoreId(item); }}
                         //onClick={onClick}
                         // selectedStoreId={console.log(item.d)}
-                      />
+                      />:'-'}
                     </ActionsList>
                   </ActionsConatiner>
                 </Tabledata>

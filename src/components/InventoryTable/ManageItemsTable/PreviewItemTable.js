@@ -1,17 +1,19 @@
 import React, { useState, useMemo, useEffect,setState } from 'react';
 import data from './data.json';
+import { ActionsConatiner, ActionsList, Container, TableActionHeading, TableBody, TableCheckbox, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../Table/TableStyles';
+import LinkButton from '../../Buttons/LinkButton';
 import axios from 'axios';
 import config from '../../../config';
 import { useLocation } from "react-router-dom";
-import { TableActionHeading, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../Table/TableStyles';
 const baseURL = config.baseUrl;
 
-const PreviousTableVendor = () => {
-  const col = ['SNo','Vendor Name', 'Vendor Code','Store Name','Address', 'Region', 'ContactNo.', 'Gst No.'];//Object.keys(data[0]);
+const PreviewItemTable = () => {
+  //const column = Object.keys(data[0]);
+const column = ['SNo','Item Name', 'Purchase Cost','Units','Store Name', 'Category', 'Type'];
   const { language } = useLocation();
   const [record, setrecord] = useState('');
 
-  const fetchstoreURL = baseURL +"api/v1/inventory/vendor";
+  const fetchstoreURL = baseURL +"api/v1/inventory/products";
   useEffect(() => {    
     let search = window.location.search;
     let params = new URLSearchParams(search);
@@ -34,7 +36,7 @@ const PreviousTableVendor = () => {
             />
           </TableCheckbox> */}
         </TableHeading>
-        {col.map((data) => (
+        {column.map((data) => (
           <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
         ))}
       </>
@@ -69,13 +71,12 @@ const PreviousTableVendor = () => {
                   /> */}
                 </Tabledata>
                 <Tabledata>{ ++i }</Tabledata>
-                <Tabledata>{item.vendorName}</Tabledata>
-                <Tabledata>{item.vendorCode}</Tabledata>
+                <Tabledata>{item.itemName}</Tabledata>
+                <Tabledata>{item.mrp}</Tabledata>
+                <Tabledata>{item.unit}</Tabledata>
                 <Tabledata>{item.storeName}</Tabledata>
-                <Tabledata>{item.address}</Tabledata>
-                <Tabledata>{item.region}</Tabledata>
-                <Tabledata>{item.contactNo}</Tabledata>
-                <Tabledata>{item.tinNo}</Tabledata>
+                <Tabledata>{item.categoryName}</Tabledata>
+                <Tabledata>{(item.rtncns==1)?'Consumable':'Returnable'}</Tabledata>
               </TableRow>
             );
           }):null}
@@ -89,4 +90,4 @@ const PreviousTableVendor = () => {
 
 }
 
-export default PreviousTableVendor;
+export default PreviewItemTable;

@@ -12,7 +12,7 @@ import multiOptions from '../../../../../components/Inputs/data';
 
 const AddStore = props => {
 
-    const { show, handleClose,saveAction,vendorList,showToastMessage } = props;
+    const { show, handleClose,saveAction,vendorList,showToastMessage} = props;
     const [isChecked, setIsChecked] = useState(true);
     const [StoreManager, setStoremanager] = useState([]);
     const [inputs, setInputs] = useState({
@@ -65,6 +65,7 @@ const AddStore = props => {
         }
     }
 
+ console.log('red', selectedValue);
     // Validate Inputs
     const validate = () => {
         let fields = [

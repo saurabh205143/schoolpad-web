@@ -13,7 +13,7 @@ const CategoriesList = ({ onClick,storeid, setstoreid }) => {
                 const fetchCountstoreURL = baseURL +"api/v1/inventory/category";
                 axios.get(fetchCountstoreURL, {
                 params:
-                    { offset: 0, store_id:storeid}
+                    { offset: 0, store_id:storeid.id}
                 }).then((resp) => {
                     if (resp.details != '')
                     {

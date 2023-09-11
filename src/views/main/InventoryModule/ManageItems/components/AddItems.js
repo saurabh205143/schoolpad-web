@@ -4,6 +4,8 @@ import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
 import { AddMoreField, FieldContainer, FieldContainerBottom, FieldContainerBottomLine, FieldContainerBox, FieldDivider, FieldDividerBottom, FieldDividerHeading, FieldLeftContainer1, FieldRightContainerItem, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 import multiOptions from '../../../../../components/Inputs/data';
+import axios from 'axios';
+import config from '../../../../../config';
 
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
@@ -107,7 +109,10 @@ const AddItems = props => {
     }
 
     const [SelectedValue, setSelectValue] = useState([]);
-
+    const [typeselectedValue, setTypeSelectValue] = useState('');
+    const [unitselectedValue, setUnitSelectValue] = useState('');
+    const [CategoryValue, setCategoryValue] = useState([]);
+    const [thresholdcount, setthresholdcount] = useState([]);
     // Validate Inputs
     const validate = () => {
         let fields = [
@@ -198,6 +203,36 @@ const AddItems = props => {
         }, 2000);
         setLoading(false);
         saveAction();
+        // if (!validate()) {
+        //     return;
+        //     }
+            console.log( formValuesEmail[0].name);
+            const addproduct = config.baseUrl +"api/v1/inventory/products";
+            axios.post(addproduct, {
+                itemName: formValuesEmail[0].name,
+                rtncns: typeselectedValue,
+                threshHold:thresholdcount,
+                unitPr:formValuesEmail[0].purchase_cost,
+                mrp:formValuesEmail[0].purchase_cost,
+                userId:214,
+                categoryId:CategoryValue,
+                storeId:SelectedValue,
+                unitId:5,
+                threshholdEmail: formValuesEmail[0].email
+            })
+                .then(function (response) { 
+                setTimeout(() => {
+                            window.location.reload();
+                        }, 2000);
+            })
+            .catch(function (error) { console.log({ error }); });
+        // setLoading(true);
+        // setTimeout(() => {
+        //     window.location.reload();
+        // }, 2000);
+        // setLoading(false);
+        // saveAction();
+        
     }
 
     let handleChange = (index, field, e) => {

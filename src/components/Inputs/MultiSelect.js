@@ -52,7 +52,7 @@ export const Container = styled.div`
   }
 `;
 
-const MultiSelect = ({label,error,selected,options,placeholderButtonLabel,getDropdownButtonLabel,value,onChange,setState, width}) => {
+const MultiSelect = ({label,selected,options,placeholderButtonLabel,getDropdownButtonLabel,value,onChange,setState, width, error}) => {
 
   return (
     <Container width={width} error={error}>
