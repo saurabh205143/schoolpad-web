@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 const baseURL = config.baseUrl;
 
 const VendorPreview = () => {
-  const col = ['SNo','Vendor Name', 'Vendor Code','Store Name','Address', 'Region', 'ContactNo.', 'Gst No.'];//Object.keys(data[0]);
+  const column = ['SNo','Vendor Name', 'Vendor Code','Store Name','Address', 'Region', 'ContactNo.', 'Gst No.'];//Object.keys(data[0]);
   const { language } = useLocation();
   const [record, setrecord] = useState('');
 

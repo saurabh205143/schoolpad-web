@@ -33,7 +33,7 @@ import IssueItemSelectFilterStudent from './views/main/InventoryModule/Issue Ite
 import PreviewManageStore from './components/InventoryTable/PreviewStoreTable';
 import ManageVendor from './views/main/InventoryModule/ManageVendors/ManageVendor';
 import ProductReport from './views/main/InventoryModule/Product Report/ProductReport';
-import VendorPreview from './views/main/InventoryModule/ManageVendors/VendorPreview';
+import VendorPreview from './components/InventoryTable/ManageVendorsTable/VendorPreview';
 import ItemPreview from './components/InventoryTable/ManageItemsTable/PreviewItemTable';
 import ItemReport from './components/InventoryTable/ManageVendorsTable/VendorPreview';
 
