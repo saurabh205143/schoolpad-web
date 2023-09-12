@@ -10,7 +10,7 @@ import { SubHeadingText } from '../Headings/headingStyles';
 
 
 const Modal = props => {
-    const { show, handleClose, modalHeading, loading, modalSubHeading, submitText, saveAction, children, actionText , cancelText} = props;
+    const { show, clickAction, handleClose, modalHeading, loading, modalSubHeading, submitText, saveAction, children, actionText , cancelText} = props;
 
     const on = useLocation();
     const pathName = on.pathname;
@@ -48,7 +48,7 @@ const Modal = props => {
                             <Button
                                 buttonText={actionText}
                                 className={'primary'}
-                                // onClick={saveAction}
+                                onClick={clickAction}
                             />
                         }
                     </FooterButtonContainer>

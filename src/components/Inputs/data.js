@@ -1,30 +1,30 @@
 export default [{
   "id": 1,
-  "value": "9ce42304-b732-4791-9731-6f299b6df8c7",
+  "value": "1",
   "label": "Blue"
 }, {
   "id": 2,
-  "value": "90419f06-7d07-45c8-bcec-d675096fe27f",
+  "value": "2",
   "label": "Goldenrod"
 }, {
   "id": 3,
-  "value": "a23521da-0a48-4ef6-baa2-d727704f65c2",
+  "value": "3",
   "label": "Teal"
 }, {
   "id": 4,
-  "value": "34b2b58a-0123-49e2-b2de-1eef0922139b",
+  "value": "4",
   "label": "Puce"
 }, {
   "id": 5,
-  "value": "0fceaec7-fb46-4aef-994b-863a97130168",
+  "value": "5",
   "label": "Khaki"
 }, {
   "id": 6,
-  "value": "b68c6b76-bbe0-49a6-8a90-209b8d88d353",
+  "value": "6",
   "label": "Green"
 }, {
   "id": 7,
-  "value": "e2829c11-0960-490c-b19b-5c5bb26a18ce",
+  "value": "7",
   "label": "Crimson"
 },  {
   "id": 9,

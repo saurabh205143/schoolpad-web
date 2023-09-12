@@ -49,9 +49,19 @@ export const Container = styled.div`
   }
 `;
 
-const MultiSelectDropdown = ({label, width, options, setMultiSelect}) => {
+export const RecordBoxMulti = styled.div`
+    width=200px;
+}
+`;
+
+//options,
+const MultiSelectDropDown = ({label, width, option, setMultiSelect}) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [error, setError] = useState("");
+
+  const allOption = { label: "All", value: "*" };
+
+const options = [allOption].concat(option);
   // console.log({ selectedOptions });
   useEffect(() => {
     setSelectedOptions([{ label: "All", value: "*" }, ...options]);
