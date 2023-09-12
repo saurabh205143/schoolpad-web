@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
-
 // Assets
 import AddMoreIcon from '../../../../images/add-more-icon.svg';
 import RemoveIcon from '../../../../images/delete-icon.svg';
 import Modal from '../../../../components/Modal/Modal';
-import SelectInput from '../../../../components/Inputs/Select';
 import Button from '../../../../components/Buttons/Button';
 import Input from '../../../../components/Inputs/Input';
 import { AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer, FieldLeftContainer1, FieldRightContainerItem, ModalBodyConatiner, RemoveContianer } from '../../TransportModule/TransportRoute/components/AddRouteStyles';

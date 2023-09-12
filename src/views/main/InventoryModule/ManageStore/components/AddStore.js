@@ -133,7 +133,7 @@ const AddStore = props => {
         //  console.log({storeManagerList});
         console.log(validate());
         //  saveAction();
-       if (selectedOptions.length === 0)
+        if (selectedOptions.length === 0)
         {
             setErrorMultiSelect("Please select stop manager");
         }

@@ -361,11 +361,9 @@ const AddItems = props => {
                 </>
                 <>
                     <FieldDividerBottom>
-                        <>
                             <FieldDividerHeading>
                                 <span>Add Item Details Below</span>
                             </FieldDividerHeading>
-                        </>
                         {formValuesItem.map((element, index) => (
                             <>
                                 <FieldDivider>
@@ -408,9 +406,9 @@ const AddItems = props => {
                                 <FieldDivider>
                                     <FieldLeftContainer1>
                                         <SelectInput
-                                            label='Select Store'
+                                            label='Unit Type'
                                             options={options}
-                                            placeholder='---- Select store ----'
+                                            placeholder='---- Select unit ----'
                                             name={'select_store'}
                                             required={true}
                                             value={selectedStore}
@@ -430,18 +428,6 @@ const AddItems = props => {
                                             error={selectedRtn}
                                         />
                                     </FieldRightContainerItem>
-                                    {/* {
-                                        index ?
-                                            <RemoveContianer>
-                                                <Button
-                                                    className={'only-icon-button'}
-                                                    onlyIcon={RemoveIcon}
-                                                    onClick={() => removeFormFieldsItem(index)}
-                                                    required={true}
-                                                />
-                                            </RemoveContianer>
-                                            : null
-                                    } */}
                                 </FieldDivider>
                             </>
                         ))}

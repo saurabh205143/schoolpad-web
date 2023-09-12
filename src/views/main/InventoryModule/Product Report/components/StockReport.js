@@ -7,10 +7,16 @@ import SubHeader from '../../../../../components/ScreensHeader/SubHeader';
 import ExportHeader from '../../../../../components/ScreensHeader/ExportHeader';
 import DefaultMappingScreen from '../../../TransportModule/StudentMapping/components/DefaultMappingScreen';
 import StockReportTable from './StockReportTable';
+import CustomFilter from '../CustomFilter';
 
 const StockReport = () => {
 
   const [showReportRecords, setShowReportRecords] = useState(false);
+  const [showCustomFilterModal, setShowCustomFilterModal] = useState();
+
+  const hideModal = () => {
+      setShowCustomFilterModal(false);
+  }
   return(
     <>
         <SubHeader
@@ -31,6 +37,7 @@ const StockReport = () => {
           showDateTabTo={true}
           showGetRecordButton={true}
           getRecords={() => setShowReportRecords(!showReportRecords)}
+          getCustomField={() => setShowCustomFilterModal(!showCustomFilterModal)}
         />
 
       {showReportRecords ?
@@ -49,6 +56,12 @@ const StockReport = () => {
           description='Select the Store, Category, Item(s) Name, etc. to view stock report.'
           showDefaultScreenHeader={true}
         />}
+
+
+        <CustomFilter
+            show={showCustomFilterModal}
+            handleClose={hideModal}
+        />
     </>
   )
 }

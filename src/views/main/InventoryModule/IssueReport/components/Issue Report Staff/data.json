@@ -1,0 +1,17 @@
+[
+  {
+    "SNo":1,
+    "ReceiptNo":350,
+    "EmployeeName": "A4 Paper",
+    "EmployeeCode": "350",
+    "RoleName": "Stationery",
+    "IssuedBy" : "Paper",
+    "ProductName": "Stationery",
+    "IssueDate": "09/04/2023",
+    "SP": "Administrator",
+    "Quantity": "7",
+    "AmountPaid": "3150",
+    "AmountDue": "7000"
+  }
+
+]

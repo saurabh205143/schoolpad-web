@@ -36,6 +36,8 @@ import ProductReport from './views/main/InventoryModule/Product Report/ProductRe
 import VendorPreview from './components/InventoryTable/ManageVendorsTable/VendorPreview';
 import ItemPreview from './components/InventoryTable/ManageItemsTable/PreviewItemTable';
 import ItemReport from './components/InventoryTable/ManageVendorsTable/VendorPreview';
+import IssueReportHome from './views/main/InventoryModule/IssueReport/IssueReportHome';
+import IssueReport from './views/main/InventoryModule/IssueReport/components/IssueReport';
 
 
 //src\components\InventoryTable\PreviewStoreTable.js
@@ -86,6 +88,9 @@ function App() {
             <Route path='/manageReturn/staff-select-filter' element={<ReturnItemSelectFilter/>}/>
             <Route path='/manageReturn/student-select-filter' element={<ReturnItemSelectFilterStudent/>}/>
             <Route path='/manageProductReport' element={<ProductReport/>}/>
+            <Route path='/manageIssueReport' element={<IssueReportHome/>}/>
+            <Route path='/manageIssueReport/staff-select-filter' element={<IssueReport/>}/>
+            <Route path='/manageIssueReport/student-select-filter' element={<IssueReport/>}/>
             <Route path='/toasters' element={<Toasters />} />
             <Route path='/storepreview' element={<PreviewManageStore />} />
             <Route path='/vendorpreview' element={<VendorPreview />} />

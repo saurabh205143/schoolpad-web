@@ -71,6 +71,32 @@ export const FieldDivider = styled.div`
     justify-content:center;
 `;
 
+export const CustomCheckboxField = styled.div`
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    margin-bottom:16px;
+`;
+
+export const FieldDividerDeleteBorder = styled.div`
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+`;
+
+export const FieldDividerDeleteIcon = styled.div`
+    display: flex;
+    align-items:center;
+    justify-content:center;
+`;
+
+export const FieldDividerDelete = styled.div`
+    display: flex;
+    flex-direction:column;
+`;
+
 export const FieldDividerBottom = styled.div`
     width:100%;
     display:flex;
@@ -144,6 +170,7 @@ export const RemoveContianer = styled.div`
         }
     }
 `;
+
 
 export const AddFormFieldTab = styled.div`
     margin: 10px 0 10px 0;
