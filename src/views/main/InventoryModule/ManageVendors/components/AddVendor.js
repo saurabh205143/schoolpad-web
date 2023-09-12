@@ -7,7 +7,7 @@ import axios from 'axios';
 import config from '../../../../../config';
 const AddVendor = props => {
     const { show, handleClose, showToastMessage } = props;
-     const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const [inputs, setInputs] = useState({
         vendor_name: '',

@@ -73,9 +73,9 @@ const AddItems = props => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [validationError, setValidationError] = useState('');
 
-    useEffect(() => {
-        setSelectedOptions([{ label: "All", value: "*" }, ...multiOptions]);
-    }, []);
+    // useEffect(() => {
+    //     setSelectedOptions([{ label: "All", value: "*" }, ...multiOptions]);
+    // }, []);
 
     function getDropdownButtonLabel({ placeholderButtonLabel, value }) {
         if (value && value.some((o) => o.value === "*")) {
@@ -148,9 +148,9 @@ const AddItems = props => {
             if (
                 field.required &&
                 ((field.key === 'select_store' && selectedStore === '') ||
-                (formValuesEmail[field.key] === undefined ||
-                    formValuesEmail[field.key] === null ||
-                    formValuesEmail[field.key] === ''))
+                    (formValuesEmail[field.key] === undefined ||
+                        formValuesEmail[field.key] === null ||
+                        formValuesEmail[field.key] === ''))
             ) {
                 e[field.key] = `Please enter ${field.label} `;
                 return;
@@ -184,8 +184,7 @@ const AddItems = props => {
             setSelectedRtn('');
         }
         console.log(selectedOptions);
-        if (selectedOptions.length === 0)
-        {
+        if (selectedOptions.length === 0) {
             setErrorMultiSelect("Please select category");
         }
         else {
@@ -206,24 +205,24 @@ const AddItems = props => {
         // if (!validate()) {
         //     return;
         //     }
-            console.log( formValuesEmail[0].name);
-            const addproduct = config.baseUrl +"api/v1/inventory/products";
-            axios.post(addproduct, {
-                itemName: formValuesEmail[0].name,
-                rtncns: typeselectedValue,
-                threshHold:thresholdcount,
-                unitPr:formValuesEmail[0].purchase_cost,
-                mrp:formValuesEmail[0].purchase_cost,
-                userId:214,
-                categoryId:CategoryValue,
-                storeId:SelectedValue,
-                unitId:5,
-                threshholdEmail: formValuesEmail[0].email
-            })
-                .then(function (response) { 
+        console.log(formValuesEmail[0].name);
+        const addproduct = config.baseUrl + "api/v1/inventory/products";
+        axios.post(addproduct, {
+            itemName: formValuesEmail[0].name,
+            rtncns: typeselectedValue,
+            threshHold: thresholdcount,
+            unitPr: formValuesEmail[0].purchase_cost,
+            mrp: formValuesEmail[0].purchase_cost,
+            userId: 214,
+            categoryId: CategoryValue,
+            storeId: SelectedValue,
+            unitId: 5,
+            threshholdEmail: formValuesEmail[0].email
+        })
+            .then(function (response) {
                 setTimeout(() => {
-                            window.location.reload();
-                        }, 2000);
+                    window.location.reload();
+                }, 2000);
             })
             .catch(function (error) { console.log({ error }); });
         // setLoading(true);
@@ -232,7 +231,7 @@ const AddItems = props => {
         // }, 2000);
         // setLoading(false);
         // saveAction();
-        
+
     }
 
     let handleChange = (index, field, e) => {
@@ -263,12 +262,12 @@ const AddItems = props => {
 
     const handleSubmit = () => {
         // Perform validations
-        if(selectedOptions.length === 0){
+        if (selectedOptions.length === 0) {
             setValidationError('Please select category');
-            return false; 
+            return false;
         } else {
             setValidationError('');
-            return true; 
+            return true;
         }
     }
 
@@ -288,29 +287,29 @@ const AddItems = props => {
                     <FieldContainerBottom>
                         <FieldContainerBox>
                             <FieldContainer>
-                            {formValuesSelect.map((element, index) => (
-                                <SelectInput
-                                    label='Select Store'
-                                    options={options}
-                                    placeholder='---- Select store ----'
-                                    name={'select_store'}
-                                    required={true}
-                                    value={selectedStore}
-                                    onChange={(e) => setSelectedStore(e.target.value)}
-                                    error={storeError}
+                                {formValuesSelect.map((element, index) => (
+                                    <SelectInput
+                                        label='Select Store'
+                                        options={options}
+                                        placeholder='---- Select store ----'
+                                        name={'select_store'}
+                                        required={true}
+                                        value={selectedStore}
+                                        onChange={(e) => setSelectedStore(e.target.value)}
+                                        error={storeError}
+                                    />
+                                ))}
+                                <MultiSelect
+                                    label='Select Category'
+                                    options={[{ label: "All", value: "*" }, ...multiOptions]}
+                                    placeholderButtonLabel='Select category'
+                                    getDropdownButtonLabel={getDropdownButtonLabel}
+                                    value={selectedOptions}
+                                    onChange={onChange}
+                                    selected={selectedOptions}
+                                    setState={setSelectedOptions}
+                                    error={errorsMultiSelect}
                                 />
-                            ))}
-                            <MultiSelect
-                                label='Select Category'
-                                options={[{ label: "All", value: "*" }, ...multiOptions]}
-                                placeholderButtonLabel='Select category'
-                                getDropdownButtonLabel={getDropdownButtonLabel}
-                                value={selectedOptions}
-                                onChange={onChange}
-                                selected={selectedOptions}
-                                setState={setSelectedOptions}
-                                error={errorsMultiSelect}
-                            />
                                 <Input
                                     type="text"
                                     label={'Alert Me If Item Count Falls Below'}
@@ -420,7 +419,7 @@ const AddItems = props => {
                                         />
                                     </FieldLeftContainer1>
                                     <FieldRightContainerItem>
-                                    <SelectInput
+                                        <SelectInput
                                             label='Rtn/Cns'
                                             options={options}
                                             placeholder='---- Select rtn/cns----'

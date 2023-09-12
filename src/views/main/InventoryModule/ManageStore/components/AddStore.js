@@ -36,9 +36,9 @@ const AddStore = props => {
     const [validationError, setValidationError] = useState('');
     const [errorsMultiSelect, setErrorMultiSelect] = useState("");
 
-    useEffect(() => {
-        setSelectedOptions([{ label: "All", value: "*" }, ...multiOptions]);
-    }, []);
+    // useEffect(() => {
+    //     setSelectedOptions([{ label: "All", value: "*" }, ...multiOptions]);
+    // }, []);
 
     function getDropdownButtonLabel({ placeholderButtonLabel, value }) {
         if (value && value.some((o) => o.value === "*")) {
@@ -123,6 +123,7 @@ const AddStore = props => {
     // OnSubmit Validate 
     const onSubmit = () => {
         let e = {};
+        console.log(selectedOptions);
         if (selectedOptions.length === 0)
         {
             setErrorMultiSelect("Please select stop manager");

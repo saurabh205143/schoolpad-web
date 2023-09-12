@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
-import {AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer1, FieldRightContainerItem, ModalBodyConatiner, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import { AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer1, FieldRightContainerItem, ModalBodyConatiner, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 import axios from 'axios';
 import config from '../../../../../config';
 // Assets
@@ -12,7 +12,7 @@ import Button from '../../../../../components/Buttons/Button';
 import SelectInput from '../../../../../components/Inputs/Select';
 
 const AddCategories = props => {
-    const { show, handleClose, Storelist,saveAction } = props;
+    const { show, handleClose, Storelist, saveAction } = props;
     const options = Storelist;
 
     // Add state variables for selected store and store error
@@ -22,7 +22,7 @@ const AddCategories = props => {
     const [formValues, setFormValues] = useState(
         [
             {
-                select_store:'',
+                select_store: '',
                 category_name: '',
                 category_code: '',
             }
@@ -51,67 +51,63 @@ const AddCategories = props => {
                 key: 'category_code',
                 required: true,
             },
-            
+
         ];
 
-         let e = {};
-  fields.forEach((field) => {
-    if (
-      field.required &&
-      ((field.key === 'select_store' && selectedStore === '') ||
-        (formValues[field.key] === undefined ||
-          formValues[field.key] === null ||
-          formValues[field.key] === ''))
-    ) {
-      e[field.key] = `Please enter ${field.label} `;
-      return;
-    }
-  });
+        let e = {};
+        fields.forEach((field) => {
+            if (
+                field.required &&
+                ((field.key === 'select_store' && selectedStore === '') ||
+                    (formValues[field.key] === undefined ||
+                        formValues[field.key] === null ||
+                        formValues[field.key] === ''))
+            ) {
+                e[field.key] = `Please enter ${field.label} `;
+                return;
+            }
+        });
 
-  setErrors(e);
-  return Object.keys(e).length === 0;
-};
+        setErrors(e);
+        return Object.keys(e).length === 0;
+    };
 
     // Inputs handle change
-        const handleChange = (index, event) => {
-        const { name, value } = event.target;
-        let updatedFormValues = [...formValues];
-        updatedFormValues[index][name] = value;
-        setFormValues(updatedFormValues);
+    const handleChange = (e) => {
+        let i = { ...formValues };
+        i[e.target.name] = e.target.value;
+        setFormValues(i);
     };
 
     // OnSubmit Validate 
     const onSubmit = () => {
         let e = {};
-        // if (!validate()) {
-        //     return;
-        // }
         if (selectedStore === '') {
             setStoreError('Please select a store');
         } else {
             setStoreError('');
         }
+        if (!validate()) {
+            return;
+        }
         setLoading(true);
-        for (let i = 0; i < formValues.length; i++) { 
-            const baseURL = config.baseUrl +"api/v1/inventory/category";
+        for (let i = 0; i < formValues.length; i++) {
+            const baseURL = config.baseUrl + "api/v1/inventory/category";
             axios.post(baseURL, {
                 categoryName: formValues[i].category_name,
                 categoryCode: formValues[i].category_code,
                 storeId: SelectedValue,
             })
                 .then(function (response) {
-                    if(response.data.code == '002')
-                    {
+                    if (response.data.code == '002') {
                         e['category_name'] = response.data.message;
                         setErrors(e);
                     }
-                    else if(response.data.code == '001')
-                    {
+                    else if (response.data.code == '001') {
                         e['category_code'] = response.data.message;
                         setErrors(e);
                     }
-                    else
-                    {
+                    else {
                         // saveAction();
                         // setTimeout(() => {
                         //     window.location.reload();
@@ -119,23 +115,23 @@ const AddCategories = props => {
                         // setLoading(false);
                         saveAction();
                     }
-                    
+
                     // console.log({ response });
-            })
-            .catch(function (error) { console.log({ error }); });
+                })
+                .catch(function (error) { });
         }
-        
+
         // setLoading(true);
         // setTimeout(() => {
         //     window.location.reload();
         // }, 2000);
         // setLoading(false);
         // saveAction();
-        
+
     }
 
     let addFormFields = () => {
-        setFormValues([...formValues, {select_store:"", category_name: "", category_code:"" }])
+        setFormValues([...formValues, { select_store: "", category_name: "", category_code: "" }])
     }
 
     let removeFormFields = (i) => {
@@ -153,69 +149,69 @@ const AddCategories = props => {
             actionText={'Save and Continue'}
             cancelText='Cancel'
             saveAction={onSubmit}
-            // loading={loading}
+        // loading={loading}
         >
             <form>
                 <ModalBodyConatiner>
-                <FieldContainer>
-                <SelectInput
-                    label='Select Store'
-                    options={options}
-                    placeholder='---- Select store ----'
-                    name={'select_store'}
-                    required={true}
-                    value={selectedStore}
-                    onChange={(e) => setSelectedStore(e.target.value)}
-                    error={storeError}
-                    />
-                </FieldContainer>
-                {formValues.map((element, index) => (
-                <FieldDivider>
-                        <FieldLeftContainer1>
-                            <Input
-                                type="text"
-                                label={'Category Name'}
-                                placeholder={'Enter category name'}
-                                name={'category_name'}
-                                value={formValues.category_name}
-                                onChange={(e) => handleChange(index, 'category_name', e)}
-                                required={true}
-                                error={errors.category_name}
-                            />
-                        </FieldLeftContainer1>
-                        <FieldRightContainerItem>
-                            <Input
-                                type="text"
-                                placeholder={'Enter category code'}
-                                label={'Category Code'}
-                                name={'category_code'}
-                                value={formValues.category_code}
-                                onChange={(e) => handleChange(index,'category_code', e)}
-                                required={true}
-                                error={errors.category_code}
-                            />
-                        </FieldRightContainerItem>
-                        {
-                            index ?
-                                <RemoveContianer>
-                                    <Button
-                                        className={'only-icon-button'}
-                                        onlyIcon={RemoveIcon}
-                                        onClick={() => removeFormFields(index)}
-                                        required={true}
-                                    />
-                                </RemoveContianer>
-                                : null
-                        }
-                    </FieldDivider>
+                    <FieldContainer>
+                        <SelectInput
+                            label='Select Store'
+                            options={options}
+                            placeholder='---- Select store ----'
+                            name={'select_store'}
+                            required={true}
+                            value={selectedStore}
+                            onChange={(e) => setSelectedStore(e.target.value)}
+                            error={storeError}
+                        />
+                    </FieldContainer>
+                    {formValues.map((element, index) => (
+                        <FieldDivider>
+                            <FieldLeftContainer1>
+                                <Input
+                                    type="text"
+                                    label={'Category Name'}
+                                    placeholder={'Enter category name'}
+                                    name={'category_name'}
+                                    value={formValues.category_name}
+                                    onChange={handleChange}
+                                    required={true}
+                                    error={errors.category_name}
+                                />
+                            </FieldLeftContainer1>
+                            <FieldRightContainerItem>
+                                <Input
+                                    type="text"
+                                    placeholder={'Enter category code'}
+                                    label={'Category Code'}
+                                    name={'category_code'}
+                                    value={formValues.category_code}
+                                    onChange={(e) => handleChange(index, 'category_code', e)}
+                                    required={true}
+                                    error={errors.category_code}
+                                />
+                            </FieldRightContainerItem>
+                            {
+                                index ?
+                                    <RemoveContianer>
+                                        <Button
+                                            className={'only-icon-button'}
+                                            onlyIcon={RemoveIcon}
+                                            onClick={() => removeFormFields(index)}
+                                            required={true}
+                                        />
+                                    </RemoveContianer>
+                                    : null
+                            }
+                        </FieldDivider>
                     ))}
-                {/* Add More field button */}
-                <AddMoreField style={{marginBottom: '14px'}}>
-                    <Link onClick={() => addFormFields()}>
-                        <img src={AddMoreIcon} alt="Icon" />
-                        <span>Add Another Category</span>
-                    </Link>
-                </AddMoreField>
+                    {/* Add More field button */}
+                    <AddMoreField style={{ marginBottom: '14px' }}>
+                        <Link onClick={() => addFormFields()}>
+                            <img src={AddMoreIcon} alt="Icon" />
+                            <span>Add Another Category</span>
+                        </Link>
+                    </AddMoreField>
                 </ModalBodyConatiner>
             </form>
         </Modal>

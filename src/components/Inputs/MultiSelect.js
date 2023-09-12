@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ReactMultiSelectCheckboxes from "react-multiselect-checkboxes";
-
 import options from "./data";
 import {  ErrorContainer, Title } from "./Input";
 import styled from "styled-components";
@@ -52,7 +51,9 @@ export const Container = styled.div`
   }
 `;
 
-const MultiSelect = ({label,selected,options,placeholderButtonLabel,getDropdownButtonLabel,value,onChange,setState, width, error}) => {
+const MultiSelect = ({label,selected,options,placeholderButtonLabel,getDropdownButtonLabel,value,onChange,setState, width, error,multiOptions}) => {
+
+  // const defaultValue = value && value.length > 0 ? value : [];
 
   return (
     <Container width={width} error={error}>
