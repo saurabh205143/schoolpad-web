@@ -81,12 +81,11 @@ const AddRoutes = props => {
         }
       }
 
-    const handleSelectChange = (newSelectedOptions) =>{
-        setSelectedOptions(newSelectedOptions);
-        console.log(newSelectedOptions);
-        setValidationError('');
-
-    }
+    // const handleSelectChange = (newSelectedOptions) =>{
+    //     setSelectedOptions(newSelectedOptions);
+    //     console.log(newSelectedOptions);
+    //     setValidationError('');
+    // }
 
     let handleChange = (i,e) => {
         let newFormValues = [...formValues];
