@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
-import { AddMoreField, FieldContainer, FieldContainerBottom, FieldContainerBottomLine, FieldContainerBox, FieldDivider, FieldDividerBottom, FieldDividerHeading, FieldLeftContainer1, FieldRightContainerItem, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import { AddMoreField, FieldContainer, FieldContainerBottom, FieldContainerBottomLine, FieldContainerBox, FieldDivider, FieldDividerBottom, FieldDividerContainer, FieldDividerHeading, FieldDividerLine, FieldLeftContainer1, FieldRightContainerItem, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 import multiOptions from '../../../../../components/Inputs/data';
 import axios from 'axios';
 import config from '../../../../../config';
@@ -38,6 +38,7 @@ const AddItems = props => {
     const [selectedRtn, setSelectedRtn] = useState('');
     const [storeError, setStoreError] = useState('');
 
+    const [showFormValueEmail, setShowFormValueEmail] = useState(false);
     const [formValuesEmail, setFormValuesEmail] = useState(
         [
             {
@@ -47,6 +48,7 @@ const AddItems = props => {
         ]
     )
 
+    const [showFormValueItem, setShowFormValueItem] = useState(false);
     const [formValuesItem, setFormValuesItem] = useState(
         [
             {
@@ -241,11 +243,13 @@ const AddItems = props => {
     };
 
     let addEmailFields = () => {
-        setFormValuesEmail([...formValuesEmail, { alert_count: "", alert_email: "" }])
-    }
+        setFormValuesEmail([...formValuesEmail, { alert_count:'', alert_email:'' }]);
+        setShowFormValueEmail(true);
+    };
 
     let addItemFields = () => {
-        setFormValuesItem([...formValuesItem, { name_item: "" }])
+        setFormValuesItem([...formValuesItem, { name_item: '', purchase_cost: '', select_store: '', select_rtn: '' }])
+        setShowFormValueItem(true);
     }
 
     let removeFormFields = (i) => {
@@ -257,7 +261,7 @@ const AddItems = props => {
     let removeFormFieldsItem = (i) => {
         let newFormValues = [...formValuesItem];
         newFormValues.splice(i, 1);
-        setFormValuesItem(newFormValues)
+        setFormValuesItem(false);
     }
 
     const handleSubmit = () => {
@@ -361,10 +365,9 @@ const AddItems = props => {
                 </>
                 <>
                     <FieldDividerBottom>
-                            <FieldDividerHeading>
-                                <span>Add Item Details Below</span>
-                            </FieldDividerHeading>
-                        {formValuesItem.map((element, index) => (
+                        <FieldDividerHeading>
+                            <span>Add Item Details Below</span>
+                        </FieldDividerHeading>
                             <>
                                 <FieldDivider>
                                     <FieldLeftContainer1>
@@ -372,11 +375,11 @@ const AddItems = props => {
                                             type="text"
                                             label={'Name'}
                                             placeholder={'Enter name of the item'}
-                                            onChange={(e) => handleChange(index, 'name', e)}
+                                            // onChange={(e) => handleChange(index, 'name', e)}
                                             name='name_item'
                                             required={true}
                                             error={errors.name_item}
-                                            value={formValuesItem.name_item}
+                                            // value={formValuesItem.name_item}
                                         />
                                     </FieldLeftContainer1>
                                     <FieldRightContainerItem>
@@ -385,23 +388,23 @@ const AddItems = props => {
                                             placeholder={'Enter purchase cost'}
                                             label={'Purchase Cost'}
                                             name='purchase_cost'
-                                            onChange={(e) => handleChange(index, 'purchase_cost', e)}
+                                            // onChange={(e) => handleChange(index, 'purchase_cost', e)}
                                             required={true}
                                             error={errors.purchase_cost}
                                             value={formValuesItem.purchase_cost}
                                         />
                                     </FieldRightContainerItem>
-                                    {
+                                    {/* {
                                         index ?
                                             <RemoveContianer>
                                                 <Button
                                                     className={'only-icon-button'}
                                                     onlyIcon={RemoveIcon}
-                                                    onClick={() => removeFormFieldsItem(index)}
+                                                    // onClick={() => removeFormFieldsItem(index)}
                                                 />
                                             </RemoveContianer>
                                             : null
-                                    }
+                                    } */}
                                 </FieldDivider>
                                 <FieldDivider>
                                     <FieldLeftContainer1>
@@ -429,15 +432,90 @@ const AddItems = props => {
                                         />
                                     </FieldRightContainerItem>
                                 </FieldDivider>
+
+                                {/* Add More field button */}
+                                <AddMoreField style={{ margin: '14px 0px 14px 0px' }}>
+                                    <Link onClick={() => addItemFields()}>
+                                        <img src={AddMoreIcon} alt="Icon" />
+                                        <span>Add Another Item</span>
+                                    </Link>
+                                </AddMoreField>
+
+                                {/* Add Product UI Updated */}
+                                <>
+                                {showFormValueItem && 
+                                formValuesItem.map((element, index) => (
+                                    <FieldDividerLine key={index}>
+                                        <FieldDividerContainer>
+                                            <FieldDivider>
+                                                <FieldLeftContainer1>
+                                                    <Input
+                                                        type="text"
+                                                        label={'Name'}
+                                                        placeholder={'Enter name of the item'}
+                                                        onChange={(e) => handleChange(index, 'name', e)}
+                                                        name={`name_item_${index}`}
+                                                        required={true}
+                                                        error={errors[`name_item_${index}`]}
+                                                        value={element.name_item}
+                                                    />
+                                                </FieldLeftContainer1>
+                                                <FieldRightContainerItem>
+                                                    <Input
+                                                        type="text"
+                                                        placeholder={'Enter purchase cost'}
+                                                        label={'Purchase Cost'}
+                                                        name={`purchase_cost_${index}`}
+                                                        onChange={(e) => handleChange(index, 'purchase_cost', e)}
+                                                        required={true}
+                                                        error={errors[`purchase_cost_${index}`]}
+                                                        value={element.purchase_cost}
+                                                    />
+                                                </FieldRightContainerItem>
+                                            </FieldDivider>
+                                            <FieldDivider>
+                                                <FieldLeftContainer1>
+                                                    <SelectInput
+                                                        label='Unit Type'
+                                                        options={options}
+                                                        placeholder='---- Select unit ----'
+                                                        name={`select_store_${index}`} 
+                                                        required={true}
+                                                        value={element.select_store}
+                                                        onChange={(e) => setSelectedStore(e.target.value)}
+                                                        error={errors[`select_store_${index}`]}
+                                                    />
+                                                </FieldLeftContainer1>
+                                                <FieldRightContainerItem>
+                                                    <SelectInput
+                                                        label='Rtn/Cns'
+                                                        options={options}
+                                                        placeholder='---- Select rtn/cns----'
+                                                        name={`select_rtn_${index}`}
+                                                        required={true}
+                                                        value={element.select_rtn}
+                                                        onChange={(e) => setSelectedRtn(e.target.value)}
+                                                        error={errors[`select_rtn_${index}`]}
+                                                    />
+                                                </FieldRightContainerItem>
+                                            </FieldDivider>
+                                        </FieldDividerContainer>
+                                        {
+                                            index ?
+                                                <RemoveContianer>
+                                                    <Button
+                                                        className={'only-icon-button'}
+                                                        onlyIcon={RemoveIcon}
+                                                        onClick={() => removeFormFieldsItem(index)}
+                                                    />
+                                                </RemoveContianer>
+                                                : null
+                                        }
+                                    </FieldDividerLine> 
+                                    ))
+                                    }
+                                </>
                             </>
-                        ))}
-                        {/* Add More field button */}
-                        <AddMoreField style={{ margin: '14px 0px 14px 0px' }}>
-                            <Link onClick={() => addItemFields()}>
-                                <img src={AddMoreIcon} alt="Icon" />
-                                <span>Add Another Item</span>
-                            </Link>
-                        </AddMoreField>
                     </FieldDividerBottom>
                 </>
             </form>

@@ -64,6 +64,33 @@ export const FieldDividerHeadingBottom = styled.div`
     }
 `;
 
+export const FieldDividerLine = styled.div`
+    border-top: 1px solid rgba(9, 30, 66, 0.141176);
+    margin: 30px 0 0 0;
+    width:90%;
+    display: flex;
+    align-items:center;
+    justify-content:flex-start;
+`;
+
+export const FieldDividerContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px 0 0;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 40;
+        right: 0;
+        bottom: 0;
+        width: 1px; 
+        background-color: rgba(9, 30, 66, 0.141176);
+        height: 70%; 
+    }
+`;
+
 export const FieldDivider = styled.div`
     width:100%;
     display:flex;
