@@ -1,20 +1,42 @@
 import React from 'react'
+import { styled } from 'styled-components';
 import Layout from '../../../../../components/Layouts/Layout';
 import SubHeader from '../../../../../components/ScreensHeader/SubHeader';
 
 //Assets
-import RightIcon from '../../../../../images/date-icon.svg';
 import AddPurchaseTable from './AddPurchaseTable';
+import { FooterButtonContainer } from '../../../../../components/Modal/ModalStyles';
+import Button from '../../../../../components/Buttons/Button';
+
+export const FixedBottomContainer = styled.div`
+  width:82%;
+  position:fixed;
+  bottom:0;
+  border-top: 1px solid #C1C7D0;
+  border-radius: 0px 0px 3px 3px;
+  height:56px;
+  background:#ffffff;
+  z-index:9999;
+  right:0;
+`;
+
+export const FixedInnerContainer = styled.div`
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding:0 40px;
+  height:56px;
+`;
 
 const AddPurchaseOrder = () => {
 
-  return(
+  return (
     <>
-    <Layout type='inventory'>
-      <SubHeader
+      <Layout type='inventory'>
+        <SubHeader
           heading='Add Purchase Order'
           headerDescription='Please select the type of data on which you want to add mapping below. You can choose class wise, route wise, admission number wise etc'
-          type='vertical' 
+          type='vertical'
           showHeaderFilter={true}
           showSearchButtonRight={false}
           showPrimaryButton={false}
@@ -32,12 +54,28 @@ const AddPurchaseOrder = () => {
           selectLabel1='Department'
           selectPlaceholder1='----Select department----'
           widthDateFrom='250px'
-      />
+        />
 
-      {/* Add Purchase Table*/}
-      <AddPurchaseTable/>
+        {/* Add Purchase Table*/}
+        <AddPurchaseTable />
 
-    </Layout>
+        {/* Save Cancel Fixed Footer */}
+        <FixedBottomContainer>
+          <FixedInnerContainer>
+            <FooterButtonContainer>
+              <Button
+                buttonText='Cancel'
+                className={'link-button-black'}
+              />
+              <Button
+                buttonText='Save'
+                className={'primary'}
+              />
+            </FooterButtonContainer>
+          </FixedInnerContainer>
+        </FixedBottomContainer>
+
+      </Layout>
     </>
 
   )
