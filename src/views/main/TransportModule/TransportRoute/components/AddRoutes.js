@@ -11,6 +11,7 @@ import RemoveIcon from '../../../../../images/delete-icon.svg';
 import SelectInput from '../../../../../components/Inputs/Select';
 import MultiSelectDropDown from '../../../../../components/Inputs/MultiSelectDropDown';
 import multiOptions from '../../../../../components/Inputs/data';
+import SelectVehicle from '../../../../../components/Inputs/SelectVehicle';
 
 const options = [
     {
@@ -44,10 +45,12 @@ const AddRoutes = props => {
         ]
     );
     const [inputs, setInputs] = useState({
-        route_name: "",
-                vehicle_number: "",
+                route_name: "",
                 vehicle_capacity: "",
     });
+    const [vehicleNumber, setVehicleNumber] = useState({
+        vehicle_number: '',
+});
     // multiselect validation
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [validationError, setValidationError] = useState('');
@@ -81,18 +84,17 @@ const AddRoutes = props => {
         }
       }
 
-    // const handleSelectChange = (newSelectedOptions) =>{
-    //     setSelectedOptions(newSelectedOptions);
-    //     console.log(newSelectedOptions);
-    //     setValidationError('');
-    // }
+    //   vehicle onchange
+    let handleVehicleChange = (e) => {
+        let i = {...vehicleNumber};
+        i[e.target.name] = e.target.value;
+        setVehicleNumber(i);  
+    }
 
-    let handleChange = (i,e) => {
+    let handleChange = (e) => {
         let newFormValues = [...formValues];
-        newFormValues[i][e.target?.name] = e.target?.value;
-        setFormValues(newFormValues);
-        console.log({formValues});
-        
+        newFormValues[e.target?.name] = e.target?.value;
+        setFormValues(newFormValues); 
     }
     // Inputs handle change
     const handleChangeInputs = (e) => {
@@ -126,6 +128,7 @@ const AddRoutes = props => {
             setValidationError('');
         }
         alert(JSON.stringify(formValues));
+        alert(JSON.stringify(vehicleNumber));
         alert(JSON.stringify(inputs));
         alert(JSON.stringify(selectedOptions.length));
     }
@@ -216,14 +219,21 @@ const AddRoutes = props => {
                 </AddMoreField>
                 <FieldDivider>
                     <FieldLeftContainer>
-                        <Input
-                            type='text'
-                            name={'vehicle_number'}
-                            label={'Vehicle Number'}
-                            placeholder={'Vehicle number'}
-                            value={inputs.vehicle_number}
-                            onChange={handleChangeInputs}
-                        />
+                        <SelectVehicle
+                                type='select'
+                                options={options}
+                                label={'Vehicle Number'}
+                                placeholder={'---- Select Vehicle number ----'}
+                                name='vehicle_number'
+                                value={vehicleNumber.vehicle_number  }
+                                selectedKey={vehicleNumber.vehicle_number}
+                                onChange={(e,item) => handleVehicleChange({
+                                    target:{
+                                        value:e.value,
+                                        name:'vehicle_number'
+                                    }
+                                })}
+                            />
                     </FieldLeftContainer>
                     <FieldRightContainer>
                         <Input

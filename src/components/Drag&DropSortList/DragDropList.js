@@ -20,16 +20,24 @@ const DragDropList = ({orderHeading}) => {
  */
 useEffect(() => {
         axios.get(config.baseUrl + 'api-transport/transportStopApiManager/showStopOrder').then((response) => {
-            setRespone(response.data);
+            setRespone(response?.data);
             // console.log(response.data);
-            setVisibleStops(response.data.slice(0, loadedCount));
+            if(response.data == null){
+
+            }else{
+           setVisibleStops(response?.data.slice(0, loadedCount));
+            }
         }).catch((errorCatch) => {
             console.log(errorCatch);
         });
 }, []);
   
   useEffect(() => {
-    setVisibleStops(response.slice(0, loadedCount));
+    if(response.data == null){
+
+    }else{
+   setVisibleStops(response?.data.slice(0, loadedCount));
+    }
   }, [loadedCount, response]);
 
   const list = visibleStops;
