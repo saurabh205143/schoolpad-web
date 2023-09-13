@@ -9,6 +9,19 @@ export const FieldContainer = styled.div`
     float:left;
 `;
 
+export const FieldCustomContainer = styled.div`
+    width:100%;
+    float:left;
+    border-top:1px solid #B3BAC5;
+    padding:15px 0;
+    > span{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        color: #000000;
+    }
+`;
+
 export const FieldContainerMove = styled.div`
     width:100%;
     float:left;

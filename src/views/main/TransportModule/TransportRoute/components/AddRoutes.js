@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
-import { AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer, FieldLeftContainer1, FieldRightContainer, FieldRightContainer1, ModalBodyConatiner, RemoveContianer } from './AddRouteStyles';
+import { AddMoreField, FieldContainer, FieldCustomContainer, FieldDivider, FieldLeftContainer, FieldLeftContainer1, FieldRightContainer, FieldRightContainer1, ModalBodyConatiner, RemoveContianer } from './AddRouteStyles';
 import { Link } from 'react-router-dom';
 
 // Assets
@@ -31,6 +31,8 @@ const options1 = [
     // Add more options as needed
   ];
 
+  const fieldNames = ['firstName', 'lastName', 'email'];
+
 const AddRoutes = props => {
     console.log(props.id);
 
@@ -48,9 +50,20 @@ const AddRoutes = props => {
                 route_name: "",
                 vehicle_capacity: "",
     });
+
     const [vehicleNumber, setVehicleNumber] = useState({
         vehicle_number: '',
-});
+    });
+
+    // Custom field state
+    const [customFields,setCustomFields] = useState({})
+
+    // Handle input changes and update the state
+  const handleFieldsChange = (e) => {
+    const { name, value } = e.target;
+    setCustomFields({ ...customFields, [name]: value });
+  };
+
     // multiselect validation
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [validationError, setValidationError] = useState('');
@@ -246,7 +259,23 @@ const AddRoutes = props => {
                             onChange={handleChangeInputs}
                         />
                     </FieldRightContainer>
+                    
                 </FieldDivider>
+                    <FieldCustomContainer >
+                        <span>Custom fields</span>
+                    </FieldCustomContainer>
+                    {fieldNames.map((fieldName) => (
+                    <FieldContainer>
+                        <Input
+                            type="text"
+                            name={fieldName}
+                            placeholder={fieldName}
+                            label={fieldName}
+                            value={customFields[fieldName] || ''}
+                            onChange={handleFieldsChange}
+                        />
+                    </FieldContainer>
+                    ))}
                 </ModalBodyConatiner>
             </form>
         </Modal>
