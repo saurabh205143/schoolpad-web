@@ -12,6 +12,10 @@ import AddFormField from '../TransportRoute/components/AddFormField';
 import ManageFuelPump from './components/ManageFuelPump';
 import ManageMaintenance from './components/ManageMaintenance';
 import TableVehicleMaster from '../../../../components/Table copy/TableVehicleMaster';
+import DeleteVehicleModal from './components/DeleteVehicleModal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ToastModals from '../../../../components/Toaster/ToastModals';
 
 
 const TransportVehicle = () => {
@@ -22,6 +26,10 @@ const TransportVehicle = () => {
 
   const hideModal = () => {
     setId(false);
+  }
+
+  const hideDeleteModal = () => {
+    setDeletedId(false);
   }
 
   const hideFormFieldModal = () => {
@@ -37,6 +45,14 @@ const TransportVehicle = () => {
   }
 
   const [id, setId] = useState(null);
+  const [deletedId, setDeletedId] = useState(null);
+
+  const showDeleteToastMessage = () => {
+    hideDeleteModal();
+    toast(
+      <ToastModals type='successful' message='You have successfully deleted  vehicle.' />
+    );
+  };
 
   return (
     <Layout type='transport'>
@@ -61,7 +77,8 @@ const TransportVehicle = () => {
       />
 
       <TableVehicleMaster
-        EditOnclick={(id) => {setId(id);}} 
+        EditOnclick={(id) => {setId(!id);}} 
+        DeleteOnClick={(deletedId) => { setDeletedId(!deletedId); }} 
       />
 
          {/* Add Vehicle Modal */}
@@ -69,6 +86,14 @@ const TransportVehicle = () => {
             show={id}
             handleClose={hideModal}
             id={id}
+          />
+
+          {/* Delete Vehicle Modal */}
+          <DeleteVehicleModal
+            show={deletedId}
+            handleClose={hideDeleteModal}
+            id={deletedId}
+            onDelete={showDeleteToastMessage}
           />
 
           {/* Associated Options - Add Form Field / Manage Fuel Pump*/}

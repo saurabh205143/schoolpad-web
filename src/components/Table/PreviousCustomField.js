@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableHeadingModalAction, TableRow, Tabledata } from './TableStyles';
+import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from './TableStyles';
 import LinkButton from '../Buttons/LinkButton';
 
 // Assets
@@ -8,6 +8,7 @@ import DeleteIcon from '../../images/delete-icon.svg';
 import { ModalBodyConatiner } from '../../views/main/TransportModule/TransportRoute/components/AddRouteStyles';
 import Modal from '../Modal/Modal';
 import DeleteModal from '../Modal/DeleteModal';
+import TableData from '../Table/CustomFieldData';
 
 const PreviousCustomField = (props) => {
 
@@ -17,90 +18,61 @@ const PreviousCustomField = (props) => {
     setDeleteModal(false);
   }
 
+  // get table column
+  const column = Object.keys(TableData[0]);
+  // get table heading data
+  const ThData = () => {
+      return column.map((data) => {
+          return <TableHeading key={data}>{data}</TableHeading>
+      })
+  }
+// get table row data
+const tdData = () => {
+
+  return TableData.map((data) => {
+      return (
+          <TableRow>
+              {
+                  column.map((v) => {
+                      return <Tabledata>{data[v]}</Tabledata>
+                  })
+              }
+              <Tabledata>
+                <ActionsConatiner>
+                  <ActionsList>
+                    <LinkButton
+                      onlyIcon={EditIcon}
+                      tooltiptext='Edit'
+                      onClick={() => {props.initTabKey(data['SNo'],"one")}}
+                    />
+                  </ActionsList>
+                  <ActionsList>
+                    <LinkButton
+                      onlyIcon={DeleteIcon}
+                      tooltiptext='Delete'
+                      onClick={() => setDeleteModal(!deleteModal) }
+                    />
+                  </ActionsList>
+                </ActionsConatiner>
+              </Tabledata>
+          </TableRow>
+      )
+  })
+}
   return (
     <>
     <ModalBodyConatiner>
-      <TableContainer className='picked-table'>
-        <TableHead>
-          <TableRow>
-            <TableHeading>S No.</TableHeading>
-            <TableHeading>Field Name</TableHeading>
-            <TableHeading>Field Type</TableHeading>
-            <TableHeading>Actions</TableHeading>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <Tabledata>1</Tabledata>
-            <Tabledata>Date of Birth</Tabledata>
-            <Tabledata>Date Selector</Tabledata>
-            <Tabledata>
-              <ActionsConatiner>
-                <ActionsList>
-                  <LinkButton
-                    onlyIcon={EditIcon}
-                    tooltiptext='Edit'
-                     onClick={() => {props.initTabKey('one',1)}}
-                  />
-                </ActionsList>
-                <ActionsList>
-                  <LinkButton
-                    onlyIcon={DeleteIcon}
-                    tooltiptext='Delete'
-                    onClick={() => setDeleteModal(!deleteModal) }
-                  />
-                </ActionsList>
-              </ActionsConatiner>
-            </Tabledata>
-          </TableRow>
-          <TableRow>
-            <Tabledata>2</Tabledata>
-            <Tabledata>Nationality</Tabledata>
-            <Tabledata>
-              Dropdown
-            </Tabledata>
-            <Tabledata>
-              <ActionsConatiner>
-                <ActionsList>
-                  <LinkButton
-                    onlyIcon={EditIcon}
-                    tooltiptext='Edit'
-                  />
-                </ActionsList>
-                <ActionsList>
-                  <LinkButton
-                    onlyIcon={DeleteIcon}
-                    tooltiptext='Delete'
-                  />
-                </ActionsList>
-              </ActionsConatiner>
-            </Tabledata>
-          </TableRow>
-          <TableRow>
-            <Tabledata>3</Tabledata>
-            <Tabledata>Blood Group</Tabledata>
-            <Tabledata>
-              Dropdown
-            </Tabledata>
-            <Tabledata>
-              <ActionsConatiner>
-                <ActionsList>
-                  <LinkButton
-                    onlyIcon={EditIcon}
-                    tooltiptext='Edit'
-                  />
-                </ActionsList>
-                <ActionsList>
-                  <LinkButton
-                    onlyIcon={DeleteIcon}
-                    tooltiptext='Delete'
-                  />
-                </ActionsList>
-              </ActionsConatiner>
-            </Tabledata>
-          </TableRow>
-        </TableBody>
-      </TableContainer>
+      <TableContainer className="table">
+            <TableHead>
+                <TableRow>
+                    {ThData()}
+                    <TableHeading>Actions</TableHeading>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {tdData()}
+            </TableBody>
+        </TableContainer>
       </ModalBodyConatiner>
      
      {/* Delete Modal */}

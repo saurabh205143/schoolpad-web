@@ -29,15 +29,14 @@ const AddFormField = props => {
 
     const { show, handleClose } = props;
 
-    const previousCustomTab = (tab,id) => {
+    const previousCustomTab = (id,tab) => {
         console.log(id,tab);
-        // initTabKey(id,tab);
+         initTabKey(tab);
     }
 
     const [formValues, setFormValues] = useState(
         [
             {
-                
                 field_name: "",
                 options: "",
             }
@@ -122,7 +121,7 @@ const AddFormField = props => {
                             </Tab>
                             <Tab eventKey="two" title="Previous Custom Fields">
                                 <p>
-                                <PreviousCustomField initTabKey={initTabKey}/>
+                                <PreviousCustomField initTabKey={previousCustomTab}/>
                                 </p>
                                 
                             </Tab>

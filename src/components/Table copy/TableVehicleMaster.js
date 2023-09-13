@@ -18,22 +18,12 @@ import InsuranceReminder from '../../views/main/TransportModule/TransportVehicle
 import TableStylesStatus from './TableStyles';
 
 
-const TableVehicleMaster = ({ onClick }) => {
+const TableVehicleMaster = ({ onClick,EditOnclick,DeleteOnClick }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [showModal, setShowModal] = useState(false);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showFuelEntryModal, setShowFuelEntryModal] = useState(false);
   const [showMaintenanceEntryModal, setShowMaintenanceEntryModal] = useState(false);
   const [showDailyLogModal, setShowDailyLogModal] = useState(false);
   const [showInsuranceReminderModal, setShowInsuranceReminderModal] = useState(false);
-
-  const hideDeleteModal = () => {
-    setShowDeleteModal(false);
-  }
-
-  const hideModal = () => {
-    setShowModal(false);
-  }
 
   const hideFuelEntryModal = () => {
     setShowFuelEntryModal(false);
@@ -73,14 +63,10 @@ const TableVehicleMaster = ({ onClick }) => {
           <TableRow>
             {ThData()}
             <TableHeading>
-            <TableActionHeadings>
             Status
-              </TableActionHeadings>
               </TableHeading>
             <TableHeading>
-              <TableActionHeadings>
-                  Actions
-              </TableActionHeadings>
+            Actions
               </TableHeading>
           </TableRow>
         </TableHead>
@@ -109,14 +95,14 @@ const TableVehicleMaster = ({ onClick }) => {
                       <LinkButton
                         onlyIcon={EditIcon}
                         tooltiptext='Edit'
-                        onClick={() => setShowModal(!showModal)}
+                        onClick={() => { EditOnclick(data['stopId'])}}
                       />
                     </ActionsList>
                     <ActionsList>
                       <LinkButton
                         onlyIcon={DeleteIcon}
                         tooltiptext='Delete'
-                        onClick={() => setShowDeleteModal(!showModal)} 
+                        onClick={() => {DeleteOnClick(data['stopId'])}} 
                       />
                     </ActionsList>
                     <ActionsList>
@@ -154,19 +140,6 @@ const TableVehicleMaster = ({ onClick }) => {
           })}
         </TableBody>
       </TableContainer>
-
-
-      {/* Edit Route Modal */}
-      <AddRoutes
-        show={showModal}
-        handleClose={hideModal}
-      />
-
-      {/* Delete Modal */}
-      <DeleteRouteModal
-        show={showDeleteModal}
-        handleClose={hideDeleteModal}
-      />
 
       {/* More Actions Tab - Modals  */}
       {/* Fuel Entry - Modal */}

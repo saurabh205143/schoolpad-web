@@ -17,6 +17,7 @@ const options = [
 
 const AddVehicle = props => {
     const {show,handleClose} = props;
+    console.log(props.id);
     return (
         <Modal
             show={show}

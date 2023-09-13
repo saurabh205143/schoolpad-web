@@ -83,7 +83,7 @@ const Table = () => {
                 {tdData()}
             </TableBody>
         </TableContainer>
-    )
+    )x
 }
 
 export default Table;
