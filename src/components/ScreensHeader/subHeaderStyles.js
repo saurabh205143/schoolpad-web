@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const Container = styled.div`
     width:100%;
-    padding:16px 16px;
+    padding:${(props) => props.padding || '16px 16px'};
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -29,7 +29,7 @@ export const ContainerRight = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-    margin-left:8px;
+    margin: 0 10px 0 8px;
     position:relative;
     >div{
         margin-bottom:0px;
@@ -147,6 +147,7 @@ export const TabFilterContainer = styled.div`
     flex-flow: wrap;
     align-items:flex-end;
     padding: 0px 0px 16px 16px;
+    gap:10px;
 `;
 
 

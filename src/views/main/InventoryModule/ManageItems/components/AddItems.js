@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
-import { AddMoreField, FieldContainer, FieldContainerBottom, FieldContainerBottomLine, FieldContainerBox, FieldDivider, FieldDividerBottom, FieldDividerHeading, FieldLeftContainer1, FieldRightContainerItem, RemoveBox, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import { AddMoreField, FieldContainer, FieldContainerBottom, FieldContainerBottomBox, FieldContainerBottomLine, FieldContainerBox, FieldDeleteBox, FieldDivider, FieldDividerBottom, FieldDividerHeading, FieldLeftContainer1, FieldRightContainerItem, RemoveBox, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 import multiOptions from '../../../../../components/Inputs/data';
 import axios from 'axios';
 import config from '../../../../../config';
@@ -369,7 +369,8 @@ const AddItems = props => {
                         </>
                         {formValuesItem.map((element, index) => (
                             <>
-                                <FieldDivider style={{ margin: '6px 0 6px 0' }}>
+                            <FieldDeleteBox>
+                                <FieldDivider>
                                     <FieldLeftContainer1>
                                         <Input
                                             type="text"
@@ -396,6 +397,7 @@ const AddItems = props => {
                                     </FieldRightContainerItem>
                                 </FieldDivider>
                                 <FieldDivider style={{ margin: '6px 0 6px 0' }}>
+                                <FieldContainerBottomBox>
                                     <FieldLeftContainer1>
                                         <SelectInput
                                             label='Select Store'
@@ -420,19 +422,21 @@ const AddItems = props => {
                                             error={selectedRtn}
                                         />
                                     </FieldRightContainerItem>
+                                    </FieldContainerBottomBox>
                                 </FieldDivider>
                                 {
                                         index ?
                                         <RemoveBox>
                                                 <Button
-                                                    className={'only-icon-button'}
-                                                    onlyIcon={RemoveIcon}
+                                                    buttonText="Delete"
+                                                    className='delete-text'
                                                     onClick={() => removeFormFieldsItem(index)}
                                                     required={true}
                                                 />
                                             </RemoveBox>
                                             : null
                                     }
+                                    </FieldDeleteBox>
                             </>
                         ))}
                         {/* Add More field button */}

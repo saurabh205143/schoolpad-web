@@ -74,7 +74,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, widthLabel2, widthLabel3, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4, showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, selectLabel4, selectPlaceholder4, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled, textLabelDisabled1, textPlaceholderDisabled1, textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showHeaderFilterFrom, showHeaderFilterTo, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1, showDefaultHeaderSelect2, defaultHeaderLabel2, defaultHeaderPlaceholder2, buttonChangeHistory, buttonFormFieldText, showLinkButton, linkText, widthDateFrom, widthDateTo, widthSelect, showHeaderFilterRecordBoxNew, inputLabel5, inputPlaceholder5, inputLabel6, inputPlaceholder6, inputLabel7, inputPlaceholder7, inputLabel8, inputPlaceholder8, showSelectRecordBoxNew, showSelectInputHeader, showTabHeaderFilters, showTabSelectInput, showMultiSelectTab1,showMultiSelectTab2, showDateTabFrom, showDateTabTo, multiselectLabel, multiselectPlaceholder, selectLabelTab, selectPlaceholderTab, multiselectLabel1, multiselectPlaceholder1, widthDateLabel1, widthDateLabel2, showTabSelectInput1,selectLabelTab1, selectPlaceholderTab1,getCustomField ,showMultiSelectTab3, multiselectLabel3, multiselectPlaceholder3, showMultiSelectTab4,multiselectPlaceholder4, multiselectLabel4, showTabSelectInput2, selectLabelTab2, selectPlaceholderTab2}) => {
+const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, widthLabel2, widthLabel3, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4, showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, selectLabel4, selectPlaceholder4, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled, textLabelDisabled1, textPlaceholderDisabled1, textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showHeaderFilterFrom, showHeaderFilterTo, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1, showDefaultHeaderSelect2, defaultHeaderLabel2, defaultHeaderPlaceholder2, buttonChangeHistory, buttonFormFieldText, showLinkButton, linkText, widthDateFrom, widthDateTo, widthSelect, showHeaderFilterRecordBoxNew, inputLabel5, inputPlaceholder5, inputLabel6, inputPlaceholder6, inputLabel7, inputPlaceholder7, inputLabel8, inputPlaceholder8, showSelectRecordBoxNew, showSelectInputHeader, showTabHeaderFilters, showTabSelectInput, showMultiSelectTab1,showMultiSelectTab2, showDateTabFrom, showDateTabTo, multiselectLabel, multiselectPlaceholder, selectLabelTab, selectPlaceholderTab, multiselectLabel1, multiselectPlaceholder1, widthDateLabel1, widthDateLabel2, showTabSelectInput1,selectLabelTab1, selectPlaceholderTab1,getCustomField ,showMultiSelectTab3, multiselectLabel3, multiselectPlaceholder3, showMultiSelectTab4,multiselectPlaceholder4, multiselectLabel4, showTabSelectInput2, selectLabelTab2, selectPlaceholderTab2,showHeaderFilterHeading, paddingContainer}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -136,7 +136,9 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
 
     if (type === 'horizontal') {
         return (
-            <Container type='horizontal'>
+            <Container 
+            type='horizontal'
+            padding={paddingContainer}>
                 <ContainerLeft>
                     <Headings heading={heading} />
                 </ContainerLeft>
@@ -387,7 +389,11 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
     else if (type === 'header-filters') {
         return (
             <>
-                <Container>
+                <Container 
+                    padding={paddingContainer}
+                >
+                    {showHeaderFilterHeading && (
+                    <>
                     <ContainerLeft>
                         <Headings heading={heading} />
                     </ContainerLeft>
@@ -396,6 +402,8 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
                             description={headerDescription}
                         />
                     </DescriptionText>
+                    </>
+                    )}
                     <ContainerRight>
                         {showSearchButtonRight &&
                             <ButtonContainer>
@@ -684,7 +692,6 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
                 {showMultiSelectTab3 &&
                         <RecordBoxNew>
                             <MultiSelect
-                                width='250px'
                                 label={multiselectLabel3}
                                 placeholder={multiselectPlaceholder3}
                             />
@@ -721,7 +728,6 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
                     {showMultiSelectTab1 &&
                         <RecordBoxNew>
                             <MultiSelect
-                                width='250px'
                                 label={multiselectLabel}
                                 placeholder={multiselectPlaceholder}
                             />
@@ -730,7 +736,6 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
                     {showMultiSelectTab2 &&
                         <RecordBoxNew>
                             <MultiSelect
-                                width='250px'
                                 label={multiselectLabel1}
                                 placeholder={multiselectPlaceholder1}
                             />
@@ -769,7 +774,6 @@ const SubHeader = ({ searchState, searchStateonClick, onClick, type, heading, ge
                     {showMultiSelectTab4 &&
                         <RecordBoxNew>
                             <MultiSelect
-                                width='250px'
                                 label={multiselectLabel4}
                                 placeholder={multiselectPlaceholder4}
                             />

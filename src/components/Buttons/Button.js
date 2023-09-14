@@ -104,6 +104,12 @@ export const ButtonClassic = styled.button`
     &.delete {
         background: ${({ theme }) => theme.bgDelete};
         margin-right: 8px;
+        padding:0;
+    }
+
+    &.delete-text {
+        background:none;
+        color:#CA3521;
     }
     @media screen and (max-width: 1240px) {
         font-size:12px;

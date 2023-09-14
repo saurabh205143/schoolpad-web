@@ -51,7 +51,7 @@ const ReceiveItemTable = ({ onClick }) => {
                     <TableRow>
                         {ThData()}
                         <TableHeading>Status</TableHeading>
-                        <TableHeading>Actions</TableHeading>
+                        <TableHeading className='table-action-heading'>Actions</TableHeading>
                     </TableRow>
                 </TableHead>
                 <TableBody>

@@ -97,6 +97,7 @@ const showToastMessage = () => {
           onClick={() => setShowModal(!showModal)}
           searchState={setSearchinfo}
           searchPlaceholder='Search by Category code, categories...'
+          paddingContainer='16px 16px'
       />
         <ExportHeader
           smallHeading='All Categories'

@@ -27,6 +27,22 @@ export const FieldContainerBottom = styled.div`
     align-items:center;
 `;
 
+export const FieldContainerBottomBox = styled.div`
+    border-bottom: 1px solid #C1C7D0;
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    padding: 0 0 20px;
+`;
+
+export const FieldDeleteBox = styled.div`
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+`;
+
 export const FieldContainerBox = styled.div`
     padding: 11px 22px;
     width: 100%;

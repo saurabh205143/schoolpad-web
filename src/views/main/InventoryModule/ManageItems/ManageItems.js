@@ -173,6 +173,7 @@ const getcategoryList = () => {
           showDefaultHeaderSelect1={false}
           showHeaderFilterReturn={true}
           showAssociateDrop={true}
+          showHeaderFilterHeading={true}
           searchState={setSearchinfo}
       />
       <ExportHeader
