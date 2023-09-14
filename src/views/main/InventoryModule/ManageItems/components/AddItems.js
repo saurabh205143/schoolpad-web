@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import Input from '../../../../../components/Inputs/Input';
 import { Link } from 'react-router-dom';
-import { AddMoreField, FieldContainer, FieldContainerBottom, FieldContainerBottomLine, FieldContainerBox, FieldDivider, FieldDividerBottom, FieldDividerContainer, FieldDividerHeading, FieldDividerLine, FieldLeftContainer1, FieldRightContainerItem, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import { AddMoreField, FieldContainer, FieldContainerBottom, FieldContainerBottomLine, FieldContainerBox, FieldDivider, FieldDividerBottom, FieldDividerHeading, FieldLeftContainer1, FieldRightContainerItem, RemoveBox, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 import multiOptions from '../../../../../components/Inputs/data';
 import axios from 'axios';
 import config from '../../../../../config';
@@ -38,7 +38,6 @@ const AddItems = props => {
     const [selectedRtn, setSelectedRtn] = useState('');
     const [storeError, setStoreError] = useState('');
 
-    const [showFormValueEmail, setShowFormValueEmail] = useState(false);
     const [formValuesEmail, setFormValuesEmail] = useState(
         [
             {
@@ -48,7 +47,6 @@ const AddItems = props => {
         ]
     )
 
-    const [showFormValueItem, setShowFormValueItem] = useState(false);
     const [formValuesItem, setFormValuesItem] = useState(
         [
             {
@@ -75,9 +73,9 @@ const AddItems = props => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [validationError, setValidationError] = useState('');
 
-    // useEffect(() => {
-    //     setSelectedOptions([{ label: "All", value: "*" }, ...multiOptions]);
-    // }, []);
+    useEffect(() => {
+        setSelectedOptions([{ label: "All", value: "*" }, ...multiOptions]);
+    }, []);
 
     function getDropdownButtonLabel({ placeholderButtonLabel, value }) {
         if (value && value.some((o) => o.value === "*")) {
@@ -150,9 +148,9 @@ const AddItems = props => {
             if (
                 field.required &&
                 ((field.key === 'select_store' && selectedStore === '') ||
-                    (formValuesEmail[field.key] === undefined ||
-                        formValuesEmail[field.key] === null ||
-                        formValuesEmail[field.key] === ''))
+                (formValuesEmail[field.key] === undefined ||
+                    formValuesEmail[field.key] === null ||
+                    formValuesEmail[field.key] === ''))
             ) {
                 e[field.key] = `Please enter ${field.label} `;
                 return;
@@ -186,7 +184,8 @@ const AddItems = props => {
             setSelectedRtn('');
         }
         console.log(selectedOptions);
-        if (selectedOptions.length === 0) {
+        if (selectedOptions.length === 0)
+        {
             setErrorMultiSelect("Please select category");
         }
         else {
@@ -207,24 +206,24 @@ const AddItems = props => {
         // if (!validate()) {
         //     return;
         //     }
-        console.log(formValuesEmail[0].name);
-        const addproduct = config.baseUrl + "api/v1/inventory/products";
-        axios.post(addproduct, {
-            itemName: formValuesEmail[0].name,
-            rtncns: typeselectedValue,
-            threshHold: thresholdcount,
-            unitPr: formValuesEmail[0].purchase_cost,
-            mrp: formValuesEmail[0].purchase_cost,
-            userId: 214,
-            categoryId: CategoryValue,
-            storeId: SelectedValue,
-            unitId: 5,
-            threshholdEmail: formValuesEmail[0].email
-        })
-            .then(function (response) {
+            console.log( formValuesEmail[0].name);
+            const addproduct = config.baseUrl +"api/v1/inventory/products";
+            axios.post(addproduct, {
+                itemName: formValuesEmail[0].name,
+                rtncns: typeselectedValue,
+                threshHold:thresholdcount,
+                unitPr:formValuesEmail[0].purchase_cost,
+                mrp:formValuesEmail[0].purchase_cost,
+                userId:214,
+                categoryId:CategoryValue,
+                storeId:SelectedValue,
+                unitId:5,
+                threshholdEmail: formValuesEmail[0].email
+            })
+                .then(function (response) { 
                 setTimeout(() => {
-                    window.location.reload();
-                }, 2000);
+                            window.location.reload();
+                        }, 2000);
             })
             .catch(function (error) { console.log({ error }); });
         // setLoading(true);
@@ -233,7 +232,7 @@ const AddItems = props => {
         // }, 2000);
         // setLoading(false);
         // saveAction();
-
+        
     }
 
     let handleChange = (index, field, e) => {
@@ -243,13 +242,11 @@ const AddItems = props => {
     };
 
     let addEmailFields = () => {
-        setFormValuesEmail([...formValuesEmail, { alert_count:'', alert_email:'' }]);
-        setShowFormValueEmail(true);
-    };
+        setFormValuesEmail([...formValuesEmail, { alert_count: "", alert_email: "" }])
+    }
 
     let addItemFields = () => {
-        setFormValuesItem([...formValuesItem, { name_item: '', purchase_cost: '', select_store: '', select_rtn: '' }])
-        setShowFormValueItem(true);
+        setFormValuesItem([...formValuesItem, { name_item: "" }])
     }
 
     let removeFormFields = (i) => {
@@ -261,17 +258,17 @@ const AddItems = props => {
     let removeFormFieldsItem = (i) => {
         let newFormValues = [...formValuesItem];
         newFormValues.splice(i, 1);
-        setFormValuesItem(false);
+        setFormValuesItem(newFormValues)
     }
 
     const handleSubmit = () => {
         // Perform validations
-        if (selectedOptions.length === 0) {
+        if(selectedOptions.length === 0){
             setValidationError('Please select category');
-            return false;
+            return false; 
         } else {
             setValidationError('');
-            return true;
+            return true; 
         }
     }
 
@@ -291,29 +288,29 @@ const AddItems = props => {
                     <FieldContainerBottom>
                         <FieldContainerBox>
                             <FieldContainer>
-                                {formValuesSelect.map((element, index) => (
-                                    <SelectInput
-                                        label='Select Store'
-                                        options={options}
-                                        placeholder='---- Select store ----'
-                                        name={'select_store'}
-                                        required={true}
-                                        value={selectedStore}
-                                        onChange={(e) => setSelectedStore(e.target.value)}
-                                        error={storeError}
-                                    />
-                                ))}
-                                <MultiSelect
-                                    label='Select Category'
-                                    options={[{ label: "All", value: "*" }, ...multiOptions]}
-                                    placeholderButtonLabel='Select category'
-                                    getDropdownButtonLabel={getDropdownButtonLabel}
-                                    value={selectedOptions}
-                                    onChange={onChange}
-                                    selected={selectedOptions}
-                                    setState={setSelectedOptions}
-                                    error={errorsMultiSelect}
+                            {formValuesSelect.map((element, index) => (
+                                <SelectInput
+                                    label='Select Store'
+                                    options={options}
+                                    placeholder='---- Select store ----'
+                                    name={'select_store'}
+                                    required={true}
+                                    value={selectedStore}
+                                    onChange={(e) => setSelectedStore(e.target.value)}
+                                    error={storeError}
                                 />
+                            ))}
+                            <MultiSelect
+                                label='Select Category'
+                                options={[{ label: "All", value: "*" }, ...multiOptions]}
+                                placeholderButtonLabel='Select category'
+                                getDropdownButtonLabel={getDropdownButtonLabel}
+                                value={selectedOptions}
+                                onChange={onChange}
+                                selected={selectedOptions}
+                                setState={setSelectedOptions}
+                                error={errorsMultiSelect}
+                            />
                                 <Input
                                     type="text"
                                     label={'Alert Me If Item Count Falls Below'}
@@ -365,53 +362,45 @@ const AddItems = props => {
                 </>
                 <>
                     <FieldDividerBottom>
-                        <FieldDividerHeading>
-                            <span>Add Item Details Below</span>
-                        </FieldDividerHeading>
+                        <>
+                            <FieldDividerHeading>
+                                <span>Add Item Details Below</span>
+                            </FieldDividerHeading>
+                        </>
+                        {formValuesItem.map((element, index) => (
                             <>
-                                <FieldDivider>
+                                <FieldDivider style={{ margin: '6px 0 6px 0' }}>
                                     <FieldLeftContainer1>
                                         <Input
                                             type="text"
                                             label={'Name'}
                                             placeholder={'Enter name of the item'}
-                                            // onChange={(e) => handleChange(index, 'name', e)}
+                                            onChange={(e) => handleChange(index, 'name', e)}
                                             name='name_item'
                                             required={true}
                                             error={errors.name_item}
-                                            // value={formValuesItem.name_item}
+                                            value={formValuesItem.name_item}
                                         />
                                     </FieldLeftContainer1>
-                                    <FieldRightContainerItem>
+                                    <FieldRightContainerItem >
                                         <Input
                                             type="text"
                                             placeholder={'Enter purchase cost'}
                                             label={'Purchase Cost'}
                                             name='purchase_cost'
-                                            // onChange={(e) => handleChange(index, 'purchase_cost', e)}
+                                            onChange={(e) => handleChange(index, 'purchase_cost', e)}
                                             required={true}
                                             error={errors.purchase_cost}
                                             value={formValuesItem.purchase_cost}
                                         />
                                     </FieldRightContainerItem>
-                                    {/* {
-                                        index ?
-                                            <RemoveContianer>
-                                                <Button
-                                                    className={'only-icon-button'}
-                                                    onlyIcon={RemoveIcon}
-                                                    // onClick={() => removeFormFieldsItem(index)}
-                                                />
-                                            </RemoveContianer>
-                                            : null
-                                    } */}
                                 </FieldDivider>
-                                <FieldDivider>
+                                <FieldDivider style={{ margin: '6px 0 6px 0' }}>
                                     <FieldLeftContainer1>
                                         <SelectInput
-                                            label='Unit Type'
+                                            label='Select Store'
                                             options={options}
-                                            placeholder='---- Select unit ----'
+                                            placeholder='---- Select store ----'
                                             name={'select_store'}
                                             required={true}
                                             value={selectedStore}
@@ -420,7 +409,7 @@ const AddItems = props => {
                                         />
                                     </FieldLeftContainer1>
                                     <FieldRightContainerItem>
-                                        <SelectInput
+                                    <SelectInput
                                             label='Rtn/Cns'
                                             options={options}
                                             placeholder='---- Select rtn/cns----'
@@ -432,90 +421,27 @@ const AddItems = props => {
                                         />
                                     </FieldRightContainerItem>
                                 </FieldDivider>
-
-                                {/* Add More field button */}
-                                <AddMoreField style={{ margin: '14px 0px 14px 0px' }}>
-                                    <Link onClick={() => addItemFields()}>
-                                        <img src={AddMoreIcon} alt="Icon" />
-                                        <span>Add Another Item</span>
-                                    </Link>
-                                </AddMoreField>
-
-                                {/* Add Product UI Updated */}
-                                <>
-                                {showFormValueItem && 
-                                formValuesItem.map((element, index) => (
-                                    <FieldDividerLine key={index}>
-                                        <FieldDividerContainer>
-                                            <FieldDivider>
-                                                <FieldLeftContainer1>
-                                                    <Input
-                                                        type="text"
-                                                        label={'Name'}
-                                                        placeholder={'Enter name of the item'}
-                                                        onChange={(e) => handleChange(index, 'name', e)}
-                                                        name={`name_item_${index}`}
-                                                        required={true}
-                                                        error={errors[`name_item_${index}`]}
-                                                        value={element.name_item}
-                                                    />
-                                                </FieldLeftContainer1>
-                                                <FieldRightContainerItem>
-                                                    <Input
-                                                        type="text"
-                                                        placeholder={'Enter purchase cost'}
-                                                        label={'Purchase Cost'}
-                                                        name={`purchase_cost_${index}`}
-                                                        onChange={(e) => handleChange(index, 'purchase_cost', e)}
-                                                        required={true}
-                                                        error={errors[`purchase_cost_${index}`]}
-                                                        value={element.purchase_cost}
-                                                    />
-                                                </FieldRightContainerItem>
-                                            </FieldDivider>
-                                            <FieldDivider>
-                                                <FieldLeftContainer1>
-                                                    <SelectInput
-                                                        label='Unit Type'
-                                                        options={options}
-                                                        placeholder='---- Select unit ----'
-                                                        name={`select_store_${index}`} 
-                                                        required={true}
-                                                        value={element.select_store}
-                                                        onChange={(e) => setSelectedStore(e.target.value)}
-                                                        error={errors[`select_store_${index}`]}
-                                                    />
-                                                </FieldLeftContainer1>
-                                                <FieldRightContainerItem>
-                                                    <SelectInput
-                                                        label='Rtn/Cns'
-                                                        options={options}
-                                                        placeholder='---- Select rtn/cns----'
-                                                        name={`select_rtn_${index}`}
-                                                        required={true}
-                                                        value={element.select_rtn}
-                                                        onChange={(e) => setSelectedRtn(e.target.value)}
-                                                        error={errors[`select_rtn_${index}`]}
-                                                    />
-                                                </FieldRightContainerItem>
-                                            </FieldDivider>
-                                        </FieldDividerContainer>
-                                        {
-                                            index ?
-                                                <RemoveContianer>
-                                                    <Button
-                                                        className={'only-icon-button'}
-                                                        onlyIcon={RemoveIcon}
-                                                        onClick={() => removeFormFieldsItem(index)}
-                                                    />
-                                                </RemoveContianer>
-                                                : null
-                                        }
-                                    </FieldDividerLine> 
-                                    ))
+                                {
+                                        index ?
+                                        <RemoveBox>
+                                                <Button
+                                                    className={'only-icon-button'}
+                                                    onlyIcon={RemoveIcon}
+                                                    onClick={() => removeFormFieldsItem(index)}
+                                                    required={true}
+                                                />
+                                            </RemoveBox>
+                                            : null
                                     }
-                                </>
                             </>
+                        ))}
+                        {/* Add More field button */}
+                        <AddMoreField style={{ margin: '14px 0px 14px 0px' }}>
+                            <Link onClick={() => addItemFields()}>
+                                <img src={AddMoreIcon} alt="Icon" />
+                                <span>Add Another Item</span>
+                            </Link>
+                        </AddMoreField>
                     </FieldDividerBottom>
                 </>
             </form>

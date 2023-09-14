@@ -182,6 +182,22 @@ export const AddMoreField = styled.div`
     }
 `;
 
+export const RemoveBox = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin:12px 0;
+    >button{
+        >img{
+            width:20px;
+            height:20px;
+        }
+    }
+`;
+
+
 export const RemoveContianer = styled.div`
     width: auto;
     // padding-left: 16px;

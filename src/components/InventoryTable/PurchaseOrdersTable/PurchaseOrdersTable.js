@@ -74,7 +74,7 @@ const PurchaseOrdersTable = ({ onClick }) => {
                                             <LinkButton
                                                 onlyIcon={EditIcon}
                                                 tooltiptext='Edit'
-                                                onClick={() => setShowModal(!showModal)}
+                                                to='/inventory/purchaseAdd'
                                             />
                                         </ActionsList>
                                         <ActionsList>
