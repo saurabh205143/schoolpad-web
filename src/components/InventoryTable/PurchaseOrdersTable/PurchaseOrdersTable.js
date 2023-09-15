@@ -55,7 +55,7 @@ const PurchaseOrdersTable = ({ onClick, record }) => {
                     <TableRow>
                         {ThData()}
                         <TableHeading>Status</TableHeading>
-                        <TableHeading>Actions</TableHeading>
+                        <TableHeading className='table-action-heading'>Actions</TableHeading>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -78,7 +78,7 @@ const PurchaseOrdersTable = ({ onClick, record }) => {
                                             <LinkButton
                                                 onlyIcon={EditIcon}
                                                 tooltiptext='Edit'
-                                                onClick={() => setShowModal(!showModal)}
+                                                to='/inventory/purchaseAdd'
                                             />
                                         </ActionsList>
                                         <ActionsList>

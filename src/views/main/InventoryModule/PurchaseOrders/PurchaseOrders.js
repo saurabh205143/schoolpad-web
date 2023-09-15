@@ -69,6 +69,8 @@ const [record, setrecord] = useState({});
           showGetRecordButton ={true}
           widthDateFrom='250px'
           widthDateTo='250px'
+          showHeaderFilterHeading={true}
+          paddingContainer='16px'
       />
       <ExportHeader
           smallHeading='All Purchase Orders'

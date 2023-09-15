@@ -1,15 +1,16 @@
 import React, {useState} from 'react'
-
-//Assets
-import PrintImage from '../../../../../../images/print-icon.svg';
-import ExcelImage from '../../../../../../images/excel-icon.svg';
 import SubHeader from '../../../../../../components/ScreensHeader/SubHeader';
 import ExportHeader from '../../../../../../components/ScreensHeader/ExportHeader';
 import DefaultMappingScreen from '../../../../TransportModule/StudentMapping/components/DefaultMappingScreen';
-import ProductWiseTable from './ProductWiseTable';
-import CustomFilter from '../../CustomFilter';
 
-const ProductWiseTab = () => {
+//Assests 
+import PrintImage from '../../../../../../images/print-icon.svg';
+import ExcelImage from '../../../../../../images/excel-icon.svg';
+import StaffFilterTable from './StaffFilterTable';
+import CustomModalIssueReport from '../CustomModalIssueReport';
+
+
+const StaffFilter = () => {
 
   const [showReportRecords, setShowReportRecords] = useState(false);
   const [showCustomFilterModal, setShowCustomFilterModal] = useState();
@@ -21,16 +22,27 @@ const ProductWiseTab = () => {
     <>
         <SubHeader
           type='tab-header-filter' 
-          selectLabelTab='Select Store'
+          multiselectLabel3='Employee Name'
+          multiselectPlaceholder3='----Select employee name----'
+          selectLabelTab='Store'
           selectPlaceholderTab='----Select store----'
           multiselectLabel='Select Category'
           multiselectPlaceholder='----Select category----'
           multiselectLabel1='Select Product'
           multiselectPlaceholder1='----Select product----'
+          widthDateLabel1='Date From'
+          widthDateLabel2='Date To'
+          multiselectLabel4='Select Purpose'
+          multiselectPlaceholder4='----Select Purpose----'
           buttonOption={true}
           showTabSelectInput={true}
+          showTabSelectInput1={false}
           showMultiSelectTab1={true}
           showMultiSelectTab2={true}
+          showMultiSelectTab3={true}
+          showDateTabFrom={true}
+          showDateTabTo={true}
+          showMultiSelectTab4={true}
           showGetRecordButton={true}
           getRecords={() => setShowReportRecords(!showReportRecords)}
           getCustomField={() => setShowCustomFilterModal(!showCustomFilterModal)}
@@ -44,17 +56,16 @@ const ProductWiseTab = () => {
             PrintIcon={PrintImage}
             Excelicon={ExcelImage}
         />
-        <ProductWiseTable/>
+        <StaffFilterTable/>
         </div>
         :
         <DefaultMappingScreen
           xtrasubHeading='Select the Report Filters'
-          description='Select the Store, Category, Item(s) Name, etc. to view stock report.'
+          description='Select the Employee Name(s), Store, Category, Product, Date, Purpose, etc. to view Staff Issue report.'
           showDefaultScreenHeader={true}
         />}
 
-
-        <CustomFilter
+        <CustomModalIssueReport
           show={showCustomFilterModal}
           handleClose={hideModal}
         />
@@ -62,4 +73,4 @@ const ProductWiseTab = () => {
   )
 }
 
-export default ProductWiseTab;
+export default StaffFilter;

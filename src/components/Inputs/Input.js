@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const SelectContainer = styled.div`
     > div{
+
         > .select-drop{
             padding:0 10px;
             background:${({ theme }) => theme.bg2} ;
@@ -117,80 +118,6 @@ export const MultiSelectInputLabel = styled.div`
         color: #000000;
     }
 `;
-
-
-// export const MultiSelectContainer = styled.div`
-//     > div{
-//     >.dropdown-container {
-//         height: 36px;
-//         display: flex;
-//         flex: 1 0;
-//         align-items: center;
-//         min-width: 0;
-//         padding: 0px 10px;
-//         border-radius: 3px;
-//         background: #ffffff;
-//         border: 1px solid rgba(9, 30, 66, 0.141176);
-
-//         >.dropdown-heading .dropdown-heading-value {
-//             >span{
-//                 font-size: 14px;
-//                 color:${({ theme }) => theme.inputPlaceholderColor};
-//                 font-weight: 400;
-//             }
-//         }
-
-//         >.dropdown-heading {
-//             padding: 0px;
-//         }
-
-//         >.dropdown-content{
-//             right: -2px;
-//         }
-
-//         >.dropdown-content .panel-content {
-//             border-radius: 3px;
-//         }
-
-//         >.dropdown-content .search {
-//             font-size: 14px;
-//             color:${({ theme }) => theme.inputPlaceholderColor};
-//             font-weight: 400;
-//             &:active {
-//             background: none;
-//             }
-//         }
-
-//         >.dropdown-content .options {
-//             font-size: 14px;
-//             color:${({ theme }) => theme.inputPlaceholderColor};
-//             font-weight: 400;
-//         }
-
-//         .item-renderer {
-//             display: flex;
-//             align-items: center !important;
-//         }
-        
-
-//         &:hover {
-//             background: ${({ theme }) => theme.inputHoverColor};
-//         }
-
-//         &:placeholder{
-//             font-style: normal;
-//             font-weight: 400;
-//             font-size: 12px;
-//             color: #172B4D;
-//         }
-
-//         &:focus-within{
-//             box-shadow:none;
-//             border:1px solid ${({ theme }) => theme. buttonPrimary};
-//             outline:1px;
-//         }
-//     }
-// `;
 
 const Input = (
     {

@@ -27,6 +27,22 @@ export const FieldContainerBottom = styled.div`
     align-items:center;
 `;
 
+export const FieldContainerBottomBox = styled.div`
+    border-bottom: 1px solid #C1C7D0;
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    padding: 0 0 20px;
+`;
+
+export const FieldDeleteBox = styled.div`
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+`;
+
 export const FieldContainerBox = styled.div`
     padding: 11px 22px;
     width: 100%;
@@ -64,11 +80,64 @@ export const FieldDividerHeadingBottom = styled.div`
     }
 `;
 
+export const FieldDividerLine = styled.div`
+    border-top: 1px solid rgba(9, 30, 66, 0.141176);
+    margin: 30px 0 0 0;
+    width:90%;
+    display: flex;
+    align-items:center;
+    justify-content:flex-start;
+`;
+
+export const FieldDividerContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px 0 0;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 40;
+        right: 0;
+        bottom: 0;
+        width: 1px; 
+        background-color: rgba(9, 30, 66, 0.141176);
+        height: 70%; 
+    }
+`;
+
 export const FieldDivider = styled.div`
     width:100%;
     display:flex;
     align-items:center;
     justify-content:center;
+`;
+
+export const CustomCheckboxField = styled.div`
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    margin-bottom:16px;
+`;
+
+export const FieldDividerDeleteBorder = styled.div`
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+`;
+
+export const FieldDividerDeleteIcon = styled.div`
+    display: flex;
+    align-items:center;
+    justify-content:center;
+`;
+
+export const FieldDividerDelete = styled.div`
+    display: flex;
+    flex-direction:column;
 `;
 
 export const FieldDividerBottom = styled.div`
@@ -129,6 +198,22 @@ export const AddMoreField = styled.div`
     }
 `;
 
+export const RemoveBox = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin:12px 0;
+    >button{
+        >img{
+            width:20px;
+            height:20px;
+        }
+    }
+`;
+
+
 export const RemoveContianer = styled.div`
     width: auto;
     // padding-left: 16px;
@@ -144,6 +229,7 @@ export const RemoveContianer = styled.div`
         }
     }
 `;
+
 
 export const AddFormFieldTab = styled.div`
     margin: 10px 0 10px 0;

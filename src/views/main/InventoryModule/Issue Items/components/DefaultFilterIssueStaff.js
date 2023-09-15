@@ -28,6 +28,8 @@ const DefaultFilterIssueStaff = () => {
         selectLabel1='Employee Name'
         selectPlaceholder1='----Select employee name----'
         getRecords={() => setShowEmpolyeeRecords(!showEmpolyeeRecords)}
+        paddingContainer='0'
+        showHeaderFilterHeading={false}
       />
 
       {showEmpolyeeRecords ?

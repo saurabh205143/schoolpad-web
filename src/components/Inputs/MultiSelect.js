@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ReactMultiSelectCheckboxes from "react-multiselect-checkboxes";
-
 import options from "./data";
 import {  ErrorContainer, Title } from "./Input";
 import styled from "styled-components";
@@ -12,7 +11,7 @@ export const Container = styled.div`
   > div{
     width:${(props) => props.width || '100%'};
     >button{
-      width:100%;
+      width:${(props) => props.width || '165px'};
       height: 36px;
       min-width: 0;
       padding: 0px 10px;

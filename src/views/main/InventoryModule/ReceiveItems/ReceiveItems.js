@@ -32,6 +32,7 @@ const ReceiveItems = () => {
           showHeaderFilterRecordBoxNew={true}
           showGetRecordButton ={true}
           showSearchButtonRight={true}
+          showHeaderFilterHeading={true}
       />
       <ExportHeader
           smallHeading='All Purchase Orders'

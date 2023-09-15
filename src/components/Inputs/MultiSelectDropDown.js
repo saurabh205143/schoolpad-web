@@ -66,7 +66,7 @@ const options = [allOption].concat(option);
   useEffect(() => {
     setSelectedOptions([{ label: "All", value: "*" }, ...options]);
   }, []);
-  
+
   function getDropdownButtonLabel({ placeholderButtonLabel, value }) {
     if (value && value.some((o) => o.value === "*")) {
       return `${placeholderButtonLabel}: All`;
@@ -74,35 +74,39 @@ const options = [allOption].concat(option);
       return `${placeholderButtonLabel}: ${value.length} selected`;
     }
   }
-  
+
   function validateSelection(value) {
-    // Remove the condition, always clear the error
+    // You can add your validation logic here
+    // For example, require at least 2 options to be selected
+    if (value.length < 2) {
+      setError("Please select at least 2 options.");
+      return false;
+    }
     setError(""); // Clear any previous error messages
-    return true; // Validation always succeeds
+    return true;
   }
-  
 
   function onChange(value, event) {
-    const isValid = validateSelection(value);
-    if (isValid) {
-      setSelectedOptions(value);
-    }
-    if (event.action === "select-option" && event.option.value === "*") {
-      this.setState(this.options);
-    } else if (
-      event.action === "deselect-option" &&
-      event.option.value === "*"
-    ) {
-      this.setState([]);
-    } else if (event.action === "deselect-option") {
-      this.setState(value.filter((o) => o.value !== "*"));
-    } else if (value.length === this.options.length - 1) {
-      this.setState(this.options);
-    } else {
-      setMultiSelect(value);
-      this.setState(value);
-    }
+  const isValid = validateSelection(value);
+  if (isValid) {
+    setSelectedOptions(value);
   }
+  if (event.action === "select-option" && event.option.value === "*") {
+    this.setState(this.options);
+  } else if (
+    event.action === "deselect-option" &&
+    event.option.value === "*"
+  ) {
+    this.setState([]);
+  } else if (event.action === "deselect-option") {
+    this.setState(value.filter((o) => o.value !== "*"));
+  } else if (value.length === this.options.length - 1) {
+    this.setState(this.options);
+  } else {
+    setMultiSelect(value);
+    this.setState(value);
+  }
+}
 
   return (
     <Container width={width}>

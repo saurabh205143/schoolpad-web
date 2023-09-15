@@ -24,6 +24,8 @@ const DefaultFilterReturnStudent = () => {
         selectLabel1='Student Name'
         selectPlaceholder1='----Select student name----'
         getRecords={() => setShowEmpolyeeRecords(!showEmpolyeeRecords)}
+        paddingContainer='0'
+        showHeaderFilterHeading={false}
       />
 
       {showEmpolyeeRecords ?

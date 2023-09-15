@@ -39,7 +39,7 @@ const ApproveRejects = () => {
           disabled={true}
           showDisabledInput={true}
           selectLabel4='Select Department'
-          selectPlaceholder4='----Select Department----'
+          selectPlaceholder4='--Select Department--'
           textLabelDisabled='Purchase Order No.'
           textPlaceholderDisabled='PO-0123'
           textLabelDisabled1='Store'

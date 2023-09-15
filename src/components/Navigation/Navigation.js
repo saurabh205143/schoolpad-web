@@ -377,7 +377,7 @@ const Navigation = ({type}) => {
                     className={getClassNames('nav-item', showDrop === 11)}
                 >
                     <NavigationItems
-                        url=''
+                        url='/manageIssueReport'
                         tabname="Issue Report"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
