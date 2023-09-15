@@ -34,6 +34,7 @@ import PreviewManageStore from './components/InventoryTable/PreviewStoreTable';
 import ManageVendor from './views/main/InventoryModule/ManageVendors/ManageVendor';
 import ProductReport from './views/main/InventoryModule/Product Report/ProductReport';
 import VendorPreview from './components/InventoryTable/ManageVendorsTable/VendorPreview';
+import PreviewCategories from './views/main/InventoryModule/ManageCategories/components/PreviewCategories';
 import ItemPreview from './components/InventoryTable/ManageItemsTable/PreviewItemTable';
 import ItemReport from './components/InventoryTable/ManageVendorsTable/VendorPreview';
 
@@ -90,6 +91,7 @@ function App() {
             <Route path='/storepreview' element={<PreviewManageStore />} />
             <Route path='/vendorpreview' element={<VendorPreview />} />
             <Route path='/itemlistpreview' element={<ItemPreview />} />
+            <Route path ='/previewcategory' element={<PreviewCategories />} />
           </Routes>
         </>
       </ThemeProvider>

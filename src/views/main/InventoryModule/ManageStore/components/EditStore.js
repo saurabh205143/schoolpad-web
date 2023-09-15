@@ -73,8 +73,8 @@ const EditStore = props => {
         // // // text.match(foundMatches);
         // // // 
         // console.log({foundMatches});
-        // let categoryselopt = { label: 'Cambridge', value: }
-        // setstoreManager(record.managerName);
+        let categoryselopt = { label: 'Cambridge', value: '5'}
+        setStoremanager(categoryselopt);
       }, [record]);
     // 
     const handleChange = () => {
@@ -184,10 +184,10 @@ const EditStore = props => {
                         getDropdownButtonLabel={getDropdownButtonLabel}
                         value={selectedOptions}
                         onChange={onChange}
-                        selected={selectedOptions}
+                        selected={StoreManager}
                         setState={setSelectedOptions}
                         error={errorsMultiSelect}
-                        // option={options}
+                        // setSelection={StoreManager}
                         setMultiSelect={setSelectedValue}
                     />
                 </FieldContainer>

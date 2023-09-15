@@ -21,7 +21,7 @@ import ToastModals from '../Toaster/ToastModals';
 
 let PageSize = 10;
 
-const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList, setstoreid }) => {
+const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList, setstoreid,columns }) => {
   const [currentPage, setCurrentPage] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -90,22 +90,28 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
     const lastPageIndex = firstPageIndex + PageSize;
     return Array.isArray(searchinfo)?searchinfo.slice(firstPageIndex, lastPageIndex):0;
   }, [currentPage]);
-  
+  console.log({ columns });
   const column = Object.keys(data[0]);
-  
+ columns.map((data) => (
+          console.log(data.field)
+  ))
   const ThData = () => {
     return (
       <>
         <TableHeading>
-          {/* <TableCheckbox>
+            S No.
+        </TableHeading>
+        <TableHeading>
+          {
+          /* <TableCheckbox>
             <CustomCheckbox
               isChecked={isChecked}
               onChange={handleChange}
             />
-          </TableCheckbox> */}
+          </TableCheckbox><TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>*/}
         </TableHeading>
-        {column.map((data) => (
-          <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
+        {columns.map((data) => (
+          <TableHeading key={data.field}>{data.label}</TableHeading>
         ))}
       </>
     );
@@ -118,9 +124,9 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
           <TableRow>
             {ThData()}
             <TableHeading>
-              <TableActionHeading>
+              {/* <TableActionHeading>
                   Categories
-              </TableActionHeading>
+              </TableActionHeading> */}
               </TableHeading>
             <TableHeading>
               <TableActionHeading>
@@ -130,7 +136,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
           </TableRow>
         </TableHead>
         <TableBody>
-          
+          console.log({searchinfo});
           {Array.isArray(searchinfo) ? searchinfo.map((item, i) => {
            const rowNumber = i + Count + 1;
             

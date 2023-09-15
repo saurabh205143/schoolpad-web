@@ -16,7 +16,11 @@ import Button from '../../Buttons/Button';
 
 let PageSize = 2;
 
-const PurchaseOrdersTable = ({ onClick }) => {
+const PurchaseOrdersTable = ({ onClick, record }) => {
+    console.log(record.columns);
+    // record.columns.map((data) => { 
+    //     console.log({ data });
+    // });
     const [currentPage, setCurrentPage] = useState(1);
     const [showModal, setShowModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -40,7 +44,7 @@ const PurchaseOrdersTable = ({ onClick }) => {
     const column = Object.keys(data[0]);
     const ThData = () => {
         return column.map((data) => {
-            return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
+            return <TableHeading key={data.field}>{data.label}</TableHeading>
         })
     }
 

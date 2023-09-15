@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Layout from '../../../../components/Layouts/Layout';
 import SubHeader from '../../../../components/ScreensHeader/SubHeader';
 import ExportHeader from '../../../../components/ScreensHeader/ExportHeader';
@@ -7,9 +7,46 @@ import PurchaseOrdersTable from '../../../../components/InventoryTable/PurchaseO
 //Assets
 import PrintImage from '../../../../images/print-icon.svg';
 import ExcelImage from '../../../../images/excel-icon.svg';
+import axios from 'axios';
+import * as XLSX from 'xlsx';
+import config from '../../../../config';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ToastModals from '../../../../components/Toaster/ToastModals';
+
+const baseURL = config.baseUrl;
+
+  
 
 const PurchaseOrders = () => {
+const [record, setrecord] = useState({});
+// const [searchinfo, setSearchinfo] = useState('');
+// const [totalRecord, settotalRecord] = useState(0);
 
+ /* fetch List  */
+  const purchaseOrderList = (offset, limit, value) => {
+    limit = (limit!='')?limit:10;
+    offset = offset * limit;
+    
+    const fetchPOURL = baseURL +"api/v1/inventory/purchaseorders";
+    axios.get(fetchPOURL, {
+      params:
+        { offset: offset, limit: limit, search: value, order_no: '', item_name: '', from: '' }
+      }).then((resp) => {
+      if (resp.data.code == '404')
+      {
+        setrecord('');
+        }
+      // settotalRecord(resp.data.total);
+      setrecord(resp.data);
+    });
+
+  }
+  
+  useEffect(() => {
+    purchaseOrderList(0, 10, '');
+  }, []);
+  // console.log({ record });
   return(
     <>
     <Layout type='inventory'>
@@ -40,7 +77,9 @@ const PurchaseOrders = () => {
           Excelicon={ExcelImage}
       />
       
-      <PurchaseOrdersTable/>
+        <PurchaseOrdersTable
+          record={record}
+        />
 
     </Layout>
     </>

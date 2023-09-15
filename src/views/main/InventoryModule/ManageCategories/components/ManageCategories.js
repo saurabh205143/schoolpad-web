@@ -54,6 +54,10 @@ const ManageCategories = () => {
     });
 
   }
+  // preview 
+  const previewRecord = () => {
+    window.open("/previewcategory?params="+searchinfo, "_blank")
+  }
 
   const getstoreList = () => {
   const fetchstorelistURL = baseURL +"api/v1/inventory/storelist";
@@ -102,6 +106,7 @@ const showToastMessage = () => {
           smallHeading='All Categories'
           smallHeding2={'( '+totalRecord+' Records }' }
           PrintIcon={PrintImage}
+          onPreview={() => previewRecord()}
           Excelicon={ExcelImage}
       />
       
