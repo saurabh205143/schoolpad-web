@@ -20,18 +20,18 @@ const baseURL = config.baseUrl;
 
 const PurchaseOrders = () => {
 const [record, setrecord] = useState({});
-// const [searchinfo, setSearchinfo] = useState('');
-// const [totalRecord, settotalRecord] = useState(0);
-
+const [searchinfo, setSearchinfo] = useState('');
+const [purchaseOrder, setInputOne] = useState('');
+console.log({purchaseOrder});
  /* fetch List  */
-  const purchaseOrderList = (offset, limit, value) => {
+  const purchaseOrderList = (offset, limit, value,purchaseOrder) => {
     limit = (limit!='')?limit:10;
     offset = offset * limit;
     
     const fetchPOURL = baseURL +"api/v1/inventory/purchaseorders";
     axios.get(fetchPOURL, {
       params:
-        { offset: offset, limit: limit, search: value, order_no: '', item_name: '', from: '' }
+        { offset: offset, limit: limit, search: value, order_no: purchaseOrder, item_name: '', from: '' }
       }).then((resp) => {
       if (resp.data.code == '404')
       {
@@ -44,8 +44,9 @@ const [record, setrecord] = useState({});
   }
   
   useEffect(() => {
-    purchaseOrderList(0, 10, '');
-  }, []);
+    // console.log({searchinfo});
+    purchaseOrderList(0, 10, searchinfo,purchaseOrder);
+  }, [searchinfo]);
   // console.log({ record });
   return(
     <>
@@ -56,7 +57,8 @@ const [record, setrecord] = useState({});
           linkText='Add New Purchase Order' 
           searchPlaceholder='Search by purchase order no, department etc...'
           inputLabel1='Purchase Order No.'
-          inputPlaceholder1='Enter purchase order no.'
+          inputPlaceholder1='Enter purchase order no. ss'
+          InputOneState={setInputOne}
           inputLabel2='Item Name'
           inputPlaceholder2='Enter item name'
           showHeaderFilterFrom={true}
@@ -70,17 +72,20 @@ const [record, setrecord] = useState({});
           widthDateFrom='250px'
           widthDateTo='250px'
           showHeaderFilterHeading={true}
+          searchState={setSearchinfo}
           paddingContainer='16px'
       />
       <ExportHeader
           smallHeading='All Purchase Orders'
-          smallHeding2='(202 Records)'
+          smallHeding2={'('+record.total+' Records)'}
           PrintIcon={PrintImage}
           Excelicon={ExcelImage}
       />
       
         <PurchaseOrdersTable
           record={record}
+          searchState={searchinfo}
+          purchaseOrderList={purchaseOrderList}
         />
 
     </Layout>
