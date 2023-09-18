@@ -6,20 +6,23 @@ import { DateContainer, DateInputField, DateInputLabel } from '../ScreensHeader/
 //Assets
 import calendarIcon from '../../images/date-icon.svg';
 
-  const DateInput = ({ width , dateLabelField}) => {
+  const DateInput = ({ width , dateLabelField, getFromDate}) => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const formattedDateLabel = dateLabelField || 'Date';
   const datePlaceholder = 'MM/dd/yyyy';
   const options = []; 
-
+    // console.log({ getFromDate });
   // Function to handle date selection
-  const handleDateSelect = (date) => {
+    const handleDateSelect = (date) => {
+
+      // console.log(date,'sdf')
+      getFromDate(date);
     setSelectedDate(date); 
   };
 
   // Custom input component with the calendar image inside
-  const CustomDatePickerInput = ({ value, onClick, width }) => (
+  const CustomDatePickerInput = ({ value, onClick, width,onChange }) => (
     <div style={{ position: 'relative', marginRight: '0px', width }}>
       <input
         type="text"

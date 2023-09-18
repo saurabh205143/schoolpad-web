@@ -21,17 +21,19 @@ const baseURL = config.baseUrl;
 const PurchaseOrders = () => {
 const [record, setrecord] = useState({});
 const [searchinfo, setSearchinfo] = useState('');
-const [purchaseOrder, setInputOne] = useState('');
-console.log({purchaseOrder});
+const [storeList, setStoreList] = useState('');
+const [purchaseOrderSearch, setInputOne] = useState('');
+const [purchaseOrderfromDate, getFromDate] = useState('');
+console.log({purchaseOrderfromDate});
  /* fetch List  */
-  const purchaseOrderList = (offset, limit, value,purchaseOrder) => {
+  const purchaseOrderList = (offset, limit, value,purchaseOrderSearch,purchaseOrderfromDate) => {
     limit = (limit!='')?limit:10;
     offset = offset * limit;
     
     const fetchPOURL = baseURL +"api/v1/inventory/purchaseorders";
     axios.get(fetchPOURL, {
       params:
-        { offset: offset, limit: limit, search: value, order_no: purchaseOrder, item_name: '', from: '' }
+        { offset: offset, limit: limit, search: value, order_no: purchaseOrderSearch, item_name: '', from: purchaseOrderfromDate,to:'' }
       }).then((resp) => {
       if (resp.data.code == '404')
       {
@@ -42,11 +44,53 @@ console.log({purchaseOrder});
     });
 
   }
+
+  //format date time
+  function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
   
+  // console.log(formatDate(purchaseOrderfromDate));
+
+  const getRecords = () => { 
+    console.log('getSearchParams');
+  }
+  const storelist = () => {
+    const storeListDD = '';
+    const fetchStoreURL = baseURL +"api/v1/inventory/stores";
+    axios.get(fetchStoreURL, {
+      params:
+        { offset:0,search:''}
+    }).then((resp) => {
+      const strelist = resp.data.rows;
+      
+      strelist.map((lst) => {
+        console.log({ lst });
+        storeListDD += {'label':lst.storeName,'value':lst.id}
+      });
+      
+    });
+    console.log({ storeListDD });
+  }
+  const poList = (purchaseOrderfromDate != '')?purchaseOrderfromDate:''
   useEffect(() => {
-    // console.log({searchinfo});
-    purchaseOrderList(0, 10, searchinfo,purchaseOrder);
-  }, [searchinfo]);
+    
+    console.log({purchaseOrderfromDate});
+    // const formatedPOFromDate = (purchaseOrderfromDate == '' || purchaseOrderfromDate == undefined)?formatDate(purchaseOrderfromDate):'';
+    // console.log({formatedPOFromDate});
+    storelist();
+    purchaseOrderList(0, 10, searchinfo,purchaseOrderSearch,poList);
+  }, [searchinfo,purchaseOrderSearch,poList]);
   // console.log({ record });
   return(
     <>
@@ -57,18 +101,20 @@ console.log({purchaseOrder});
           linkText='Add New Purchase Order' 
           searchPlaceholder='Search by purchase order no, department etc...'
           inputLabel1='Purchase Order No.'
-          inputPlaceholder1='Enter purchase order no. ss'
+          inputPlaceholder1='Enter purchase order no.'
           InputOneState={setInputOne}
           inputLabel2='Item Name'
           inputPlaceholder2='Enter item name'
           showHeaderFilterFrom={true}
+          getFromDate={getFromDate}
           showHeaderFilterTo={true}
           showSearchButtonRight={true}
           showPrimaryButton={false}
           showLinkButton={true}
           showHeaderFilterReturn={true}
           showDefaultHeaderSelect1={true}
-          showGetRecordButton ={true}
+          showGetRecordButton={true}
+          getRecords={getRecords}
           widthDateFrom='250px'
           widthDateTo='250px'
           showHeaderFilterHeading={true}

@@ -74,7 +74,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ searchState, InputOneState,searchStateonClick, onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, widthLabel2, widthLabel3, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4, showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, selectLabel4, selectPlaceholder4, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled, textLabelDisabled1, textPlaceholderDisabled1, textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showHeaderFilterFrom, showHeaderFilterTo, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1, showDefaultHeaderSelect2, defaultHeaderLabel2, defaultHeaderPlaceholder2, buttonChangeHistory, buttonFormFieldText, showLinkButton, linkText, widthDateFrom, widthDateTo, widthSelect, showHeaderFilterRecordBoxNew, inputLabel5, inputPlaceholder5, inputLabel6, inputPlaceholder6, inputLabel7, inputPlaceholder7, inputLabel8, inputPlaceholder8, showSelectRecordBoxNew, showSelectInputHeader, showTabHeaderFilters, showTabSelectInput, showMultiSelectTab1,showMultiSelectTab2, showDateTabFrom, showDateTabTo, multiselectLabel, multiselectPlaceholder, selectLabelTab, selectPlaceholderTab, multiselectLabel1, multiselectPlaceholder1, widthDateLabel1, widthDateLabel2, showTabSelectInput1,selectLabelTab1, selectPlaceholderTab1,getCustomField ,showMultiSelectTab3, multiselectLabel3, multiselectPlaceholder3, showMultiSelectTab4,multiselectPlaceholder4, multiselectLabel4, showTabSelectInput2, selectLabelTab2, selectPlaceholderTab2,showHeaderFilterHeading, paddingContainer}) => {
+const SubHeader = ({ searchState, InputOneState,searchStateonClick, onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, widthLabel2, widthLabel3, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4, showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, selectLabel4, selectPlaceholder4, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled, textLabelDisabled1, textPlaceholderDisabled1, textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showHeaderFilterFrom,getFromDate, showHeaderFilterTo, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1, showDefaultHeaderSelect2, defaultHeaderLabel2, defaultHeaderPlaceholder2, buttonChangeHistory, buttonFormFieldText, showLinkButton, linkText, widthDateFrom, widthDateTo, widthSelect, showHeaderFilterRecordBoxNew, inputLabel5, inputPlaceholder5, inputLabel6, inputPlaceholder6, inputLabel7, inputPlaceholder7, inputLabel8, inputPlaceholder8, showSelectRecordBoxNew, showSelectInputHeader, showTabHeaderFilters, showTabSelectInput, showMultiSelectTab1,showMultiSelectTab2, showDateTabFrom, showDateTabTo, multiselectLabel, multiselectPlaceholder, selectLabelTab, selectPlaceholderTab, multiselectLabel1, multiselectPlaceholder1, widthDateLabel1, widthDateLabel2, showTabSelectInput1,selectLabelTab1, selectPlaceholderTab1,getCustomField ,showMultiSelectTab3, multiselectLabel3, multiselectPlaceholder3, showMultiSelectTab4,multiselectPlaceholder4, multiselectLabel4, showTabSelectInput2, selectLabelTab2, selectPlaceholderTab2,showHeaderFilterHeading, paddingContainer}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -88,10 +88,10 @@ const SubHeader = ({ searchState, InputOneState,searchStateonClick, onClick, typ
     const [showDateInput, setShowDateInput] = useState(true);
     const [selectedDate, setSelectedDate] = useState(null);
     const [searchData, setSearch] = useState('');
-    
+    // const [fromDate, setFromDate] = useState('');
     const dateLabel = 'Date';
     const datePlaceholder = 'MM/dd/yyyy';
-
+    // console.log({ fromDate });
     // Function to handle date selection
     const handleDateSelect = (date) => {
         setSelectedDate(date); // Update the selected date in the state
@@ -99,7 +99,12 @@ const SubHeader = ({ searchState, InputOneState,searchStateonClick, onClick, typ
     const handleInputOnechange =  useCallback(event => {
         // console.log(event.target.value);
         InputOneState(event.target.value)
-    },[InputOneState]);
+    }, [InputOneState]);
+    //getFromDate
+    // const handleFromDatechange =  useCallback(e => {
+    //     console.log(e.target.value,'dfsdf');
+    //     setFromDate(e.target.value)
+    // }, [setFromDate]);
     const handleInputChange = useCallback(event => {
         searchState(event.target.value);
     }, [searchState]);
@@ -509,6 +514,8 @@ const SubHeader = ({ searchState, InputOneState,searchStateonClick, onClick, typ
                                     <DateInput
                                         width={widthDateFrom}
                                         dateLabelField='From'
+                                        // onChange={handleFromDatechange}
+                                        getFromDate={getFromDate}
                                     />
                                 </RecordBox>
                             }
