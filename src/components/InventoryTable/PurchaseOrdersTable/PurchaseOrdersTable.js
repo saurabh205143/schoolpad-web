@@ -14,13 +14,15 @@ import Pagination from '../../Pagination/Pagination';
 import TableStylesStatus from '../../Table copy/TableStyles';
 import Button from '../../Buttons/Button';
 
-let PageSize = 2;
+let PageSize = 10;
 
-const PurchaseOrdersTable = ({ onClick }) => {
+const PurchaseOrdersTable = ({ onClick, record, searchinfo,purchaseOrderList, searchState}) => {
+    console.log({searchinfo});
+    let columnHeading = record.columns;
     const [currentPage, setCurrentPage] = useState(1);
     const [showModal, setShowModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-
+    const [Count, setCount] = useState(0);
     const hideDeleteModal = () => {
         setShowDeleteModal(false);
     }
@@ -35,37 +37,56 @@ const PurchaseOrdersTable = ({ onClick }) => {
         return data.slice(firstPageIndex, lastPageIndex);
     }, [currentPage]);
 
+
+    //pagination code
+    const getCurrentPage = (page) => {
+    
+        console.log({page});
+        const cPage = (page == undefined) ? 1 : page;
+        const counter = (cPage - 1) * PageSize;
+        setCount(counter);
+    
+      }
+
     // get table column
 
     const column = Object.keys(data[0]);
-    const ThData = () => {
-        return column.map((data) => {
-            return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
-        })
+    const ThDatas = () => {
+        return Array.isArray(columnHeading)?record.columns.map((data) => {
+            return <TableHeading key={data.field}>{data.label}</TableHeading>
+        }):null;
     }
+
+    // const ThData = () => {
+    //     return column.map((data) => {
+    //         return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
+    //     })
+    // }
 
     return (
         <>
             <TableContainer>
                 <TableHead>
                     <TableRow>
-                        {ThData()}
+                        <TableHeading>S No.</TableHeading>
+                        {ThDatas()}
                         <TableHeading>Status</TableHeading>
                         <TableHeading className='table-action-heading'>Actions</TableHeading>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {currentTableData.map(item => {
+                    {Array.isArray(record.rows)?record.rows.map((item, i) => {
+                        const rowNumber = i + Count + 1;
                         return (
                             <TableRow>
-                                <Tabledata>{item.SNo}</Tabledata>
-                                <Tabledata>{item.PurchaseOrderNo}</Tabledata>
-                                <Tabledata>{item.Department}</Tabledata>
-                                <Tabledata>{item.Date}</Tabledata>
+                                <Tabledata>{rowNumber}</Tabledata>
+                                <Tabledata>{item.purchaseOrderNo}</Tabledata>
+                                <Tabledata>{item.departmentName}</Tabledata>
+                                <Tabledata>{item.createdDateTime}</Tabledata>
                                 <Tabledata>
                                     <TableStylesStatus 
-                                    type='pending'
-                                    statusType='PENDING'>
+                                    type={item.status}
+                                    statusType={item.status.toUpperCase()}>
                                     </TableStylesStatus>
                                 </Tabledata>
                                 <Tabledata>
@@ -104,15 +125,16 @@ const PurchaseOrdersTable = ({ onClick }) => {
                                 </Tabledata>
                             </TableRow>
                         );
-                    })}
+                    }):null}
                 </TableBody>
             </TableContainer>
             <Pagination
                 className="pagination-bar"
                 currentPage={currentPage}
-                totalCount={data.length}
+                totalCount={(record.total)?record.total:0}
                 pageSize={PageSize}
-                onPageChange={page => setCurrentPage(page)}
+                // onPageChange={page => setCurrentPage(page)}
+                onPageChange={(page) => { purchaseOrderList(page - 1, PageSize); getCurrentPage(page); }}
             />
 
             {/* Edit Categories Modal */}

@@ -28,6 +28,7 @@ const ManageStore = () => {
   const [record, setrecord] = useState({});
   const [storeid, setstoreid] = useState(0);
   const [vendorList, setvendorList] = useState({});
+  const [columns, setcolumns] = useState({});
   // console.log({ storeid });
   const hideCategoriesListModal = () => {
     setShowCategoriesList(false);
@@ -47,18 +48,30 @@ const ManageStore = () => {
   const hideMoveItemModal = () => {
     setShowMoveItemModal(false);
   }
-  
-  const searchData = (offset,limit,value) => {
+  // const fetchstoreURL = baseURL +"api/v1/inventory/stores";
+  //   axios.get(fetchstoreURL, {
+  //     params:
+  //       { offset: 10, limit:10,search:''}
+  //   }).then((resp) => {
+  //     console.log({resp})
+  //     // settotalRecord(resp.data.total);
+  //     // setrecord(resp.data);
+  //     // setcolumns(resp.data.columns);
+  //   });
+  const searchData = (offset, limit, value) => {
+    // console.log('asdfasdf');
     limit = (limit!='')?limit:10;
     offset = offset * limit;
     
-    const fetchstoreURL = baseURL +"api/v1/inventory/store";
+    const fetchstoreURL = baseURL +"api/v1/inventory/stores";
     axios.get(fetchstoreURL, {
       params:
         { offset: offset, limit:limit,search:value}
     }).then((resp) => {
-      // console.log({resp})
+      console.log({resp})
+      settotalRecord(resp.data.total);
       setrecord(resp.data);
+      setcolumns(resp.data.columns);
     });
   }
 
@@ -99,23 +112,24 @@ const ManageStore = () => {
     URL.revokeObjectURL(url);
   }
 
-  const totalRecordCount = (value) => { 
-    const fetchCountstoreURL = baseURL +"api/v1/inventory/storecount";
-    axios.get(fetchCountstoreURL, {
-      params:
-        { offset: 0, limit:0,search:value}
-    }).then((resp) => {
-      settotalRecord(resp.data)
-    });
+  // const totalRecordCount = (value) => { 
+  //   const fetchCountstoreURL = baseURL +"api/v1/inventory/storecount";
+  //   axios.get(fetchCountstoreURL, {
+  //     params:
+  //       { offset: 0, limit:0,search:value}
+  //   }).then((resp) => {
+  //     settotalRecord(resp.data)
+  //   });
 
-  }
+  // }
 
    const storemanagerList = () => {
-        const fetchvendorURL = baseURL +"api/v1/inventory/vendorlist";
+        const fetchvendorURL = baseURL +"api/v1/inventory/vendors";
         axios.get(fetchvendorURL)
-        .then((resp) => {
-          var dta = resp.data;
-          setvendorList(resp.data);
+          .then((resp) => {
+            // console.log( resp.data.rows );
+          // var dta = resp.data;
+          setvendorList(resp.data.rows);
         });
         
     };
@@ -130,11 +144,11 @@ const ManageStore = () => {
     searchData(0, 10, searchinfo);
     storemanagerList();
     // exportData(searchinfo);
-    totalRecordCount(searchinfo);
+    // totalRecordCount(searchinfo);
 
   }, [searchinfo]);
 
-// console.log({ searchData });
+// console.log({ columns });
   return(
     <>
     <Layout type='inventory'>
@@ -166,6 +180,7 @@ const ManageStore = () => {
           searchData={searchData}
           setstoreid={setstoreid}
           vendorList={vendorList}
+          columns={columns}
       />
 
       {/* Toaster Container */}

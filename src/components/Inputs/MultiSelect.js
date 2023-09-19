@@ -51,10 +51,23 @@ export const Container = styled.div`
   }
 `;
 
-const MultiSelect = ({label,selected,options,placeholderButtonLabel,getDropdownButtonLabel,value,onChange,setState, width, error,multiOptions}) => {
+const MultiSelect = ({label,selected,options,placeholderButtonLabel,getDropdownButtonLabel,value,onChange,setState, width, error}) => {
+  console.log({ selected });
+  const initialSelectedOptions = [
+    { "id": 5, label: 'Cambridge', value: '5' },
+    { "id": 12, label: 'Hello-06', value: '12' },
+  ];
+  // [{
+//   "id": 1,
+//   "value": "1",
+//   "label": "Blue"
+// }
+  
+  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions);
 
-  // const defaultValue = value && value.length > 0 ? value : [];
-
+  const handleSelectChange = (newSelectedOptions) => {
+    setSelectedOptions(newSelectedOptions);
+  };
   return (
     <Container width={width} error={error}>
       {label &&
@@ -69,7 +82,8 @@ const MultiSelect = ({label,selected,options,placeholderButtonLabel,getDropdownB
       value={value}
       onChange={onChange}
       selected={selected}
-      setState={setState}
+        setState={setState}
+        selectedOptions={console.log({ selectedOptions })}
       className='multiselect-drop-down'
     />
     {error &&
