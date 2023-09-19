@@ -21,7 +21,7 @@ const baseURL = config.baseUrl;
 const PurchaseOrders = () => {
 const [record, setrecord] = useState({});
 const [searchinfo, setSearchinfo] = useState('');
-const [storeList, setStoreList] = useState('');
+const [storeList, setStoreList] = useState('');//list for DD
 const [purchaseOrderSearch, setInputOne] = useState('');
 const [purchaseOrderfromDate, getFromDate] = useState('');
 console.log({purchaseOrderfromDate});
@@ -65,30 +65,30 @@ console.log({purchaseOrderfromDate});
   const getRecords = () => { 
     console.log('getSearchParams');
   }
-  const storelist = () => {
-    const storeListDD = '';
-    const fetchStoreURL = baseURL +"api/v1/inventory/stores";
-    axios.get(fetchStoreURL, {
-      params:
-        { offset:0,search:''}
-    }).then((resp) => {
-      const strelist = resp.data.rows;
-      
-      strelist.map((lst) => {
-        console.log({ lst });
-        storeListDD += {'label':lst.storeName,'value':lst.id}
-      });
-      
-    });
-    console.log({ storeListDD });
-  }
+  // const storelist = () => {
+  //   // let storeListDD = '';
+  //   const fetchStoreURL = baseURL +"api/v1/inventory/stores";
+  //   axios.get(fetchStoreURL, {
+  //     params:
+  //       { offset:0,search:''}
+  //   }).then((resp) => {
+  //     const strelist = resp.data.rows;
+  //     const strelistDD = strelist.map((value, index) => ({
+  //       label: `${value.storeName}`,
+  //       value:`${value.id}`,
+  //     }));
+  //     // console.log({ strelistDD });
+  //     setStoreList(strelistDD);
+  //   });
+    
+  // }
   const poList = (purchaseOrderfromDate != '')?purchaseOrderfromDate:''
   useEffect(() => {
     
     console.log({purchaseOrderfromDate});
     // const formatedPOFromDate = (purchaseOrderfromDate == '' || purchaseOrderfromDate == undefined)?formatDate(purchaseOrderfromDate):'';
     // console.log({formatedPOFromDate});
-    storelist();
+    // storelist();
     purchaseOrderList(0, 10, searchinfo,purchaseOrderSearch,poList);
   }, [searchinfo,purchaseOrderSearch,poList]);
   // console.log({ record });
@@ -132,6 +132,7 @@ console.log({purchaseOrderfromDate});
           record={record}
           searchState={searchinfo}
           purchaseOrderList={purchaseOrderList}
+          storeList={storeList}
         />
 
     </Layout>
