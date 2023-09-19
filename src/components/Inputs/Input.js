@@ -111,11 +111,23 @@ export const ErrorContainer = styled.span`
     line-height: 16px;
 `;
 
-export const MultiSelectInputLabel = styled.div`
-    >label {
-        font-weight: 600;
-        font-size: 12px;
-        color: #000000;
+
+export const InputBase = styled.textarea`
+    width: 100%;
+    color: #1d2939;
+    font-size: 15px;
+    font-weight: 400;
+    background: transparent;
+    outline: none;
+    padding: 10px 10px;
+    border-radius: 3px;
+    background: #ffffff;
+    border: 1px solid rgba(9, 30, 66, 0.141176);
+
+    &::placeholder {
+        font-weight: 400;
+        font-size: 14px;
+        color:${({ theme }) => theme.inputPlaceholderColor};
     }
 `;
 
@@ -134,6 +146,8 @@ const Input = (
         width,
         disabled,
         selectSomeItemsText,
+        readOnly,
+        className,
         select,
         Storemanager
     }) => {
@@ -168,29 +182,26 @@ const Input = (
         );
     } 
 
-    // else if(type === 'multi-select'){
-    //     return(
-    //         <Container>
-    //             {label &&
-    //                 <Title>
-    //                     {label}
-    //                 </Title>
-    //             }
-    //             <MultiSelectContainer className="custom-multi-select-container">
-    //                 <MultiSelect
-    //                         options={options}
-    //                         className='dropdown-container'
-    //                         value={selected}
-    //                         onChange={(e) => { setSelected(e); Storemanager(e)}} 
-    //                         selval={selected} 
-    //                         labelledBy="Select"
-    //                         overrideStrings={customStrings}
-    //                         width={width}
-    //                 />
-    //             </MultiSelectContainer>
-    //         </Container>
-    //     );
-    // } 
+    else if(type === 'textarea'){
+        return(
+            <Container>
+                {label &&
+                    <Title>
+                        {label}
+                    </Title>
+                }
+                <InputBase
+                    disabled={readOnly}
+                    type={type}
+                    onChange={onChange}
+                    name={name}
+                    value={value}
+                    placeholder={placeholder}
+                    className={className}
+                />
+            </Container>
+        );
+    } 
     
     else {
         return (
