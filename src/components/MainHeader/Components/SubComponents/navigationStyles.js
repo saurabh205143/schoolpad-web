@@ -31,7 +31,7 @@ export const NavBarItem = styled.li`
         align-items:center;
         background: ${({ theme }) => theme.whiteColor};
         color: ${({ theme }) => theme.buttonPrimary};
-        font-size:14px;
+        font-size: ${({ theme }) => theme.smallFont};
         font-weight:600;
         background
         @media screen and (max-width: 1240px) {
@@ -47,12 +47,12 @@ export const NavBarItem = styled.li`
 
 export const LinkTitle = styled.span`
     font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: ${({theme}) => theme.fontWeightRegular};
+    font-size: ${({ theme }) => theme.smallFont};
     line-height: 32px;
     color:#ffffff;
     @media screen and (max-width: 1240px) {
-        font-size:12px;
+        font-size:${({theme}) => theme.xsmallFont};
     }
 `;
 

@@ -113,6 +113,7 @@ const AddItems = props => {
     const [unitselectedValue, setUnitSelectValue] = useState('');
     const [CategoryValue, setCategoryValue] = useState([]);
     const [thresholdcount, setthresholdcount] = useState([]);
+    
     // Validate Inputs
     const validate = () => {
         let fields = [

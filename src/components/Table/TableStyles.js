@@ -85,7 +85,7 @@ export const TableHeadingModalAction = styled.th`
     background: #F8F8F8;
     color: #000000;
     font-weight: 400;
-    font-size: 12px;
+    font-size:${({theme}) => theme.xsmallFont};
     border: none;
     padding: 0 26px;
 `;

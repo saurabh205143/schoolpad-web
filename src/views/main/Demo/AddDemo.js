@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Input from '../../../components/Inputs/Input';
 import { FieldContainer, ModalBodyConatiner } from '../TransportModule/TransportRoute/components/AddRouteStyles';
 
-
 const products = [
   { title: 'Cabbage', id: 1 },
   { title: 'Garlic', id: 2 },
