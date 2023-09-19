@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 // Assets
 import AddMoreIcon from '../../../../../images/add-more-icon.svg';
-import { AddMoreField, RemoveContianer } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
+import { AddMoreField, RemoveContianer, RemoveContianerDelete } from '../../../TransportModule/TransportRoute/components/AddRouteStyles';
 import Button from '../../../../../components/Buttons/Button';
 import RemoveIcon from '../../../../../images/delete-icon.svg';
 import axios from 'axios';
@@ -333,14 +333,14 @@ useEffect(() =>{
                         </Tabledata>
                         {
                             index ?
-                                <RemoveContianer>
+                                <RemoveContianerDelete>
                                     <Button
                                         className={'only-icon-button'}
                                         onlyIcon={RemoveIcon}
                                         onClick={() => removeFormFields(index)}
                                         required={true}
                                     />
-                                </RemoveContianer>
+                                </RemoveContianerDelete>
                                 : null
                         }
                     </TableRow>

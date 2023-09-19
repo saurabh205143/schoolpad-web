@@ -10,9 +10,9 @@ const ReturnItemSelectFilterStudent = () => {
     <>
       <Layout type='inventory'>
       <SubHeader
-        heading='Return Item(s)'
+        heading='Return Product(s)'
         type='vertical' 
-        headerDescription='Please select either Staff or Student to return item(s).'
+        headerDescription='Please select either Staff or Student to return products.'
         showGetRecordButton={false}
         showTextInput={false}
         showDateInput={false}

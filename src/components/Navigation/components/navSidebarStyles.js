@@ -67,6 +67,7 @@ export const NavBarItem = styled.li`
         >.sidebar-drop{
             li.active{
                 a{
+                    background: #E9F2FF;
                     border-radius: 3px;
                     height:40px;
                     display:flex;
@@ -127,6 +128,7 @@ export const NavBarItems = styled.li`
                 width:20px;
             }           
         }
+        
         >.sidebar-drop{
             li.active{
                 a{
@@ -183,20 +185,24 @@ export const ActiveIcon = styled.img`
 `;
 
 export const SidebarDropDown = styled.ul`
-    margin:0 0 0 30px;
+    margin:10px 0 0 30px;
     padding:0px;
     list-style:none;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
-
 `;
 
 export const SidebarDropList = styled.li`
-    padding-bottom:11px;
- >a{
+a.nav-item1 { 
+    border-radius: 3px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     text-decoration:none;
-    padding:0 10px;
+    padding: 0 10px;
+}
     >span{
         font-style: normal;
         font-weight: 400;
@@ -206,8 +212,5 @@ export const SidebarDropList = styled.li`
         @media screen and (max-width: 1240px) {
             font-size:13px;
         }
-    }
- }
-
 `;
 

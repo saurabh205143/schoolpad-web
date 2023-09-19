@@ -8,7 +8,7 @@ import PrintImage from '../../../../../../images/print-icon.svg';
 import ExcelImage from '../../../../../../images/excel-icon.svg';
 import StaffFilterTable from './StaffFilterTable';
 import CustomModalIssueReport from '../CustomModalIssueReport';
-
+import ItemNotFound from '../../../../../../components/NotFoundItems/ItemsNotFound';
 
 const StaffFilter = () => {
 
@@ -56,7 +56,10 @@ const StaffFilter = () => {
             PrintIcon={PrintImage}
             Excelicon={ExcelImage}
         />
-        <StaffFilterTable/>
+        <ItemNotFound
+        description='There are no Products issued to this Person.'
+        />
+        {/* <StaffFilterTable/> */}
         </div>
         :
         <DefaultMappingScreen

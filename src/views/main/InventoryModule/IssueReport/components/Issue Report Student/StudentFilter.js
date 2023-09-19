@@ -32,12 +32,21 @@ const StudentFilter = () => {
           widthDateLabel2='Product Added To'
           selectLabelTab2='Select Store'
           selectPlaceholderTab2='----Select store----'
+          multiselectLabel3='Select Category'
+          multiselectPlaceholder3='----Select category----'
+          multiselectLabel5='Select Product'
+          multiselectPlaceholder5='----Select product----'
+          selectLabelTab3='Select Set'
+          selectPlaceholderTab3='----Select set----'
           buttonOption={true}
           showTabSelectInput={true}
           showMultiSelectTab1={true}
           showMultiSelectTab2={true}
+          showMultiSelectTab3={true}
+          showMultiSelectTab5={true}
           showDateTabFrom={true}
           showDateTabTo={true}
+          showTabSelectInput3={true}
           showTabSelectInput2={true}
           showGetRecordButton={true}
           getRecords={() => setShowReportRecords(!showReportRecords)}

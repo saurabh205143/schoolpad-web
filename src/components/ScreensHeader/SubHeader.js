@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
-import { ButtonContainer, Container, ContainerLeft, ContainerRight, DescriptionText, GetRecordsContainer, GetRecordsTabHeaderFilter, HeaderFilterHeadings, RecordBox, RecordBoxMulti, RecordBoxNew, TabFilterContainer, TabHeaderFilter, TabHeaderFilterHeading, VerticalContainer } from './subHeaderStyles';
+import { ButtonContainer, Container, ContainerLeft, ContainerRight, DescriptionText, GetRecordsContainer, GetRecordsTabHeaderFilter, HeaderFilterHeadings, RecordBox,  RecordBoxNew, TabFilterContainer, TabHeaderFilter, TabHeaderFilterHeading, VerticalContainer } from './subHeaderStyles';
 import Headings from '../Headings/Headings';
 import Button from '../Buttons/Button';
 
@@ -15,8 +15,8 @@ import calendarIcon from '../../images/date-icon.svg';
 import LinkButton from '../Buttons/LinkButton';
 import DateInput from '../DateInputField/DateInput';
 import TabHeaderFilterItemReport from '../../views/main/InventoryModule/Product Report/components/TabHeaderFilterProductReport';
-import CustomFilter from '../../views/main/InventoryModule/Product Report/CustomFilter';
 import MultiSelect from '../Inputs/MultiSelect';
+import Select from '../../components/Inputs/Select';
 
 export const DropContianer = styled.div`
     position:absolute;
@@ -74,7 +74,7 @@ const options1 = [
     }
 ];
 
-const SubHeader = ({ searchState, InputOneState,searchStateonClick, onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, widthLabel2, widthLabel3, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4, showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, selectLabel4, selectPlaceholder4, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled, textLabelDisabled1, textPlaceholderDisabled1, textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showHeaderFilterFrom,getFromDate, showHeaderFilterTo, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1, showDefaultHeaderSelect2, defaultHeaderLabel2, defaultHeaderPlaceholder2, buttonChangeHistory, buttonFormFieldText, showLinkButton, linkText, widthDateFrom, widthDateTo, widthSelect, showHeaderFilterRecordBoxNew, inputLabel5, inputPlaceholder5, inputLabel6, inputPlaceholder6, inputLabel7, inputPlaceholder7, inputLabel8, inputPlaceholder8, showSelectRecordBoxNew, showSelectInputHeader, showTabHeaderFilters, showTabSelectInput, showMultiSelectTab1,showMultiSelectTab2, showDateTabFrom, showDateTabTo, multiselectLabel, multiselectPlaceholder, selectLabelTab, selectPlaceholderTab, multiselectLabel1, multiselectPlaceholder1, widthDateLabel1, widthDateLabel2, showTabSelectInput1,selectLabelTab1, selectPlaceholderTab1,getCustomField ,showMultiSelectTab3, multiselectLabel3, multiselectPlaceholder3, showMultiSelectTab4,multiselectPlaceholder4, multiselectLabel4, showTabSelectInput2, selectLabelTab2, selectPlaceholderTab2,showHeaderFilterHeading, paddingContainer}) => {
+const SubHeader = ({ searchState, InputOneState,searchStateonClick, onClick, type, heading, getRecords, buttonAdd, buttonOrders, buttonOption, buttonOrderDragList, formField, searchPlaceholder, rightIcon, inputPlaceholder1, inputLabel1, inputLabel2, widthLabel2, widthLabel3, inputPlaceholder2, inputLabel3, inputPlaceholder3, inputLabel4, inputPlaceholder4, showHeaderFilter, showSearchButtonRight, showPrimaryButton, showGetRecordButton, headerDescription, textLabel, textPlaceholder, textLabel1, textPlaceholder1, selectLabel1, selectPlaceholder1, selectLabel2, selectPlaceholder2, selectLabel3, selectPlaceholder3, selectLabel4, selectPlaceholder4, showDateInputField, showTextInput, showTextInput1, showSelectInput1, showSelectInput2, showSelectInput3, leftIcon, buttonManageText, buttonManageMaintenance, formManageClick, formMaintenanceClick, showReceiveHeaderFilter, showReceiveHeaderFilter1, href, showDisabledInput, disabled, textLabelDisabled, textPlaceholderDisabled, textLabelDisabled1, textPlaceholderDisabled1, textLabelDisabled2, textPlaceholderDisabled2, showHeaderFilterDate, showHeaderFilterFrom,getFromDate, showHeaderFilterTo, showDefaultHeaderSelect, defaultHeaderPlaceholder, defaultHeaderLabel, showHeaderFilterReturn, showDefaultHeaderSelect1, showDefaultHeaderSelect2, defaultHeaderLabel2, defaultHeaderPlaceholder2, buttonChangeHistory, buttonFormFieldText, showLinkButton, linkText, widthDateFrom, widthDateTo, widthSelect, showHeaderFilterRecordBoxNew, inputLabel5, inputPlaceholder5, inputLabel6, inputPlaceholder6, inputLabel7, inputPlaceholder7, inputLabel8, inputPlaceholder8, showSelectRecordBoxNew, showSelectInputHeader, showTabHeaderFilters, showTabSelectInput, showMultiSelectTab1,showMultiSelectTab2, showDateTabFrom, showDateTabTo, multiselectLabel, multiselectPlaceholder, selectLabelTab, selectPlaceholderTab, multiselectLabel1, multiselectPlaceholder1, widthDateLabel1, widthDateLabel2, showTabSelectInput1,selectLabelTab1, selectPlaceholderTab1,getCustomField ,showMultiSelectTab3, multiselectLabel3, multiselectPlaceholder3, showMultiSelectTab4,multiselectPlaceholder4, multiselectLabel4, showTabSelectInput2, selectLabelTab2, selectPlaceholderTab2,showHeaderFilterHeading, paddingContainer, showMultiSelectTab5, multiselectLabel5, multiselectPlaceholder5, showTabSelectInput3, selectLabelTab3,     selectPlaceholderTab3}) => {
 
     const [showAssociateDrop, setShowAssociateDrop] = useState(false);
 
@@ -753,8 +753,7 @@ const SubHeader = ({ searchState, InputOneState,searchStateonClick, onClick, typ
                     }
                     {showTabSelectInput2 &&
                         <RecordBoxNew>
-                            <Input
-                                type='select'
+                            <Select
                                 label={selectLabelTab2}
                                 placeholder={selectPlaceholderTab2}
                                 options={options}
@@ -762,6 +761,22 @@ const SubHeader = ({ searchState, InputOneState,searchStateonClick, onClick, typ
                                     console.log(e[0].label)
                                     setShowDependentDrop(e[0].label)
                                 }}
+                            />
+                        </RecordBoxNew>
+                    }
+                    {showMultiSelectTab3 &&
+                        <RecordBoxNew>
+                            <MultiSelect
+                                label={multiselectLabel3}
+                                placeholder={multiselectPlaceholder3}
+                            />
+                        </RecordBoxNew>
+                    }
+                    {showMultiSelectTab5 &&
+                        <RecordBoxNew>
+                            <MultiSelect
+                                label={multiselectLabel5}
+                                placeholder={multiselectPlaceholder5}
                             />
                         </RecordBoxNew>
                     }
@@ -786,6 +801,19 @@ const SubHeader = ({ searchState, InputOneState,searchStateonClick, onClick, typ
                             <MultiSelect
                                 label={multiselectLabel4}
                                 placeholder={multiselectPlaceholder4}
+                            />
+                        </RecordBoxNew>
+                    }
+                    {showTabSelectInput3 &&
+                        <RecordBoxNew>
+                            <Select
+                                label={selectLabelTab3}
+                                placeholder={selectPlaceholderTab3}
+                                options={options}
+                                onChange={(e) => {
+                                    console.log(e[0].label)
+                                    setShowDependentDrop(e[0].label)
+                                }}
                             />
                         </RecordBoxNew>
                     }

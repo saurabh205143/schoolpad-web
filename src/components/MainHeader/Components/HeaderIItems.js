@@ -55,14 +55,14 @@ export const IconContainer = styled.img`
 
 export const SettingsContainer = styled(Link)`
     >img{
-        width:20px;
+        width:30px;
         @media screen and (max-width: 1240px) {
             width: 14px;
             height: 14px;
         }
     }
     &.setting-container{
-        padding: 0 4px 0 6px;
+        padding: 0;
     }
 `;
 
@@ -252,7 +252,7 @@ const HeaderIItems = () => {
                         <IconContainer 
                         src={DropIcon}
                         alt="Icon"
-                        style={{width:16,marginLeft:5}}
+                        style={{width:14,marginLeft:5}}
                         />
 
                         {/* Profile Drop Down */}

@@ -29,7 +29,7 @@ export const ContainerRight = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-    margin: 0 10px 0 8px;
+    margin: 0 10px 0 0;
     position:relative;
     >div{
         margin-bottom:0px;
