@@ -16,8 +16,8 @@ import Button from '../../Buttons/Button';
 
 let PageSize = 10;
 
-const PurchaseOrdersTable = ({ onClick, record, searchinfo,purchaseOrderList, searchState}) => {
-    console.log({searchinfo});
+const PurchaseOrdersTable = ({ onClick, record, searchinfo,purchaseOrderList, searchState, storeList}) => {
+    console.log({storeList});
     let columnHeading = record.columns;
     const [currentPage, setCurrentPage] = useState(1);
     const [showModal, setShowModal] = useState(false);
