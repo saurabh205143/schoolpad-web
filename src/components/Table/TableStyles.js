@@ -6,6 +6,10 @@ export const Container = styled.div`
     overflow:auto;
 `;
 
+export const ApproveContainer = styled.div`
+    padding: 20px;
+`;
+
 export const ContainerTable = styled.div`
     padding: 20px;
 `;
@@ -67,6 +71,13 @@ export const TableHeading = styled.th`
     font-size: ${({ theme }) => theme.xsmallFont};
     border:none;
     padding:10px 12px !important;
+
+    &.table-action-heading {
+        display: flex;
+        align-items: flex-start!important;
+        justify-content: flex-start!important;
+        margin-left: 80px;
+    }
 `;
 
 export const TableHeadingModalAction = styled.th`
@@ -84,10 +95,10 @@ export const TableCheckbox = styled.div`
 `;
 
 export const TableActionHeading = styled.div`
-    float: right;
+    // float: right;
     font-size: ${({ theme }) => theme.xsmallFont};
     font-weight: ${({ theme }) => theme.fontWeightBold};
-    padding-right: 27px;
+    // padding-right: 27px;
 `;
 
 export const TableActionHeadings = styled.div`
@@ -128,7 +139,10 @@ export const ActionsConatiner = styled.ul`
     margin:0;
     padding:0;
     list-style:none;
-    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // float: right;
 
 `;
 

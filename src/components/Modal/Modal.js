@@ -10,12 +10,12 @@ import { SubHeadingText } from '../Headings/headingStyles';
 
 
 const Modal = props => {
-    const { show, handleClose, modalHeading, modalSubHeading, submitText,saveAction1, saveAction, children, actionText , cancelText} = props;
+    const { show, clickAction, handleClose, modalHeading, loading, modalSubHeading, submitText, saveAction, children, actionText , cancelText} = props;
 
     const on = useLocation();
     const pathName = on.pathname;
     let params = pathName.split('/');
-    console.log(params);
+    // console.log(params);
 
     return (
         <ModalContainer block={show ? 'block' : 'none'}>
@@ -48,7 +48,7 @@ const Modal = props => {
                             <Button
                                 buttonText={actionText}
                                 className={'primary'}
-                                onClick={saveAction1}
+                                onClick={clickAction}
                             />
                         }
                     </FooterButtonContainer>
@@ -58,6 +58,7 @@ const Modal = props => {
                                 buttonText={submitText}
                                 className={'primary'}
                                 onClick={saveAction}
+                                loading={loading}
                             />
 
                         }

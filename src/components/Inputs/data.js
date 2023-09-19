@@ -1,0 +1,53 @@
+export default [{
+  "id": 1,
+  "value": "1",
+  "label": "Blue"
+}, {
+  "id": 2,
+  "value": "2",
+  "label": "Goldenrod"
+}, {
+  "id": 3,
+  "value": "3",
+  "label": "Teal"
+}, {
+  "id": 4,
+  "value": "4",
+  "label": "Puce"
+}, {
+  "id": 5,
+  "value": "5",
+  "label": "Khaki"
+}, {
+  "id": 6,
+  "value": "6",
+  "label": "Green"
+}, {
+  "id": 7,
+  "value": "7",
+  "label": "Crimson"
+},  {
+  "id": 9,
+  "value": "841e6f9f-1e19-4501-8b75-cd153282ed21",
+  "label": "Orange"
+}, {
+  "id": 10,
+  "value": "9346ba4b-8b3e-4c06-b930-cb3d98c58890",
+  "label": "Turquoise"
+}, {
+  "id": 11,
+  "value": "7294d507-d6c5-47bf-8ef3-c291c273b647",
+  "label": "Violet"
+}, {
+  "id": 12,
+  "value": "451d4254-a882-4d53-a4ca-c7cb4707d1a5",
+  "label": "Red"
+}, {
+  "id": 15,
+  "value": "2378fade-f686-4f0d-bf00-4e5213032c9b",
+  "label": "Aquamarine"
+},    {
+  "id": 20,
+  "value": "77ec7a0b-329d-4643-bbc7-0fa12c788ded",
+  "label": "Mauv"
+}]

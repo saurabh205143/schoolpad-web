@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const TableContainer = styled.table`
-   
+
 `;
 
 export const TableHead = styled.thead`
@@ -58,10 +58,12 @@ export const Tabledata = styled.td`
 `;
 
 export const ActionsConatiner = styled.ul`
-    display:inline;
+    display:flex;
     margin:0;
     padding:0;
     list-style:none;
+    align-items: flex-start;
+    justify-content: flex-start;
 
 `;
 
@@ -79,6 +81,9 @@ export const ActionListStatus = styled.td`
         color: #216E4E;
         font-weight: 700;
         font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 `;
 
@@ -91,6 +96,9 @@ export const ActionListStatusItems = styled.td`
         color: #00B8D9;
         font-weight: 700;
         font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 `;
 
@@ -115,6 +123,22 @@ export const ActionListStatusPending = styled.td`
         color: #AE2A19;
         font-weight: 700;
         font-size: 12px;
+        display: flex;
+        align
+    }
+`;
+
+export const ActionListStatusLink = styled.td`
+    background-color: none;
+    border-radius: 3px;
+    padding: 0 4px 0 4px;
+
+    >a {
+        color: #0C66E4;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
     }
 `;
 
@@ -123,7 +147,7 @@ export const MoreAction = styled.div`
 `;
 
 
-const TableStylesStatus = ({type, statusType}) => { 
+const TableStylesStatus = ({type, statusType, linkUrl}) => { 
     if(type === 'item-type-consumable'){
         return (
             <>
@@ -172,7 +196,18 @@ const TableStylesStatus = ({type, statusType}) => {
             </ActionsConatiner>
             </>
         )}
-
+        else if (type === 'link-status') {
+            return (
+            <>
+            <ActionsConatiner>
+                <ActionsList>
+                    <ActionListStatusLink>
+                    <a href={linkUrl}>{statusType}</a>
+                    </ActionListStatusLink>
+                </ActionsList>
+            </ActionsConatiner>
+            </>
+        )}
 }
 
 export default TableStylesStatus;

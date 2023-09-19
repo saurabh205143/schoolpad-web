@@ -10,6 +10,7 @@ export const NotFoundContainer = styled.div`
 `;
 
 export const Heading = styled.div`
+    font-size: 20px;
     margin-top:16px;
 `;
 

@@ -37,6 +37,7 @@ export const ModalBody = styled.div`
     // padding:11px 22px;
     max-height:80vh;
     overflow:auto;
+   
 `;
 
 export const ModalFooter = styled.div`

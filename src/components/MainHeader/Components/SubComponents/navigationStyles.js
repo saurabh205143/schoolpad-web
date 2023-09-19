@@ -17,9 +17,10 @@ export const NavBarItem = styled.li`
     align-items:center;
 }
 >a.active{
-    border-bottom:2px solid #0065FF;
+    border-bottom:2px solid ${({theme}) => theme.whiteColor};
     >span{
-        color:${({theme}) => theme. buttonPrimary};
+        color:${({theme}) => theme.whiteColor};
+        font-weight:600;
     }
 }
 >.more-drop{
@@ -28,7 +29,11 @@ export const NavBarItem = styled.li`
         border-radius:3px;
         display:flex;
         align-items:center;
-        background: ${({theme}) => theme.backgroundPrimary};
+        background: ${({ theme }) => theme.whiteColor};
+        color: ${({ theme }) => theme.buttonPrimary};
+        font-size:14px;
+        font-weight:600;
+        background
         @media screen and (max-width: 1240px) {
             font-size:12px;
             height:28px;
@@ -45,7 +50,7 @@ export const LinkTitle = styled.span`
     font-weight: 600;
     font-size: 14px;
     line-height: 32px;
-    color:#091E42;
+    color:#ffffff;
     @media screen and (max-width: 1240px) {
         font-size:12px;
     }

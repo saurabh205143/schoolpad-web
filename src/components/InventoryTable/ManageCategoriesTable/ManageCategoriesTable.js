@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import data from './data.json';
 import { ActionsConatiner, ActionsList, TableActionHeading, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../Table/TableStyles';
 import LinkButton from '../../Buttons/LinkButton';
@@ -7,18 +7,20 @@ import LinkButton from '../../Buttons/LinkButton';
 import EditIcon from '../../../images/edit-icon.svg';
 import DeleteIcon from '../../../images/delete-icon.svg';
 import AddCategories from '../../../views/main/InventoryModule/ManageCategories/components/AddCategories';
-import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../../Pagination/Pagination';
-import CustomCheckbox from '../../Checkbox/CustomCheckbox';
+import EditCategories from '../../../views/main/InventoryModule/ManageCategories/components/EditCategories';
+import DeleteCategoryModal from '../../../views/main/InventoryModule/ManageCategories/components/DeleteCategoryModal';
 
-let PageSize = 14;
+let PageSize = 10;
 
-const ManageCategoriesTable = ({ onClick }) => {
+const ManageCategoriesTable = ({ onClick,record,totalRecord,categoryList,Storelist }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
-
+  const [Count, setCount] = useState(0);
+  const [singlerecord, setSinglerecord] =  useState({});
+  // console.log({ Storelist });
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
   }
@@ -30,27 +32,46 @@ const ManageCategoriesTable = ({ onClick }) => {
   const handleChange = () => {
     setIsChecked(!isChecked);
 };
+  // set record for each row
+  const setCatdetail = (detail) => {
+    setSinglerecord(detail);
+  }
+
+  // set id record for each row
+  const setCatidDelete = (detail) => {
+    let catArr = { 'catid': detail.id, 'catname': detail.categoryName }
+    setSinglerecord(catArr);
+  }
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return data.slice(firstPageIndex, lastPageIndex);
+    return Array.isArray(record)?record.slice(firstPageIndex, lastPageIndex):0;
   }, [currentPage]);
+  useEffect(() => { 
+      getCurrentPage();
+      // console.log({searchinfo});
+    },[]);
+  const getCurrentPage = (page) => {
+    
+    const cPage = (page == undefined) ? 1 : page;
+    const counter = (cPage - 1) * PageSize;
+    setCount(counter);
 
-  // get table column
+  }
   
   const column = Object.keys(data[0]);
   const ThData = () => {
     return (
       <>
-        <TableHeading>
+        {/* <TableHeading>
           <CustomCheckbox
             isChecked={isChecked}
             onChange={handleChange}
           />
-        </TableHeading>
-        {column.map((data) => (
-          <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
+        </TableHeading> */}
+        {column.map((record) => (
+          <TableHeading key={record}>{record.split(/(?=[A-Z])/).join(" ")}</TableHeading>
         ))}
       </>
     );
@@ -70,59 +91,67 @@ const ManageCategoriesTable = ({ onClick }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {currentTableData.map(item => {
+          {Array.isArray(record) ? record.map((item, i) => {
+            const rowNumber = i + Count + 1;
             return (
               <TableRow>
-                <Tabledata>
-                  <CustomCheckbox
-                    isChecked={isChecked}
-                    onChange={handleChange}
-                  />
-                </Tabledata>
-                <Tabledata>{item.SNo}</Tabledata>
-                <Tabledata>{item.CategoryName}</Tabledata>
-                <Tabledata>{item.CategoryCode}</Tabledata>
-                <Tabledata>{item.StoreName}</Tabledata>
+                <Tabledata>{rowNumber}</Tabledata>
+                <Tabledata>{item.categoryName}</Tabledata>
+                <Tabledata>{item.categoryCode}</Tabledata>
+                <Tabledata>{item.storeName}</Tabledata>
                 <Tabledata>
                   <ActionsConatiner>
                     <ActionsList>
                       <LinkButton
                         onlyIcon={EditIcon}
                         tooltiptext='Edit'
-                        onClick={() => setShowModal(!showModal)}
+                        onClick={() => { setShowModal(!showModal); setCatdetail(item); }}
                       />
                     </ActionsList>
                     <ActionsList>
                       <LinkButton
                         onlyIcon={DeleteIcon}
                         tooltiptext='Delete'
-                        onClick={() => setShowDeleteModal(!showModal)} 
+                        onClick={() => { setShowDeleteModal(!showModal); setCatidDelete(item); }} 
                       />
                     </ActionsList>
                   </ActionsConatiner>
                 </Tabledata>
               </TableRow>
             );
-          })}
+          }):null}
         </TableBody>
       </TableContainer>
+      {/* <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        // totalCount={Array.isArray(totalRecord)?totalRecord:0}
+        pageSize={PageSize}
+        onPageChange={(page) => {categoryList(page - 1, PageSize); getCurrentPage (page) }}
+      /> */}
       <Pagination
         className="pagination-bar"
         currentPage={currentPage}
-        totalCount={data.length}
+        totalCount={totalRecord}
         pageSize={PageSize}
-        onPageChange={page => setCurrentPage(page)}
+        onPageChange={(page) => {categoryList(page - 1, PageSize); getCurrentPage (page) }}
       />
 
-      {/* Edit Categories Modal */}
+      {/* Add Categories Modal */}
         <AddCategories
             show={showModal}
             handleClose={hideModal}
-        />
-
-      <DeleteRouteModal
+      />
+      <EditCategories
+        show={showModal}
+        handleClose={hideModal}
+        singlerecord={singlerecord}
+        Storelist={Storelist}
+      />
+      <DeleteCategoryModal
         show={showDeleteModal}
         handleClose={hideDeleteModal}
+        singlerecord={singlerecord}
       />
     </>
   );

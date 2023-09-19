@@ -23,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     .Toastify__toast-body{
         padding:0px !important;
+        
     }
     .Toastify__toast{
         padding:0px !important;

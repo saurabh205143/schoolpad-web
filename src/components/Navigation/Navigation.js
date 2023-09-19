@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import { NavBar, NavBarItem, NavBarItems, NavBars, SidebarDropDown, SidebarDropList } from './components/navSidebarStyles';
+import { ModuleBoxCol, ModuleBoxLeft, ModuleBoxRight, ModuleBoxes, NavBar, NavBarItem, NavBarItems, NavBars, SidebarDropDown, SidebarDropList } from './components/navSidebarStyles';
 import classNames from 'classnames';
 import NavigationItems from './components/NavigationItems';
 
 // Assets
 import InactiveIcon from '../../images/inactive-icon.svg';
 import ActiveIcon from '../../images/activeIcon.svg';
-
+import TransportIcon from '../../images/transport-icon.svg';
+import InventoryIcon from '../../images/inventory-icon.svg';
 
 const getActiveModule = (url) => {
     let parts = url.split('/');
@@ -41,11 +42,13 @@ const Navigation = ({type}) => {
                 return 7;
             case 'manageReceive':
                 return 8;             
-            case '/inventory/issueItems':
-                return 9;             
-            case '/inventory/itemReports':
+            case 'manageIssue':
+                return 9;    
+            case 'manageReturn':
+                    return 9;  
+            case 'manageProductReport':
                 return 10;           
-            case '/inventory/issueReports':
+            case 'manageIssueReport':
                 return 11;
                 default:
                     return 1;
@@ -121,15 +124,19 @@ const Navigation = ({type}) => {
         }
 
         if (tabname === 'IssueItems') {
-            active = url.includes('/inventory/issueItems');
+            active = url.includes('/manageIssue');
         }
 
-        if (tabname === 'ItemReports') {
-            active = url.includes('/inventory/itemReports');
+        if (tabname === 'ReturnItems') {
+            active = url.includes('/manageReturn');
+        }
+
+        if (tabname === 'ProductReports') {
+            active = url.includes('/manageProductReport');
         }
 
         if (tabname === 'IssueReports') {
-            active = url.includes('/inventory/issueReports');
+            active = url.includes('/manageIssueReport');
         }
         return classNames(defaultClass, { active: active });
     };
@@ -144,6 +151,16 @@ const Navigation = ({type}) => {
 
     if(type === 'transport'){
     return (
+        <ModuleBoxes>
+            <ModuleBoxCol>
+                <ModuleBoxLeft>
+                    <img src={TransportIcon} />
+                </ModuleBoxLeft>
+                <ModuleBoxRight>
+                    <h4>Transport</h4>
+                    <span>Transport Options</span>
+                </ModuleBoxRight>
+            </ModuleBoxCol>
         <NavBar>
             <NavBarItem
                 onClick={() => setShowDrop(showDrop === 1 ? null : 1)}
@@ -219,10 +236,21 @@ const Navigation = ({type}) => {
                 />
             </NavBarItem>
         </NavBar>
+        </ModuleBoxes>
     )}
 
     else if(type === 'inventory'){
         return (
+            <ModuleBoxes>
+            <ModuleBoxCol>
+                <ModuleBoxLeft>
+                    <img src={InventoryIcon} />
+                </ModuleBoxLeft>
+                <ModuleBoxRight>
+                    <h4>Inventory</h4>
+                    <span>Inventory Options</span>
+                </ModuleBoxRight>
+            </ModuleBoxCol>
             <NavBar>
                 <NavBarItem
                     onClick={() => setShowDrop(showDrop === 3 ? null : 3)}
@@ -256,7 +284,7 @@ const Navigation = ({type}) => {
                 >
                     <NavigationItems
                         url='/manageItems'
-                        tabname="Add Items"
+                        tabname="Manage Products"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
                         containsDrop="false"
@@ -304,7 +332,7 @@ const Navigation = ({type}) => {
                 >
                     <NavigationItems
                         url=''
-                        tabname="Issue Item"
+                        tabname="Issue / Return Product(s)"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
                         containsDrop="true"
@@ -314,10 +342,19 @@ const Navigation = ({type}) => {
                             <SidebarDropList
                                 className={getActiveClassNames('nav-item', 'IssueItems',)}>
                                 <NavigationItems
-                                    url="/inventory/issueItems"
-                                    tabname="Issue Item"
+                                    url="/manageIssue"
+                                    tabname="Issue Product(s)"
                                     drop="true"
                                     isActive={activeModule === '/inventory/issueItems'}
+                                />
+                            </SidebarDropList>
+                            <SidebarDropList
+                                className={getActiveClassNames('nav-item', 'ReturnItems',)}>
+                                <NavigationItems
+                                    url="/manageReturn"
+                                    tabname="Return Product(s)"
+                                    drop="true"
+                                    isActive={activeModule === '/inventory/issueReturns'}
                                 />
                             </SidebarDropList>
                         </SidebarDropDown>
@@ -328,52 +365,27 @@ const Navigation = ({type}) => {
                     className={getClassNames('nav-item', showDrop === 10)}
                 >
                     <NavigationItems
-                        url=''
-                        tabname="Item Report"
+                        url='/manageProductReport'
+                        tabname="Product Report"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
                         containsDrop="true"
                     />
-                    {showDrop === 10 && (
-                        <SidebarDropDown className='sidebar-drop'>
-                            <SidebarDropList
-                                className={getActiveClassNames('nav-item', 'ItemReports',)}>
-                                <NavigationItems
-                                    url="/inventory/itemReports"
-                                    tabname="Item Report"
-                                    drop="true"
-                                    isActive={activeModule === '/inventory/itemReports'}
-                                />
-                            </SidebarDropList>
-                        </SidebarDropDown>
-                    )}
                 </NavBarItem>
                 <NavBarItem
                     onClick={() => setShowDrop(showDrop === 11 ? null : 11)}
                     className={getClassNames('nav-item', showDrop === 11)}
                 >
                     <NavigationItems
-                        url=''
+                        url='/manageIssueReport'
                         tabname="Issue Report"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
                         containsDrop="true"
                     />
-                    {showDrop === 11 && (
-                        <SidebarDropDown className='sidebar-drop'>
-                            <SidebarDropList
-                                className={getActiveClassNames('nav-item', 'IssueReports',)}>
-                                <NavigationItems
-                                    url="/inventory/itemReports"
-                                    tabname="Issue Report"
-                                    drop="true"
-                                    isActive={activeModule === '/inventory/issueReports'}
-                                />
-                            </SidebarDropList>
-                        </SidebarDropDown>
-                    )}
                 </NavBarItem>
             </NavBar>
+            </ModuleBoxes>
         )}
 }
 

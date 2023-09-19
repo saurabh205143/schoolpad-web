@@ -20,12 +20,28 @@ import ManageStore from './views/main/InventoryModule/ManageStore/components/Man
 import Toasters from './components/Toaster/Toasters';
 import ManageCategories from './views/main/InventoryModule/ManageCategories/components/ManageCategories';
 import ManageItems from './views/main/InventoryModule/ManageItems/ManageItems';
-import ManageVendors from './views/main/InventoryModule/ManageVendors/ManageVendors';
 import PurchaseOrders from './views/main/InventoryModule/PurchaseOrders/PurchaseOrders';
 import AddPurchaseOrder from './views/main/InventoryModule/PurchaseOrders/components/AddPurchaseOrder';
 import ReceiveItems from './views/main/InventoryModule/ReceiveItems/ReceiveItems';
-import ApproveRejects from './views/main/InventoryModule/ReceiveItems/components/ApproveRejects.js/ApproveRejects';
+import ApproveRejects from './views/main/InventoryModule/ReceiveItems/components/ApproveRejects/ApproveRejects';
+import IssueItemHome from './views/main/InventoryModule/Issue Items/components/IssueItemHome';
+import IssueItemSelectFilter from './views/main/InventoryModule/Issue Items/components/IssueItemSelectFilter';
+import ReturnStaffHome from './views/main/InventoryModule/Return Items/components/Return Staff/ReturnStaffHome';
+import ReturnItemSelectFilter from './views/main/InventoryModule/Return Items/components/Return Staff/ReturnItemSelectFilter';
+import ReturnItemSelectFilterStudent from './views/main/InventoryModule/Return Items/components/Return Student/ReturnItemSelectFilterStudent';
+import IssueItemSelectFilterStudent from './views/main/InventoryModule/Issue Items/Issue Item Student/IssueItemSelectFilterStudent';
+import PreviewManageStore from './components/InventoryTable/PreviewStoreTable';
+import ManageVendor from './views/main/InventoryModule/ManageVendors/ManageVendor';
+import ProductReport from './views/main/InventoryModule/Product Report/ProductReport';
+import VendorPreview from './components/InventoryTable/ManageVendorsTable/VendorPreview';
+import PreviewCategories from './views/main/InventoryModule/ManageCategories/components/PreviewCategories';
+import ItemPreview from './components/InventoryTable/ManageItemsTable/PreviewItemTable';
+import ItemReport from './components/InventoryTable/ManageVendorsTable/VendorPreview';
+import IssueReportHome from './views/main/InventoryModule/IssueReport/IssueReportHome';
+import IssueReport from './views/main/InventoryModule/IssueReport/components/IssueReport';
 
+
+//src\components\InventoryTable\PreviewStoreTable.js
 export const ThemeContext = React.createContext(null);
 
 function App() {
@@ -61,12 +77,26 @@ function App() {
             <Route path='/manageStore' element={<ManageStore/>}/>
             <Route path='/manageCategories' element={<ManageCategories/>}/>
             <Route path='/manageItems' element={<ManageItems/>}/>
-            <Route path='/manageVendors' element={<ManageVendors/>}/>
+            <Route path='/manageVendors' element={<ManageVendor/>}/>
             <Route path='/managePurchase' element={<PurchaseOrders/>}/>
             <Route path='/inventory/purchaseAdd' element={<AddPurchaseOrder/>}/>
             <Route path='/manageReceive' element={<ReceiveItems/>}/>
             <Route path='/manageReceive/approve-reject' element={<ApproveRejects/>}/>
-            <Route path='/toasters' element={<Toasters/>}/>
+            <Route path='/manageIssue' element={<IssueItemHome/>}/>
+            <Route path='/manageIssue/staff-select-filter' element={<IssueItemSelectFilter/>}/>
+            <Route path='/manageIssue/student-select-filter' element={<IssueItemSelectFilterStudent/>}/>
+            <Route path='/manageReturn' element={<ReturnStaffHome/>}/>
+            <Route path='/manageReturn/staff-select-filter' element={<ReturnItemSelectFilter/>}/>
+            <Route path='/manageReturn/student-select-filter' element={<ReturnItemSelectFilterStudent/>}/>
+            <Route path='/manageProductReport' element={<ProductReport/>}/>
+            <Route path='/manageIssueReport' element={<IssueReportHome/>}/>
+            <Route path='/manageIssueReport/staff-select-filter' element={<IssueReport/>}/>
+            <Route path='/manageIssueReport/student-select-filter' element={<IssueReport/>}/>
+            <Route path='/toasters' element={<Toasters />} />
+            <Route path='/storepreview' element={<PreviewManageStore />} />
+            <Route path='/vendorpreview' element={<VendorPreview />} />
+            <Route path='/itemlistpreview' element={<ItemPreview />} />
+            <Route path ='/previewcategory' element={<PreviewCategories />} />
           </Routes>
         </>
       </ThemeProvider>

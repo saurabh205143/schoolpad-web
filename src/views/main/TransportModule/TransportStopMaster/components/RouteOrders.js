@@ -2,8 +2,17 @@ import React from 'react';
 import Modal from '../../../../../components/Modal/Modal';
 import DragDropList from '../../../../../components/Drag&DropSortList/DragDropList';
 
+
 const RouteOrders = props => {
-    const {show,handleClose, OrdersHeading,orderHeading} = props;
+    const { show, handleClose, orderHeading } = props;
+    /**
+     * 
+     * Submit Function Of Save
+     */
+
+const submit = () => { 
+    handleClose(false);
+}
     return (
         <Modal
             show={show}
@@ -12,6 +21,7 @@ const RouteOrders = props => {
             modalSubHeading={'hello'}
             submitText='Save'
             cancelText='Cancel'
+            saveAction={submit}
         >
         <DragDropList orderHeading={orderHeading}/>
         </Modal>

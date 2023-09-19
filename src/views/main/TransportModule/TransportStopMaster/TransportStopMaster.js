@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState,useEffect } from 'react';
+import axios from 'axios';
+import config from '../../../../config';
 
 // Assets
 import PrintImage from '../../../../images/print-icon.svg';
@@ -16,15 +18,27 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastModals from '../../../../components/Toaster/ToastModals';
 
-
-
 const TransportStopMaster = ({orderHeading}) => {
   const [showModal, setShowModal] = useState(false);
-  const [showstudentList, setShowStudentList] = useState(false);
+  const [showstudentList, setShowStudentList] = useState(null);
   const [showchangeHistory, setShowChangeHistory] = useState(false);
   const [showRouteOrderModal, setShowRouteOrderModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
+  const [count, setCount] = useState(0);
+    /**
+     * 
+     * Calling APi get Post
+     */
+    useEffect(() => {
+        axios.get(config.baseUrl + 'api-transport/transportStopApiManager/getAllStops/1/1/1/15/0').then((response) => {
+            setCount(parseInt(response.data.data.totalRecords));
+            console.log(response.data);
+        }).catch((errorCatch) => {
+            console.log(errorCatch);
+        });
+    }, []);
+  
   const hideModal = () => {
     setId(false);
   }
@@ -78,24 +92,24 @@ const showDeleteToastMessage = () => {
 
       <ExportHeader
         smallHeading='All Stops'
-        smallHeding2='(202 Records)'
+        smallHeding2={count}
         PrintIcon={PrintImage}
         Excelicon={ExcelImage}
       />
 
       <TableStopMaster
-        heading='Child Name'
-        onClick={() => setShowStudentList(!showstudentList)}
+        heading='Student(s)'
+        viewList={(showstudentList) => setShowStudentList(showstudentList)}
         EditOnclick={(id) => {setId(id);}} 
         DeleteOnClick={(deleteId) => {setDeleteId(deleteId);}} 
       />
 
       <ToastContainer
-       autoClose={4000} 
-       position="bottom-center"
-       hideProgressBar={true}
-       className="toaster-container"
-       />
+        autoClose={4000} 
+        position="bottom-center"
+        hideProgressBar={true}
+        className="toaster-container"
+      />
 
       {/* Add Stop Master Modal */}
       <AddStopMaster
@@ -109,13 +123,14 @@ const showDeleteToastMessage = () => {
       <StudentListTable
         show={showstudentList}
         handleClose={hideStudentListModal}
+        id={showstudentList}
       />
 
       {/* Route Order Modal */}
       <RouteOrders
         show={showRouteOrderModal}
         handleClose={hideRouteOrderModal}
-        orderHeading={'text'}
+        orderHeading={'Stops Name'}
       />
 
       {/* Change History */}

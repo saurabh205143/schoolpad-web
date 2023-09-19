@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Select from "react-dropdown-select";
 
@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const SelectContainer = styled.div`
     > div{
+
         > .select-drop{
             padding:0 10px;
             background:${({ theme }) => theme.bg2} ;
@@ -44,21 +45,24 @@ export const Title = styled.label`
 `;
 
 export const InputContainer = styled.div`
-  width:100%;
+  width:${(props) => props.width || '100%'};
   height:36px;
   display: flex;
   flex: 1 0;
   align-items: center;
   min-width: 0;
   padding:0px 10px;
-  border-width:1px;
-  border-style: solid;
   border-radius:3px;
   background:${({ theme }) => theme.bg2};
-  border-color: ${({ theme }) => theme.inputBorderColor};
+  border: 1px solid ${(props) => (props.hasError ? '#AE2A19' : 'rgba(9, 30, 66, 0.141176)')}; 
+
+  &.error{
+    border: 1px solid ;
+  }
 
   &.disabled-input{
-    background:${({ theme }) => theme.disableInput};;
+    // width:280px;
+    background:${({ theme }) => theme.disableInput};
     border: 1px solid ${({ theme }) => theme.disabledBorder};
     border-radius: 3px; 
     &:hover {
@@ -99,6 +103,34 @@ export const Icon = styled.div`
   flex: 0 0;
 `;
 
+export const ErrorContainer = styled.span`
+    color: #AE2A19;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+`;
+
+
+export const InputBase = styled.textarea`
+    width: 100%;
+    color: #1d2939;
+    font-size: 15px;
+    font-weight: 400;
+    background: transparent;
+    outline: none;
+    padding: 10px 10px;
+    border-radius: 3px;
+    background: #ffffff;
+    border: 1px solid rgba(9, 30, 66, 0.141176);
+
+    &::placeholder {
+        font-weight: 400;
+        font-size: 14px;
+        color:${({ theme }) => theme.inputPlaceholderColor};
+    }
+`;
+
 const Input = (
     {
         label, 
@@ -112,8 +144,23 @@ const Input = (
         placeholder,
         options,
         width,
-        disabled
+        disabled,
+        selectSomeItemsText,
+        readOnly,
+        className,
+        select,
+        Storemanager
     }) => {
+
+    const [selected, setSelected] = useState([]);
+    const customStrings = {
+        selectSomeItems: selectSomeItemsText,
+        allItemsAreSelected: "All items are selected",
+        removeAllItems: "Remove all items",
+        search: "Search",
+    };
+    
+
     if(type === 'select'){
         return(
             <Container>
@@ -133,7 +180,30 @@ const Input = (
                 </SelectContainer>
             </Container>
         );
-    } else {
+    } 
+
+    else if(type === 'textarea'){
+        return(
+            <Container>
+                {label &&
+                    <Title>
+                        {label}
+                    </Title>
+                }
+                <InputBase
+                    disabled={readOnly}
+                    type={type}
+                    onChange={onChange}
+                    name={name}
+                    value={value}
+                    placeholder={placeholder}
+                    className={className}
+                />
+            </Container>
+        );
+    } 
+    
+    else {
         return (
             <Container >
                 {label &&
@@ -141,7 +211,7 @@ const Input = (
                         {label}
                     </Title>
                 }
-            <InputContainer className={disabled ? 'disabled-input':'simple-input'}>
+            <InputContainer hasError={error} width={width} className={disabled ? 'disabled-input':'simple-input'}>
                 {leftIcon && 
                     <img src={leftIcon} alt="icon" className='leftIcon' />
                 }
@@ -159,6 +229,9 @@ const Input = (
                     <img src={rightIcon} alt="icon" className='rightIcon' />
                 }
             </InputContainer>
+            {error && 
+                <ErrorContainer>{error}</ErrorContainer>
+            }
             </Container>
         );
     }

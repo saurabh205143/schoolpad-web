@@ -1,0 +1,14 @@
+[
+  {
+    "SNo":1,
+    "ReceiptNo": "A4 Paper",
+    "ProductName": "350",
+    "QuantityTransferred": "Stationery",
+    "Category" : "Paper",
+    "TransferredFromStore": "9",
+    "TransferredToStore": "Packs",
+    "TransferredOn": "3,150",
+    "TransferredBy": "7"
+  }
+
+]

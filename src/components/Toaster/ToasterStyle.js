@@ -10,7 +10,7 @@ export const Toaster = styled.div`
 export const ToasterConatinerError = styled.div`
   display: flex;
   width: 636px;
-  padding: 12px;
+  padding: 14px;
   align-items: center;
   gap: 4px;
   background-color: #CA3521;

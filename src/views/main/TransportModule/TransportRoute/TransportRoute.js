@@ -48,10 +48,12 @@ const TransportRoute = ({orderHeading}) => {
         buttonOption='Associated Options'
         buttonManageText='Add Pick/Drop Time' 
         buttonManageMaintenance='Transport Settings'
+        buttonChangeHistory='Change History'
         searchPlaceholder='Search by route name etc...'
         buttonOrderDragList={() => setShowRouteOrderModal(!showRouteOrderModal)}
         onClick={() => setId(!id)} 
         formField={() => setShowFormFieldModal(!showFormFieldModal)}
+        showChangeHistoryButton={true}
       />
       <ExportHeader
         smallHeading='All Routes'

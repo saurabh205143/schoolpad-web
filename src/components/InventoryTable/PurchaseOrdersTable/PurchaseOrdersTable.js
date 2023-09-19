@@ -2,6 +2,8 @@ import React, { useState, useMemo } from 'react';
 import data from './data.json';
 import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../Table/TableStyles';
 import LinkButton from '../../Buttons/LinkButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 // Assets
 import EditIcon from '../../../images/edit-icon.svg';
@@ -10,14 +12,17 @@ import AddCategories from '../../../views/main/InventoryModule/ManageCategories/
 import DeleteRouteModal from '../../../views/main/TransportModule/TransportRoute/components/DeleteRouteModal/DeleteRouteModal';
 import Pagination from '../../Pagination/Pagination';
 import TableStylesStatus from '../../Table copy/TableStyles';
+import Button from '../../Buttons/Button';
 
-let PageSize = 2;
+let PageSize = 10;
 
-const PurchaseOrdersTable = ({ onClick }) => {
+const PurchaseOrdersTable = ({ onClick, record, searchinfo,purchaseOrderList, searchState}) => {
+    console.log({searchinfo});
+    let columnHeading = record.columns;
     const [currentPage, setCurrentPage] = useState(1);
     const [showModal, setShowModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-
+    const [Count, setCount] = useState(0);
     const hideDeleteModal = () => {
         setShowDeleteModal(false);
     }
@@ -32,37 +37,56 @@ const PurchaseOrdersTable = ({ onClick }) => {
         return data.slice(firstPageIndex, lastPageIndex);
     }, [currentPage]);
 
+
+    //pagination code
+    const getCurrentPage = (page) => {
+    
+        console.log({page});
+        const cPage = (page == undefined) ? 1 : page;
+        const counter = (cPage - 1) * PageSize;
+        setCount(counter);
+    
+      }
+
     // get table column
 
     const column = Object.keys(data[0]);
-    const ThData = () => {
-        return column.map((data) => {
-            return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
-        })
+    const ThDatas = () => {
+        return Array.isArray(columnHeading)?record.columns.map((data) => {
+            return <TableHeading key={data.field}>{data.label}</TableHeading>
+        }):null;
     }
+
+    // const ThData = () => {
+    //     return column.map((data) => {
+    //         return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
+    //     })
+    // }
 
     return (
         <>
             <TableContainer>
                 <TableHead>
                     <TableRow>
-                        {ThData()}
+                        <TableHeading>S No.</TableHeading>
+                        {ThDatas()}
                         <TableHeading>Status</TableHeading>
-                        <TableHeading>Actions</TableHeading>
+                        <TableHeading className='table-action-heading'>Actions</TableHeading>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {currentTableData.map(item => {
+                    {Array.isArray(record.rows)?record.rows.map((item, i) => {
+                        const rowNumber = i + Count + 1;
                         return (
                             <TableRow>
-                                <Tabledata>{item.SNo}</Tabledata>
-                                <Tabledata>{item.PurchaseOrderNo}</Tabledata>
-                                <Tabledata>{item.Department}</Tabledata>
-                                <Tabledata>{item.Date}</Tabledata>
+                                <Tabledata>{rowNumber}</Tabledata>
+                                <Tabledata>{item.purchaseOrderNo}</Tabledata>
+                                <Tabledata>{item.departmentName}</Tabledata>
+                                <Tabledata>{item.createdDateTime}</Tabledata>
                                 <Tabledata>
                                     <TableStylesStatus 
-                                    type='pending'
-                                    statusType='PENDING'>
+                                    type={item.status}
+                                    statusType={item.status.toUpperCase()}>
                                     </TableStylesStatus>
                                 </Tabledata>
                                 <Tabledata>
@@ -71,7 +95,7 @@ const PurchaseOrdersTable = ({ onClick }) => {
                                             <LinkButton
                                                 onlyIcon={EditIcon}
                                                 tooltiptext='Edit'
-                                                onClick={() => setShowModal(!showModal)}
+                                                to='/inventory/purchaseAdd'
                                             />
                                         </ActionsList>
                                         <ActionsList>
@@ -81,19 +105,36 @@ const PurchaseOrdersTable = ({ onClick }) => {
                                                 onClick={() => setShowDeleteModal(!showModal)}
                                             />
                                         </ActionsList>
+                                        <ActionsList>
+                                            <DropdownButton id="dropdown-basic-button" title="More" className='more-options'>
+                                                <Dropdown.Item href="#/action-1">
+                                                    <Button
+                                                        buttonText='Attach File'
+                                                        className='link-button'
+
+                                                    /></Dropdown.Item>
+                                                <Dropdown.Item href="#/action-2">
+                                                    <Button
+                                                        buttonText='Print PO'
+                                                        className='link-button'
+                                                    />
+                                                </Dropdown.Item>
+                                            </DropdownButton>
+                                        </ActionsList>
                                     </ActionsConatiner>
                                 </Tabledata>
                             </TableRow>
                         );
-                    })}
+                    }):null}
                 </TableBody>
             </TableContainer>
             <Pagination
                 className="pagination-bar"
                 currentPage={currentPage}
-                totalCount={data.length}
+                totalCount={(record.total)?record.total:0}
                 pageSize={PageSize}
-                onPageChange={page => setCurrentPage(page)}
+                // onPageChange={page => setCurrentPage(page)}
+                onPageChange={(page) => { purchaseOrderList(page - 1, PageSize); getCurrentPage(page); }}
             />
 
             {/* Edit Categories Modal */}

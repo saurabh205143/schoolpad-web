@@ -49,6 +49,7 @@ const TransportVehicle = () => {
       buttonOption='Associated Options'
       buttonManageText='Manage Fuel Pump' 
       buttonManageMaintenance='Manage Maintenance'
+      buttonChangeHistory='Change History'
       searchPlaceholder='Search by vehicle name etc...'
       onClick={() => setId(!id)} 
       formField={() => setShowFormFieldModal(!showFormFieldModal)}

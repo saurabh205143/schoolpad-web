@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const Container = styled.div`
     width:100%;
-    padding:16px 16px;
+    padding:${(props) => props.padding || '16px 16px'};
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -29,12 +29,12 @@ export const ContainerRight = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-    margin-left:8px;
+    margin: 0 10px 0 0;
     position:relative;
     >div{
         margin-bottom:0px;
         >.simple-input{
-            height:32px;
+            height:36px;
             width:256px;
             @media screen and (max-width: 1240px) {
                 width:160px;
@@ -93,15 +93,28 @@ export const RecordBox = styled.div`
     > div{
         > div{
             > .select-drop{
-                width:280px;
-                height:32px;
+                width:250px;
+                height:36px;
                 min-height:32px;
             }
         }
     }
     >.simple-input{
-        width:280px;
-        height:32px;
+        width:250px;
+        height:36px;
+    }
+ }
+`;
+
+export const RecordBoxNew = styled.div`
+ margin-right:10px;
+ > div{
+    margin-bottom:0px;
+    > div{
+        >.select-drop-record-new {
+        width:100px;
+        }
+        }
     }
  }
 `;
@@ -123,3 +136,18 @@ export const DateInputField = styled.div`
         color: #000000;
     }
 `;
+
+export const TabHeaderFilterHeading = styled.div`
+    padding: 16px 0px 0px 16px;
+`;
+
+export const TabFilterContainer = styled.div`
+    width:100%;
+    display:flex;
+    flex-flow: wrap;
+    align-items:flex-end;
+    padding: 0px 0px 16px 16px;
+    gap:10px;
+`;
+
+

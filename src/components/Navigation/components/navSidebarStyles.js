@@ -1,5 +1,37 @@
 import styled from "styled-components";
 
+export const ModuleBoxes = styled.div`
+`;
+
+export const ModuleBoxCol = styled.div`
+    padding:13px 12px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    border-bottom: 1px solid rgba(9, 30, 66, 0.14);
+`;
+
+export const ModuleBoxLeft = styled.div``;
+
+export const ModuleBoxRight = styled.div`
+    padding-left:12px;
+    >h4{
+        color: #000000;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 18px; /* 128.571% */
+        margin-bottom:0px;
+    }
+    >span{
+        color: #000000;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 12px; /* 100% */
+    }
+`;
+
 export const NavBar = styled.ul`
  margin:0;
  padding:10px 0;
@@ -17,6 +49,9 @@ export const NavBarItem = styled.li`
     // border-bottom:1px solid #C1C7D0;
     &.active {
         >a{
+            background-color: #E9F2FF;
+            border-radius: 3px;
+            padding: 8px;
             >span{
                 color:${({ theme }) => theme. buttonPrimary};
                 font-weight: 600;
@@ -26,6 +61,7 @@ export const NavBarItem = styled.li`
             }
             >.active-icons{
                 display:flex;
+                width:20px;
             }           
         }
         >.sidebar-drop{
@@ -50,11 +86,13 @@ export const NavBarItem = styled.li`
         display:flex;
         align-items:center;
         width:100%;
+        padding:8px;
         >.active-icons{
             display:none;
         }
         >.inactive-icons{
             display:flex;
+            width:20px;
         }
     }
     &:last-child{
@@ -87,8 +125,10 @@ export const NavBarItems = styled.li`
             }
             >.active-icons{
                 display:flex;
+                width:20px;
             }           
         }
+        
         >.sidebar-drop{
             li.active{
                 a{
@@ -100,6 +140,7 @@ export const NavBarItems = styled.li`
                     justify-content:flex-start;
                     > span{
                         color:${({ theme }) => theme. buttonPrimary};
+                        font-weight: 600;
                     }
                 }
             }
@@ -116,6 +157,7 @@ export const NavBarItems = styled.li`
         }
         >.inactive-icons{
             display:flex;
+            width:20px;
         }
     }
     &:last-child{
@@ -125,7 +167,7 @@ export const NavBarItems = styled.li`
 
 export const LinkTitle = styled.span`
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 14px;
     line-height: 32px;
     color:#091E42;
@@ -143,20 +185,24 @@ export const ActiveIcon = styled.img`
 `;
 
 export const SidebarDropDown = styled.ul`
-    margin:0 0 0 30px;
+    margin:10px 0 0 30px;
     padding:0px;
     list-style:none;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
-
 `;
 
 export const SidebarDropList = styled.li`
-    padding-bottom:11px;
- >a{
+a.nav-item1 { 
+    border-radius: 3px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     text-decoration:none;
-    padding:0 10px;
+    padding: 0 10px;
+}
     >span{
         font-style: normal;
         font-weight: 400;
@@ -166,8 +212,5 @@ export const SidebarDropList = styled.li`
         @media screen and (max-width: 1240px) {
             font-size:13px;
         }
-    }
- }
-
 `;
 

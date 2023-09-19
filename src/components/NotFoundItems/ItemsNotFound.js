@@ -5,22 +5,24 @@ import NotFoundIcon from '../../images/routes-loader.svg';
 import Button from '../Buttons/Button';
 import LinkButton from '../Buttons/LinkButton';
 
-const ItemsNotFound = () => {
+const ItemsNotFound = ({description, showNoRecordButton}) => {
     return (
         <NotFoundContainer>
             <img src={NotFoundIcon} alt="icon" />
             <Heading>
-                <Headings subHeading={'No routes defined so far'} />
+                <Headings subHeading={'No records found'} />
             </Heading>
             <Description>
-                <Headings description={'There are no routes defined, to start creating new routes click the button below.'} />
+                <Headings description={description} />
             </Description>
+            {showNoRecordButton && (
             <ButtonContainer>
                 <Button
                     buttonText={'Create New Routes'}
                     className={'primary'}
                 />
             </ButtonContainer>
+            )}
             <LinkContainer>
                 <LinkButton
                     linkText="Learn how"
