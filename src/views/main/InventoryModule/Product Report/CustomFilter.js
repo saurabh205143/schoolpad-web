@@ -7,7 +7,8 @@ import RemoveIcon from '../../../../images/delete-icon.svg';
 import Modal from '../../../../components/Modal/Modal';
 import Button from '../../../../components/Buttons/Button';
 import Input from '../../../../components/Inputs/Input';
-import { AddMoreField, FieldContainer, FieldDivider, FieldLeftContainer, FieldLeftContainer1, FieldRightContainerItem, ModalBodyConatiner, RemoveContianer } from '../../TransportModule/TransportRoute/components/AddRouteStyles';
+import { AddMoreField, FieldContainer, FieldDivider, FieldDividerCustom, FieldLeftContainer, FieldLeftContainer1, FieldRightContainerItem, ModalBodyConatiner, RemoveContianer } from '../../TransportModule/TransportRoute/components/AddRouteStyles';
+import Select from '../../../../components/Inputs/Select';
 
 const options = [
   {
@@ -22,36 +23,36 @@ const options = [
 
 const CustomFilter = props => {
     const { show, handleClose, Storelist,saveAction } = props;
-    const options = Storelist;
     const [formValues, setFormValues] = useState(
         [
             {
-                // select_store:'',
-                category_name: '',
-                category_code: '',
+                select_store:'',
+                field_criteria: '',
+                field_value: '',
             }
         ]
     )
 
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
-    const [SelectedValue, setSelectValue] = useState([]);
+    const [selectedStore, setSelectedStore] = useState('');
+    const [fieldError, setFieldError] = useState('');
     // Validate Inputs
     const validate = () => {
         let fields = [
-            // {
-            //     label: 'Select Store',
-            //     key: 'select_store',
-            //     required: true,
-            // },
             {
-                label: 'Category Name',
-                key: 'category_name',
+                label: 'Field Name',
+                key: 'field_name',
                 required: true,
             },
             {
-                label: 'Category Code',
-                key: 'category_code',
+                label: 'Field Criteria',
+                key: 'field_criteria',
+                required: true,
+            },
+            {
+                label: 'Field Value',
+                key: 'field_value',
                 required: true,
             },
             
@@ -85,9 +86,14 @@ const CustomFilter = props => {
     // OnSubmit Validate 
     const onSubmit = () => {
         let e = {};
-        // if (!validate()) {
-        //     return;
-        // }
+        if (selectedStore === '') {
+            setFieldError('Please select a field name');
+        } else {
+            setFieldError('');
+        }
+        if (!validate()) {
+            return;
+        }
         setLoading(true);
         for (let i = 0; i < formValues.length; i++) { 
         }
@@ -102,7 +108,7 @@ const CustomFilter = props => {
     }
 
     let addFormFields = () => {
-        setFormValues([...formValues, {select_store:"", category_name: "", category_code:"" }])
+        setFormValues([...formValues, {field_name:"",   field_criteria: "", field_value:"" }])
     }
 
     let removeFormFields = (i) => {
@@ -126,39 +132,40 @@ const CustomFilter = props => {
             <form>
                 <ModalBodyConatiner>
                 {formValues.map((element, index) => (
-                <FieldDivider>
+                <FieldDividerCustom>
                         <FieldLeftContainer1>
-                        <Input
-                                type="select"
+                        <Select
                                 options={options}
                                 label='Field Name'
                                 placeholder={'--Select field name--'}
-                                onChange={() => {
-                                }}
+                                onChange={(e) => handleChange(index, e)}
+                                required={true}
+                                error={fieldError}
+                                value={formValues.field_name}
                             />
                         </FieldLeftContainer1>
                         <FieldRightContainerItem>
                             <Input
                                 type="text"
-                                placeholder={'Enter category code'}
-                                label={'Category Code'}
-                                name={'category_code'}
-                                value={formValues.category_code}
+                                placeholder={'Enter field criteria'}
+                                label={'Field Criteria'}
+                                name={'field_criteria'}
+                                value={formValues.field_criteria}
                                 onChange={(e) => handleChange(index, e)}
                                 required={true}
-                                error={errors.category_code}
+                                error={errors.field_criteria}
                             />
                         </FieldRightContainerItem>
                         <FieldRightContainerItem>
                             <Input
                                 type="text"
-                                placeholder={'Enter category code'}
-                                label={'Category Code'}
-                                name={'category_code'}
-                                value={formValues.category_code}
+                                placeholder={'Enter field value'}
+                                label={'Field Value'}
+                                name={'field_value'}
+                                value={formValues.field_value}
                                 onChange={(e) => handleChange(index, e)}
                                 required={true}
-                                error={errors.category_code}
+                                error={errors.field_value}
                             />
                         </FieldRightContainerItem>
                         {
@@ -173,7 +180,7 @@ const CustomFilter = props => {
                                 </RemoveContianer>
                                 : null
                         }
-                    </FieldDivider>
+                    </FieldDividerCustom>
                     ))}
                 {/* Add More field button */}
                 <AddMoreField style={{marginBottom: '14px'}}>

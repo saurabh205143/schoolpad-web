@@ -114,6 +114,13 @@ export const FieldDivider = styled.div`
     justify-content:center;
 `;
 
+export const FieldDividerCustom = styled.div`
+    width:100%;
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-start;
+`;
+
 export const CustomCheckboxField = styled.div`
     width:100%;
     display:flex;
@@ -222,6 +229,22 @@ export const RemoveContianer = styled.div`
     align-items: center;
     justify-content: center;
     margin:12px 20px;
+    >button{
+        >img{
+            width:20px;
+            height:20px;
+        }
+    }
+`;
+
+export const RemoveContianerDelete = styled.div`
+    width: auto;
+    // padding-left: 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:12px 6px;
     >button{
         >img{
             width:20px;

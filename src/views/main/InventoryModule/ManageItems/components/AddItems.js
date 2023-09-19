@@ -310,6 +310,7 @@ const AddItems = props => {
                                 selected={selectedOptions}
                                 setState={setSelectedOptions}
                                 error={errorsMultiSelect}
+                                width='100%'
                             />
                                 <Input
                                     type="text"
@@ -400,9 +401,9 @@ const AddItems = props => {
                                 <FieldContainerBottomBox>
                                     <FieldLeftContainer1>
                                         <SelectInput
-                                            label='Select Store'
+                                            label='Unit Type'
                                             options={options}
-                                            placeholder='---- Select store ----'
+                                            placeholder='----Select unit type----'
                                             name={'select_store'}
                                             required={true}
                                             value={selectedStore}
@@ -443,7 +444,7 @@ const AddItems = props => {
                         <AddMoreField style={{ margin: '14px 0px 14px 0px' }}>
                             <Link onClick={() => addItemFields()}>
                                 <img src={AddMoreIcon} alt="Icon" />
-                                <span>Add Another Item</span>
+                                <span>Add Another Product</span>
                             </Link>
                         </AddMoreField>
                     </FieldDividerBottom>

@@ -1,121 +1,83 @@
-import React, {useState} from 'react'
-import { ActionsConatiner, ActionsList, TableActionHeading, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../../../../../components/Table/TableStyles';
-import Button from '../../../../../../components/Buttons/Button';
+import React, { useState, useMemo } from 'react';
+import data from './data.json';
+import { ActionsConatiner, ActionsList, TableBody, TableContainer, TableHead, TableHeading, TableRow, Tabledata } from '../../../../../../components/Table/TableStyles';
 import TableStylesStatus from '../../../../../../components/Table copy/TableStyles';
+import Button from '../../../../../../components/Buttons/Button';
+import CustomFilter from '../../../Product Report/CustomFilter';
+import ReturnItemStaffModal from '../Return Staff/ReturnItemStaffModal';
 
+let PageSize = 2;
 
+const StudentReturnItemTable = ({ onClick }) => {
 
-const StudentReturnItemTable = () => {
-    // const [showModal, setShowModal] = useState(false);
-    
-    // const hideModal = () => {
-    //     setShowModal(false);
-    // }
+    const [showReturnModal, setShowReturnmodal] = useState(false);
+    const hideModal = () => {
+        setShowReturnmodal(false);
+    }
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const currentTableData = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return data.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage]);
+
+    // get table column
+    const column = Object.keys(data[0]);
+    const ThData = () => {
+        return column.map((data) => {
+            return <TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>
+        })
+    }
 
     return (
         <>
-        <TableContainer>
-            <TableHead>
-                <TableRow>
-                    <TableHeading>S No.</TableHeading>
-                    <TableHeading>Receipt No.</TableHeading>
-                    <TableHeading>Issue Date</TableHeading>
-                    <TableHeading>Item Name</TableHeading>
-                    <TableHeading>Quantity</TableHeading>
-                    <TableHeading>Amount</TableHeading>
-                    <TableHeading>Amount Status</TableHeading>
-                    <TableHeading>
-                        <TableActionHeading>
-                            Action
-                        </TableActionHeading>
-                    </TableHeading>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                <TableRow>
-                    <Tabledata>1</Tabledata>
-                    <Tabledata>22/04/2022</Tabledata>
-                    <Tabledata>RN-0041</Tabledata>
-                    <Tabledata>Laptop[CODE: LAP1998_2021]</Tabledata>
-                    <Tabledata>1</Tabledata>
-                    <Tabledata>100</Tabledata>
-                    <Tabledata>
-                        <TableStylesStatus 
-                            type='item-type-returnable'
-                            statusType='PAID'
-                        >
-                        </TableStylesStatus>
-                    </Tabledata>
-                    <Tabledata>
-                        <ActionsConatiner>
-                            <ActionsList>
-                                <Button
-                                    buttonText='Return Item'
-                                    className='link-button'
-                                    // onClick={() => setShowModal(!showModal)}
-                                />
-                            </ActionsList>
-                        </ActionsConatiner>
-                    </Tabledata>
-                </TableRow>
-                <TableRow>
-                <Tabledata>2</Tabledata>
-                <Tabledata>22/04/2022</Tabledata>
-                    <Tabledata>RN-0042</Tabledata>
-                    <Tabledata>Speakers[CODE: LAP1998_2021]</Tabledata>
-                    <Tabledata>1</Tabledata>
-                    <Tabledata>100</Tabledata>
-                    <Tabledata>
-                        <TableStylesStatus 
-                        type='item-type-returnable'
-                        statusType='PAID'
-                        >
-                        </TableStylesStatus>
-                    </Tabledata>
-                    <Tabledata>
-                        <ActionsConatiner>
-                            <ActionsList>
-                                <Button
-                                    buttonText='Return Item'
-                                    className='link-button'
-                                    // onClick={() => setShowModal(!showModal)}
-                                />
-                            </ActionsList>
-                        </ActionsConatiner>
-                    </Tabledata>
-                </TableRow>
-                <TableRow>
-                <Tabledata>3</Tabledata>
-                <Tabledata>22/04/2022</Tabledata>
-                    <Tabledata>RN-0043</Tabledata>
-                    <Tabledata>Projector[CODE: LAP1998_2021]</Tabledata>
-                    <Tabledata>1</Tabledata>
-                    <Tabledata>100</Tabledata>
-                    <Tabledata>
-                        <TableStylesStatus type='pending'
-                            statusType='PENDING'
-                        >
-                        </TableStylesStatus>
-                    </Tabledata>
-                    <Tabledata>
-                        <ActionsConatiner>
-                            <ActionsList>
-                                <Button
-                                    buttonText='Return Item'
-                                    className='link-button'
-                                    // onClick={() => setShowModal(!showModal)}
-                                />
-                            </ActionsList>
-                        </ActionsConatiner>
-                    </Tabledata>
-                </TableRow>
-            </TableBody>
-        </TableContainer>
+            <TableContainer>
+                <TableHead>
+                    <TableRow>
+                        {ThData()}
+                        <TableHeading>Amount Status</TableHeading>
+                        <TableHeading>Action</TableHeading>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {currentTableData.map(item => {
+                        return (
+                            <TableRow>
+                                <Tabledata>{item.SNo}</Tabledata>
+                                <Tabledata>{item.ReceiptNo}</Tabledata>
+                                <Tabledata>{item.IssueDate}</Tabledata>
+                                <Tabledata>{item.IssueName}</Tabledata>
+                                <Tabledata>{item.Quantity}</Tabledata>
+                                <Tabledata>{item.Amount}</Tabledata>
+                                <Tabledata>
+                                    <TableStylesStatus
+                                        type='item-type-returnable'
+                                        statusType='RETURNABLE'
+                                    />
+                                </Tabledata>
+                                <Tabledata>
+                                    <Button
+                                        buttonText='Return Product'
+                                        className='link-button'
+                                        onClick={() => setShowReturnmodal(!showReturnModal)}
+                                    />
+                                </Tabledata>
+                            </TableRow>
+                        );
+                    })}
+                </TableBody>
+            </TableContainer>
 
-        {/* <ReturnItemStaffModal
-        show={showModal}
-        handleClose={hideModal}
-        /> */}
+
+            {/* Return Item Modal */}
+
+            <ReturnItemStaffModal
+                show={showReturnModal}
+                handleClose={hideModal}
+            />
+
         </>
     );
 }

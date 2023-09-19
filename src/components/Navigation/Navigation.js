@@ -332,7 +332,7 @@ const Navigation = ({type}) => {
                 >
                     <NavigationItems
                         url=''
-                        tabname="Issue / Return Item(s)"
+                        tabname="Issue / Return Product(s)"
                         inactiveIcon={InactiveIcon}
                         activeIcon={ActiveIcon}
                         containsDrop="true"
@@ -343,7 +343,7 @@ const Navigation = ({type}) => {
                                 className={getActiveClassNames('nav-item', 'IssueItems',)}>
                                 <NavigationItems
                                     url="/manageIssue"
-                                    tabname="Issue Item(s)"
+                                    tabname="Issue Product(s)"
                                     drop="true"
                                     isActive={activeModule === '/inventory/issueItems'}
                                 />
@@ -352,9 +352,9 @@ const Navigation = ({type}) => {
                                 className={getActiveClassNames('nav-item', 'ReturnItems',)}>
                                 <NavigationItems
                                     url="/manageReturn"
-                                    tabname="Return Item(s)"
+                                    tabname="Return Product(s)"
                                     drop="true"
-                                    isActive={activeModule === '/inventory/issueItems'}
+                                    isActive={activeModule === '/inventory/issueReturns'}
                                 />
                             </SidebarDropList>
                         </SidebarDropDown>

@@ -104,7 +104,7 @@ export const ButtonClassic = styled.button`
     &.delete {
         background: ${({ theme }) => theme.bgDelete};
         margin-right: 8px;
-        padding:0;
+        padding:0 10px;
     }
 
     &.delete-text {
