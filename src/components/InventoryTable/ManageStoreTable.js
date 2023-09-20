@@ -21,7 +21,7 @@ import ToastModals from '../Toaster/ToastModals';
 
 let PageSize = 10;
 
-const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList, setstoreid,columns }) => {
+const ManageStoreTable = ({ onClick,searchinfo,searchData,vendorList, setstoreid,columns }) => {
   const [currentPage, setCurrentPage] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -55,6 +55,16 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
     );
   };
 
+  //==============
+  // const getCurrentPage = (page) => {
+    
+  //   console.log({page});
+  //   const cPage = (page == undefined) ? 1 : page;
+  //   const counter = (cPage - 1) * PageSize;
+  //   setCount(counter);
+
+  // }
+
   // Successfull Deleted
   const showDeleteToastMessage = () => {
     hideDeleteModal();
@@ -75,13 +85,11 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
   },[]);
   
   // let cntr = isNaN(offSet)?0:offSet;
-  const getCurrentPage = (page) => {
-    
+  const getCurrentPage = (page) => {    
     console.log({page});
     const cPage = (page == undefined) ? 1 : page;
     const counter = (cPage - 1) * PageSize;
     setCount(counter);
-
   }
   
   
@@ -90,44 +98,30 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
     const lastPageIndex = firstPageIndex + PageSize;
     return Array.isArray(searchinfo)?searchinfo.slice(firstPageIndex, lastPageIndex):0;
   }, [currentPage]);
-  console.log({ columns });
+  console.log(searchinfo.rows);
   const column = Object.keys(data[0]);
- columns.map((data) => (
-          console.log(data.field)
-  ))
-  const ThData = () => {
-    return (
-      <>
-        <TableHeading>
-            S No.
-        </TableHeading>
-        <TableHeading>
-          {
-          /* <TableCheckbox>
-            <CustomCheckbox
-              isChecked={isChecked}
-              onChange={handleChange}
-            />
-          </TableCheckbox><TableHeading key={data}>{data.split(/(?=[A-Z])/).join(" ")}</TableHeading>*/}
-        </TableHeading>
-        {columns.map((data) => (
-          <TableHeading key={data.field}>{data.label}</TableHeading>
-        ))}
-      </>
-    );
-  };
+  const rowsList = searchinfo.rows;
+  const totalRecord = searchinfo.total;
+  const ThDatas = () => {
+    return Array.isArray(columns)?columns.map((data) => {
+        return <TableHeading key={data.field}>{data.label}</TableHeading>
+    }):null;
+}
+
+// console.log({});
 
   return (
     <>
       <TableContainer>
         <TableHead>
           <TableRow>
-            {ThData()}
+            
             <TableHeading>
-              {/* <TableActionHeading>
-                  Categories
-              </TableActionHeading> */}
+              <TableActionHeading>
+                  S No.
+              </TableActionHeading>
               </TableHeading>
+              {ThDatas()}
             <TableHeading>
               <TableActionHeading>
                   Actions
@@ -136,18 +130,12 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
           </TableRow>
         </TableHead>
         <TableBody>
-          console.log({searchinfo});
-          {Array.isArray(searchinfo) ? searchinfo.map((item, i) => {
+          {/* console.log({searchinfo.rows}); */}
+          {Array.isArray(rowsList) ? rowsList.map((item, i) => {
            const rowNumber = i + Count + 1;
             
             return (
               <TableRow key={item.id}> {/* Added a unique key */}
-                <Tabledata>
-                  {/* <CustomCheckbox
-                    isChecked={isChecked}
-                    onChange={handleChange}
-                  /> */}
-                </Tabledata>
                 <Tabledata>{ rowNumber }</Tabledata>
                 <Tabledata>{item.storeName}</Tabledata>
                 <Tabledata>{item.storeDesc}</Tabledata>
@@ -193,27 +181,19 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
           }):null}
         </TableBody>
       </TableContainer>
-      <Pagination
+      {/* <Pagination
         className="pagination-bar"
-        // currentPage={currentPage}
-        totalCount={totalRecord}
+        totalCount={searchinfo.length}
         pageSize={PageSize}
         onPageChange={(page) => { searchData(page - 1, PageSize); getCurrentPage(page); }}//getCurrentPageRecord(page);
-      />
-      {/* Toaster Container */}
+      /> */}
       <ToastContainer
         autoClose={4000} 
         position="bottom-center"
         hideProgressBar={true}
         className="toaster-container"
        />
-
-      {/* Edit Route Modal */}
-      {/* <AddStore
-        show={showModal}
-        handleClose={hideModal}
-      /> */}
-      <EditStore
+       <EditStore
         show={showModal}
         handleClose={hideModal}
         record={record}
@@ -227,9 +207,6 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
         storeid={record}
         onDelete={showDeleteToastMessage}
       />
-
-      {/* Delete Button */}
-      
       <ButtonContainer>
       {isChecked && (
           <Button
@@ -238,7 +215,7 @@ const ManageStoreTable = ({ onClick,totalRecord,searchinfo,searchData,vendorList
           />
         )}
       </ButtonContainer>
-      
+
     </>
   );
 }

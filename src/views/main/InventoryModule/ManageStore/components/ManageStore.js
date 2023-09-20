@@ -174,7 +174,7 @@ const ManageStore = () => {
       
       <ManageStoreTable
           onClick={() => setShowCategoriesList(!showcategoriesList)}
-          totalRecord={totalRecord}
+          // totalRecord={totalRecord}
           searchinfo={record}
           searchState={searchinfo}
           searchData={searchData}
