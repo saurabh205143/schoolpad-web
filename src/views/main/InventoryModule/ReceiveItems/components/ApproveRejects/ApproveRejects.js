@@ -50,6 +50,7 @@ const ApproveRejects = () => {
           inputPlaceholder8='Enter remarks here'
           showHeaderFilterRecordBoxNew={true}
           showSelectRecordBoxNew={true}
+          showDisabledInput2={true}
         />
 
         {/* Approve/RejectGRN - Table*/}
